@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private TextView mTextMessage;
     private static final String TAG = "MainActivity";
     // Test for android studio github tools commit && push ...
