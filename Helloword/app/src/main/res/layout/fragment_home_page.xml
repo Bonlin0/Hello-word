@@ -8,16 +8,16 @@ android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/number_of_punch_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16sp"
+            android:layout_marginTop="32sp"
             android:text="@string/number_placeholder"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="text_punch_days"
+            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,10 +26,116 @@ android:layout_height="match_parent">
             android:id="@+id/text_punch_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16sp"
             android:text="@string/punch_days"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/number_of_punch_days" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="36sp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_punch_days" />
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="32sp"
+            android:layout_margin="32sp"
+            android:indeterminate="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+        <TextView
+            android:id="@+id/words_remembered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:text="123"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <TextView
+            android:id="@+id/text_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:text="/"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <TextView
+            android:id="@+id/words_to_remember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:text="500"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_divider"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="36sp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <TextView
+            android:id="@+id/text_words_finished"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/words_finished"
+            app:layout_constraintEnd_toEndOf="@+id/words_remembered"
+            app:layout_constraintStart_toStartOf="@+id/words_remembered"
+            app:layout_constraintTop_toBottomOf="@+id/words_remembered" />
+
+        <TextView
+            android:id="@+id/text_words_to_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/words_to_finish"
+            app:layout_constraintEnd_toEndOf="@+id/words_to_remember"
+            app:layout_constraintStart_toStartOf="@+id/words_to_remember"
+            app:layout_constraintTop_toBottomOf="@+id/words_to_remember" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:layout_marginTop="20dp"
+            android:text="  开始学习！  "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.518"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_words_finished" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="70dp"
+            android:layout_height="58dp"
+            android:layout_margin="16sp"
+            android:src="@android:drawable/ic_input_get"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
