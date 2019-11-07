@@ -8,7 +8,7 @@ android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/number_of_punch_days"
@@ -16,8 +16,10 @@ android:layout_height="match_parent">
             android:layout_height="wrap_content"
             android:layout_margin="16sp"
             android:layout_marginTop="32sp"
+            android:fontFamily="@font/geostar"
             android:text="@string/number_placeholder"
-            android:textSize="36sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="56sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +39,7 @@ android:layout_height="match_parent">
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="36sp"
+            android:layout_margin="24sp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +53,9 @@ android:layout_height="match_parent">
             android:layout_height="32sp"
             android:layout_margin="32sp"
             android:indeterminate="false"
+            android:max="500"
+            android:progress="123"
+            android:progressDrawable="@drawable/progressbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider" />
@@ -60,6 +65,7 @@ android:layout_height="match_parent">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16sp"
+            android:fontFamily="@font/aldrich"
             android:text="123"
             android:textSize="36sp"
             app:layout_constraintEnd_toStartOf="@+id/text_divider"
@@ -82,6 +88,7 @@ android:layout_height="match_parent">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16sp"
+            android:fontFamily="@font/aldrich"
             android:text="500"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +103,7 @@ android:layout_height="match_parent">
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/start_learning_button" />
 
         <TextView
             android:id="@+id/text_words_finished"
@@ -117,25 +124,88 @@ android:layout_height="match_parent">
             app:layout_constraintTop_toBottomOf="@+id/words_to_remember" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/start_learning_button"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
-            android:layout_height="60sp"
-            android:layout_marginTop="20dp"
-            android:text="  开始学习！  "
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_background"
+            android:fontFamily="@font/aldrich"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp"
+            android:text="@string/start_learning_button"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.518"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_words_finished" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="70dp"
-            android:layout_height="58dp"
+        <ImageButton
+            android:id="@+id/word_book_image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="16sp"
-            android:src="@android:drawable/ic_input_get"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider2" />
+            android:alpha="0.75"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/a_word_book_icon"
+            app:layout_constraintStart_toStartOf="@+id/divider2"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/ic_book_64px" />
+
+        <ImageButton
+            android:id="@+id/fresh_image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:alpha="0.75"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/a_word_book_icon"
+            app:layout_constraintEnd_toEndOf="@+id/start_learning_button"
+            app:layout_constraintStart_toStartOf="@+id/start_learning_button"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/ic_autorenew_black_64dp" />
+
+        <ImageButton
+            android:id="@+id/words_image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:alpha="0.75"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/a_word_book_icon"
+            app:layout_constraintEnd_toEndOf="@+id/divider2"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            app:srcCompat="@drawable/ic_description_64px" />
+
+        <TextView
+            android:id="@+id/wordBookTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_words_book"
+            app:layout_constraintEnd_toEndOf="@+id/word_book_image_button"
+            app:layout_constraintStart_toStartOf="@+id/word_book_image_button"
+            app:layout_constraintTop_toBottomOf="@+id/word_book_image_button" />
+
+        <TextView
+            android:id="@+id/freshTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fresh_and_sync"
+            app:layout_constraintEnd_toEndOf="@+id/fresh_image_button"
+            app:layout_constraintStart_toStartOf="@+id/fresh_image_button"
+            app:layout_constraintTop_toBottomOf="@+id/fresh_image_button" />
+
+        <TextView
+            android:id="@+id/wordsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_words"
+            app:layout_constraintEnd_toEndOf="@+id/words_image_button"
+            app:layout_constraintStart_toStartOf="@+id/words_image_button"
+            app:layout_constraintTop_toBottomOf="@+id/words_image_button" />
+
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -13,4 +13,10 @@
     <string name="about_me">我的</string>
     <string name="words_to_finish">目标完成单词</string>
     <string name="words_finished">已完成单词</string>
+    <string name="a_word_book_icon">A word book icon</string>
+    <string name="start_learning_button">Start!</string>
+    <string name="choose_words_book">选择词书</string>
+    <string name="fresh_and_sync">刷新同步</string>
+    <string name="my_words">我的词库</string>
+    <string name="group">小组</string>
 </resources>
