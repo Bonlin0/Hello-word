@@ -18,4 +18,5 @@
     <string name="choose_words_book">选择词书</string>
     <string name="fresh_and_sync">刷新同步</string>
     <string name="my_words">我的词库</string>
+    <string name="group">小组</string>
 </resources>

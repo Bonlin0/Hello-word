@@ -1,14 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ExploreFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/your_group_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25sp"
+            android:text="@string/group"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/group_avatar_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/your_group_text_view"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/groupNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:text="你的小组的名字"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/group_avatar_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/group_avatar_image_view"
+            app:layout_constraintTop_toTopOf="@+id/group_avatar_image_view" />
+
+        <TextView
+            android:id="@+id/groupMemberNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:fontFamily="@font/aclonica"
+            android:text="24"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/group_avatar_image_view" />
+
+        <TextView
+            android:id="@+id/groupRankingNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:fontFamily="@font/aclonica"
+            android:text="2"
+            android:textSize="48sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/group_avatar_image_view" />
+
+        <TextView
+            android:id="@+id/groupMemberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小组成员数"
+            app:layout_constraintEnd_toEndOf="@+id/groupMemberNumberTextView"
+            app:layout_constraintStart_toStartOf="@+id/groupMemberNumberTextView"
+            app:layout_constraintTop_toBottomOf="@+id/groupMemberNumberTextView" />
+
+        <TextView
+            android:id="@+id/groupRankingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小组排名"
+            app:layout_constraintEnd_toEndOf="@+id/groupRankingNumberTextView"
+            app:layout_constraintStart_toStartOf="@+id/groupRankingNumberTextView"
+            app:layout_constraintTop_toBottomOf="@+id/groupRankingNumberTextView" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="24sp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/goToGroupButton"
+            tools:layout_editor_absoluteX="24dp" />
+
+        <Button
+            android:id="@+id/goToGroupButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24sp"
+            android:background="@drawable/btn_background"
+            android:text="前往小组"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/groupMemberTextView" />
+
+        <TextView
+            android:id="@+id/wordsPkTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25sp"
+            android:text="单词 PK Game"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <ImageView
+            android:id="@+id/pkLevelImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wordsPkTextView"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/pkLevelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:text="不屈黑铁"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pkLevelImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pkLevelImageView"
+            app:layout_constraintTop_toTopOf="@+id/pkLevelImageView" />
+
+        <TextView
+            android:id="@+id/pkPointNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:fontFamily="@font/aclonica"
+            android:text="1500"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pkLevelImageView" />
+
+        <TextView
+            android:id="@+id/pKRankingNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20sp"
+            android:fontFamily="@font/aclonica"
+            android:text="2"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pkLevelImageView" />
+
+        <TextView
+            android:id="@+id/pkPointTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PK 评分"
+            app:layout_constraintEnd_toEndOf="@+id/pkPointNumberTextView"
+            app:layout_constraintStart_toStartOf="@+id/pkPointNumberTextView"
+            app:layout_constraintTop_toBottomOf="@+id/pkPointNumberTextView" />
+
+        <TextView
+            android:id="@+id/pKRankingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PK 排名"
+            app:layout_constraintEnd_toEndOf="@+id/pKRankingNumberTextView"
+            app:layout_constraintStart_toStartOf="@+id/pKRankingNumberTextView"
+            app:layout_constraintTop_toBottomOf="@+id/pKRankingNumberTextView" />
+
+        <Button
+            android:id="@+id/goToPkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24sp"
+            android:background="@drawable/btn_background"
+            android:text="前往单词 PK Game"
+            android:textColor="@android:color/background_light"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pkPointTextView" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="24sp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toBottomOf="@+id/goToPkButton"
+            tools:layout_editor_absoluteX="24dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
