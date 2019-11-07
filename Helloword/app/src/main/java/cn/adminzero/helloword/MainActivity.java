@@ -69,8 +69,7 @@ public class MainActivity extends BaseActivity {
         list = new ArrayList<>();
         list.add(new HomePageFragment() );
         list.add(new ExploreFragment() );
-        // TODO create the third Fragment and change here
-        list.add(new HomePageFragment() );
+        list.add(new AboutMeFragment() );
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);  //初始化显示第一个页面
