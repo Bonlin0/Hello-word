@@ -19,4 +19,5 @@
     <string name="fresh_and_sync">刷新同步</string>
     <string name="my_words">我的词库</string>
     <string name="group">小组</string>
+    <string name="the_avatar_of_the_group">The avatar of the group.</string>
 </resources>
