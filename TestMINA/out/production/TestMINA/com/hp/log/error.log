@@ -1,0 +1,34 @@
+2019-11-07 18:38:49 下午 [Thread: main][ Class:Demo1ClientHandler >> Method: Demo1ClientHandler.exceptionCaught(Demo1ClientHandler.java:22) ]
+ERROR:客户端发生异常...
+org.apache.mina.filter.codec.ProtocolEncoderException: org.apache.mina.core.session.UnknownMessageTypeException: No message encoder found for message: 我爱你mina
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.filterWrite(ProtocolCodecFilter.java:350)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callPreviousFilterWrite(DefaultIoFilterChain.java:753)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1500(DefaultIoFilterChain.java:49)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.filterWrite(DefaultIoFilterChain.java:1146)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.filterWrite(IoFilterAdapter.java:138)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callPreviousFilterWrite(DefaultIoFilterChain.java:753)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireFilterWrite(DefaultIoFilterChain.java:746)
+	at org.apache.mina.core.session.AbstractIoSession.write(AbstractIoSession.java:570)
+	at org.apache.mina.core.session.AbstractIoSession.write(AbstractIoSession.java:515)
+	at Test.main(Test.java:37)
+Caused by: org.apache.mina.core.session.UnknownMessageTypeException: No message encoder found for message: 我爱你mina
+	at org.apache.mina.filter.codec.demux.DemuxingProtocolEncoder.encode(DemuxingProtocolEncoder.java:175)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.filterWrite(ProtocolCodecFilter.java:323)
+	... 9 more
+2019-11-07 18:39:36 下午 [Thread: main][ Class:Demo1ClientHandler >> Method: Demo1ClientHandler.exceptionCaught(Demo1ClientHandler.java:22) ]
+ERROR:客户端发生异常...
+org.apache.mina.filter.codec.ProtocolEncoderException: org.apache.mina.core.session.UnknownMessageTypeException: No message encoder found for message: 我爱你mina
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.filterWrite(ProtocolCodecFilter.java:350)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callPreviousFilterWrite(DefaultIoFilterChain.java:753)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1500(DefaultIoFilterChain.java:49)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.filterWrite(DefaultIoFilterChain.java:1146)
+	at org.apache.mina.core.filterchain.IoFilterAdapter.filterWrite(IoFilterAdapter.java:138)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callPreviousFilterWrite(DefaultIoFilterChain.java:753)
+	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireFilterWrite(DefaultIoFilterChain.java:746)
+	at org.apache.mina.core.session.AbstractIoSession.write(AbstractIoSession.java:570)
+	at org.apache.mina.core.session.AbstractIoSession.write(AbstractIoSession.java:515)
+	at Test.main(Test.java:37)
+Caused by: org.apache.mina.core.session.UnknownMessageTypeException: No message encoder found for message: 我爱你mina
+	at org.apache.mina.filter.codec.demux.DemuxingProtocolEncoder.encode(DemuxingProtocolEncoder.java:175)
+	at org.apache.mina.filter.codec.ProtocolCodecFilter.filterWrite(ProtocolCodecFilter.java:323)
+	... 9 more

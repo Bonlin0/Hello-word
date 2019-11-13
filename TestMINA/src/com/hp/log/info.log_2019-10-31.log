@@ -1,0 +1,24 @@
+2019-10-31 14:51:26 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:37) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-10-31 14:51:38 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:20) ]
+INFO:服务端与客户端创建连接...
+2019-10-31 14:51:38 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:30) ]
+INFO:服务端与客户端连接打开...
+2019-10-31 14:51:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:42) ]
+INFO:服务端接收到的数据为：asdasd
+2019-10-31 14:51:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageSent(ServerHandle.java:53) ]
+INFO:服务端发送信息成功...
+2019-10-31 14:51:43 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:42) ]
+INFO:服务端接收到的数据为：ddd
+2019-10-31 14:51:43 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageSent(ServerHandle.java:53) ]
+INFO:服务端发送信息成功...
+2019-10-31 14:51:49 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:42) ]
+INFO:服务端接收到的数据为：ffff
+2019-10-31 14:51:49 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageSent(ServerHandle.java:53) ]
+INFO:服务端发送信息成功...
+2019-10-31 14:51:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:42) ]
+INFO:服务端接收到的数据为：e
+2019-10-31 14:51:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageSent(ServerHandle.java:53) ]
+INFO:服务端发送信息成功...
+2019-10-31 14:51:55 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:42) ]
+INFO:服务端接收到的数据为：bye
