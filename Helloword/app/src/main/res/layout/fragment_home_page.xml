@@ -18,7 +18,6 @@ android:layout_height="match_parent">
             android:layout_marginTop="32sp"
             android:fontFamily="@font/geostar"
             android:text="@string/number_placeholder"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="56sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
