@@ -12,12 +12,12 @@
 
         <ImageView
             android:id="@+id/user_avatar_image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
             android:layout_margin="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/sample_user_avatar" />
 
         <TextView
             android:id="@+id/userNameTextView"
@@ -176,10 +176,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
+            android:layout_marginBottom="36sp"
             android:background="@drawable/btn_light_background"
             android:text="      设置"
             android:textAlignment="viewStart"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/help_and_issue_about_me_button" />
