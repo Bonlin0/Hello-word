@@ -2,7 +2,7 @@ package cn.adminzero.helloword.NetWork;
 
 import android.util.Log;
 
-import com.example.myapplication.Common.Message;
+import cn.adminzero.helloword.Common.Message;
 
 import org.apache.mina.core.session.IoSession;
 

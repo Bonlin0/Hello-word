@@ -1,5 +1,5 @@
 package cn.adminzero.helloword.Common;
-import com.example.myapplication.Common.Utils.SerializeUtils;
+import cn.adminzero.helloword.Common.Utils.SerializeUtils;
 
 import java.io.IOException;
 import java.io.Serializable;
