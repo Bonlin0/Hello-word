@@ -2,6 +2,7 @@ package Common;
 
 import Common.Utils.SerializeUtils;
 
+import javax.print.attribute.standard.PrinterMessageFromOperator;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -9,34 +10,22 @@ import java.io.Serializable;
  * @author: 王翔
  * @date: 2019/11/7-14:38
  * @description: <br>
- * 用于在同端传递数据的类
+ *     用于在同端传递数据的类
  * <EndDescription>
  */
 public class Message implements Serializable {
     private byte b;
     private short s;
     private int i;
-    private String str;
+    private String obj;
     private byte type;
     private short CMD;
-    private byte[] data;
 
-    public Message(short cmd, byte[] bytes) {
-        data = bytes;
+    public Message(short cmd ,Object obj) throws IOException {
+        String o = SerializeUtils.serialize(obj);
+        this.obj = o;
         this.CMD = cmd;
-        this.type = CMDDef.PROTOCOL_MESSAGE_DATA;
-    }
-
-    public Message(short cmd, Object obj) throws IOException {
-        data = SerializeUtils.serialize(obj);
-        this.CMD = cmd;
-        this.type = CMDDef.PROTOCOL_MESSAGE_DATA;
-    }
-
-    public Message(short cmd, String str) {
-        this.CMD = cmd;
-        this.str = str;
-        this.type = CMDDef.PROTOCOL_MESSAGE_STRING;
+        this.type = CMDDef.PROTOCOL_MESSAGE_OBJECT;
     }
 
     public Message(short cmd, byte b) {
@@ -56,15 +45,10 @@ public class Message implements Serializable {
         CMD = cmd;
         this.type = CMDDef.PROTOCOL_MESSAGE_INT;
     }
-
-    public Message(short cmd) {
+    public Message(short cmd)
+    {
         CMD = cmd;
         this.type = CMDDef.PROTOCOL_MESSAGE_NULL;
-    }
-
-    public void setData(byte[] bytes) {
-        this.type = CMDDef.PROTOCOL_MESSAGE_DATA;
-        data = bytes;
     }
 
     public void setB(byte b) {
@@ -82,15 +66,10 @@ public class Message implements Serializable {
         this.i = i;
     }
 
-    //需要传递的是String
-    public void setString(String str) {
-        this.str = str;
-        this.type = CMDDef.PROTOCOL_MESSAGE_STRING;
-    }
-
     public void setObj(Object obj) throws IOException {
-        this.data = SerializeUtils.serialize(obj);
-        this.type = CMDDef.PROTOCOL_MESSAGE_DATA;
+        this.type = CMDDef.PROTOCOL_MESSAGE_OBJECT;
+        String o = SerializeUtils.serialize(obj);
+        this.obj = o;
     }
 
     public void setCMD(short CMD) {
@@ -100,10 +79,6 @@ public class Message implements Serializable {
 
     public short getCMD() {
         return CMD;
-    }
-
-    public byte[] getData() {
-        return data;
     }
 
     public byte getB() {
@@ -118,21 +93,21 @@ public class Message implements Serializable {
         return i;
     }
 
-    public String getString() {
-        return str;
-    }
-
-    public int getStrSize() {
-        return str.length();
-    }
-
-    public int getDataSize() {
-        return data.length;
-    }
     public Object getObj() throws IOException, ClassNotFoundException {
-        return SerializeUtils.serializeToObject(this.data);
+        return SerializeUtils.serializeToObject(this.obj);
     }
-
+    public int getObjSize()
+    {
+        return obj.length();
+    }
+    public String getStringObj()
+    {
+        return obj;
+    }
+    public void setStringObj(String object)
+    {
+        this.obj = object;
+    }
     public byte getType() {
         return type;
     }

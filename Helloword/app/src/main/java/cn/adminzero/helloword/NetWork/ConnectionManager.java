@@ -40,7 +40,7 @@ public class ConnectionManager {
     private void init() {
         mAddress = new InetSocketAddress(mConfig.getIp(), mConfig.getPort());
         mConnection = new NioSocketConnector();
-     //   mConnection.getSessionConfig().setReadBufferSize(mConfig.getReadBufferSize());
+        mConnection.getSessionConfig().setReadBufferSize(mConfig.getReadBufferSize());
         //设置过滤链
         LoggingFilter lf = new LoggingFilter();
         lf.setMessageReceivedLogLevel(LogLevel.DEBUG);
@@ -136,8 +136,7 @@ public class ConnectionManager {
             super.messageReceived(session, message);
             Message mes = (Message) message;
             switch (mes.getCMD()) {
-                case CMDDef.REPLY_FILE_TEST:
-                    Log.e("tag","消息长度:" + mes.getString().length());
+                case CMDDef.TEST_CONNECTION:
                     break;
                 default:
             }

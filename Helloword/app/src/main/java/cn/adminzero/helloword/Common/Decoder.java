@@ -14,7 +14,7 @@ import org.apache.mina.filter.codec.demux.MessageDecoderResult;
  * <EndDescription>
  */
 public class Decoder implements MessageDecoder {
-    public static Logger logger = Logger.getLogger(Decoder.class);
+    public static org.apache.log4j.Logger logger = Logger.getLogger(Decoder.class);
 
     @Override
     public MessageDecoderResult decodable(IoSession ioSession, IoBuffer ioBuffer) {
@@ -58,14 +58,9 @@ public class Decoder implements MessageDecoder {
                 short s = ioBuffer.getShort();
                 mes.setS(s);
                 break;
-            case CMDDef.PROTOCOL_MESSAGE_STRING:
+            case CMDDef.PROTOCOL_MESSAGE_OBJECT:
                 String str = (String) ioBuffer.getObject();
-                mes.setString(str);
-                break;
-            case CMDDef.PROTOCOL_MESSAGE_DATA:
-                byte[] bytes = new byte[len];
-                ioBuffer.get(bytes);
-                mes.setData(bytes);
+                mes.setStringObj(str);
                 break;
         }
         protocolDecoderOutput.write(mes);

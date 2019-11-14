@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import cn.adminzero.helloword.Common.CMDDef;
-import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
 
 public class MinaService extends Service {
     private ConnectionThread thread;
@@ -50,7 +49,7 @@ public class MinaService extends Service {
             ConnectionConfig config = new ConnectionConfig.Builder(context)
                     .setIp(Ip)
                     .setPort(port)
-                    .setConnectionTimeout(10000).setReadBufferSize(2048*5000).builder();
+                    .setConnectionTimeout(10000).builder();
             mManager = new ConnectionManager(config);
         }
 
@@ -60,7 +59,6 @@ public class MinaService extends Service {
                 isConnection = mManager.connnect();
                 if(isConnection){
                     Log.e("tag", "连接成功");
-                    SessionManager.getInstance().writeToServer(SendMsgMethod.getStringMessage(CMDDef.REQUEST_FILE_TEST,"测试String传输和大文件传输!"));
                     break;
                 }
                 try {

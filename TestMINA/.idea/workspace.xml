@@ -53,12 +53,11 @@
     <property name="settings.editor.selected.configurable" value="inlay.hints" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\ideapro\TestMINA\src" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="H:\HelloWord\TestMINA\src" />
-      <recent name="H:\ideapro\TestMINA\src" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -146,9 +145,6 @@
       <workItem from="1573560584873" duration="8192000" />
       <workItem from="1573622654662" duration="600000" />
       <workItem from="1573626553079" duration="1218000" />
-      <workItem from="1573652304302" duration="2920000" />
-      <workItem from="1573708465200" duration="1960000" />
-      <workItem from="1573711272947" duration="2681000" />
     </task>
     <servers />
   </component>
