@@ -848,3 +848,107 @@ INFO:连接被闲置
 INFO:IDLE
 2019-11-14 14:45:41 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
 INFO:连接被闲置
+2019-11-14 15:08:23 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 15:13:14 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 15:13:14 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:34) ]
+INFO:用户连接至服务器
+2019-11-14 15:13:14 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 15:13:14 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:40) ]
+INFO:连接被打开
+2019-11-14 15:13:14 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
+INFO:收到了数据
+2019-11-14 15:13:14 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@2a27c7f6
+2019-11-14 15:13:25 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 15:13:25 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:46) ]
+INFO:连接被关闭
+2019-11-14 15:14:33 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 15:14:37 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 15:14:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:34) ]
+INFO:用户连接至服务器
+2019-11-14 15:14:37 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 15:14:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:40) ]
+INFO:连接被打开
+2019-11-14 15:14:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
+INFO:收到了数据
+2019-11-14 15:14:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:68) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 15:14:37 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@1d3a6e34
+2019-11-14 15:14:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 15:14:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:46) ]
+INFO:连接被关闭
+2019-11-14 15:19:24 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 15:19:33 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 15:19:33 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:35) ]
+INFO:用户连接至服务器
+2019-11-14 15:19:33 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 15:19:33 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:41) ]
+INFO:连接被打开
+2019-11-14 15:19:33 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:64) ]
+INFO:收到了数据
+2019-11-14 15:19:33 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@13d7d523
+2019-11-14 15:20:12 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 15:20:12 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:47) ]
+INFO:连接被关闭
+2019-11-14 15:22:31 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 15:23:16 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 15:23:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:35) ]
+INFO:用户连接至服务器
+2019-11-14 15:23:16 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 15:23:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:41) ]
+INFO:连接被打开
+2019-11-14 15:23:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:64) ]
+INFO:收到了数据
+2019-11-14 15:23:17 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@147d82f4
+2019-11-14 15:24:07 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 15:24:07 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:53) ]
+INFO:连接被闲置
+2019-11-14 15:24:57 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 15:24:57 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:53) ]
+INFO:连接被闲置
+2019-11-14 15:25:47 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 15:25:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:53) ]
+INFO:连接被闲置
+2019-11-14 15:26:31 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 15:37:53 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 15:38:19 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 15:38:29 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 15:38:29 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:35) ]
+INFO:用户连接至服务器
+2019-11-14 15:38:29 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 15:38:29 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:41) ]
+INFO:连接被打开
+2019-11-14 15:38:29 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:64) ]
+INFO:收到了数据
+2019-11-14 15:38:30 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@4739292a
+2019-11-14 15:39:05 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 15:39:05 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:47) ]
+INFO:连接被关闭

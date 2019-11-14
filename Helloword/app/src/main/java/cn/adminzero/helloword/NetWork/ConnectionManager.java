@@ -13,6 +13,7 @@ import org.apache.mina.filter.logging.LogLevel;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.InetSocketAddress;
 
@@ -62,7 +63,7 @@ public class ConnectionManager {
             ConnectFuture future = mConnection.connect();
             future.awaitUninterruptibly();
             mSession = future.getSession();
-            SessionManager.getInstance().setSeesion(mSession);
+           // SessionManager.getInstance().setSeesion(mSession);
             Log.e("tag", "连接成功!\n");
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,7 +138,7 @@ public class ConnectionManager {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
                 case CMDDef.REPLY_FILE_TEST:
-                    Log.e("tag","消息长度:" + mes.getString().length());
+                    byte[] bytes = mes.getData();
                     break;
                 default:
             }

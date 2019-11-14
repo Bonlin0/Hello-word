@@ -90,15 +90,12 @@ public class MainActivity extends BaseActivity {
             }
         });
         list = new ArrayList<>();
-        list.add(new HomePageFragment());
-        list.add(new ExploreFragment());
-        list.add(new AboutMeFragment());
+        list.add(new HomePageFragment() );
+        list.add(new ExploreFragment() );
+        list.add(new AboutMeFragment() );
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);  //初始化显示第一个页面
-        /** only for debug*/
-        // Test.test();
-
     }
 
     private void registerBroadcast() {

@@ -3,6 +3,7 @@ package Server;
 import Common.CMDDef;
 import Common.Message;
 import Common.Utils.SendMsgMethod;
+import CommonClass.peroson;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -11,6 +12,7 @@ import org.apache.mina.filter.FilterEvent;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
 /**
@@ -63,6 +65,9 @@ public class ServerHandle extends IoHandlerAdapter {
         if (message instanceof Message) {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
+                case CMDDef.REQUEST_FILE_TEST:
+                   
+                    break;
             }
         } else {
             logger.info("未知请求！");

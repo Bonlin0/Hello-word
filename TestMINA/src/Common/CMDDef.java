@@ -23,7 +23,8 @@ public class CMDDef {
     //其他全局常量定义
     public static final int PORT = 3005;
     public static final String MINABroadCast = "com.example.myapplication.broadcast";
-    public static final String IP = "10.0.2.2";
+//    public static final String IP = "10.0.2.2";
+    public static final String IP = "123.207.173.192";
 
     //常量定义
 
