@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // 检查登录这里会直接结束本活动
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
