@@ -5,6 +5,8 @@ import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
 import org.apache.mina.filter.codec.demux.MessageEncoder;
 
+import java.io.IOException;
+
 /**
  * @author: 王翔
  * @date: 2019/11/7-15:06
@@ -74,19 +76,35 @@ public class Encoder implements MessageEncoder<Message> {
                 ioBuffer.flip();
                 protocolEncoderOutput.write(ioBuffer);
                 break;
-            case CMDDef.PROTOCOL_MESSAGE_OBJECT:
-                int objSize = message.getObjSize();
-                ioBuffer = IoBuffer.allocate(objSize + 8).setAutoExpand(true);
+            case CMDDef.PROTOCOL_MESSAGE_STRING:
+                int strsize = message.getStrSize();
+                ioBuffer = IoBuffer.allocate(strsize + 8).setAutoExpand(true);
                 //放置标记，1
                 ioBuffer.put((byte) 0xE8);
                 //放置长度，4
-                ioBuffer.putInt(objSize);
+                ioBuffer.putInt(strsize);
                 //放置类型，1
-                ioBuffer.put(CMDDef.PROTOCOL_MESSAGE_OBJECT);
+                ioBuffer.put(CMDDef.PROTOCOL_MESSAGE_STRING);
                 //放置指令，2
                 ioBuffer.putShort(message.getCMD());
                 //放置数据
-                ioBuffer.putObject(message.getStringObj());
+                ioBuffer.putObject(message.getString());
+                ioBuffer.flip();
+                protocolEncoderOutput.write(ioBuffer);
+                break;
+            case CMDDef.PROTOCOL_MESSAGE_DATA:
+                int dataSize = message.getDataSize();
+                ioBuffer = IoBuffer.allocate(dataSize + 8).setAutoExpand(true);
+                //放置标记，1
+                ioBuffer.put((byte) 0xE8);
+                //放置长度，4
+                ioBuffer.putInt(dataSize);
+                //放置类型，1
+                ioBuffer.put(CMDDef.PROTOCOL_MESSAGE_DATA);
+                //放置指令，2
+                ioBuffer.putShort(message.getCMD());
+                //放置数据
+                ioBuffer.put(message.getData());
                 ioBuffer.flip();
                 protocolEncoderOutput.write(ioBuffer);
                 break;
