@@ -1,485 +1,43 @@
-2019-11-12 22:28:07 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
+2019-11-14 13:15:39 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
 INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:33:24 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:33:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:16:04 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 22:33:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
+2019-11-14 13:16:04 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 22:33:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:16:04 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 22:33:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
+2019-11-14 13:16:04 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 22:33:49 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:33:53 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:33:53 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:33:53 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:33:53 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:35:04 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:35:07 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:35:07 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:35:07 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:35:07 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:35:58 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:29) ]
-INFO:从buffer中取出的标记:
-2019-11-12 22:36:08 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:33) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:36:08 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: E8 00 00 00 6C 06 00 01 00 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: E8 00 00 00 6C 06 00 01 00 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:36:08 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:36:08 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:36:19 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:36:23 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:36:23 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:36:23 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:36:23 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:37:02 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:37:13 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:37:13 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:37:13 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:37:13 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:37:50 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:29) ]
-INFO:从buffer中取出的标记:
-2019-11-12 22:37:50 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:33) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:37:50 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: E8 00 00 00 6C 06 00 01 00 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: E8 00 00 00 6C 06 00 01 00 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:40:13 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:40:17 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:40:17 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:40:17 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:40:17 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:40:24 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:31) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:40:24 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
+2019-11-14 13:16:04 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 22:40:24 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:40:31 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
+2019-11-14 13:16:04 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:16:05 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@107f4d41
+2019-11-14 13:16:33 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
 INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:40:35 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:16:59 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 22:40:35 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
+2019-11-14 13:16:59 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 22:40:35 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:16:59 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 22:40:35 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
+2019-11-14 13:16:59 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 22:40:36 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:31) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:40:36 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
+2019-11-14 13:17:26 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 22:40:36 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:41:26 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:41:26 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:42:16 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:42:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:43:06 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:43:06 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:43:38 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CLOSED
-2019-11-12 22:43:38 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:40) ]
-INFO:连接被关闭
-2019-11-12 22:44:21 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:44:21 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:44:21 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:44:21 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:44:21 下午 [Thread: NioProcessor-3][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:31) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:44:21 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:44:21 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:45:11 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:45:11 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:45:53 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:45:58 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:45:58 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:45:58 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:45:58 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:46:08 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:31) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:46:08 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:46:08 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:46:26 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:46:33 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:46:33 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:46:33 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:46:33 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:46:33 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:31) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:46:33 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:46:33 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:47:23 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:47:23 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:47:50 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:47:54 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:47:54 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:47:54 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:47:54 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:48:06 下午 [Thread: NioProcessor-2][ Class:Common.Decoder >> Method: Common.Decoder.decodable(Decoder.java:31) ]
-INFO:协议标记不支持，为0
-2019-11-12 22:48:06 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:48:06 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
-WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-org.apache.mina.filter.codec.ProtocolDecoderException: No appropriate message decoder: 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94 (Hexdump: 00 00 8E AC ED 00 05 74 00 87 C2 AC C3 AD C0 80 05 73 72 C0 80 20 63 6F 6D 2E 65 78 61 6D 70 6C 65 2E 6D 79 61 70 70 6C 69 63 61 74 69 6F 6E 2E 70 65 72 73 6F 6E C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 C0 80 01 02 C0 80 03 49 C0 80 03 61 67 65 53 C0 80 03 73 65 78 4C C0 80 04 4E 61 6D 65 74 C0 80 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 78 70 C0 80 C0 80 C0 80 13 C0 80 01 74 C0 80 06 C3 A7 C2 8E C2 8B C3 A7 C2 BF C2 94)
-	at org.apache.mina.filter.codec.demux.DemuxingProtocolDecoder.doDecode(DemuxingProtocolDecoder.java:187)
-	at org.apache.mina.filter.codec.CumulativeProtocolDecoder.decode(CumulativeProtocolDecoder.java:180)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:254)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
-	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:48:44 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:48:47 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:48:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:48:47 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:48:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:48:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:49:18 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:49:24 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:49:24 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:49:24 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:49:24 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:49:43 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:50:14 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:50:14 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:50:15 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CLOSED
-2019-11-12 22:50:15 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:40) ]
-INFO:连接被关闭
-2019-11-12 22:50:17 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:50:17 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:50:17 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:50:17 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:50:21 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:50:25 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:50:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:50:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:50:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:50:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:50:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:51:13 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:51:16 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:51:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:51:16 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:51:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:51:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:52:32 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:52:35 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 22:52:35 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
-INFO:用户连接至服务器
-2019-11-12 22:52:35 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 22:52:35 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
-INFO:连接被打开
-2019-11-12 22:52:35 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
-INFO:收到了数据
-2019-11-12 22:52:35 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+2019-11-14 13:17:26 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:18:22 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@57610fa2
+2019-11-14 13:18:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
 WARN:EXCEPTION :
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:62)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -488,40 +46,14 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:52:35 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+2019-11-14 13:18:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
 WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:62)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -530,56 +62,32 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:53:25 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:53:25 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:53:54 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
+2019-11-14 13:18:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:18:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:19:47 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
 INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:53:59 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:19:52 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 22:53:59 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
+2019-11-14 13:19:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 22:53:59 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:19:52 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 22:53:59 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
+2019-11-14 13:19:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 22:53:59 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
+2019-11-14 13:19:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 22:53:59 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+2019-11-14 13:19:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:19:53 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
 WARN:EXCEPTION :
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:62)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -588,40 +96,14 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:53:59 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+2019-11-14 13:19:53 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
 WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:62)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -630,52 +112,78 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:54:28 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:40) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 22:54:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:19:53 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:19:53 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:19:58 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 22:54:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
+2019-11-14 13:19:58 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 22:54:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:19:58 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 22:54:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
+2019-11-14 13:19:58 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 22:54:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
+2019-11-14 13:20:03 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 22:55:02 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+2019-11-14 13:20:03 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:20:04 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@313a8ed4
+2019-11-14 13:20:54 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:20:54 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:21:44 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:21:44 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:22:34 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:22:34 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:23:19 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 13:23:24 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 13:23:24 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 13:23:24 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 13:23:24 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 13:23:24 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 13:23:24 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:23:34 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 13:23:40 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 13:23:40 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 13:23:40 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 13:23:40 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 13:23:45 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 13:23:45 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:26:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@10901284
+2019-11-14 13:27:22 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:27:22 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:28:01 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
 WARN:EXCEPTION :
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:62)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -684,40 +192,14 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:55:02 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+2019-11-14 13:28:01 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
 WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:62)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -726,66 +208,82 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 22:55:21 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:55:21 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:56:11 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:56:11 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 22:57:01 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 22:57:01 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 23:00:37 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+2019-11-14 13:28:01 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:28:01 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:28:48 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
 INFO:服务端启动成功...     端口号为：3005
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:28:52 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:28) ]
+2019-11-14 13:28:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:28:52 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:34) ]
+2019-11-14 13:28:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:57) ]
+2019-11-14 13:28:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+2019-11-14 13:28:52 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:28:52 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@7f2fc3c5
+2019-11-14 13:30:19 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 13:31:18 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 13:31:18 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 13:31:18 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 13:31:18 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 13:31:18 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 13:31:18 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:31:20 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@443eae34
+2019-11-14 13:31:31 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:31:31 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:31:35 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 13:31:35 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 13:31:35 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 13:31:35 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 13:31:35 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 13:31:35 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:32:26 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:32:26 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:33:16 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:33:16 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:34:06 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:34:06 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:34:56 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:34:56 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:35:42 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
 WARN:EXCEPTION :
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:63)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -794,40 +292,14 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 23:00:42 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+2019-11-14 13:35:42 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
 WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:63)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -836,66 +308,38 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 23:01:32 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:01:32 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 23:02:22 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:02:22 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 23:03:12 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:03:12 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:46) ]
-INFO:连接被闲置
-2019-11-12 23:04:16 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:35:42 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:35:42 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:35:46 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 13:35:46 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:35:46 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 13:35:46 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 13:35:46 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+2019-11-14 13:35:46 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:36:37 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:36:37 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:37:27 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:37:27 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:37:58 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
 WARN:EXCEPTION :
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:64)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -904,40 +348,14 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 23:04:21 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+2019-11-14 13:37:58 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
 WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:64)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -946,66 +364,34 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 23:05:11 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:05:11 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
-INFO:连接被闲置
-2019-11-12 23:06:01 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:06:01 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
-INFO:连接被闲置
-2019-11-12 23:06:51 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:06:51 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
-INFO:连接被闲置
-2019-11-12 23:07:19 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
-INFO:服务端启动成功...     端口号为：3005
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:37:58 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:37:58 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:38:08 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 13:38:08 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:38:08 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 13:38:08 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 13:38:08 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+2019-11-14 13:38:08 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:38:58 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 13:38:58 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 13:39:22 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
 WARN:EXCEPTION :
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:64)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -1014,40 +400,14 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 23:07:25 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+2019-11-14 13:39:22 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
 WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
-java.lang.ClassNotFoundException: com.example.myapplication.person
-	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:604)
-	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
-	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
-	at java.base/java.lang.Class.forName0(Native Method)
-	at java.base/java.lang.Class.forName(Class.java:416)
-	at java.base/java.io.ObjectInputStream.resolveClass(ObjectInputStream.java:693)
-	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:1886)
-	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1772)
-	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2060)
-	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1594)
-	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:430)
-	at Common.Utils.SerializeUtils.serializeToObject(SerializeUtils.java:27)
-	at Common.Message.getObj(Message.java:97)
-	at Server.ServerHandle.messageReceived(ServerHandle.java:64)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$TailFilter.messageReceived(DefaultIoFilterChain.java:1015)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter$ProtocolDecoderOutputImpl.flush(ProtocolCodecFilter.java:413)
-	at org.apache.mina.filter.codec.ProtocolCodecFilter.messageReceived(ProtocolCodecFilter.java:257)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.filter.logging.LoggingFilter.messageReceived(LoggingFilter.java:216)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.access$1300(DefaultIoFilterChain.java:49)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain$EntryImpl$1.messageReceived(DefaultIoFilterChain.java:1128)
-	at org.apache.mina.core.filterchain.IoFilterAdapter.messageReceived(IoFilterAdapter.java:122)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.callNextMessageReceived(DefaultIoFilterChain.java:650)
-	at org.apache.mina.core.filterchain.DefaultIoFilterChain.fireMessageReceived(DefaultIoFilterChain.java:643)
-	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:539)
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
 	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
@@ -1056,265 +416,411 @@ java.lang.ClassNotFoundException: com.example.myapplication.person
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
-2019-11-12 23:08:15 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:08:15 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
-INFO:连接被闲置
-2019-11-12 23:09:04 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+2019-11-14 13:39:22 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:39:22 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:42:24 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 13:42:24 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 13:42:24 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 13:42:24 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 13:42:24 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 13:42:24 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:42:35 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+WARN:EXCEPTION :
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-11-14 13:42:35 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-11-14 13:42:35 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 13:42:35 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 13:46:42 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
 INFO:服务端启动成功...     端口号为：3005
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:46:47 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 13:46:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:46:47 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 13:46:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 13:46:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@5540f28d
-2019-11-12 23:09:09 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@2f0dbef2
-2019-11-12 23:09:59 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:09:59 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
-INFO:连接被闲置
-2019-11-12 23:10:25 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 13:46:47 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 13:46:47 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@1b7211ee
+2019-11-14 13:46:55 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CLOSED
-2019-11-12 23:10:25 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
+2019-11-14 13:46:55 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
 INFO:连接被关闭
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
-INFO:用户连接至服务器
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
-INFO:连接被打开
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
-INFO:收到了数据
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@2a3c9fe2
-2019-11-12 23:11:28 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@2e031e7d
-2019-11-12 23:11:52 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CLOSED
-2019-11-12 23:11:52 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
-INFO:连接被关闭
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
-INFO:用户连接至服务器
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
-INFO:连接被打开
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
-INFO:收到了数据
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@5a209841
-2019-11-12 23:11:57 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@6ce6858e
-2019-11-12 23:12:47 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:IDLE
-2019-11-12 23:12:47 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
-INFO:连接被闲置
-2019-11-12 23:13:15 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+2019-11-14 14:01:33 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
 INFO:服务端启动成功...     端口号为：3005
-2019-11-12 23:13:16 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:01:54 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:13:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 14:01:54 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:13:16 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:01:54 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:13:16 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 14:01:54 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:13:17 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 14:01:54 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:13:17 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:13:17 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:13:17 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@5540f28d
-2019-11-12 23:13:17 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@2f0dbef2
-2019-11-12 23:13:26 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:01:54 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:01:55 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@66679510
+2019-11-14 14:02:17 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CLOSED
-2019-11-12 23:13:26 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
+2019-11-14 14:02:17 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
 INFO:连接被关闭
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:02:19 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 14:02:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:02:19 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 14:02:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 14:02:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@5210cc5d
-2019-11-12 23:13:30 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@40721269
-2019-11-12 23:14:01 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CLOSED
-2019-11-12 23:14:01 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
-INFO:连接被关闭
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:02:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:02:19 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@2e3c5488
+2019-11-14 14:03:08 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 14:03:13 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 14:03:13 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:03:13 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 14:03:13 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 14:03:13 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@2fade7d1
-2019-11-12 23:14:30 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@7b8bb45d
-2019-11-12 23:14:42 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CLOSED
-2019-11-12 23:14:42 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
-INFO:连接被关闭
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
-INFO:用户连接至服务器
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
-INFO:连接被打开
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
-INFO:收到了数据
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@632b60fd
-2019-11-12 23:14:47 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@23f88026
-2019-11-12 23:15:37 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:03:13 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:03:13 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@1b7211ee
+2019-11-14 14:04:04 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:IDLE
-2019-11-12 23:15:37 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
+2019-11-14 14:04:04 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
 INFO:连接被闲置
-2019-11-12 23:16:27 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:04:13 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:04:13 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:04:19 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:04:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:04:19 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:04:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:04:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:04:19 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:04:19 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@2b7e0cef
+2019-11-14 14:05:04 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:130) ]
+WARN:EXCEPTION :
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-11-14 14:05:04 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.core.service.IoHandlerAdapter >> Method: org.apache.mina.core.service.IoHandlerAdapter.exceptionCaught(IoHandlerAdapter.java:76) ]
+WARN:EXCEPTION, please implement Server.ServerHandle.exceptionCaught() for proper handling:
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:345)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:376)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:378)
+	at org.apache.mina.transport.socket.nio.NioProcessor.read(NioProcessor.java:47)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.read(AbstractPollingIoProcessor.java:519)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor.access$1200(AbstractPollingIoProcessor.java:68)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1222)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.process(AbstractPollingIoProcessor.java:1211)
+	at org.apache.mina.core.polling.AbstractPollingIoProcessor$Processor.run(AbstractPollingIoProcessor.java:683)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2019-11-14 14:05:04 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:05:04 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:05:21 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:05:21 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:05:21 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:05:21 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:05:21 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:05:21 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:05:21 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@79dea76c
+2019-11-14 14:05:34 下午 [Thread: NioProcessor-4][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:05:34 下午 [Thread: NioProcessor-4][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:05:38 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:05:38 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:05:38 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:05:38 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:05:38 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:05:38 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:05:38 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@567c4c36
+2019-11-14 14:05:44 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:05:44 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:05:59 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:05:59 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:05:59 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:05:59 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:05:59 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:05:59 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:05:59 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@7d63b098
+2019-11-14 14:06:10 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:06:10 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:06:12 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:06:12 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:06:12 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:06:12 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:06:12 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:06:12 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:06:12 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@345c03dd
+2019-11-14 14:06:47 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:06:47 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:06:51 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:06:51 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:06:51 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:06:51 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:06:51 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:06:51 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:06:51 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@648292d0
+2019-11-14 14:07:07 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:07:07 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:07:28 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:07:28 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:07:28 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:07:28 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:07:28 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:07:28 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:07:28 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@58c321e8
+2019-11-14 14:08:18 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:IDLE
-2019-11-12 23:16:27 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
+2019-11-14 14:08:18 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
 INFO:连接被闲置
-2019-11-12 23:17:17 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:09:08 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:09:08 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:09:12 下午 [Thread: NioProcessor-1][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:09:12 下午 [Thread: NioProcessor-1][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:09:12 下午 [Thread: NioProcessor-1][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:09:12 下午 [Thread: NioProcessor-1][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:09:12 下午 [Thread: NioProcessor-1][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:09:12 下午 [Thread: NioProcessor-1][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:09:12 下午 [Thread: NioProcessor-1][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@433222f1
+2019-11-14 14:09:16 下午 [Thread: NioProcessor-1][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:09:16 下午 [Thread: NioProcessor-1][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:09:45 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:09:45 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:09:45 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:09:45 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:09:45 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:09:45 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:09:45 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@374a70f0
+2019-11-14 14:09:53 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CLOSED
+2019-11-14 14:09:53 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
+INFO:连接被关闭
+2019-11-14 14:09:54 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:CREATED
+2019-11-14 14:09:54 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
+INFO:用户连接至服务器
+2019-11-14 14:09:54 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:OPENED
+2019-11-14 14:09:54 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
+INFO:连接被打开
+2019-11-14 14:09:54 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
+INFO:收到了数据
+2019-11-14 14:09:54 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:09:54 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@20193273
+2019-11-14 14:10:44 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:IDLE
-2019-11-12 23:17:17 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:47) ]
+2019-11-14 14:10:44 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
 INFO:连接被闲置
-2019-11-12 23:17:21 下午 [Thread: NioProcessor-5][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CLOSED
-2019-11-12 23:17:21 下午 [Thread: NioProcessor-5][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
-INFO:连接被关闭
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:11:34 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 14:11:34 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 14:12:24 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+INFO:IDLE
+2019-11-14 14:12:24 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionIdle(ServerHandle.java:51) ]
+INFO:连接被闲置
+2019-11-14 14:12:42 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 14:12:48 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 14:12:48 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:12:48 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 14:12:48 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 14:12:48 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@7e363301
-2019-11-12 23:17:23 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@46a298b2
-2019-11-12 23:17:54 下午 [Thread: NioProcessor-6][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:12:48 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:12:48 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@7f2fc3c5
+2019-11-14 14:13:14 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CLOSED
-2019-11-12 23:17:54 下午 [Thread: NioProcessor-6][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
+2019-11-14 14:13:14 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
 INFO:连接被关闭
-2019-11-12 23:17:58 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:13:18 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:17:58 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 14:13:18 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:17:58 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:13:18 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:17:58 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 14:13:18 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:17:59 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 14:13:18 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:17:59 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:17:59 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:17:59 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@1bfb01ae
-2019-11-12 23:17:59 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@549a87eb
-2019-11-12 23:18:14 下午 [Thread: NioProcessor-7][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:13:18 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:13:18 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@e191604
+2019-11-14 14:13:25 下午 [Thread: NioProcessor-3][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CLOSED
-2019-11-12 23:18:14 下午 [Thread: NioProcessor-7][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
+2019-11-14 14:13:25 下午 [Thread: NioProcessor-3][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:45) ]
 INFO:连接被关闭
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:13:33 下午 [Thread: main][ Class:Server.Main >> Method: Server.Main.main(Main.java:39) ]
+INFO:服务端启动成功...     端口号为：3005
+2019-11-14 14:13:37 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:CREATED
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
+2019-11-14 14:13:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:33) ]
 INFO:用户连接至服务器
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
+2019-11-14 14:13:37 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
 INFO:OPENED
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
+2019-11-14 14:13:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:39) ]
 INFO:连接被打开
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
+2019-11-14 14:13:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:62) ]
 INFO:收到了数据
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@411bc8be
-2019-11-12 23:18:19 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@2ae5742
-2019-11-12 23:18:23 下午 [Thread: NioProcessor-8][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CLOSED
-2019-11-12 23:18:23 下午 [Thread: NioProcessor-8][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionClosed(ServerHandle.java:41) ]
-INFO:连接被关闭
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:CREATED
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionCreated(ServerHandle.java:29) ]
-INFO:用户连接至服务器
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:186) ]
-INFO:OPENED
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.sessionOpened(ServerHandle.java:35) ]
-INFO:连接被打开
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:58) ]
-INFO:收到了数据
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:63) ]
-INFO:¬í sr  com.example.myapplication.person        I ageS sexL Namet Ljava/lang/String;xp    t çç¿
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:65) ]
-INFO:王翔
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:66) ]
-INFO:com.example.myapplication.person@7b4bf642
-2019-11-12 23:18:54 下午 [Thread: NioProcessor-9][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
-INFO:SENT: Common.Message@640a8fad
+2019-11-14 14:13:37 下午 [Thread: NioProcessor-2][ Class:Server.ServerHandle >> Method: Server.ServerHandle.messageReceived(ServerHandle.java:67) ]
+INFO:测试String传输和大文件传输!
+2019-11-14 14:15:12 下午 [Thread: NioProcessor-2][ Class:org.apache.mina.filter.logging.LoggingFilter >> Method: org.apache.mina.filter.logging.LoggingFilter.log(LoggingFilter.java:157) ]
+INFO:SENT: Common.Message@13e0e969

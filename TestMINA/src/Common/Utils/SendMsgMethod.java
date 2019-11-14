@@ -1,10 +1,8 @@
 package Common.Utils;
 
-import Common.Message;
-import org.apache.mina.core.buffer.IoBuffer;
-import org.apache.mina.core.session.IoSession;
-
 import java.io.IOException;
+
+import Common.Message;
 
 /**
  * @author: 王翔
@@ -31,6 +29,16 @@ public class SendMsgMethod {
     }
 
     public static Message getObjectMessage(short CMD, Object obj) throws IOException {
-        return new Message(CMD, obj);
+        Message m = new Message(CMD);
+        m.setData(SerializeUtils.serialize(obj));
+        return m;
+    }
+
+    public static Message getDataMessage(short CMD, byte[] bytes) {
+        return new Message(CMD, bytes);
+    }
+
+    public static Message getStringMessage(short CMD, String str) {
+        return new Message(CMD, str);
     }
 }

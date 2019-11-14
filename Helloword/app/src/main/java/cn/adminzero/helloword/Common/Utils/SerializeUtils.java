@@ -1,7 +1,4 @@
 package cn.adminzero.helloword.Common.Utils;
-
-import android.util.Log;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -17,19 +14,18 @@ import java.nio.charset.StandardCharsets;
  * <EndDescription>
  */
 public class SerializeUtils {
-    public static String serialize(Object obj) throws IOException {
+    public static byte[] serialize(Object obj) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ObjectOutputStream objectOutputStream;
         objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
         objectOutputStream.writeObject(obj);
-        String string = byteArrayOutputStream.toString(String.valueOf(StandardCharsets.ISO_8859_1));
-        Log.e("tag",string);
-        objectOutputStream.close();
+        byte[] bytes = byteArrayOutputStream.toByteArray();
         byteArrayOutputStream.close();
-        return string;
+        objectOutputStream.close();
+        return bytes;
     }
-    public static Object serializeToObject(String str) throws IOException, ClassNotFoundException {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(str.getBytes(StandardCharsets.ISO_8859_1));
+    public static Object serializeToObject(byte[] bytes) throws IOException, ClassNotFoundException {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
         ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
         Object object = objectInputStream.readObject();
         objectInputStream.close();
