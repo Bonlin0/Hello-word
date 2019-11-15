@@ -96,7 +96,31 @@ public class MainActivity extends BaseActivity {
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);  //初始化显示第一个页面
+
+
+        /** only for debug*/
+        // Test.test();
+        // TestActivityEntry();//进入测试活动
+
     }
+
+    /**
+     * -------------code zhaojunchen start--------------
+     * */
+
+    /**
+     * 进入测试活动
+     */
+    private void TestActivityEntry() {
+        Intent testintent = new Intent(this, TestActivity.class);
+        startActivity(testintent);
+    }
+
+
+    /**
+     * -------------code zhaojunchen end----------------
+     */
+
 
     private void registerBroadcast() {
         receiver = new MessageBroadcastReceiver();
@@ -115,8 +139,7 @@ public class MainActivity extends BaseActivity {
         unregisterBroadcast();
     }
 
-    public void onClickChooseWordsBookButton(View view)
-    {
+    public void onClickChooseWordsBookButton(View view) {
         /*Intent intent = new Intent(this, ChooseWordsBookActivity.class);
         startActivity(intent);*/
         // TODO 弹出对话框选择词书
@@ -142,8 +165,7 @@ public class MainActivity extends BaseActivity {
         builder.create().show();
     }
 
-    public void onClickFreshButton(View view)
-    {
+    public void onClickFreshButton(View view) {
         // 圆圈加载进度的 dialog
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setIcon(R.drawable.ic_autorenew_black_64dp);
@@ -155,11 +177,11 @@ public class MainActivity extends BaseActivity {
         //TODO 增加刷新的动作 目前可以取消之后要progressDialog.setCancelable(false);
     }
 
-    public void onClickWordsButton(View view)
-    {
+    public void onClickWordsButton(View view) {
         //TODO 修改打开活动为词库活动 目前为测试login
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
 
 }
