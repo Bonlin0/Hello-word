@@ -23,6 +23,19 @@ public class LoginDataSource {
         }
     }
 
+    public Result<LoggedInUser> signUp(String username, String password, String userNickName){
+        try {
+            // TODO: handle Sign Up process
+            LoggedInUser fakeUser =
+                    new LoggedInUser(
+                            java.util.UUID.randomUUID().toString(),
+                            "注册 Doe");
+            return new Result.Success<>(fakeUser);
+        } catch (Exception e) {
+            return new Result.Error(new IOException("Error signing up", e));
+        }
+    }
+
     public void logout() {
         // TODO: revoke authentication
     }

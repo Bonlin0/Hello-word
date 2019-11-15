@@ -40,11 +40,26 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
-    public void loginDataChanged(String username, String password) {
+    public void signUp(String username, String password, String userNickName) {
+        // can be launched in a separate asynchronous job
+        Result<LoggedInUser> result = loginRepository.signUp(username, password, userNickName);
+
+        if (result instanceof Result.Success) {
+            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+        } else {
+            loginResult.setValue(new LoginResult(R.string.login_failed));
+        }
+    }
+
+    public void loginDataChanged(String username, String password, String userNickName, boolean isSignUP) {
         if (!isUserNameValid(username)) {
-            loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
+            loginFormState.setValue(new LoginFormState(R.string.invalid_username, null, null));
         } else if (!isPasswordValid(password)) {
-            loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
+            loginFormState.setValue(new LoginFormState(null, R.string.invalid_password,null));
+        } else if (!isUserNickNameValid(userNickName) && isSignUP){
+            // 注意这里检查了是不是注册 避免不是注册仍然检查用户名
+            loginFormState.setValue(new LoginFormState(null,null, R.string.invalid_userNickName));
         } else {
             loginFormState.setValue(new LoginFormState(true));
         }
@@ -65,5 +80,10 @@ public class LoginViewModel extends ViewModel {
     // A placeholder password validation check 密码格式检查
     private boolean isPasswordValid(String password) {
         return password != null && password.trim().length() > 5;
+    }
+
+    // A placeholder userNickName validation check 昵称格式检查 by whl
+    private boolean isUserNickNameValid(String userNickName) {
+        return userNickName != null && userNickName.trim().length() > 0;
     }
 }

@@ -25,7 +25,9 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_username">邮箱格式不合法</string>
+    <string name="invalid_password">密码应当大于5个字符</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="user_nickname">用户名</string>
+    <string name="invalid_userNickName">用户昵称不得为空</string>
 </resources>
