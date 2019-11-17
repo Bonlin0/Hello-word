@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by dx on 2018/9/18.
  */
-public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
+    public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
     private FragmentManager mfragmentManager;
     private List<Fragment> mlist;
 
