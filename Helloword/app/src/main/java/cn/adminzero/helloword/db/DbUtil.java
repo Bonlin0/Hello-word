@@ -32,7 +32,6 @@ public class DbUtil {
         } catch (Exception e) {
             Log.d(TAG, "open databases failed!!!");
             e.printStackTrace();
-
         }
         return null;
     }
