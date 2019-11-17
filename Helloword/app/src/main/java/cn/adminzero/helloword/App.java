@@ -26,7 +26,7 @@ public class App extends Application {
     private static int isFirstRunApp = 0;
     private static int Version = 1;
     private static int userid = 1;
-    private static Context context;
+    private static Context context = null;
 
     public static String getTAG() {
         return TAG;
@@ -58,17 +58,16 @@ public class App extends Application {
          * */
         MyStorage myStorage = new MyStorage();
         /**
-         * 初始化判断
+         * 初始化判断 Assets文件是只读的！
          * */
         int isFirstRunApp = myStorage.getInt("isFirstRunApp");
         if (isFirstRunApp == 0) {
             /** 初始化 word数据库
-             *  添加csv单词数据
+             *  添加 csv单词数据
              *  */
             initword();
             myStorage.storeInt("isFirstRunApp", 1);
         }
-
     }
 
     /**
@@ -76,7 +75,7 @@ public class App extends Application {
      */
     private static void initword() {
         SQLiteDatabase db = DbUtil.getDatabase();
-        AssetManager assetManager = context.getApplicationContext().getAssets();
+        AssetManager assetManager = context.getAssets();
 
         InputStream inputStream = null;
         InputStreamReader isr = null;
@@ -110,7 +109,6 @@ public class App extends Application {
             db.beginTransaction();
             while ((line = br.readLine()) != null) {
                 buffer = line.split("#", -1);
-
                 assert (buffer.length == 7);
                 word_id = Integer.valueOf(buffer[0]);
                 word = buffer[1];
@@ -119,7 +117,7 @@ public class App extends Application {
                 translation = buffer[4];
                 exchange = buffer[5];
                 tag = Integer.valueOf(buffer[6]);
-
+                /** 插入单词信息数据库！*/
                 contentValues.put("word_id", word_id);
                 contentValues.put("word", word);
                 contentValues.put("phonetic", phonetic);
@@ -131,7 +129,6 @@ public class App extends Application {
                 contentValues.clear();
             }
             db.setTransactionSuccessful();
-
             br.close();
             isr.close();
             inputStream.close();
