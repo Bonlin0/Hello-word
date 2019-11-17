@@ -35,12 +35,12 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.username);
-        final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
-        final EditText userNickNameEditText = findViewById(R.id.user_nickname);
-        final Switch signUpSwitch = findViewById(R.id.sign_in_or_sign_up);
+            final EditText usernameEditText = findViewById(R.id.username);
+            final EditText passwordEditText = findViewById(R.id.password);
+            final Button loginButton = findViewById(R.id.login);
+            final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+            final EditText userNickNameEditText = findViewById(R.id.user_nickname);
+            final Switch signUpSwitch = findViewById(R.id.sign_in_or_sign_up);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             // 检查登录的输入是否正确 如果不正确 使得按钮不能点击 by whl

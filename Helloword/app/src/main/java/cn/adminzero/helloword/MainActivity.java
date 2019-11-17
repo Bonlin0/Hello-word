@@ -26,7 +26,6 @@ import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.ui.login.LoginActivity;
 
 public class MainActivity extends BaseActivity {
-    private TextView mTextMessage;
     private MessageBroadcastReceiver receiver;
     private static final String TAG = "MainActivity";
     private MenuItem menuItem;
@@ -142,7 +141,6 @@ public class MainActivity extends BaseActivity {
     public void onClickChooseWordsBookButton(View view) {
         /*Intent intent = new Intent(this, ChooseWordsBookActivity.class);
         startActivity(intent);*/
-        // TODO 弹出对话框选择词书
         AlertDialog.Builder builder;
         //默认选中第一个
         final String[] items = {"中考", "高考", "CET4", "CET6", "考研", "GRE", "雅思", "托福"};
