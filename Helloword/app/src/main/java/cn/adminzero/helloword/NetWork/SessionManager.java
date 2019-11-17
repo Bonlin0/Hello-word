@@ -34,6 +34,8 @@ public class SessionManager {
             Log.e("tag", "客户端准备发送消息");
             mSession.write(msg);
             return true;
+        }else{
+            Log.e("tag","网络异常!");
         }
         return false;
     }

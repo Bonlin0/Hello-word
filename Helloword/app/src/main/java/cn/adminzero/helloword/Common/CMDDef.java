@@ -22,9 +22,11 @@ package cn.adminzero.helloword.Common;
 public class CMDDef {
     //其他全局常量定义
     public static final int PORT = 3005;
-    public static final String MINABroadCast = "com.example.myapplication.MINAbroadcast";
-    public static final String IP = "10.0.2.2";
-  //  public static final String IP = "123.207.173.192";
+    public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
+    public static final String INTENT_PUT_EXTRA_CMD = "CMD";
+    public static final String INTENT_PUT_EXTRA_DATA = "DATA";
+   // public static final String IP = "10.0.2.2";
+    public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -48,7 +50,13 @@ public class CMDDef {
     //服务端控制指令定义区
     public static final short REPLY_FILE_TEST = 0x1000;
 
+    //回应注册请求结果
+    public static final short REPLY_SIGN_UP_REQUEST = 0x2000;
+
 
     //客户端控制指令定义区
     public static final short REQUEST_FILE_TEST = 0x7000;
+
+    //注册请求
+    public static final short SIGN_UP_REQUESET = (short) 0x8000;
 }

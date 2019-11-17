@@ -2,6 +2,9 @@ package Server;
 
 import Common.CMDDef;
 import Common.Message;
+import Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.CommonClass.SignUpRequest;
+import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -58,8 +61,11 @@ public class ServerHandle extends IoHandlerAdapter {
         if (message instanceof Message) {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
-                case CMDDef.REQUEST_FILE_TEST:
-                   
+                case CMDDef.SIGN_UP_REQUESET:
+                    SignUpRequest sur = (SignUpRequest) mes.getObj();
+                    //TODO：数据库处理注册
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST,
+                            new UserNoPassword(10085,sur.getNickName(),sur.getEmail())));
                     break;
             }
         } else {

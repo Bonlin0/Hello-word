@@ -1,5 +1,7 @@
 package cn.adminzero.helloword.Common.Utils;
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import cn.adminzero.helloword.Common.Message;
@@ -28,9 +30,15 @@ public class SendMsgMethod {
         return new Message(CMD, s);
     }
 
-    public static Message getObjectMessage(short CMD, Object obj) throws IOException {
+    public static Message getObjectMessage(short CMD, Object obj){
         Message m = new Message(CMD);
-        m.setData(SerializeUtils.serialize(obj));
+        try {
+            m.setData(SerializeUtils.serialize(obj));
+        }catch (IOException e)
+        {
+            e.printStackTrace();
+            Log.e("tag","序列化失败!");
+        }
         return m;
     }
 

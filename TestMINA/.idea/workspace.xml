@@ -41,7 +41,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/CommonClass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Common" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,6 +58,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\Hello-word\TestMINA\src\Common" />
+      <recent name="H:\Hello-word\TestMINA\src\cn\adminzero\helloword\CommonClass" />
       <recent name="H:\Hello-word\TestMINA\src\CommonClass" />
       <recent name="H:\HelloWord\TestMINA\src" />
       <recent name="H:\ideapro\TestMINA\src" />
@@ -156,7 +158,7 @@
       <workItem from="1573711272947" duration="2681000" />
       <workItem from="1573714890635" duration="2592000" />
       <workItem from="1573720950952" duration="731000" />
-      <workItem from="1573973344704" duration="921000" />
+      <workItem from="1573973344704" duration="7799000" />
     </task>
     <servers />
   </component>
