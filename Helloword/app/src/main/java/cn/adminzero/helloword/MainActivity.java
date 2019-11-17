@@ -3,31 +3,24 @@ package cn.adminzero.helloword;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.adminzero.helloword.Common.CMDDef;
-import cn.adminzero.helloword.NetWork.MessageBroadcastReceiver;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.ui.login.LoginActivity;
 
 public class MainActivity extends BaseActivity {
-    private MessageBroadcastReceiver receiver;
     private static final String TAG = "MainActivity";
     private MenuItem menuItem;
     private List<Fragment> list;
@@ -41,8 +34,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //注册广播
-        registerBroadcast();
         Intent intent = new Intent(this, MinaService.class);
         //开启MINA服务
         startService(intent);
@@ -123,21 +114,10 @@ public class MainActivity extends BaseActivity {
      */
 
 
-    private void registerBroadcast() {
-        receiver = new MessageBroadcastReceiver();
-        IntentFilter filter = new IntentFilter(CMDDef.MINABroadCast);
-        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, filter);
-    }
-
-    private void unregisterBroadcast() {
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         stopService(new Intent(this, MinaService.class));
-        unregisterBroadcast();
     }
 
     public void onClickChooseWordsBookButton(View view) {

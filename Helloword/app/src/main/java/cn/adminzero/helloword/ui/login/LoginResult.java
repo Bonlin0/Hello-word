@@ -2,12 +2,14 @@ package cn.adminzero.helloword.ui.login;
 
 import android.support.annotation.Nullable;
 
+import cn.adminzero.helloword.CommonClass.UserNoPassword;
+
 /**
  * Authentication result : success (user details) or error message.
  */
 class LoginResult {
     @Nullable
-    private LoggedInUserView success;
+    private UserNoPassword success;
     @Nullable
     private Integer error;
 
@@ -15,12 +17,12 @@ class LoginResult {
         this.error = error;
     }
 
-    LoginResult(@Nullable LoggedInUserView success) {
+    LoginResult(@Nullable UserNoPassword success) {
         this.success = success;
     }
 
     @Nullable
-    LoggedInUserView getSuccess() {
+    UserNoPassword getSuccess() {
         return success;
     }
 

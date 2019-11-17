@@ -17,8 +17,9 @@ public class UserNoPassword implements Serializable {
     int groupID;
     int level;
     int pKPoint;
+    boolean isValid;
 
-    public UserNoPassword(int userID,String userNickName, String email)
+    public UserNoPassword(int userID, String userNickName, String email)
     {
         this.userID = userID;
         this.userNickName = userNickName;
@@ -29,8 +30,16 @@ public class UserNoPassword implements Serializable {
         groupID = -1;
         level = 0;
         pKPoint = 1000;
+        this.isValid = true;
     }
 
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
     public long getSerialVersionUID() {
         return serialVersionUID;
     }

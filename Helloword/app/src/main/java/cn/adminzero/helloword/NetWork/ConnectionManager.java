@@ -1,6 +1,9 @@
 package cn.adminzero.helloword.NetWork;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.apache.mina.core.future.ConnectFuture;
@@ -22,19 +25,17 @@ import cn.adminzero.helloword.Common.Decoder;
 import cn.adminzero.helloword.Common.Encoder;
 import cn.adminzero.helloword.Common.Message;
 import cn.adminzero.helloword.Common.MessageCodecFactory;
+import cn.adminzero.helloword.CommonClass.UserNoPassword;
 
 public class ConnectionManager {
-    private static final String BROADCAST_ACTION = CMDDef.MINABroadCast;
-    private static final String MESSAGE = "message";
     private ConnectionConfig mConfig;
     private WeakReference<Context> mContext;
     private NioSocketConnector mConnection;
     private IoSession mSession;
     private InetSocketAddress mAddress;
-
     public ConnectionManager(ConnectionConfig config) {
         this.mConfig = config;
-        this.mContext = new WeakReference<Context>(config.getContext());
+        this.mContext = new WeakReference<>(config.getContext());
         init();
     }
 
@@ -48,7 +49,10 @@ public class ConnectionManager {
         mConnection.getFilterChain().addLast("logger", lf);
         mConnection.getFilterChain().addLast("codec", new ProtocolCodecFilter(new MessageCodecFactory(new Decoder(), new Encoder())));
         //业务逻辑
-        mConnection.setHandler(new DefaultHandler(mContext.get()));
+        DefaultHandler defaultHandler = new DefaultHandler(mContext.get());
+        defaultHandler.setLocalBroadcastManager(LocalBroadcastManager.getInstance(mContext.get()));
+        defaultHandler.setIntentFilter(new IntentFilter(CMDDef.MINABroadCast));
+        mConnection.setHandler(defaultHandler);
         mConnection.setDefaultRemoteAddress(mAddress);
     }
 
@@ -63,8 +67,8 @@ public class ConnectionManager {
             ConnectFuture future = mConnection.connect();
             future.awaitUninterruptibly();
             mSession = future.getSession();
-           // SessionManager.getInstance().setSeesion(mSession);
-            Log.e("tag", "连接成功!\n");
+            SessionManager.getInstance().setSeesion(mSession);
+            Log.e("tag", "连接成功!");
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("tag", "连接失败");
@@ -87,10 +91,20 @@ public class ConnectionManager {
 
     private static class DefaultHandler extends IoHandlerAdapter {
         private Context mContext;
+        private IntentFilter intentFilter;
+        private LocalBroadcastManager localBroadcastManager;
 
         @Override
         public void sessionCreated(IoSession session) throws Exception {
             super.sessionCreated(session);
+        }
+
+        public void setIntentFilter(IntentFilter intentFilter) {
+            this.intentFilter = intentFilter;
+        }
+
+        public void setLocalBroadcastManager(LocalBroadcastManager localBroadcastManager) {
+            this.localBroadcastManager = localBroadcastManager;
         }
 
         @Override
@@ -137,8 +151,12 @@ public class ConnectionManager {
             super.messageReceived(session, message);
             Message mes = (Message) message;
             switch (mes.getCMD()) {
-                case CMDDef.REPLY_FILE_TEST:
-                    byte[] bytes = mes.getData();
+                case CMDDef.REPLY_SIGN_UP_REQUEST:
+                    UserNoPassword userNoPassword = (UserNoPassword)mes.getObj();
+                    Intent intent = new Intent(CMDDef.MINABroadCast);
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD,mes.getCMD());
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, mes.getData());
+                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
                     break;
                 default:
             }

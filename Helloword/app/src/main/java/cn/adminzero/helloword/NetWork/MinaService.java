@@ -3,9 +3,11 @@ package cn.adminzero.helloword.NetWork;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import cn.adminzero.helloword.Common.CMDDef;
@@ -60,7 +62,7 @@ public class MinaService extends Service {
                 isConnection = mManager.connnect();
                 if(isConnection){
                     Log.e("tag", "连接成功");
-                    SessionManager.getInstance().writeToServer(SendMsgMethod.getStringMessage(CMDDef.REQUEST_FILE_TEST,"测试String传输和大文件传输!"));
+
                     break;
                 }
                 try {

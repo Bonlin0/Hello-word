@@ -32,19 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <service
             android:name=".NetWork.MinaService"
             android:enabled="true"
             android:exported="true" />
-        <receiver
-            android:name=".NetWork.MessageBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <category android:name="com.example.myapplication.MINAbroadcast"></category>
-            </intent-filter>
-        </receiver>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

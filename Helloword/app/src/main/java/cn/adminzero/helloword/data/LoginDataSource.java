@@ -1,5 +1,9 @@
 package cn.adminzero.helloword.data;
 
+import cn.adminzero.helloword.Common.CMDDef;
+import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.CommonClass.SignUpRequest;
+import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.data.model.LoggedInUser;
 
 import java.io.IOException;
@@ -30,6 +34,8 @@ public class LoginDataSource {
                     new LoggedInUser(
                             java.util.UUID.randomUUID().toString(),
                             "注册 Doe");
+            SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.SIGN_UP_REQUESET,
+                    new SignUpRequest(username,password,userNickName)));
             return new Result.Success<>(fakeUser);
         } catch (Exception e) {
             return new Result.Error(new IOException("Error signing up", e));

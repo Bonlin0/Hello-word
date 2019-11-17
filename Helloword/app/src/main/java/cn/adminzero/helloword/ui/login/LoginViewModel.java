@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Patterns;
 
+import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.data.LoginRepository;
 import cn.adminzero.helloword.data.Result;
 import cn.adminzero.helloword.data.model.LoggedInUser;
@@ -28,28 +29,31 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
+
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
         Result<LoggedInUser> result = loginRepository.login(username, password);
 
-        if (result instanceof Result.Success) {
+        // 原版的登录需要接受数据并处理，这里由于在LoginActivity进行接收所以注释这里
+        /*if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+            loginResult.setValue(new LoginResult(new UserNoPassword(data.getDisplayName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
+        }*/
     }
 
     public void signUp(String username, String password, String userNickName) {
         // can be launched in a separate asynchronous job
         Result<LoggedInUser> result = loginRepository.signUp(username, password, userNickName);
 
-        if (result instanceof Result.Success) {
+        // 原版的登录需要接受数据并处理，这里由于在LoginActivity进行接收所以注释这里
+        /*if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
-            loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
+            loginResult.setValue(new LoginResult(new UserNoPassword(data.getDisplayName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
+        }*/
     }
 
     public void loginDataChanged(String username, String password, String userNickName, boolean isSignUP) {
@@ -85,5 +89,21 @@ public class LoginViewModel extends ViewModel {
     // A placeholder userNickName validation check 昵称格式检查 by whl
     private boolean isUserNickNameValid(String userNickName) {
         return userNickName != null && userNickName.trim().length() > 0;
+    }
+
+    public void setLoginFormState(MutableLiveData<LoginFormState> loginFormState) {
+        this.loginFormState = loginFormState;
+    }
+
+    public void setLoginResult(MutableLiveData<LoginResult> loginResult) {
+        this.loginResult = loginResult;
+    }
+
+    public LoginRepository getLoginRepository() {
+        return loginRepository;
+    }
+
+    public void setLoginRepository(LoginRepository loginRepository) {
+        this.loginRepository = loginRepository;
     }
 }
