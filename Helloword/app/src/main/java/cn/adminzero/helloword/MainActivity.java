@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,7 +99,8 @@ public class MainActivity extends BaseActivity {
 
 
         /** only for debug*/
-        // Test.test();
+//        Test test = new Test();
+//        test.test();
         // TestActivityEntry();//进入测试活动
 
     }
