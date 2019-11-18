@@ -16,9 +16,10 @@ import java.net.InetSocketAddress;
 public class Main {
     private static Logger logger = Logger.getLogger(Main.class);
     private static int PORT = CMDDef.PORT;
+
     public static void main(String[] args) {
         IoAcceptor acceptor = null;
-        try{
+        try {
             acceptor = new NioSocketAcceptor();
             LoggingFilter lf = new LoggingFilter();
             lf.setMessageReceivedLogLevel(LogLevel.DEBUG);
@@ -26,7 +27,7 @@ public class Main {
             acceptor.getFilterChain().addLast(
                     "codec",
                     new ProtocolCodecFilter(
-                            new MessageCodecFactory(new Decoder(),new Encoder())
+                            new MessageCodecFactory(new Decoder(), new Encoder())
                     )
             );
             // 读写通道10秒内无操作进入空闲状态
@@ -35,9 +36,12 @@ public class Main {
             acceptor.setHandler(new ServerHandle()); // 添加业务处理
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
-        }catch (Exception e)
-        {
+            initDataBase();
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    private static void initDataBase() {
+
     }
 }
