@@ -40,9 +40,8 @@ import cn.adminzero.helloword.data.model.LoggedInUser;
 public class LoginActivity extends AppCompatActivity {
     private final static String TAG = "LoginActivity";
     private LoginActivityBroadcastReceiver loginActivityBroadcastReceiver;
-    private IntentFilter intentFilter;
     private LoginViewModel loginViewModel;
-
+    private IntentFilter intentFilter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -211,6 +210,7 @@ public class LoginActivity extends AppCompatActivity {
             short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
             switch (cmd) {
                 case CMDDef.REPLY_SIGN_UP_REQUEST:
+                    Log.e("tag", "" + cmd);
                     byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
                     try {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
