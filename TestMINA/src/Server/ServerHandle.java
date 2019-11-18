@@ -64,6 +64,9 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.SIGN_UP_REQUESET:
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     //TODO：数据库处理注册
+                    //user_id 查询数据库有没有user_id如果，没有就 创建第一个为10000，如果有就取最后一个user_id +1
+
+
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST,
                             new UserNoPassword(10085,sur.getNickName(),sur.getEmail())));
                     break;
