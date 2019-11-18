@@ -7,48 +7,57 @@ import java.io.Serializable;
 
 public class UserNoPassword implements Serializable {
     private static final long serialVersionUID = 1L;
-    int user_id;
-    String user_name;
+    int userID;
+    String userNickName;
     String email;
-    String avatar;
+    String avatarPath;
     int goal;
     // 打卡天数
     int days;
-    int group_id;
+    int groupID;
     int level;
-    int points;
+    int pKPoint;
+    boolean isValid;
 
-    public UserNoPassword(int user_id,String user_name, String email)
+    public UserNoPassword(int userID, String userNickName, String email)
     {
-        this.user_id = user_id;
-        this.user_name = user_name;
+        this.userID = userID;
+        this.userNickName = userNickName;
         this.email = email;
-        avatar = ""; // TODO 将这里路径改为默认头像路径
+        avatarPath = ""; // TODO 将这里路径改为默认头像路径
         goal = -1;
         days = 0;
-        group_id = -1;
+        groupID = -1;
         level = 0;
-        points = 1000;
+        pKPoint = 1000;
+        this.isValid = true;
     }
 
+    public boolean isValid() {
+        return isValid;
+    }
+
+    public void setValid(boolean valid) {
+        isValid = valid;
+    }
     public long getSerialVersionUID() {
         return serialVersionUID;
     }
 
     public int getUserID() {
-        return user_id;
+        return userID;
     }
 
-    public void setUserID(int user_id) {
-        this.user_id = user_id;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getUserNickName() {
-        return user_name;
+        return userNickName;
     }
 
-    public void setUserNickName(String user_name) {
-        this.user_name = user_name;
+    public void setUserNickName(String userNickName) {
+        this.userNickName = userNickName;
     }
 
     public String getEmail() {
@@ -60,11 +69,11 @@ public class UserNoPassword implements Serializable {
     }
 
     public String getAvatarPath() {
-        return avatar;
+        return avatarPath;
     }
 
-    public void setAvatarPath(String avatar) {
-        this.avatar = avatar;
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
     }
 
     public int getGoal() {
@@ -84,11 +93,11 @@ public class UserNoPassword implements Serializable {
     }
 
     public int getGroupID() {
-        return group_id;
+        return groupID;
     }
 
-    public void setGroupID(int group_id) {
-        this.group_id = group_id;
+    public void setGroupID(int groupID) {
+        this.groupID = groupID;
     }
 
     public int getLevel() {
@@ -99,11 +108,11 @@ public class UserNoPassword implements Serializable {
         this.level = level;
     }
 
-    public int getpoints() {
-        return points;
+    public int getpKPoint() {
+        return pKPoint;
     }
 
-    public void setpoints(int points) {
-        this.points = points;
+    public void setpKPoint(int pKPoint) {
+        this.pKPoint = pKPoint;
     }
 }

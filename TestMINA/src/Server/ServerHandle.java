@@ -64,8 +64,10 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.SIGN_UP_REQUESET:
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     //TODO：数据库处理注册
-                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST,
-                            new UserNoPassword(10085,sur.getNickName(),sur.getEmail())));
+                    UserNoPassword userNoPassword = new UserNoPassword(1,sur.getNickName(),sur.getEmail());
+                  //  userNoPassword.setValid(false);
+
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     break;
             }
         } else {

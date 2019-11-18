@@ -10,12 +10,12 @@ public class SignUpRequest implements Serializable {
     private final long serialVersionUID = 1L;
     String email;
     String password;
-    String user_name;
+    String nickName;
 
-    public SignUpRequest(String eamil, String password, String user_name)
+    public SignUpRequest(String eamil, String password, String nickName)
     {
         this.email = eamil;
-        this.user_name = user_name;
+        this.nickName = nickName;
         this.password = password;
     }
 
@@ -40,10 +40,10 @@ public class SignUpRequest implements Serializable {
     }
 
     public String getNickName() {
-        return user_name;
+        return nickName;
     }
 
-    public void setNickName(String user_name) {
-        this.user_name = user_name;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }
