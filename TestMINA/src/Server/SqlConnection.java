@@ -1,12 +1,18 @@
+package Server;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class SqlConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/Supermarket";
-    private static final String NAME = "root";
-    private static final String PASSWORD = "sn5diphone6";
+
+    private static  String URL = "jdbc:mysql://localhost:3306/HelloWord";
+    private static  String NAME = "root";
+    private static  String PASSWORD = "123456";
+    public  Connection conn = null;
+    // public  Statement stmt = null;
+
 
     public void TheSqlConnection(){
         //加载驱动
@@ -16,7 +22,7 @@ public class SqlConnection {
             System.out.println("未能成功加载驱动程序,请检查是否导入驱动程序!");
             e.printStackTrace();
         }
-        Connection conn = null;
+
         try{
             conn = DriverManager.getConnection(URL, NAME, PASSWORD);
             System.out.println("获取数据库链接成功");

@@ -11,6 +11,9 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.FilterEvent;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 /**
  * @author: 王翔
  * @date: 2019/11/7-20:28
@@ -62,11 +65,55 @@ public class ServerHandle extends IoHandlerAdapter {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
                 case CMDDef.SIGN_UP_REQUESET:
-                    SignUpRequest sur = (SignUpRequest) mes.getObj();
-                    //TODO：数据库处理注册
-                    UserNoPassword userNoPassword = new UserNoPassword(1,sur.getNickName(),sur.getEmail());
-                  //  userNoPassword.setValid(false);
 
+                    SignUpRequest sur = (SignUpRequest) mes.getObj();
+                    UserNoPassword userNoPassword = new UserNoPassword(-1,sur.getNickName(),sur.getEmail());
+                    //TODO：数据库处理注册
+                    String email=sur.getEmail();
+                    String user_name=sur.getNickName();
+                    String password= sur.getPassword();
+                    int user_id=-1;
+                  //  userNoPassword.setValid(false);
+                     SqlConnection sqlConnection=new SqlConnection();
+                     sqlConnection.TheSqlConnection();
+                    Statement stmt = sqlConnection.conn.createStatement();
+                    String sql_qurey= "SELECT user_id，email FROM user";
+                    ResultSet rs = stmt.executeQuery(sql_qurey);
+                    // 展开结果集数据库
+                    while(rs.next()){
+                        // 通过字段检索,搜索到最后一个字段
+                        user_id  = rs.getInt("user_id");
+                        if(email.equals(rs.getString("email"))){
+                            //已经存在这个邮箱名了
+                            userNoPassword.setValid(false);
+                        }
+                    }
+                    if(user_id==-1){
+                        user_id=10000;
+                    }
+                    else{
+                        user_id=user_id+1;
+                        userNoPassword.setUserID(user_id);
+                    }
+                 /*   String sql_insert="INSERT INTO USER (" +
+                            "user_id,user_name,password,email)" +
+                            " values(" +
+                            user_id+"" +
+                            user_name +
+                            password +
+                            email +
+                            ")";
+
+                  */
+                 if(userNoPassword.isValid()) {
+                     //如果合法 就插入该用户数据
+                     stmt.execute("insert into user(user_id,user_name,password,email) values(?,?,?,?)", new String[]{user_id + "", user_name, password, email});
+                 }
+                 // 完成后关闭数据库链接
+                    rs.close();
+                    stmt.close();
+                    sqlConnection.conn.close();
+                    
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     break;
             }
