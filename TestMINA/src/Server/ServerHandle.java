@@ -38,6 +38,8 @@ public class ServerHandle extends IoHandlerAdapter {
     public void sessionOpened(IoSession session) throws Exception {
         super.sessionOpened(session);
         logger.info("连接被打开");
+
+
     }
 
     @Override

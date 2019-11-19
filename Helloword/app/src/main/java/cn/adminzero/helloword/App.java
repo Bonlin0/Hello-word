@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.db.DbUtil;
 
 import cn.adminzero.helloword.util.MyStorage;
@@ -20,6 +21,8 @@ public class App extends Application {
 
     private static final String TAG = "Helloword";
     private static String Dbname = "HelloWord";
+    //全局用户信息
+    public static UserNoPassword userNoPassword_global;
     /**
      * 是否第一次运行APP  数据保存在同名字段"isFirstRunApp"
      */

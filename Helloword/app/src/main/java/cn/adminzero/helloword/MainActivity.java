@@ -34,9 +34,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, MinaService.class);
-        //开启MINA服务
-        startService(intent);
+
 
         final BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         final ViewPager viewPager = findViewById(R.id.main_view_pager);

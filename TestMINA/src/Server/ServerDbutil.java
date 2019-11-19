@@ -4,16 +4,15 @@ import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ServerDbutil {
     static SqlConnection sqlConnection=new SqlConnection();
-    static Connection conn=sqlConnection.conn;
+    static Connection conn=null;
 
     public static UserNoPassword signup(SignUpRequest sur){
+        sqlConnection.TheSqlConnection();
+        conn=sqlConnection.conn;
         UserNoPassword userNoPassword = new UserNoPassword(-1,sur.getNickName(),sur.getEmail());
         //TODO：数据库处理注册
         String email=sur.getEmail();
@@ -21,7 +20,6 @@ public class ServerDbutil {
         String password= sur.getPassword();
         int user_id=-1;
         //  userNoPassword.setValid(false);
-
         Statement stmt = null;
         try {
             stmt = conn.createStatement();
@@ -50,7 +48,13 @@ public class ServerDbutil {
             }
             if(userNoPassword.isValid()) {
                 //如果合法 就插入该用户数据
-                stmt.execute("insert into user(user_id,user_name,password,email) values(?,?,?,?)", new String[]{user_id + "", user_name, password, email});
+               // stmt.execute("insert into user(user_id,user_name,password,email) values(?,?,?,?)", new String[]{user_id + "", user_name, password, email});
+                PreparedStatement statement=conn.prepareStatement("insert into user(user_id,user_name,password,email) values(?,?,?,?)");
+                statement.setObject(1,user_id);
+                statement.setObject(2,user_name);
+                statement.setObject(3,password);
+                statement.setObject(4,email);
+                statement.execute();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,7 +75,9 @@ public class ServerDbutil {
         return userNoPassword;
     }
 
-    public UserNoPassword signup(SignInRequest sur){
+    public UserNoPassword signin(SignInRequest sur){
+        sqlConnection.TheSqlConnection();
+        conn=sqlConnection.conn;
         UserNoPassword userNoPassword = new UserNoPassword(sur.getEmail());
         //TODO：数据库处理注册
         String email=sur.getEmail();
@@ -128,10 +134,6 @@ public class ServerDbutil {
         // 完成后关闭数据库链接
         try {
             rs.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
