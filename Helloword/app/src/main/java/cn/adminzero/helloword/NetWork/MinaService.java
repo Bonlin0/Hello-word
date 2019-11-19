@@ -3,15 +3,13 @@ package cn.adminzero.helloword.NetWork;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.HandlerThread;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.Nullable;
+
 import android.util.Log;
 
 import cn.adminzero.helloword.Common.CMDDef;
-import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
 
 public class MinaService extends Service {
     private ConnectionThread thread;

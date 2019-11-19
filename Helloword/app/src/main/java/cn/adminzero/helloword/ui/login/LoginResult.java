@@ -1,6 +1,6 @@
 package cn.adminzero.helloword.ui.login;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 

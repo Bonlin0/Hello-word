@@ -1,11 +1,10 @@
 package cn.adminzero.helloword.ui.login;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import android.util.Patterns;
 
-import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.data.LoginRepository;
 import cn.adminzero.helloword.data.Result;
 import cn.adminzero.helloword.data.model.LoggedInUser;

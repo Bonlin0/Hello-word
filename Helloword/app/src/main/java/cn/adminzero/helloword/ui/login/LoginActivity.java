@@ -1,18 +1,18 @@
 package cn.adminzero.helloword.ui.login;
 
 import android.app.Activity;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -28,7 +28,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.Serializable;
 
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Utils.SerializeUtils;
@@ -36,8 +35,6 @@ import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.MainActivity;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.R;
-import cn.adminzero.helloword.data.Result;
-import cn.adminzero.helloword.data.model.LoggedInUser;
 
 import static cn.adminzero.helloword.App.userNoPassword_global;
 

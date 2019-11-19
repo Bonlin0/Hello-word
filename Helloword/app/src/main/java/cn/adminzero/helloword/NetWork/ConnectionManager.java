@@ -3,7 +3,7 @@ package cn.adminzero.helloword.NetWork;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
 import org.apache.mina.core.future.ConnectFuture;
@@ -16,7 +16,6 @@ import org.apache.mina.filter.logging.LogLevel;
 import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
-import java.io.File;
 import java.lang.ref.WeakReference;
 import java.net.InetSocketAddress;
 
