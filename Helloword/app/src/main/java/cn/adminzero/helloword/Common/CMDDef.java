@@ -25,6 +25,8 @@ public class CMDDef {
     public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
     public static final String INTENT_PUT_EXTRA_CMD = "CMD";
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";
+   // public static final String IP = "192.168.37.1";//陈渊测试的本机IP
+   // public static final int PORT = 3006;//陈渊测试的本机端口
    // public static final String IP = "10.0.2.2";
     public static final String IP = "123.207.173.192";
     //常量定义
