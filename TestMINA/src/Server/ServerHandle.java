@@ -11,6 +11,9 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.FilterEvent;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 /**
  * @author: 王翔
  * @date: 2019/11/7-20:28
@@ -35,6 +38,8 @@ public class ServerHandle extends IoHandlerAdapter {
     public void sessionOpened(IoSession session) throws Exception {
         super.sessionOpened(session);
         logger.info("连接被打开");
+
+
     }
 
     @Override
@@ -62,10 +67,11 @@ public class ServerHandle extends IoHandlerAdapter {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
                 case CMDDef.SIGN_UP_REQUESET:
+
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
-                    //TODO：数据库处理注册
-                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST,
-                            new UserNoPassword(10085,sur.getNickName(),sur.getEmail())));
+                    UserNoPassword userNoPassword=ServerDbutil.signup(sur);
+
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     break;
             }
         } else {

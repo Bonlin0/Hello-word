@@ -12,9 +12,9 @@ public class SignUpRequest implements Serializable {
     String password;
     String nickName;
 
-    public SignUpRequest(String eamil, String password, String nickName)
+    public SignUpRequest(String email, String password, String nickName)
     {
-        this.email = eamil;
+        this.email = email;
         this.nickName = nickName;
         this.password = password;
     }

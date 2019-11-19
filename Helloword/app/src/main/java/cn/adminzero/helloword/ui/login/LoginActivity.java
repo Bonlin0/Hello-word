@@ -33,9 +33,13 @@ import java.io.Serializable;
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Utils.SerializeUtils;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
+import cn.adminzero.helloword.MainActivity;
+import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.R;
 import cn.adminzero.helloword.data.Result;
 import cn.adminzero.helloword.data.model.LoggedInUser;
+
+import static cn.adminzero.helloword.App.userNoPassword_global;
 
 public class LoginActivity extends AppCompatActivity {
     private final static String TAG = "LoginActivity";
@@ -49,6 +53,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginActivityBroadcastReceiver = new LoginActivityBroadcastReceiver();
         intentFilter = new IntentFilter(CMDDef.MINABroadCast);
+
+        Intent intent = new Intent(LoginActivity.this, MinaService.class);
+        //开启MINA服务
+        startService(intent);
 
         LocalBroadcastManager.getInstance(this).
                 registerReceiver(loginActivityBroadcastReceiver, intentFilter);
@@ -102,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 //Complete and destroy login activity once successful
                 // TODO 打开主活动
+                Intent intentMainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intentMainActivity);
                 finish();
             }
         });
@@ -216,6 +226,8 @@ public class LoginActivity extends AppCompatActivity {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
                         MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                         loginResult.setValue(new LoginResult(userNoPassword));
+                        userNoPassword_global = userNoPassword;
+
                     } catch (IOException e) {
                         Log.e("tag","序列化失败!");
                         e.printStackTrace();
