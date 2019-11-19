@@ -4,10 +4,13 @@ import android.media.MediaPlayer;
 import android.text.TextUtils;
 import android.util.Log;
 
-/** https://blog.csdn.net/xj853663557/article/details/82735900 src detail
+/**
+ * author : zhaojunchen
+ * date   : 2019/11/1811:43
+ * desc   : https://blog.csdn.net/xj853663557/article/details/82735900 src detail
  * 音频播放器类
  * 多线程适用-->在子线程播放音频  避免卡死
- * MediaPlayUtil player = new MediaPlayUtil(); // 最好设置在全局
+ * MediaPlayUtil player = new MediaPlayUtil();
  * player.playword(String word); // 播放单词
  */
 public class MediaPlayUtil {

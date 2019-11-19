@@ -6,9 +6,15 @@ import android.text.TextUtils;
 
 import cn.adminzero.helloword.App;
 
+/**
+ * author : zhaojunchen
+ * date   : 2019/11/1811:43
+ * desc   : 快速存储
+ */
 public class MyStorage {
-
-
+    /**
+     * 注意在局部调用，可以回收
+     */
     private SharedPreferences preferences;
 
     //PasswordSheild保存于PasswordSheild

@@ -4,7 +4,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 /**
- * 请求url 返回数据
+ * author : zhaojunchen
+ * date   : 2019/11/18/11:43
+ * desc   : 发出Http请求,编写回调函数
+ * 参见TranslationUtil返回google翻译
  */
 public class HttpUtil {
 
@@ -15,4 +18,5 @@ public class HttpUtil {
                 .build();
         okHttpClient.newCall(request).enqueue(callback);
     }
+
 }

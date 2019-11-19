@@ -16,6 +16,7 @@ import okhttp3.Response;
 
 /**
  * https://www.songshizhao.com/blog/blogPage/996.html src detail
+ * https://www.jianshu.com/p/12c2fb8cab66
  * 根据单词 获取在线的翻译资源
  */
 public class TranslationUtil {
@@ -30,20 +31,29 @@ public class TranslationUtil {
 
     public void getTranslation(final String word) {
         final String myword = word.trim().toLowerCase();
-        final String url = "https://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh_TW&q=calculate";
+//        final String url = "https://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh_TW&q=calculate";
+        final String url = "https://dict-co.iciba.com/search.php?word=test&submit=%E6%9F%A5%E8%AF%A2";
         final String result = "none";
-        HttpUtil.sendHttpRequest(url, new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Log.d(TAG, "onFailure: requests error");
-            }
+        try {
+            HttpUtil.sendHttpRequest(url, new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                    Log.d(TAG, "onFailure: requests error-->" + e.getMessage());
+                    e.printStackTrace();
 
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String json = response.body().string();
-                parseGSON(json);
-            }
-        });
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    Log.d(TAG, "onResponse: success！");
+                    String json = response.body().string();
+                    parseGSON(json);// google translation为json  爱词霸 为html解析
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "getTranslation: failed-->" + e.getMessage());
+        }
        /* new Thread(new Runnable() {
             @Override
             public void run() {
@@ -70,8 +80,12 @@ public class TranslationUtil {
         Log.d(TAG, "parseGSON: end");
     }
 
+
     /**
-     * http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh_TW&q=calculate
+     * 下面的三个类为google翻译返回的数据json格式
+     * 给出一个链接及其具体的json数据：
+     * <p>
+     * http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh_CN&q=calculate
      * {
      * "sentences":[{"trans":"計算","orig":"calculate","backend":1}]
      * ,"src":"en",
