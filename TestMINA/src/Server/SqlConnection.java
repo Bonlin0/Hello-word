@@ -9,6 +9,8 @@ public class SqlConnection {
 
     private static String URL = "jdbc:mysql://123.207.173.192:3306/hello_word?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
  //  private static String URL = "jdbc:mysql://localhost:3306/helloword?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
+ // private static String URL = "jdbc:mysql://localhost:3306/helloword?useSSL=false&serverTimezone=UTC";
+
     private static String NAME = "root";
     private static String PASSWORD = "926b50985a";
   // private static String PASSWORD = "123456";
@@ -45,6 +47,7 @@ public class SqlConnection {
         if (conn != null) {
             try {
                 conn.close();
+                System.out.println("数据库连接关闭");
             } catch (SQLException e) {
                 e.printStackTrace();
                 conn = null;

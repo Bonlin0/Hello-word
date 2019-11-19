@@ -38,17 +38,21 @@ public class Main {
             acceptor.setHandler(new ServerHandle()); // 添加业务处理
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
-          //initDataBase();
+          initDataBase();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * 测试数据库连接用的initialdatabase
+     */
     public static void initDataBase() {
         SqlConnection sqlConnection=new SqlConnection();
         sqlConnection.TheSqlConnection();
         Connection conn=sqlConnection.conn;
-        SignUpRequest sur= new SignUpRequest("sairen@whu.edu.cn","1234567","chenyuan");
+        SignUpRequest sur= new SignUpRequest("12345@whu.edu.cn","1234567","chenyuan");
         UserNoPassword userNoPassword = new UserNoPassword(-1,sur.getNickName(),sur.getEmail());
         //TODO：数据库处理注册
         String email=sur.getEmail();
@@ -73,6 +77,7 @@ public class Main {
                 if(email.equals(rs.getString("email"))){
                     //已经存在这个邮箱名了
                     userNoPassword.setValid(false);
+                    System.out.println("该邮箱已经已经存在");
                 }
             }
             if(user_id==-1){
@@ -90,6 +95,7 @@ public class Main {
                 statement.setObject(3,password);
                 statement.setObject(4,email);
                 statement.execute();
+                System.out.println("成功创建用户");
                 //  stmt.execute("insert into user(user_id,user_name,password,email) values(?,?,?,?)", new String[]{user_id + "", user_name, password, email});
             }
         } catch (SQLException e) {
@@ -99,10 +105,6 @@ public class Main {
         // 完成后关闭数据库链接
         try {
             rs.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();

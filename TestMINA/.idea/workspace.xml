@@ -7,29 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a098c3b-b55b-4946-8253-9f438178e556" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/Common/CMDDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/Common/CMDDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/CommonClass/SignUpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/CommonClass/SignUpRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/ui/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/ui/login/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TestMINA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TestMINA.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/MINAlib.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-java-5.0.8-bin.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-java-5.0.8.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TestMINA/Server/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/Server/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/Server/ServerHandle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/Server/ServerHandle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/Server/ServerDbutil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/Server/ServerDbutil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TestMINA/Server/SqlConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/Server/SqlConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/cn/adminzero/helloword/CommonClass/SignUpRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/cn/adminzero/helloword/CommonClass/SignUpRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/cn/adminzero/helloword/CommonClass/UserNoPassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/cn/adminzero/helloword/CommonClass/UserNoPassword.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/info.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/warn.log" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/warn.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/ServerDbutil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerDbutil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerHandle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/SqlConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/SqlConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/adminzero/helloword/CommonClass/SignUpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/adminzero/helloword/CommonClass/SignUpRequest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+            <state relative-caret-position="428">
+              <caret line="64" column="23" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -74,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Server/ServerDbutil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
-              <caret line="51" column="134" selection-start-line="51" selection-start-column="134" selection-end-line="51" selection-end-column="134" />
+            <state relative-caret-position="822">
+              <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,8 +91,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server/SqlConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+            <state relative-caret-position="200">
+              <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -144,8 +130,8 @@
         <option value="$PROJECT_DIR$/src/cn/adminzero/helloword/CommonClass/SignUpRequest.java" />
         <option value="$PROJECT_DIR$/src/Server/ServerHandle.java" />
         <option value="$PROJECT_DIR$/src/Server/ServerDbutil.java" />
-        <option value="$PROJECT_DIR$/src/Server/Main.java" />
         <option value="$PROJECT_DIR$/src/Server/SqlConnection.java" />
+        <option value="$PROJECT_DIR$/src/Server/Main.java" />
       </list>
     </option>
   </component>
@@ -158,7 +144,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-14" />
     <option name="y" value="-14" />
     <option name="width" value="1852" />
@@ -350,8 +336,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1228" height="783" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18205129" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18205129" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -360,7 +347,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32973805" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4991453" visible="true" weight="0.55469954" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4991453" visible="true" weight="0.32511556" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990755" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -487,13 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-13/lib/src.zip!/java.base/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -503,18 +483,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/ServerDbutil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="51" column="134" selection-start-line="51" selection-start-column="134" selection-end-line="51" selection-end-column="134" />
+        <state relative-caret-position="822">
+          <caret line="58" column="42" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="64" column="23" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server/SqlConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+        <state relative-caret-position="200">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

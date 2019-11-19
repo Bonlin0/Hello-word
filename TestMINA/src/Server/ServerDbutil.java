@@ -37,6 +37,7 @@ public class ServerDbutil {
                 if(email.equals(rs.getString("email"))){
                     //已经存在这个邮箱名了
                     userNoPassword.setValid(false);
+                    System.out.println("该邮箱已经已经存在");
                 }
             }
             if(user_id==-1){
@@ -55,6 +56,7 @@ public class ServerDbutil {
                 statement.setObject(3,password);
                 statement.setObject(4,email);
                 statement.execute();
+                System.out.println("成功创建用户");
             }
         } catch (SQLException e) {
             e.printStackTrace();
