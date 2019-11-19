@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import cn.adminzero.helloword.App;
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Utils.SerializeUtils;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
@@ -224,7 +225,6 @@ public class LoginActivity extends AppCompatActivity {
                         MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                         loginResult.setValue(new LoginResult(userNoPassword));
                         userNoPassword_global = userNoPassword;
-
                     } catch (IOException e) {
                         Log.e("tag","序列化失败!");
                         e.printStackTrace();

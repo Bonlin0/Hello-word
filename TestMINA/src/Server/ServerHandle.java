@@ -70,7 +70,6 @@ public class ServerHandle extends IoHandlerAdapter {
 
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     UserNoPassword userNoPassword=ServerDbutil.signup(sur);
-
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     break;
             }

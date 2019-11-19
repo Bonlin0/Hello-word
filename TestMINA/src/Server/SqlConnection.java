@@ -7,7 +7,10 @@ import java.sql.Statement;
 
 public class SqlConnection {
 
-    private static String URL = "jdbc:mysql://123.207.173.192:3306/hello_word?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
+
+  //  private static String URL = "jdbc:mysql://123.207.173.192:3306/hello_word";
+
+      private static String URL = "jdbc:mysql://123.207.173.192:3306/hello_word?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
  //  private static String URL = "jdbc:mysql://localhost:3306/helloword?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
  // private static String URL = "jdbc:mysql://localhost:3306/helloword?useSSL=false&serverTimezone=UTC";
 
@@ -27,6 +30,7 @@ public class SqlConnection {
              MySQL 8.0 以上版本不需要建立 SSL 连接的，需要显示关闭。
              最后还需要设置 CST。
              */
+          //  Class.forName("com.mysql.jdbc.Driver");
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("加载驱动成功！");
         } catch (ClassNotFoundException e) {

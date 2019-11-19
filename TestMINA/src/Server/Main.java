@@ -38,7 +38,7 @@ public class Main {
             acceptor.setHandler(new ServerHandle()); // 添加业务处理
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
-          initDataBase();
+         // initDataBase();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class Main {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String sql_qurey= "SELECT * FROM user";
+        String sql_qurey= "SELECT * FROM USER";
         ResultSet rs = null;
         try {
             rs = stmt.executeQuery(sql_qurey);
@@ -89,7 +89,7 @@ public class Main {
             }
             if(userNoPassword.isValid()) {
                 //如果合法 就插入该用户数据
-                PreparedStatement statement=conn.prepareStatement("insert into user(user_id,user_name,password,email) values(?,?,?,?)", new String[]{user_id + "", user_name, password, email});
+                PreparedStatement statement=conn.prepareStatement("insert into USER(user_id,user_name,password,email) values(?,?,?,?)", new String[]{user_id + "", user_name, password, email});
                 statement.setObject(1,user_id);
                 statement.setObject(2,user_name);
                 statement.setObject(3,password);
