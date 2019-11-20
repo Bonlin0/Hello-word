@@ -30,7 +30,7 @@ public class HomePageFragment extends Fragment {
         // 因为UserNoPassword定义中 days 是基本类型 int 而不是 Integer包装类
         // 所以需要这里处理一下以转字符串
         String daysStr = new Integer(days).toString();
-        number_of_punch_days_textView.setText("daysStr");
+        number_of_punch_days_textView.setText(daysStr);
         //TODO 处理用户已完成单词和目标完成单词（与称号机制挂钩）
 
 
