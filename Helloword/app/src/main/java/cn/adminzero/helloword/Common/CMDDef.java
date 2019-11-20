@@ -54,6 +54,7 @@ public class CMDDef {
 
     //回应注册请求结果
     public static final short REPLY_SIGN_UP_REQUEST = 0x2000;
+    public static final short REPLY_SIGN_IN_REQUEST = 0x2001;
 
 
     //客户端控制指令定义区
@@ -61,4 +62,5 @@ public class CMDDef {
 
     //注册请求
     public static final short SIGN_UP_REQUESET = (short) 0x8000;
+    public static final short SIGN_IN_REQUESET = (short) 0x8001;
 }
