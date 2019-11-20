@@ -30,6 +30,9 @@
     <string name="login_failed">"Login failed"</string>
     <string name="user_nickname">用户名</string>
     <string name="invalid_userNickName">用户昵称不得为空</string>
+
+    <string name="invalid_sign_up">抱歉，您所注册的邮箱已被注册，请更换邮箱后重试</string>
+
     <string name="title_activity_check_out_words">我的词库</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>

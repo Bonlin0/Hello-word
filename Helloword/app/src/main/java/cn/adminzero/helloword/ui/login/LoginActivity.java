@@ -99,6 +99,8 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.GONE);
                 if (loginResult.getError() != null) {
                     showLoginFailed(loginResult.getError());
+                    // 如果是Error 直接退出
+                    return;
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
@@ -196,7 +198,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(UserNoPassword userNoPassword) {
-        String welcome = getString(R.string.welcome) + userNoPassword_global.getUserName();
+        String welcome = getString(R.string.welcome) + userNoPassword_global.getUserNickName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
@@ -206,6 +208,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {
+        // 清空邮箱输入
+        EditText usernameEditText = findViewById(R.id.username);
+        usernameEditText.setText("");
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
@@ -220,9 +225,16 @@ public class LoginActivity extends AppCompatActivity {
                     byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
                     try {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
-                        MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
-                        userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
-                        loginResult.setValue(new LoginResult(userNoPassword));
+                        //如果收到的UserNoPassword不合法，检查并以error报出
+                        if(!userNoPassword.isValid())                        {
+                            MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
+                            loginResult.setValue(new LoginResult(R.string.invalid_sign_up));
+                        }
+                        else {
+                            MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
+                            userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
+                            loginResult.setValue(new LoginResult(userNoPassword));
+                        }
 
                     } catch (IOException e) {
                         Log.e("tag","序列化失败!");
