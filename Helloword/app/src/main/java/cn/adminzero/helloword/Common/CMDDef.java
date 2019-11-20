@@ -25,10 +25,16 @@ public class CMDDef {
     public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
     public static final String INTENT_PUT_EXTRA_CMD = "CMD";
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";
-   // public static final String IP = "192.168.37.1";//陈渊测试的本机IP
-   // public static final int PORT = 3006;//陈渊测试的本机端口
+    //  public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word";
+    public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
+    //  private static String URL = "jdbc:mysql://localhost:3306/helloword?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
+    // private static String URL = "jdbc:mysql://localhost:3306/helloword?useSSL=false&serverTimezone=UTC";
+    public static final String DBDriver = "com.mysql.cj.jdbc.Driver";
+    public static final String DBNAME = "root";
+    public static final String DBPASSWD = "926b50985a";
+
     public static final String IP = "10.0.2.2";
-   // public static final String IP = "123.207.173.192";
+    //  public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -50,15 +56,17 @@ public class CMDDef {
 
 
     //服务端控制指令定义区
-    public static final short REPLY_FILE_TEST = 0x1000;
 
     //回应注册请求结果
     public static final short REPLY_SIGN_UP_REQUEST = 0x2000;
+    public static final short REPLY_SIGN_IN_REQUEST = 0x2001;
 
 
     //客户端控制指令定义区
-    public static final short REQUEST_FILE_TEST = 0x7000;
+
 
     //注册请求
     public static final short SIGN_UP_REQUESET = (short) 0x8000;
+    public static final short SIGN_IN_REQUESET = (short) 0x8001;
 }
+

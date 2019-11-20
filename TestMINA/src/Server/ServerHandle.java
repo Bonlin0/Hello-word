@@ -4,6 +4,7 @@ import Common.CMDDef;
 import Common.Message;
 import Common.Utils.SendMsgMethod;
 import DB.ServerDbutil;
+import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import org.apache.log4j.Logger;
@@ -20,7 +21,7 @@ import org.apache.mina.filter.FilterEvent;
  * <EndDescription>
  */
 public class ServerHandle extends IoHandlerAdapter {
-    public static Logger logger = Logger.getLogger(ServerHandle.class);
+    private static Logger logger = Logger.getLogger(ServerHandle.class);
 
     public ServerHandle() {
         super();
@@ -65,10 +66,14 @@ public class ServerHandle extends IoHandlerAdapter {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
                 case CMDDef.SIGN_UP_REQUESET:
-
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
-                    UserNoPassword userNoPassword= ServerDbutil.signup(sur);
+                    UserNoPassword userNoPassword = ServerDbutil.signup(sur);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
+                    break;
+                case CMDDef.SIGN_IN_REQUESET:
+                    SignInRequest sir = (SignInRequest) mes.getObj();
+                    userNoPassword = ServerDbutil.signin(sir);
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                     break;
             }
         } else {

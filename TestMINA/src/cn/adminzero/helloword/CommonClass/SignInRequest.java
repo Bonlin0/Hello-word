@@ -1,13 +1,18 @@
 package cn.adminzero.helloword.CommonClass;
 
-public class SignInRequest {
+import java.io.Serializable;
+
+public class SignInRequest implements Serializable {
+    private final long serialVersionUID = 1L;
     String email="";
     String password="";
     public  SignInRequest(String email,String password){
         this.email=email;
         this.password=password;
     }
-
+    public long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     public String getEmail() {
         return email;
     }

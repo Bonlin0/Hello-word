@@ -1,6 +1,5 @@
 package DB;
 
-import DB.SqlConnection;
 import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
@@ -8,22 +7,17 @@ import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import java.sql.*;
 
 public class ServerDbutil {
-    static SqlConnection sqlConnection=new SqlConnection();
-    static Connection conn=null;
 
     public static UserNoPassword signup(SignUpRequest sur){
-        sqlConnection.TheSqlConnection();
-        conn=sqlConnection.conn;
         UserNoPassword userNoPassword = new UserNoPassword(-1,sur.getNickName(),sur.getEmail());
-        //TODO：数据库处理注册
         String email=sur.getEmail();
         String user_name=sur.getNickName();
         String password= sur.getPassword();
-        int user_id=-1;
+        int user_id= -1;
         //  userNoPassword.setValid(false);
         Statement stmt = null;
         try {
-            stmt = conn.createStatement();
+            stmt = GlobalConn.getConn().createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,13 +45,12 @@ public class ServerDbutil {
             if(userNoPassword.isValid()) {
                 //如果合法 就插入该用户数据
                // stmt.execute("insert into user(user_id,user_name,password,email) values(?,?,?,?)", new String[]{user_id + "", user_name, password, email});
-                PreparedStatement statement=conn.prepareStatement("insert into USER(user_id,user_name,password,email) values(?,?,?,?)");
+                PreparedStatement statement=GlobalConn.getConn().prepareStatement("insert into USER(user_id,user_name,password,email) values(?,?,?,?)");
                 statement.setObject(1,user_id);
                 statement.setObject(2,user_name);
                 statement.setObject(3,password);
                 statement.setObject(4,email);
                 statement.execute();
-                System.out.println("成功创建用户");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,13 +67,10 @@ public class ServerDbutil {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        sqlConnection.SqlConnectionClose();
         return userNoPassword;
     }
 
-    public UserNoPassword signin(SignInRequest sur){
-        sqlConnection.TheSqlConnection();
-        conn=sqlConnection.conn;
+    public static UserNoPassword signin(SignInRequest sur) throws SQLException {
         UserNoPassword userNoPassword = new UserNoPassword(sur.getEmail());
         //TODO：数据库处理注册
         String email=sur.getEmail();
@@ -88,16 +78,13 @@ public class ServerDbutil {
         int user_id=-1;
         //  userNoPassword.setValid(false);
 
-        Statement stmt = null;
-        try {
-            stmt =conn.createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        String sql_qurey= "SELECT * FROM USER WHERE email="+email;
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("SELECT * FROM USER WHERE email=? ");
+        stmt.setObject(1,email);
+       // String sql_qurey= "SELECT * FROM USER WHERE email="+email;
         ResultSet rs = null;
         try {
-            rs = stmt.executeQuery(sql_qurey);
+            rs = stmt.executeQuery();
+            String password_q="";
             // 展开结果集数据库
             while(rs.next()){
                 // 通过字段检索,搜索到最后一个字段
@@ -105,6 +92,8 @@ public class ServerDbutil {
                     //密码正确
                    // password=rs.getString("password");
                     user_id= rs.getInt("user_id");
+                    password_q= rs.getString("password");
+
                     userNoPassword.UserNoPassword(
                             rs.getInt("user_id"),
                             rs.getString("user_name"),
@@ -113,38 +102,31 @@ public class ServerDbutil {
                             rs.getInt("goal"),
                             rs.getInt("days"),
                             rs.getInt("group_id"),
-                            rs.getInt("level"),
+                            rs.getInt("user_level"),
                             rs.getInt("points")
                             );
-
                 }
 
             }
             if(user_id==-1){
                 //没有此邮箱地址
+                System.out.println("邮箱错误！");
                 userNoPassword.setValid(false);
-                System.out.println("没有此用户！");
             }
-            else if(!password.equals(rs.getString("password"))){
+            else if(!password.equals(password_q)){
                 //密码错误
-                userNoPassword.setValid(false);
                 System.out.println("密码错误！");
+                userNoPassword.setValid(false);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        // 完成后关闭数据库链接
         try {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        sqlConnection.SqlConnectionClose();
         return userNoPassword;
     }
-
-
-
 }

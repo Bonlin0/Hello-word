@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -44,12 +45,16 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private IntentFilter intentFilter;
 
+    private SharedPreferences sharedPreferences;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginActivityBroadcastReceiver = new LoginActivityBroadcastReceiver();
         intentFilter = new IntentFilter(CMDDef.MINABroadCast);
+        sharedPreferences = super.getSharedPreferences("LoginSharedPreference",MODE_PRIVATE);
 
         Intent intent = new Intent(LoginActivity.this, MinaService.class);
         //开启MINA服务
@@ -106,6 +111,13 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
+
+                // 加入sharedPreference 以后检查自动登录
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("isLogin",true);
+                editor.putString("storedUserEmail",usernameEditText.getText().toString());
+                editor.putString("storedPassword",passwordEditText.getText().toString());
+                editor.commit();
 
                 //Complete and destroy login activity once successful
                 Intent intentMainActivity = new Intent(LoginActivity.this, MainActivity.class);
@@ -189,6 +201,19 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString(), userNickNameEditText.getText().toString(), signUpSwitch.isChecked());
             }
         });
+
+
+        //检查SharedPreference 如果有，则自动填充尝试登录
+        if(sharedPreferences.getBoolean("isLogin",false)){
+            usernameEditText.setText(sharedPreferences.getString("storedUserEmail",""));
+            passwordEditText.setText(sharedPreferences.getString("storedPassword",""));
+            signUpSwitch.setChecked(false);
+            loginViewModel.login(
+                    usernameEditText.getText().toString(),
+                    passwordEditText.getText().toString());
+            
+        }
+
     }
 
     @Override
@@ -221,6 +246,7 @@ public class LoginActivity extends AppCompatActivity {
             short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
             switch (cmd) {
                 case CMDDef.REPLY_SIGN_UP_REQUEST:
+                {
                     Log.e("tag", "" + cmd);
                     byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
                     try {
@@ -243,6 +269,32 @@ public class LoginActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     break;
+                }
+                case  CMDDef.REPLY_SIGN_IN_REQUEST:
+                {
+                    Log.e("tag", "" + cmd);
+                    byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
+                    try {
+                        UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
+                        //如果收到的UserNoPassword不合法，检查并以error报出
+                        if(!userNoPassword.isValid())                        {
+                            MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
+                            loginResult.setValue(new LoginResult(R.string.invalid_sign_in));
+                        }
+                        else {
+                            MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
+                            userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
+                            loginResult.setValue(new LoginResult(userNoPassword));
+                        }
+                    } catch (IOException e) {
+                        Log.e("tag","序列化失败!");
+                        e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+
             }
         }
     }

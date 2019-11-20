@@ -56,7 +56,6 @@ public class UserNoPassword implements Serializable {
         this.groupID=groupID;
         this.level=level;
         this.pKPoint=pKPoint;
-
     }
 
     public boolean isValid() {
