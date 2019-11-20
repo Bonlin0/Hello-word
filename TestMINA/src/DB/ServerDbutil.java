@@ -70,7 +70,7 @@ public class ServerDbutil {
         return userNoPassword;
     }
 
-    public UserNoPassword signin(SignInRequest sur){
+    public static UserNoPassword signin(SignInRequest sur){
         UserNoPassword userNoPassword = new UserNoPassword(sur.getEmail());
         //TODO：数据库处理注册
         String email=sur.getEmail();
