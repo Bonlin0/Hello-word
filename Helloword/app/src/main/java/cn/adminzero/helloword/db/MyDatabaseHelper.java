@@ -40,11 +40,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                     "user_level int default(0)," +
                     "points int default(0) )";
 
-    public static final String CREATE_HISTORY =
-            "create table " + "HISTORY_" + getuserid() + "(" +
-                    "word_id integer primary key," +
-                    "level int default(0)," +
-                    "yesterday integer default(0))";
 
     public static final String CREATE_USER_HISTORY = "" +
             "create table USER_HISTORY(" +
@@ -69,6 +64,11 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                     "exchange text," +
                     "tag integer," +
                     "sentence text)";
+    public static final String CREATE_HISTORY =
+            "create table " + "HISTORY_" + getuserid() + "(" +
+                    "word_id integer primary key," +
+                    "level int default(0)," +
+                    "yesterday integer default(0))";
 
     private Context context;
     private String name;

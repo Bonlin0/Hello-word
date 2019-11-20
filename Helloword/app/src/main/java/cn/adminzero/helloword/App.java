@@ -99,13 +99,13 @@ public class App extends Application {
             String line = null;
             ContentValues contentValues = new ContentValues();
 
-            int word_id = 0;
+            short word_id = 0;
             String word = null;
             String phonetic = null;
             String definition = null;
             String translation = null;
             String exchange = null;
-            int tag = 0;
+            Short tag = 0;
             /**
              * 主动开启事务
              * */
@@ -113,13 +113,13 @@ public class App extends Application {
             while ((line = br.readLine()) != null) {
                 buffer = line.split("#", -1);
                 assert (buffer.length == 7);
-                word_id = Integer.valueOf(buffer[0]);
+                word_id = Short.valueOf(buffer[0]);
                 word = buffer[1];
                 phonetic = buffer[2];
-                definition = buffer[3];
-                translation = buffer[4];
+                definition = buffer[3].replace("\\n","\n");
+                translation = buffer[4].replace("\\n","\n");
                 exchange = buffer[5];
-                tag = Integer.valueOf(buffer[6]);
+                tag = Short.valueOf(buffer[6]);
                 /** 插入单词信息数据库！*/
                 contentValues.put("word_id", word_id);
                 contentValues.put("word", word);

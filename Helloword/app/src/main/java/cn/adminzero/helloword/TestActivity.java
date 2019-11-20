@@ -38,4 +38,5 @@ public class TestActivity extends BaseActivity implements View.OnClickListener {
                 mediaPlyUtil.playword(word);
         }
     }
+
 }

@@ -10,7 +10,9 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+
 import androidx.annotation.RequiresApi;
+
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
@@ -62,8 +64,8 @@ public class DbUtil {
         Log.d(TAG, "删除数据库");
         return App.getContext().deleteDatabase(dbname);
 
-
     }
+
 
     /**
      * 添加用户
