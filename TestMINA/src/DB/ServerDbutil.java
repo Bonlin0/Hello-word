@@ -70,7 +70,7 @@ public class ServerDbutil {
         return userNoPassword;
     }
 
-    public static UserNoPassword signin(SignInRequest sur){
+    public static UserNoPassword signin(SignInRequest sur) throws SQLException {
         UserNoPassword userNoPassword = new UserNoPassword(sur.getEmail());
         //TODO：数据库处理注册
         String email=sur.getEmail();
@@ -78,16 +78,13 @@ public class ServerDbutil {
         int user_id=-1;
         //  userNoPassword.setValid(false);
 
-        Statement stmt = null;
-        try {
-            stmt =GlobalConn.getConn().createStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        String sql_qurey= "SELECT * FROM USER WHERE email="+email;
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("SELECT * FROM USER WHERE email=? ");
+        stmt.setObject(1,email);
+       // String sql_qurey= "SELECT * FROM USER WHERE email="+email;
         ResultSet rs = null;
         try {
-            rs = stmt.executeQuery(sql_qurey);
+            rs = stmt.executeQuery();
+            String password_q="";
             // 展开结果集数据库
             while(rs.next()){
                 // 通过字段检索,搜索到最后一个字段
@@ -95,6 +92,8 @@ public class ServerDbutil {
                     //密码正确
                    // password=rs.getString("password");
                     user_id= rs.getInt("user_id");
+                    password_q= rs.getString("password");
+
                     userNoPassword.UserNoPassword(
                             rs.getInt("user_id"),
                             rs.getString("user_name"),
@@ -103,7 +102,7 @@ public class ServerDbutil {
                             rs.getInt("goal"),
                             rs.getInt("days"),
                             rs.getInt("group_id"),
-                            rs.getInt("level"),
+                            rs.getInt("user_level"),
                             rs.getInt("points")
                             );
                 }
@@ -111,10 +110,12 @@ public class ServerDbutil {
             }
             if(user_id==-1){
                 //没有此邮箱地址
+                System.out.println("邮箱错误！");
                 userNoPassword.setValid(false);
             }
-            else if(!password.equals(rs.getString("password"))){
+            else if(!password.equals(password_q)){
                 //密码错误
+                System.out.println("密码错误！");
                 userNoPassword.setValid(false);
             }
         } catch (SQLException e) {

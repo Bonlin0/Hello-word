@@ -10,7 +10,9 @@ public class SignInRequest implements Serializable {
         this.email=email;
         this.password=password;
     }
-
+    public long getSerialVersionUID() {
+        return serialVersionUID;
+    }
     public String getEmail() {
         return email;
     }
