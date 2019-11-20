@@ -115,6 +115,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //TODO 当主活动结束的时候备份部分信息并发送至服务器
         stopService(new Intent(this, MinaService.class));
     }
 
@@ -155,11 +156,13 @@ public class MainActivity extends BaseActivity {
         //TODO 增加刷新的动作 目前可以取消之后要progressDialog.setCancelable(false);
     }
 
+    // 打开我的词库的按钮 by whl
     public void onClickWordsButton(View view) {
-        //TODO 修改打开活动为词库活动 目前为测试login
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, CheckOutWordsActivity.class);
         startActivity(intent);
     }
+
+
 
 
 }

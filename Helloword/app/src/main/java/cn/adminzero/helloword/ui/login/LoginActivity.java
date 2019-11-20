@@ -29,7 +29,6 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-import cn.adminzero.helloword.App;
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Utils.SerializeUtils;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
@@ -107,7 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                 setResult(Activity.RESULT_OK);
 
                 //Complete and destroy login activity once successful
-                // TODO 打开主活动
                 Intent intentMainActivity = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intentMainActivity);
                 finish();
@@ -198,7 +196,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(UserNoPassword userNoPassword) {
-        String welcome = getString(R.string.welcome) + userNoPassword.getUserNickName();
+        String welcome = getString(R.string.welcome) + userNoPassword_global.getUserName();
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
@@ -223,8 +221,9 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
                         MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
+                        userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
                         loginResult.setValue(new LoginResult(userNoPassword));
-                        userNoPassword_global = userNoPassword;
+
                     } catch (IOException e) {
                         Log.e("tag","序列化失败!");
                         e.printStackTrace();

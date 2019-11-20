@@ -43,7 +43,7 @@ public class UserNoPassword implements Serializable {
         this.user_id = user_id;
     }
 
-    public String getUserNickName() {
+    public String getUserName() {
         return user_name;
     }
 
