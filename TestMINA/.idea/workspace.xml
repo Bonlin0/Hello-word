@@ -6,7 +6,30 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="0a098c3b-b55b-4946-8253-9f438178e556" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="0a098c3b-b55b-4946-8253-9f438178e556" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/CheckOutWordsActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/ui/main/MyWordsLearningFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/ui/main/PageViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/ui/main/SectionsPagerAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Helloword/app/src/main/res/layout/activity_check_out_words.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Helloword/app/src/main/res/layout/fragment_check_out_words.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Helloword/app/src/main/res/values-w820dp/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/java/cn/adminzero/helloword/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Helloword/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Helloword/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/Server/ServerHandle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TestMINA/Server/ServerHandle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/debug.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/info.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TestMINA/com/hp/log/warn.log" beforeDir="false" />
+    </list>
+>>>>>>> f69241a1b7735fceae6a07b008dcafa3b078bd73
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +42,7 @@
   <component name="FavoritesManager">
     <favorites_list name="TestMINA" />
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -110,6 +134,8 @@
       </file>
     </leaf>
   </component>
+=======
+>>>>>>> f69241a1b7735fceae6a07b008dcafa3b078bd73
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -121,19 +147,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/cn/adminzero/helloword/CommonClass/SignInRequest.java" />
-        <option value="$PROJECT_DIR$/src/cn/adminzero/helloword/CommonClass/UserNoPassword.java" />
-        <option value="$PROJECT_DIR$/src/cn/adminzero/helloword/CommonClass/SignUpRequest.java" />
-        <option value="$PROJECT_DIR$/src/Server/SqlConnection.java" />
-        <option value="$PROJECT_DIR$/src/Server/Main.java" />
-        <option value="$PROJECT_DIR$/src/Server/ServerDbutil.java" />
-        <option value="$PROJECT_DIR$/src/Server/ServerHandle.java" />
-      </list>
-    </option>
-  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -143,67 +156,13 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-14" />
-    <option name="y" value="-14" />
-    <option name="width" value="1852" />
-    <option name="height" value="1418" />
-  </component>
   <component name="ProjectId" id="1SdZkWc3S55k9vwW43rQAxKjU7S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="TestMINA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestMINA" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestMINA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestMINA" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestMINA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestMINA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestMINA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestMINA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="CommonClass" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestMINA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestMINA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestMINA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestMINA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-8.0.16.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -321,6 +280,8 @@
       <workItem from="1573714890635" duration="2592000" />
       <workItem from="1573720950952" duration="731000" />
       <workItem from="1573973344704" duration="7799000" />
+      <workItem from="1574210604778" duration="15000" />
+      <workItem from="1574210716400" duration="1835000" />
     </task>
     <servers />
   </component>
@@ -333,6 +294,7 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+<<<<<<< HEAD
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1228" height="783" extended-state="7" />
     <editor active="true" />
@@ -392,6 +354,8 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
     </layout-to-restore>
   </component>
+=======
+>>>>>>> f69241a1b7735fceae6a07b008dcafa3b078bd73
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -401,12 +365,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -428,6 +386,7 @@
       </map>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/TestMINA.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -508,6 +467,8 @@
       </provider>
     </entry>
   </component>
+=======
+>>>>>>> f69241a1b7735fceae6a07b008dcafa3b078bd73
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
