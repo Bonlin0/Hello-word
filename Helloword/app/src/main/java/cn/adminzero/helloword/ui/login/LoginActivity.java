@@ -286,7 +286,6 @@ public class LoginActivity extends AppCompatActivity {
                             userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
                             loginResult.setValue(new LoginResult(userNoPassword));
                         }
-
                     } catch (IOException e) {
                         Log.e("tag","序列化失败!");
                         e.printStackTrace();

@@ -67,13 +67,13 @@ public class ServerHandle extends IoHandlerAdapter {
             switch (mes.getCMD()) {
                 case CMDDef.SIGN_UP_REQUESET:
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
-                    UserNoPassword userNoPassword= ServerDbutil.signup(sur);
+                    UserNoPassword userNoPassword = ServerDbutil.signup(sur);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     break;
                 case CMDDef.SIGN_IN_REQUESET:
-                    SignInRequest sir=(SignInRequest)mes.getObj();
-                     userNoPassword=ServerDbutil.signin(sir);
-                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST,userNoPassword));
+                    SignInRequest sir = (SignInRequest) mes.getObj();
+                    userNoPassword = ServerDbutil.signin(sir);
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                     break;
             }
         } else {

@@ -3,7 +3,9 @@ package cn.adminzero.helloword.NetWork;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import android.util.Log;
 
 import org.apache.mina.core.future.ConnectFuture;
@@ -32,6 +34,7 @@ public class ConnectionManager {
     private NioSocketConnector mConnection;
     private IoSession mSession;
     private InetSocketAddress mAddress;
+
     public ConnectionManager(ConnectionConfig config) {
         this.mConfig = config;
         this.mContext = new WeakReference<>(config.getContext());
@@ -41,7 +44,7 @@ public class ConnectionManager {
     private void init() {
         mAddress = new InetSocketAddress(mConfig.getIp(), mConfig.getPort());
         mConnection = new NioSocketConnector();
-     //   mConnection.getSessionConfig().setReadBufferSize(mConfig.getReadBufferSize());
+        //   mConnection.getSessionConfig().setReadBufferSize(mConfig.getReadBufferSize());
         //设置过滤链
         LoggingFilter lf = new LoggingFilter();
         lf.setMessageReceivedLogLevel(LogLevel.DEBUG);
@@ -150,13 +153,20 @@ public class ConnectionManager {
             super.messageReceived(session, message);
             Message mes = (Message) message;
             switch (mes.getCMD()) {
-                case CMDDef.REPLY_SIGN_UP_REQUEST:
-                    UserNoPassword userNoPassword = (UserNoPassword)mes.getObj();
+                case CMDDef.REPLY_SIGN_UP_REQUEST: {
                     Intent intent = new Intent(CMDDef.MINABroadCast);
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD,mes.getCMD());
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, mes.getCMD());
                     intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, mes.getData());
                     LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
-                    break;
+                }
+                break;
+                case CMDDef.REPLY_SIGN_IN_REQUEST: {
+                    Intent intent = new Intent(CMDDef.MINABroadCast);
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, mes.getCMD());
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA,mes.getData());
+                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+                }
+                break;
                 default:
             }
         }

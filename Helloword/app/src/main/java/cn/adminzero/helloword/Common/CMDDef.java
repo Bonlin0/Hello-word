@@ -33,8 +33,8 @@ public class CMDDef {
     public static final String DBNAME = "root";
     public static final String DBPASSWD = "926b50985a";
 
-   // public static final String IP = "10.0.2.2";
-      public static final String IP = "123.207.173.192";
+    public static final String IP = "10.0.2.2";
+    //  public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
