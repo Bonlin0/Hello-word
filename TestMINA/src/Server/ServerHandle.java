@@ -20,7 +20,7 @@ import org.apache.mina.filter.FilterEvent;
  * <EndDescription>
  */
 public class ServerHandle extends IoHandlerAdapter {
-    public static Logger logger = Logger.getLogger(ServerHandle.class);
+    private static Logger logger = Logger.getLogger(ServerHandle.class);
 
     public ServerHandle() {
         super();
@@ -65,7 +65,6 @@ public class ServerHandle extends IoHandlerAdapter {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
                 case CMDDef.SIGN_UP_REQUESET:
-
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     UserNoPassword userNoPassword= ServerDbutil.signup(sur);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
