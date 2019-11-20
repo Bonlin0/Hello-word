@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -34,8 +35,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
+        // 设置底部导航和页面滑动
         final BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         final ViewPager viewPager = findViewById(R.id.main_view_pager);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -79,17 +79,39 @@ public class MainActivity extends BaseActivity {
             }
         });
         list = new ArrayList<>();
-        list.add(new HomePageFragment() );
-        list.add(new ExploreFragment() );
-        list.add(new AboutMeFragment() );
+        HomePageFragment homePageFragment = new HomePageFragment();
+        ExploreFragment exploreFragment = new ExploreFragment();
+        AboutMeFragment aboutMeFragment = new AboutMeFragment();
+        list.add(homePageFragment );
+        list.add(exploreFragment );
+        list.add(aboutMeFragment );
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);  //初始化显示第一个页面
 
 
-        /** only for debug*/
-//        Test test = new Test();
-//        test.test();
+        // 根据LoginActivity获取到的用户信息刷新UI
+        View view = homePageFragment.getView();
+
+        TextView number_of_punch_days_textView = view.findViewById(R.id.number_of_punch_days);
+        number_of_punch_days_textView.setText(App.userNoPassword_global.getDays());
+
+        /*
+        TextView pkPointNumberTextView_textView = findViewById(R.id.pkPointNumberTextView);
+        pkPointNumberTextView_textView.setText(App.userNoPassword_global.getpKPoint());
+
+        TextView userNameTextView = findViewById(R.id.userNameTextView);
+        userNameTextView.setText(App.userNoPassword_global.getUserNickName());
+
+        TextView userIDText = findViewById(R.id.userIDText);
+        userIDText.setText("ID: "+App.userNoPassword_global.getUserID());
+
+        TextView dakaDaysText = findViewById(R.id.dakaDaysText);
+        dakaDaysText.setText("打卡  "+ App.userNoPassword_global.getDays() +" 天");*/
+
+        // only for debug
+        // Test test = new Test();
+        // test.test();
         // TestActivityEntry();//进入测试活动
 
     }
