@@ -3,6 +3,7 @@ package Server;
 import Common.CMDDef;
 import Common.Message;
 import Common.Utils.SendMsgMethod;
+import DB.ServerDbutil;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import org.apache.log4j.Logger;
@@ -10,9 +11,6 @@ import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.FilterEvent;
-
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 /**
  * @author: 王翔
@@ -69,7 +67,7 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.SIGN_UP_REQUESET:
 
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
-                    UserNoPassword userNoPassword=ServerDbutil.signup(sur);
+                    UserNoPassword userNoPassword= ServerDbutil.signup(sur);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     break;
             }

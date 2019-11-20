@@ -2,6 +2,7 @@ package Server;
 
 import Common.*;
 
+import DB.SqlConnection;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import org.apache.log4j.Logger;

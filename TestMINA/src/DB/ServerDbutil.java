@@ -1,5 +1,6 @@
-package Server;
+package DB;
 
+import DB.SqlConnection;
 import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
