@@ -25,10 +25,11 @@ public class CMDDef {
     public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
     public static final String INTENT_PUT_EXTRA_CMD = "CMD";
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";
+  //  public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word";
     public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
     //  private static String URL = "jdbc:mysql://localhost:3306/helloword?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
     // private static String URL = "jdbc:mysql://localhost:3306/helloword?useSSL=false&serverTimezone=UTC";
-
+    public static final String DBDriver = "com.mysql.cj.jdbc.Driver";
     public static final String DBNAME = "root";
     public static final String DBPASSWD = "926b50985a";
 

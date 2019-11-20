@@ -3,8 +3,6 @@ package Server;
 import Common.*;
 
 import DB.GlobalConn;
-import cn.adminzero.helloword.CommonClass.SignUpRequest;
-import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
@@ -14,7 +12,6 @@ import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import java.net.InetSocketAddress;
-import java.sql.*;
 
 
 public class Main {

@@ -1,7 +1,6 @@
 package DB;
 
 import Common.CMDDef;
-import Server.ServerHandle;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -27,23 +26,25 @@ public class GlobalConn {
         }
     }
 
-    public static synchronized void initDBConnection(){
+    public static synchronized void initDBConnection() throws ClassNotFoundException {
         /**
          1、MySQL 8.0 以上版本驱动包版本 mysql-connector-java-8.0.16.jar。
          2、com.mysql.jdbc.Driver 更换为 com.mysql.cj.jdbc.Driver。
          MySQL 8.0 以上版本不需要建立 SSL 连接的，需要显示关闭。
          最后还需要设置 CST。
          */
-        //  Class.forName("com.mysql.jdbc.Driver");
+        //
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Class.forName("com.mysql.cj.jdbc.Driver");
+            new com.mysql.cj.jdbc.Driver();
+          //  Class.forName(CMDDef.DBDriver);
             conn = DriverManager.getConnection(CMDDef.DBURL, CMDDef.DBNAME, CMDDef.DBPASSWD);
-        }catch (ClassNotFoundException e){
-            logger.info("驱动加载失败!");
-        }catch (SQLException e){
+        } catch (SQLException e) {
             logger.info("数据库连接失败!");
         }
+
     }
+
     public static Connection getConn() {
         return conn;
     }
