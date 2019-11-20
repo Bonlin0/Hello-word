@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,10 @@ public class HomePageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
         /** 实例化 settingButton */
-        settingButton = view.findViewById(R.id.settings_about_me_button);
+        /*settingButton = view.findViewById(R.id.settings_about_me_button);
+        if (settingButton == null) {
+            Log.d(TAG, "onCreateView: ");
+        }*/
         TextView number_of_punch_days_textView = view.findViewById(R.id.number_of_punch_days);
         int days = App.userNoPassword_global.getDays();
         // 因为UserNoPassword定义中 days 是基本类型 int 而不是 Integer包装类
@@ -51,12 +55,15 @@ public class HomePageFragment extends Fragment {
         /**
          * 启动设置活动
          * */
-        settingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
-            }
-        });
+        /*if (settingButton != null) {
+            settingButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), SettingsActivity.class));
+                }
+            });
+        }*/
+
 
 
     }
