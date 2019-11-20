@@ -90,24 +90,12 @@ public class MainActivity extends BaseActivity {
         viewPager.setCurrentItem(0);  //初始化显示第一个页面
 
 
+
         // 根据LoginActivity获取到的用户信息刷新UI
-        View view = homePageFragment.getView();
 
-        TextView number_of_punch_days_textView = view.findViewById(R.id.number_of_punch_days);
-        number_of_punch_days_textView.setText(App.userNoPassword_global.getDays());
+        //TextView pkPointNumberTextView_textView = findViewById(R.id.pkPointNumberTextView);
+        //pkPointNumberTextView_textView.setText(App.userNoPassword_global.getpKPoint());
 
-        /*
-        TextView pkPointNumberTextView_textView = findViewById(R.id.pkPointNumberTextView);
-        pkPointNumberTextView_textView.setText(App.userNoPassword_global.getpKPoint());
-
-        TextView userNameTextView = findViewById(R.id.userNameTextView);
-        userNameTextView.setText(App.userNoPassword_global.getUserNickName());
-
-        TextView userIDText = findViewById(R.id.userIDText);
-        userIDText.setText("ID: "+App.userNoPassword_global.getUserID());
-
-        TextView dakaDaysText = findViewById(R.id.dakaDaysText);
-        dakaDaysText.setText("打卡  "+ App.userNoPassword_global.getDays() +" 天");*/
 
         // only for debug
         // Test test = new Test();
