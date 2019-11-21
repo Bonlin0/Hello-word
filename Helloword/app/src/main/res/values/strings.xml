@@ -35,8 +35,12 @@
     <string name="invalid_sign_in">抱歉，您所登录的账户不存在或者密码错误，请重试</string>
 
     <string name="title_activity_check_out_words">我的词库</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+
+
+    <string name="tab_title_name_1">正在学习</string>
+    <string name="tab_title_name_2">将要学习</string>
+    <string name="tab_title_name_3">已学会</string>
+
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
