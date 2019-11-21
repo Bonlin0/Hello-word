@@ -28,6 +28,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.io.IOException;
 
 import cn.adminzero.helloword.Common.CMDDef;
@@ -225,6 +227,10 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUiWithUser(UserNoPassword userNoPassword) {
         String welcome = getString(R.string.welcome) + userNoPassword_global.getUserNickName();
         // TODO : initiate successful logged in experience
+        View view = getWindow().getDecorView().findViewById(R.id.container);
+        Snackbar.make(view, welcome, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 
@@ -236,7 +242,11 @@ public class LoginActivity extends AppCompatActivity {
         // 清空邮箱输入
         EditText usernameEditText = findViewById(R.id.username);
         usernameEditText.setText("");
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+
+        View view = getWindow().getDecorView().findViewById(R.id.container);
+        Snackbar.make(view, errorString, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+        // Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
     class LoginActivityBroadcastReceiver extends BroadcastReceiver {
