@@ -9,5 +9,5 @@ import java.util.Map;
  * <EndDescription>
  */
 public class GlobalSessionID {
-    private static Map<long,long>
+    private static Map<Long,Long> map;
 }
