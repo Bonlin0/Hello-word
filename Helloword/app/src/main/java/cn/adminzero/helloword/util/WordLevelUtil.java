@@ -4,6 +4,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.adminzero.helloword.App;
 import cn.adminzero.helloword.db.DbUtil;
 
@@ -16,36 +19,61 @@ import cn.adminzero.helloword.db.DbUtil;
 public class WordLevelUtil {
     private static final String TAG = "WordLevelUtil";
 
-    /**
-     * public static final String CREATE_HISTORY =
-     *             "create table " + "HISTORY_" + getuserid() + "(" +
-     *                     "word_id integer primary key," +
-     *                     "level int default(0)," +
-     *                     "yesterday integer default(0))";*/
-
-    /**
-     * 词书初始化  0x0001 zk.......
-     */
-    // example initWorkBook(Words.tag_cet4)
+    // example initWorkBook(Words.tag_cet4) --> 0.13s ~ 0.37   most 1s per time
     public static boolean initWorkBook(short tag) {
+        long startTime = System.nanoTime();
         SQLiteDatabase db = DbUtil.getDatabase();
-        db.beginTransaction();
+        List<WordsLevel> result = new ArrayList<WordsLevel>();
         try {
-            db.execSQL("delete from HISTORY_" + App.getuserid() + " where level = ?;", new String[]{String.valueOf(0)});
+            // TODO 删除level = 0的单词！
+            db.beginTransaction();
+//            App.userNoPassword_global.getUserID();
+//            db.execSQL("delete from HISTORY_" + App.getuserid() + " where level = ?", new String[]{"0"});
+            Cursor cursor = db.rawQuery("select word_id,tag from WORDS ", null);
 
-
-            /**设置事务*/
+            if (cursor.moveToFirst()) {
+                short id = -1;
+                short classify = -1;
+                do {
+                    classify = cursor.getShort(cursor.getColumnIndex("tag"));
+                    if ((classify & tag) == tag) {
+                        WordsLevel wordsLevel = new WordsLevel();
+                        id = cursor.getShort(cursor.getColumnIndex("word_id"));
+                        wordsLevel.setWord_id(id);
+                        result.add(wordsLevel);
+                    }
+                } while (cursor.moveToNext());
+            }
             db.setTransactionSuccessful();
+            db.endTransaction();
+            cursor.close();
+
+            db.beginTransaction();
+            try {
+                for (int i = 0; i < result.size(); i++) {
+                    try {
+                        db.execSQL("insert into HISTORY_" + App.getuserid() + " (word_id,level,yesterday) " +
+                                "values(?,?,?)", new String[]{String.valueOf(result.get(i).getWord_id()), "0", "0"});
+                    } catch (Exception e) {
+                        continue;
+                    }
+                }
+                db.setTransactionSuccessful();
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                db.endTransaction();
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d(TAG, "initWorkBook: " + "数据库更改失败");
+            return false;
         } finally {
-            db.endTransaction();
             if (db != null) {
-                db.close();
+                db = null;
             }
         }
-        return false;
+        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime)+" ns");
+        return true;
     }
 
     public static int getLevel7Count() {

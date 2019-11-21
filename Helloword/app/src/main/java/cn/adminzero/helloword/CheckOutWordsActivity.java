@@ -15,7 +15,7 @@ import android.view.View;
 
 import cn.adminzero.helloword.ui.main.SectionsPagerAdapter;
 
-public class CheckOutWordsActivity extends AppCompatActivity {
+public class CheckOutWordsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

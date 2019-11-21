@@ -16,62 +16,48 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <PreferenceCategory app:title="Remind setting">
+    <!--提醒设置-->
+    <PreferenceCategory app:title="提醒设置">
         <SwitchPreferenceCompat
             android:key="remindme"
-            android:title="remind me?"
+            android:title="开启提醒"
             app:summaryOff="关闭提醒"
-            app:summaryOn="开启提醒">
-        </SwitchPreferenceCompat>
-
+            app:summaryOn="开启提醒" />
         <ListPreference
-            app:defaultValue="reply"
+            app:dependency="remindme"
             app:entries="@array/remindtime_title"
             app:entryValues="@array/remindtime_values"
             app:key="remindtime"
-            app:title="Choose remind time"
+            app:title="提醒时间"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/messages_header">
-
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
-
+    <PreferenceCategory app:title="词书设置">
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:entries="@array/wordbooks_title"
+            app:entryValues="@array/wordbooks"
+            app:key="wordbooks"
+            app:title="词书列表"
             app:useSimpleSummaryProvider="true" />
-
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:dependency="wordbooks"
+            app:entries="@array/dailywordsnumber"
+            app:entryValues="@array/dailywordsnumber"
+            app:key="dailywordsnumber"
+            app:title="每日背词"
             app:useSimpleSummaryProvider="true" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory app:title="@string/sync_header">
-
         <SwitchPreferenceCompat
             app:key="sync"
-            app:title="@string/sync_title" />
+            app:title="词书同步"
+            app:summary="点击立即同步!"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
 
+    <PreferenceCategory app:title="系统设置">
+        <Preference
+            app:key="exit"
+            app:title="退出APP" />
     </PreferenceCategory>
 
 </PreferenceScreen>

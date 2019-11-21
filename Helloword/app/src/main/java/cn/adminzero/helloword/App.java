@@ -16,6 +16,9 @@ import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.db.DbUtil;
 
 import cn.adminzero.helloword.util.MyStorage;
+import cn.adminzero.helloword.util.WordLevelUtil;
+import cn.adminzero.helloword.util.Words;
+import cn.adminzero.helloword.util.WordsLevel;
 
 public class App extends Application {
 
@@ -71,6 +74,8 @@ public class App extends Application {
             initword();
             myStorage.storeInt("isFirstRunApp", 1);
         }
+
+
     }
 
     /**
@@ -116,8 +121,8 @@ public class App extends Application {
                 word_id = Short.valueOf(buffer[0]);
                 word = buffer[1];
                 phonetic = buffer[2];
-                definition = buffer[3].replace("\\n","\n");
-                translation = buffer[4].replace("\\n","\n");
+                definition = buffer[3].replace("\\n", "\n");
+                translation = buffer[4].replace("\\n", "\n");
                 exchange = buffer[5];
                 tag = Short.valueOf(buffer[6]);
                 /** 插入单词信息数据库！*/

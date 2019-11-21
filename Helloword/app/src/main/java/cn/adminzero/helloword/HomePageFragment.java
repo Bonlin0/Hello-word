@@ -20,7 +20,7 @@ import android.widget.TextView;
  */
 public class HomePageFragment extends Fragment {
 
-    private Button settingButton;
+
 
     public HomePageFragment() {
         // Required empty public constructor
@@ -32,11 +32,7 @@ public class HomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
-        /** 实例化 settingButton */
-        /*settingButton = view.findViewById(R.id.settings_about_me_button);
-        if (settingButton == null) {
-            Log.d(TAG, "onCreateView: ");
-        }*/
+
         TextView number_of_punch_days_textView = view.findViewById(R.id.number_of_punch_days);
         int days = App.userNoPassword_global.getDays();
         // 因为UserNoPassword定义中 days 是基本类型 int 而不是 Integer包装类
@@ -46,25 +42,19 @@ public class HomePageFragment extends Fragment {
         //TODO 处理用户已完成单词和目标完成单词（与称号机制挂钩）
 
 
+        Button startRememberWordsButton = view.findViewById(R.id.start_learning_button);
+        startRememberWordsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(getActivity().getApplicationContext(),RememberWordsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        /**
-         * 启动设置活动
-         * */
-        /*if (settingButton != null) {
-            settingButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(getActivity(), SettingsActivity.class));
-                }
-            });
-        }*/
 
 
-
-    }
 }
