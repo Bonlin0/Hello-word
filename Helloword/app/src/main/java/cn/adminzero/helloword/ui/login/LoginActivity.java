@@ -1,19 +1,23 @@
 package cn.adminzero.helloword.ui.login;
 
 import android.app.Activity;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -27,6 +31,8 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
@@ -44,8 +50,15 @@ public class LoginActivity extends AppCompatActivity {
     private LoginActivityBroadcastReceiver loginActivityBroadcastReceiver;
     private LoginViewModel loginViewModel;
     private IntentFilter intentFilter;
-
     private SharedPreferences sharedPreferences;
+
+    // UI view
+    EditText usernameEditText;
+    EditText passwordEditText;
+    Button loginButton;
+    ProgressBar loadingProgressBar;
+    EditText userNickNameEditText;
+    Switch signUpSwitch;
 
 
     @Override
@@ -54,23 +67,22 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginActivityBroadcastReceiver = new LoginActivityBroadcastReceiver();
         intentFilter = new IntentFilter(CMDDef.MINABroadCast);
-        sharedPreferences = super.getSharedPreferences("LoginSharedPreference",MODE_PRIVATE);
+        sharedPreferences = super.getSharedPreferences("LoginSharedPreference", MODE_PRIVATE);
 
         Intent intent = new Intent(LoginActivity.this, MinaService.class);
         //开启MINA服务
         startService(intent);
-
         LocalBroadcastManager.getInstance(this).
                 registerReceiver(loginActivityBroadcastReceiver, intentFilter);
 
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
-        final EditText usernameEditText = findViewById(R.id.username);
-        final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
-        final EditText userNickNameEditText = findViewById(R.id.user_nickname);
-        final Switch signUpSwitch = findViewById(R.id.sign_in_or_sign_up);
+        usernameEditText = findViewById(R.id.username);
+        passwordEditText = findViewById(R.id.password);
+        loginButton = findViewById(R.id.login);
+        loadingProgressBar = findViewById(R.id.loading);
+        userNickNameEditText = findViewById(R.id.user_nickname);
+        signUpSwitch = findViewById(R.id.sign_in_or_sign_up);
 
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -114,9 +126,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 // 加入sharedPreference 以后检查自动登录
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("isLogin",true);
-                editor.putString("storedUserEmail",usernameEditText.getText().toString());
-                editor.putString("storedPassword",passwordEditText.getText().toString());
+                editor.putBoolean("isLogin", true);
+                editor.putString("storedUserEmail", usernameEditText.getText().toString());
+                editor.putString("storedPassword", passwordEditText.getText().toString());
                 editor.commit();
 
                 //Complete and destroy login activity once successful
@@ -202,18 +214,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-        //检查SharedPreference 如果有，则自动填充尝试登录
-        if(sharedPreferences.getBoolean("isLogin",false)){
-            usernameEditText.setText(sharedPreferences.getString("storedUserEmail",""));
-            passwordEditText.setText(sharedPreferences.getString("storedPassword",""));
-            signUpSwitch.setChecked(false);
-            loginViewModel.login(
-                    usernameEditText.getText().toString(),
-                    passwordEditText.getText().toString());
-            
-        }
-
     }
 
     @Override
@@ -225,6 +225,10 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUiWithUser(UserNoPassword userNoPassword) {
         String welcome = getString(R.string.welcome) + userNoPassword_global.getUserNickName();
         // TODO : initiate successful logged in experience
+        View view = getWindow().getDecorView().findViewById(R.id.container);
+        Snackbar.make(view, welcome, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 
@@ -236,65 +240,78 @@ public class LoginActivity extends AppCompatActivity {
         // 清空邮箱输入
         EditText usernameEditText = findViewById(R.id.username);
         usernameEditText.setText("");
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+
+        View view = getWindow().getDecorView().findViewById(R.id.container);
+        Snackbar.make(view, errorString, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+        // Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
     class LoginActivityBroadcastReceiver extends BroadcastReceiver {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
             switch (cmd) {
-                case CMDDef.REPLY_SIGN_UP_REQUEST:
-                {
+                case CMDDef.REPLY_SIGN_UP_REQUEST: {
                     Log.e("tag", "" + cmd);
                     byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
                     try {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
                         //如果收到的UserNoPassword不合法，检查并以error报出
-                        if(!userNoPassword.isValid())                        {
+                        if (!userNoPassword.isValid()) {
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             loginResult.setValue(new LoginResult(R.string.invalid_sign_up));
-                        }
-                        else {
+                        } else {
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
                             loginResult.setValue(new LoginResult(userNoPassword));
                         }
 
                     } catch (IOException e) {
-                        Log.e("tag","序列化失败!");
+                        Log.e("tag", "序列化失败!");
                         e.printStackTrace();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-                case  CMDDef.REPLY_SIGN_IN_REQUEST:
-                {
+                case CMDDef.REPLY_SIGN_IN_REQUEST: {
                     Log.e("tag", "" + cmd);
                     byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
                     try {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
                         //如果收到的UserNoPassword不合法，检查并以error报出
-                        if(!userNoPassword.isValid())                        {
+                        if (!userNoPassword.isValid()) {
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             loginResult.setValue(new LoginResult(R.string.invalid_sign_in));
-                        }
-                        else {
+                        } else {
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
                             loginResult.setValue(new LoginResult(userNoPassword));
                         }
                     } catch (IOException e) {
-                        Log.e("tag","序列化失败!");
+                        Log.e("tag", "序列化失败!");
                         e.printStackTrace();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
                     break;
                 }
-
+                case CMDDef.ERROR_CONNECT_NETWORK: {
+                    Toast.makeText(LoginActivity.this,CMDDef.ErrorConnect,Toast.LENGTH_LONG).show();
+                }
+                break;
+                case CMDDef.SUCCESS_CONNECT_NETWORK:{
+                    if(sharedPreferences.getBoolean("isLogin",false)){
+                        usernameEditText.setText(sharedPreferences.getString("storedUserEmail",""));
+                        passwordEditText.setText(sharedPreferences.getString("storedPassword",""));
+                        signUpSwitch.setChecked(false);
+                        loginViewModel.login(
+                                usernameEditText.getText().toString(),
+                                passwordEditText.getText().toString());
+                    }
+                }
+                break;
             }
         }
     }

@@ -41,9 +41,14 @@ public class ConnectionManager {
         init();
     }
 
+    public WeakReference<Context> getmContext() {
+        return mContext;
+    }
+
     private void init() {
         mAddress = new InetSocketAddress(mConfig.getIp(), mConfig.getPort());
         mConnection = new NioSocketConnector();
+        SessionManager.getInstance().setmContext(mContext);
         //   mConnection.getSessionConfig().setReadBufferSize(mConfig.getReadBufferSize());
         //设置过滤链
         LoggingFilter lf = new LoggingFilter();
@@ -52,8 +57,6 @@ public class ConnectionManager {
         mConnection.getFilterChain().addLast("codec", new ProtocolCodecFilter(new MessageCodecFactory(new Decoder(), new Encoder())));
         //业务逻辑
         DefaultHandler defaultHandler = new DefaultHandler(mContext.get());
-        defaultHandler.setLocalBroadcastManager(LocalBroadcastManager.getInstance(mContext.get()));
-        defaultHandler.setIntentFilter(new IntentFilter(CMDDef.MINABroadCast));
         mConnection.setHandler(defaultHandler);
         mConnection.setDefaultRemoteAddress(mAddress);
     }
@@ -69,11 +72,10 @@ public class ConnectionManager {
             ConnectFuture future = mConnection.connect();
             future.awaitUninterruptibly();
             mSession = future.getSession();
-            SessionManager.getInstance().setSeesion(mSession);
+            SessionManager.getInstance().setmSessionsion(mSession);
             Log.e("tag", "连接成功!");
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("tag", "连接失败");
             return false;
         }
         return mSession != null;
@@ -93,20 +95,51 @@ public class ConnectionManager {
 
     private static class DefaultHandler extends IoHandlerAdapter {
         private Context mContext;
-        private IntentFilter intentFilter;
-        private LocalBroadcastManager localBroadcastManager;
+
+        void DataArriveBroadcast(short cmd, byte[] data) {
+            Intent intent = new Intent(CMDDef.MINABroadCast);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, cmd);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, data);
+            LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+        }
+
+        void DataArriveBroadcast(short cmd) {
+            Intent intent = new Intent(CMDDef.MINABroadCast);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, cmd);
+            LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+        }
+
+        void DataArriveBroadcast(short cmd, byte b) {
+            Intent intent = new Intent(CMDDef.MINABroadCast);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, cmd);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, b);
+            LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+        }
+
+        void DataArriveBroadcast(short cmd, int i) {
+            Intent intent = new Intent(CMDDef.MINABroadCast);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, cmd);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, i);
+            LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+        }
+
+        void DataArriveBroadcast(short cmd, String str) {
+            Intent intent = new Intent(CMDDef.MINABroadCast);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, cmd);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, str);
+            LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+        }
+
+        void DataArriveBroadcast(short cmd, short s) {
+            Intent intent = new Intent(CMDDef.MINABroadCast);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, cmd);
+            intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, s);
+            LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+        }
 
         @Override
         public void sessionCreated(IoSession session) throws Exception {
             super.sessionCreated(session);
-        }
-
-        public void setIntentFilter(IntentFilter intentFilter) {
-            this.intentFilter = intentFilter;
-        }
-
-        public void setLocalBroadcastManager(LocalBroadcastManager localBroadcastManager) {
-            this.localBroadcastManager = localBroadcastManager;
         }
 
         @Override
@@ -153,22 +186,14 @@ public class ConnectionManager {
             super.messageReceived(session, message);
             Message mes = (Message) message;
             switch (mes.getCMD()) {
-                case CMDDef.REPLY_SIGN_UP_REQUEST: {
-                    Intent intent = new Intent(CMDDef.MINABroadCast);
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, mes.getCMD());
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, mes.getData());
-                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
-                }
-                break;
+                case CMDDef.REPLY_SIGN_UP_REQUEST:
                 case CMDDef.REPLY_SIGN_IN_REQUEST: {
-                    Intent intent = new Intent(CMDDef.MINABroadCast);
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, mes.getCMD());
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA,mes.getData());
-                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
+                    DataArriveBroadcast(mes.getCMD(), mes.getData());
                 }
                 break;
                 default:
             }
         }
     }
+
 }

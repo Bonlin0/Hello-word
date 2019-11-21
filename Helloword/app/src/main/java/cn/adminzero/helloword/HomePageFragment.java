@@ -42,6 +42,16 @@ public class HomePageFragment extends Fragment {
         //TODO 处理用户已完成单词和目标完成单词（与称号机制挂钩）
 
 
+        Button startRememberWordsButton = view.findViewById(R.id.start_learning_button);
+        startRememberWordsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(getActivity().getApplicationContext(),RememberWordsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
 

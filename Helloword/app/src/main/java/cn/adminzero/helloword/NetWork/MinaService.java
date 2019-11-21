@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import androidx.annotation.Nullable;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.util.Log;
+
 
 import cn.adminzero.helloword.Common.CMDDef;
 
@@ -60,11 +62,17 @@ public class MinaService extends Service {
                 isConnection = mManager.connnect();
                 if(isConnection){
                     Log.e("tag", "连接成功");
-
+                    Intent intent = new Intent(CMDDef.MINABroadCast);
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD,CMDDef.SUCCESS_CONNECT_NETWORK);
+                    LocalBroadcastManager.getInstance(mManager.getmContext().get()).sendBroadcast(intent);
                     break;
                 }
                 try {
                     Log.e("tag", "尝试重新连接");
+                    Intent intent = new Intent(CMDDef.MINABroadCast);
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD,CMDDef.ERROR_CONNECT_NETWORK);
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA,CMDDef.ErrorConnect);
+                    LocalBroadcastManager.getInstance(MinaService.this).sendBroadcast(intent);
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

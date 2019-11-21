@@ -1,14 +1,26 @@
 package cn.adminzero.helloword.NetWork;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Message;
 
 import org.apache.mina.core.session.IoSession;
 
+import java.lang.ref.WeakReference;
+
 public class SessionManager {
     private static SessionManager mInstance = null;
     private IoSession mSession;
+    private WeakReference<Context> mContext;
+
+    public void setmContext(WeakReference<Context> mContext) {
+        this.mContext = mContext;
+    }
 
     public static SessionManager getInstance() {
         if (mInstance == null) {
@@ -25,7 +37,7 @@ public class SessionManager {
     private SessionManager() {
     }
 
-    public void setSeesion(IoSession session) {
+    public void setmSessionsion(IoSession session) {
         this.mSession = session;
     }
 
@@ -39,7 +51,6 @@ public class SessionManager {
         }
         return false;
     }
-
     public void closeSession() {
         if (mSession != null) {
             mSession.closeOnFlush();

@@ -85,6 +85,7 @@ public class ServerDbutil {
         try {
             rs = stmt.executeQuery();
             String password_q="";
+            int days_q=0;
             // 展开结果集数据库
             while(rs.next()){
                 // 通过字段检索,搜索到最后一个字段
@@ -93,21 +94,29 @@ public class ServerDbutil {
                    // password=rs.getString("password");
                     user_id= rs.getInt("user_id");
                     password_q= rs.getString("password");
-
                     userNoPassword.UserNoPassword(
                             rs.getInt("user_id"),
                             rs.getString("user_name"),
                             rs.getString("email"),
-                            rs.getString("avatar"),
+                            rs.getInt("isPunch"),
                             rs.getInt("goal"),
                             rs.getInt("days"),
                             rs.getInt("group_id"),
                             rs.getInt("user_level"),
                             rs.getInt("points")
                             );
+                    days_q=rs.getInt("days");
+                    //TODO 查询上次登录时间距离这次的时间差，看是否需要登陆天数+1
+                    {
+                        PreparedStatement statement = GlobalConn.getConn().prepareStatement("update USER set days=? where user_id=?");
+                        statement.setObject(1, days_q + 1);
+                        statement.setObject(2, user_id);
+                        statement.execute();
+                        userNoPassword.setDays(days_q+1);//返回结果天数也+1
+                    }
                 }
 
-            }
+            }//需要注意 这里rs已经跑完了，rs.next=null
             if(user_id==-1){
                 //没有此邮箱地址
                 System.out.println("邮箱错误！");

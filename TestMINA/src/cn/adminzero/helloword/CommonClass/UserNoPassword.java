@@ -2,18 +2,16 @@ package cn.adminzero.helloword.CommonClass;
 
 import java.io.Serializable;
 
-// Author : whl
-// Date : 2019/11/17
 
 public class UserNoPassword implements Serializable {
     private static final long serialVersionUID = 1L;
     int userID;
     String userNickName;
     String email;
-    String avatarPath="";
     int goal;
     // 打卡天数
     int days;
+    int isPunch;
     int groupID;
     int level;
     int pKPoint;
@@ -24,38 +22,37 @@ public class UserNoPassword implements Serializable {
         this.userID = userID;
         this.userNickName = userNickName;
         this.email = email;
-        avatarPath = ""; // TODO 将这里路径改为默认头像路径
         goal = -1;
         days = 0;
         groupID = -1;
         level = 0;
         pKPoint = 1000;
+        isPunch=0;
         this.isValid = true;
     }
     public UserNoPassword(String email){
         this.userID =-1;
         this.userNickName = "nickname";
         this.email = email;
-        avatarPath =""; // TODO 将这里路径改为默认头像路径
         goal = -1;
         days = 0;
         groupID = -1;
         level = 0;
-        pKPoint = 1000;
+        pKPoint = 0;
         this.isValid = true;
     }
 
     public void UserNoPassword(int userID,String userNickName,String email,
-                          String avatarPath,int goal,int days,int groupID, int level,int pKPoint){
+                          int isPunch,int goal,int days,int groupID, int level,int pKPoint){
         this.userID=userID;
         this.userNickName=userNickName;
         this.email=email;
-        this.avatarPath=avatarPath;
         this.goal=goal;
         this.days=days;
         this.groupID=groupID;
         this.level=level;
         this.pKPoint=pKPoint;
+        this.isPunch=isPunch;
     }
 
     public boolean isValid() {
@@ -93,12 +90,12 @@ public class UserNoPassword implements Serializable {
         this.email = email;
     }
 
-    public String getAvatarPath() {
-        return avatarPath;
+    public int getIsPunch() {
+        return isPunch;
     }
 
-    public void setAvatarPath(String avatarPath) {
-        this.avatarPath = avatarPath;
+    public void setIsPunch(int isPunch) {
+        this.isPunch = isPunch;
     }
 
     public int getGoal() {
