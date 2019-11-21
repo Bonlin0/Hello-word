@@ -22,6 +22,10 @@ public class MyStorage {
         preferences = App.getContext().getSharedPreferences(App.getTAG(), Activity.MODE_PRIVATE);
     }
 
+    public MyStorage(String filename) {
+        preferences = App.getContext().getSharedPreferences("SettingActivity", Activity.MODE_PRIVATE);
+    }
+
     //没有String 默认 ""
     public String getString(String key) {
         //同样，在读取SharedPreferences数据前要实例化出一个SharedPreferences对象
@@ -31,6 +35,11 @@ public class MyStorage {
     public int getInt(String key) {
         //同样，在读取SharedPreferences数据前要实例化出一个SharedPreferences对象
         return preferences.getInt(key, 0);
+    }
+
+    //保存data
+    public boolean getBoolean(String key) {
+        return preferences.getBoolean(key, false);
     }
 
     //保存data
@@ -46,5 +55,14 @@ public class MyStorage {
         editor.putInt(key, data);
         return editor.commit();
     }
+
+
+    //保存data
+    public boolean storeBoolean(String key, boolean data) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(key, data);
+        return editor.commit();
+    }
+
 
 }

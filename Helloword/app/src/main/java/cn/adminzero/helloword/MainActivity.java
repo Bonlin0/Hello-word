@@ -4,11 +4,14 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -60,6 +63,7 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -82,13 +86,12 @@ public class MainActivity extends BaseActivity {
         HomePageFragment homePageFragment = new HomePageFragment();
         ExploreFragment exploreFragment = new ExploreFragment();
         AboutMeFragment aboutMeFragment = new AboutMeFragment();
-        list.add(homePageFragment );
-        list.add(exploreFragment );
-        list.add(aboutMeFragment );
+        list.add(homePageFragment);
+        list.add(exploreFragment);
+        list.add(aboutMeFragment);
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);  //初始化显示第一个页面
-
 
 
         // 根据LoginActivity获取到的用户信息刷新UI
@@ -98,8 +101,8 @@ public class MainActivity extends BaseActivity {
 
 
         // only for debug
-        // Test test = new Test();
-        // test.test();
+//         Test test = new Test();
+//         test.test();
         // TestActivityEntry();//进入测试活动
 
     }
@@ -171,8 +174,6 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, CheckOutWordsActivity.class);
         startActivity(intent);
     }
-
-
 
 
 }
