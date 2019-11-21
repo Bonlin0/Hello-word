@@ -25,16 +25,17 @@ public class CMDDef {
     public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
     public static final String INTENT_PUT_EXTRA_CMD = "CMD";
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";
-  //  public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word";
+    //  public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word";
     public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
     //  private static String URL = "jdbc:mysql://localhost:3306/helloword?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
     // private static String URL = "jdbc:mysql://localhost:3306/helloword?useSSL=false&serverTimezone=UTC";
     public static final String DBDriver = "com.mysql.cj.jdbc.Driver";
     public static final String DBNAME = "root";
     public static final String DBPASSWD = "926b50985a";
-
-    public static final String IP = "10.0.2.2";
-  //  public static final String IP = "123.207.173.192";
+    public static final String SuccessConnect = "SuccessConnect";
+    public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
+   // public static final String IP = "10.0.2.2";
+      public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -51,24 +52,30 @@ public class CMDDef {
     //传递数据
     public static final byte PROTOCOL_MESSAGE_DATA = 0x7;
 
+    //网络连接失败
+    public static final short ERROR_CONNECT_NETWORK = 0x30;
+    public static final short SUCCESS_CONNECT_NETWORK = 0x31;
+
     //协议标记
     public static final byte PROTOCOL_FLAG = (byte) 0xE8;
 
 
     //服务端控制指令定义区
-    public static final short REPLY_FILE_TEST = 0x1000;
 
     //回应注册请求结果
     public static final short REPLY_SIGN_UP_REQUEST = 0x2000;
     public static final short REPLY_SIGN_IN_REQUEST = 0x2001;
 
-
     //客户端控制指令定义区
-    public static final short REQUEST_FILE_TEST = 0x7000;
+
 
     //注册请求
     public static final short SIGN_UP_REQUESET = (short) 0x8000;
-    //登录请求
+
+    //申请登录
     public static final short SIGN_IN_REQUESET = (short) 0x8001;
 
+    //被销毁时需要发送的信息
+    public static final short DESTORY_SELF_SEND_DATA = (short) 0x7000;
 }
+

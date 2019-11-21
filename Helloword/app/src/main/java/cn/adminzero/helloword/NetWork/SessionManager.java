@@ -43,7 +43,7 @@ public class SessionManager {
 
     public boolean writeToServer(Message msg) {
         if (mSession != null) {
-            Log.e("tag", "客户端准备发送消息");
+       //     Log.e("tag", "客户端准备发送消息");
             mSession.write(msg);
             return true;
         }else{

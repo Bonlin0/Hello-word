@@ -18,7 +18,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.adminzero.helloword.Common.CMDDef;
+import cn.adminzero.helloword.Common.Message;
+import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
+import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.ui.login.LoginActivity;
 
 public class MainActivity extends BaseActivity {
@@ -29,7 +34,6 @@ public class MainActivity extends BaseActivity {
 
     //选择词书对话框的选择结果
     private int chooseWordsBookChoice;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +129,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+		DestoryData destoryData = new DestoryData();
+        Message mes = SendMsgMethod.getObjectMessage(CMDDef.DESTORY_SELF_SEND_DATA,destoryData);
+        SessionManager.getInstance().writeToServer(mes);
         //TODO 当主活动结束的时候备份部分信息并发送至服务器
         stopService(new Intent(this, MinaService.class));
     }
