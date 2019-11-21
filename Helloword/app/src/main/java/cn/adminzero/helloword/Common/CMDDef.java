@@ -32,10 +32,11 @@ public class CMDDef {
     public static final String DBDriver = "com.mysql.cj.jdbc.Driver";
     public static final String DBNAME = "root";
     public static final String DBPASSWD = "926b50985a";
-
-    public static final String IP = "10.0.2.2";
-    //  public static final String IP = "123.207.173.192";
-    // 常量定义
+    public static final String SuccessConnect = "SuccessConnect";
+    public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
+   // public static final String IP = "10.0.2.2";
+      public static final String IP = "123.207.173.192";
+    //常量定义
 
     //通信协议消息传递的数据类型
     //只传递控制指令
@@ -50,6 +51,10 @@ public class CMDDef {
     public static final byte PROTOCOL_MESSAGE_STRING = 0x6;
     //传递数据
     public static final byte PROTOCOL_MESSAGE_DATA = 0x7;
+
+    //网络连接失败
+    public static final short ERROR_CONNECT_NETWORK = 0x30;
+    public static final short SUCCESS_CONNECT_NETWORK = 0x31;
 
     //协议标记
     public static final byte PROTOCOL_FLAG = (byte) 0xE8;
