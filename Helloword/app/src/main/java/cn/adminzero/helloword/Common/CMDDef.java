@@ -73,5 +73,7 @@ public class CMDDef {
     //注册请求
     public static final short SIGN_UP_REQUESET = (short) 0x8000;
     public static final short SIGN_IN_REQUESET = (short) 0x8001;
+    //用户更新操作
+    public static final short UPDATE_USER_REQUESET = (short) 0x8002;
 }
 

@@ -1,5 +1,6 @@
 package DB;
 
+import cn.adminzero.helloword.CommonClass.Group;
 import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
@@ -8,6 +9,9 @@ import java.sql.*;
 
 public class ServerDbutil {
 
+    /**
+     * 注册
+     */
     public static UserNoPassword signup(SignUpRequest sur){
         UserNoPassword userNoPassword = new UserNoPassword(-1,sur.getNickName(),sur.getEmail());
         String email=sur.getEmail();
@@ -70,6 +74,9 @@ public class ServerDbutil {
         return userNoPassword;
     }
 
+    /**
+     * 登录函数
+     */
     public static UserNoPassword signin(SignInRequest sur) throws SQLException {
         UserNoPassword userNoPassword = new UserNoPassword(sur.getEmail());
         //TODO：数据库处理注册
@@ -77,10 +84,8 @@ public class ServerDbutil {
         String password= sur.getPassword();
         int user_id=-1;
         //  userNoPassword.setValid(false);
-
         PreparedStatement stmt=GlobalConn.getConn().prepareStatement("SELECT * FROM USER WHERE email=? ");
         stmt.setObject(1,email);
-       // String sql_qurey= "SELECT * FROM USER WHERE email="+email;
         ResultSet rs = null;
         try {
             rs = stmt.executeQuery();
@@ -106,14 +111,16 @@ public class ServerDbutil {
                             rs.getInt("points")
                             );
                     days_q=rs.getInt("days");
-                    //TODO 查询上次登录时间距离这次的时间差，看是否需要登陆天数+1
-                    {
-                        PreparedStatement statement = GlobalConn.getConn().prepareStatement("update USER set days=? where user_id=?");
-                        statement.setObject(1, days_q + 1);
-                        statement.setObject(2, user_id);
-                        statement.execute();
-                        userNoPassword.setDays(days_q+1);//返回结果天数也+1
-                    }
+//                    int isPunch=rs.getInt("isPunch");
+//                    if(isPunch==0)
+//                    //TODO 查询上次登录时间距离这次的时间差，看是否需要登陆天数+1
+//                    {
+//                        PreparedStatement statement = GlobalConn.getConn().prepareStatement("update USER set days=? where user_id=?");
+//                        statement.setObject(1, days_q + 1);
+//                        statement.setObject(2, user_id);
+//                        statement.execute();
+//                        userNoPassword.setDays(days_q+1);//返回结果天数也+1
+//                    }
                 }
 
             }//需要注意 这里rs已经跑完了，rs.next=null
@@ -138,4 +145,41 @@ public class ServerDbutil {
         }
         return userNoPassword;
     }
+
+    /**
+     *  传回UserNopassword更新所有的用户数据,适用于除修改密码外所有的用户更新操作
+     */
+    public static UserNoPassword update_USER(UserNoPassword unp) throws SQLException {
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("" +
+                "update USER set user_name=? " +
+                "set email=? " +
+                "set days=? " +
+                "set group_id=? " +
+                "set user_level=? " +
+                "set points=? " +
+                "set isPunch=? " +
+                "set goal=? " +
+                "where user_id =?");
+        stmt.setObject(1,unp.getUserNickName());
+        stmt.setObject(2,unp.getEmail());
+        stmt.setObject(3,unp.getDays());
+        stmt.setObject(4,unp.getGroupID());
+        stmt.setObject(5,unp.getLevel());
+        stmt.setObject(6,unp.getpKPoint());
+        stmt.setObject(7,unp.getIsPunch());
+        stmt.setObject(8,unp.getGoal());
+        stmt.setObject(9,unp.getUserID());
+        UserNoPassword userNoPassword=unp;
+        return userNoPassword;
+    }
+
+    public static Group CreatGroup(Group grp) throws SQLException {
+        Group group=grp;
+        int user_id=grp.getUser_id();
+        int max_member=grp.getMax_member();
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from GROUP_USER");
+
+    }
+
+
 }
