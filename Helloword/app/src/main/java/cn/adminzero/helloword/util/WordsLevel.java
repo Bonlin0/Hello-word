@@ -16,6 +16,7 @@ public class WordsLevel {
     private boolean isyestarday;
 
     public WordsLevel() {
+        this.level = 0;
         this.isyestarday = false;
     }
 

@@ -15,13 +15,14 @@ public class Words {
     public static short tag_gre = 0x0040;// gre 6
     public static short tag_ky = 0x0080;//ky 7
 
+
     private short word_id;
     private String word;
-    private String phonetic;
-    private String definition;
-    private String translation;
-    private String exchange;
-    private short tag;
+    private String phonetic;//音标
+    private String definition;// 英文释义
+    private String translation;// 中文释义
+    private String exchange;// 时态变换
+    private short tag;//
     private String sentence;
 
     public Words() {

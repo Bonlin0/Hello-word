@@ -4,6 +4,7 @@ import Common.CMDDef;
 import Common.Message;
 import Common.Utils.SendMsgMethod;
 import DB.ServerDbutil;
+import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
@@ -65,22 +66,34 @@ public class ServerHandle extends IoHandlerAdapter {
         if (message instanceof Message) {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
-                case CMDDef.SIGN_UP_REQUESET:
+                case CMDDef.SIGN_UP_REQUESET: {
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     UserNoPassword userNoPassword = ServerDbutil.signup(sur);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
-                    break;
-                case CMDDef.SIGN_IN_REQUESET:
+                    if (userNoPassword.isValid()) {
+                        UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
+                    }
+                }
+                break;
+                case CMDDef.SIGN_IN_REQUESET: {
                     SignInRequest sir = (SignInRequest) mes.getObj();
-                    userNoPassword = ServerDbutil.signin(sir);
+                    UserNoPassword userNoPassword = ServerDbutil.signin(sir);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
-                    break;
+                    if (userNoPassword.isValid()) {
+                        UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
+                    }
+                }
+                break;
+                case CMDDef.DESTORY_SELF_SEND_DATA: {
+                    DestoryData destoryData = (DestoryData) mes.getObj();
+                    UserIDSession.removeSessionWithUserID(session.getId());
+                }
+                 break;
                 case CMDDef.UPDATE_USER_REQUESET:
                     UserNoPassword unp= (UserNoPassword)mes.getObj();
                     userNoPassword=ServerDbutil.update_USER(unp);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                     break;
-
             }
         } else {
             logger.info("未知请求！");

@@ -34,8 +34,10 @@ public class CMDDef {
     public static final String DBPASSWD = "926b50985a";
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
-   // public static final String IP = "10.0.2.2";
-      public static final String IP = "123.207.173.192";
+    public static final String IP = "10.0.2.2";
+
+    //  public static final String IP = "123.207.173.192";
+
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -66,14 +68,18 @@ public class CMDDef {
     public static final short REPLY_SIGN_UP_REQUEST = 0x2000;
     public static final short REPLY_SIGN_IN_REQUEST = 0x2001;
 
-
     //客户端控制指令定义区
 
 
     //注册请求
     public static final short SIGN_UP_REQUESET = (short) 0x8000;
+
+    //申请登录
     public static final short SIGN_IN_REQUESET = (short) 0x8001;
     //用户更新操作
     public static final short UPDATE_USER_REQUESET = (short) 0x8002;
+
+    //被销毁时需要发送的信息
+    public static final short DESTORY_SELF_SEND_DATA = (short) 0x7000;
 }
 

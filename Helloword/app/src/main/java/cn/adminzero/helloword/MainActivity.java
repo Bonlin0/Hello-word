@@ -4,11 +4,14 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -18,7 +21,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.adminzero.helloword.Common.CMDDef;
+import cn.adminzero.helloword.Common.Message;
+import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
+import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.ui.login.LoginActivity;
 
 public class MainActivity extends BaseActivity {
@@ -29,7 +37,6 @@ public class MainActivity extends BaseActivity {
 
     //选择词书对话框的选择结果
     private int chooseWordsBookChoice;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +67,7 @@ public class MainActivity extends BaseActivity {
 
             }
         });
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -82,13 +90,12 @@ public class MainActivity extends BaseActivity {
         HomePageFragment homePageFragment = new HomePageFragment();
         ExploreFragment exploreFragment = new ExploreFragment();
         AboutMeFragment aboutMeFragment = new AboutMeFragment();
-        list.add(homePageFragment );
-        list.add(exploreFragment );
-        list.add(aboutMeFragment );
+        list.add(homePageFragment);
+        list.add(exploreFragment);
+        list.add(aboutMeFragment);
         adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);  //初始化显示第一个页面
-
 
 
         // 根据LoginActivity获取到的用户信息刷新UI
@@ -98,8 +105,8 @@ public class MainActivity extends BaseActivity {
 
 
         // only for debug
-        // Test test = new Test();
-        // test.test();
+//         Test test = new Test();
+//         test.test();
         // TestActivityEntry();//进入测试活动
 
     }
@@ -125,6 +132,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+		DestoryData destoryData = new DestoryData();
+        Message mes = SendMsgMethod.getObjectMessage(CMDDef.DESTORY_SELF_SEND_DATA,destoryData);
+        SessionManager.getInstance().writeToServer(mes);
         //TODO 当主活动结束的时候备份部分信息并发送至服务器
         stopService(new Intent(this, MinaService.class));
     }
@@ -171,8 +181,6 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, CheckOutWordsActivity.class);
         startActivity(intent);
     }
-
-
 
 
 }

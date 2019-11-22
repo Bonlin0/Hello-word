@@ -22,4 +22,40 @@
         <item>20:00</item>
     </string-array>
 
+    <!--remind time-->
+    <string-array name="wordbooks_title">
+        <item>中考</item>
+        <item>高考</item>
+        <item>四级</item>
+        <item>六级</item>
+        <item>托福</item>
+        <item>雅思</item>
+        <item>GRE</item>
+        <item>考研</item>
+    </string-array>
+
+    <string-array name="wordbooks">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="dailywordsnumber">
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+    </string-array>
+
+
+
 </resources>

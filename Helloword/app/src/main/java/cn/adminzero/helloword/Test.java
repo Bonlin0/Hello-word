@@ -3,6 +3,8 @@ package cn.adminzero.helloword;
 import android.util.Log;
 
 import cn.adminzero.helloword.util.TranslationUtil;
+import cn.adminzero.helloword.util.WordLevelUtil;
+import cn.adminzero.helloword.util.Words;
 
 /**
  * 测试类  包含一些测试函数
@@ -14,8 +16,8 @@ public class Test {
 
     public void test() {
         Log.d(TAG, "test: start test moudle");
-        translationUtil.getTranslation
-                ("https://raw.githubusercontent.com/square/okhttp/master/samples/guide/src/main/java/okhttp3/guide/GetExample.java");
-
+        WordLevelUtil.initWorkBook(Words.tag_zk);
+        WordLevelUtil.initWorkBook(Words.tag_gk);
+        Log.d(TAG, "test: end test moudle");
     }
 }

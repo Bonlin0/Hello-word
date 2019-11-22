@@ -253,7 +253,7 @@ public class LoginActivity extends AppCompatActivity {
             short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
             switch (cmd) {
                 case CMDDef.REPLY_SIGN_UP_REQUEST: {
-                    Log.e("tag", "" + cmd);
+                    //Log.e("tag", "" + cmd);
                     byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
                     try {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
