@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -31,10 +30,8 @@ import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
-import cn.adminzero.helloword.db.MyDatabaseHelper;
-import cn.adminzero.helloword.ui.login.LoginActivity;
 import cn.adminzero.helloword.util.MyStorage;
-import cn.adminzero.helloword.util.WordLevelUtil;
+import cn.adminzero.helloword.util.WordsLevelUtil;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -53,9 +50,12 @@ public class MainActivity extends BaseActivity {
         /**
          * TODO 创建单词表并且网络同步
          * */
-        Log.d(TAG, "onCreate: " + App.userNoPassword_global.getUserID());
         int userId = App.userNoPassword_global.getUserID();
-        assert (userId != -1);
+        Log.d(TAG, "onCreate: 当前用户ID" + userId);
+        if (userId != -1) {
+            Log.d(TAG, "onCreate: 登录失败！程序退出");
+            ActivityCollector.finishAll();
+        }
         try {
             MyStorage myStorage = new MyStorage();
             if (myStorage.getInt("lastLoginAccount") == userId) {
@@ -81,7 +81,7 @@ public class MainActivity extends BaseActivity {
                     final String CREATE_HISTORY =
                             "create table if not exists " + "HISTORY_" + userId + "(" +
                                     "word_id integer primary key," +
-                                    "level int default(0)," +
+                                    "level integer default(0)," +
                                     "yesterday integer default(0))";
                     db.execSQL(CREATE_HISTORY);
                     myStorage.storeInt("lastLoginAccount", userId);
@@ -220,7 +220,7 @@ public class MainActivity extends BaseActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (chooseWordsBookChoice != -1) {
                             //TODO 更换词书处理
-                            WordLevelUtil.initWorkBook(chooseWordsBookChoice + 1);
+                            WordsLevelUtil.initWorkBook(chooseWordsBookChoice + 1);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
                             //TODO 网络同步
                         }

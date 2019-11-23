@@ -5,7 +5,6 @@ import android.util.Log;
 import java.util.ArrayList;
 
 import cn.adminzero.helloword.util.TranslationUtil;
-import cn.adminzero.helloword.util.WordLevelUtil;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsUtil;
 

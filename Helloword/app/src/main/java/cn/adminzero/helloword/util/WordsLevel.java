@@ -6,26 +6,22 @@ package cn.adminzero.helloword.util;
  * desc   : none
  */
 public class WordsLevel {
-    /*public static final String CREATE_HISTORY =
-            "create table " + "HISTORY_" + getuserid() + "(" +
-                    "word_id integer primary key," +
-                    "level int default(0)," +
-                    "yesterday integer default(0))";*/
+
     private short word_id;
-    private short level;
-    private boolean isyestarday;
+    private byte level;
+    private byte yesterday;
 
     public WordsLevel() {
         this.level = 0;
-        this.isyestarday = false;
+        this.yesterday = 0;
     }
 
-    public boolean isIsyestarday() {
-        return isyestarday;
+    public byte isIsyestarday() {
+        return yesterday;
     }
 
-    public void setIsyestarday(boolean isyestarday) {
-        this.isyestarday = isyestarday;
+    public void setYesterday(byte yesterday) {
+        this.yesterday = yesterday;
     }
 
     public short getWord_id() {
@@ -40,7 +36,7 @@ public class WordsLevel {
         return level;
     }
 
-    public void setLevel(short level) {
+    public void setLevel(byte level) {
         this.level = level;
     }
 

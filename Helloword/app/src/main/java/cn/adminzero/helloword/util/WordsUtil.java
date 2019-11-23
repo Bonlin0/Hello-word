@@ -7,7 +7,6 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import cn.adminzero.helloword.db.DbUtil;
 
@@ -22,8 +21,8 @@ public class WordsUtil {
 
 
     /**
-     * 输入单词的ID，返回单词的对象
-     * 查询不到或者失败返回NULL
+     * @param _word_id 单词ID
+     * @return 返回查询到的单词对象 可为NULL
      */
     public static @Nullable
     Words getWordById(int _word_id) {
@@ -72,8 +71,8 @@ public class WordsUtil {
     }
 
     /**
-     * 输入单词的ID数组，返回单词的对象的列表
-     * 查询不到id对应的对象对应对象列表为NULL
+     * @param word_id
+     * @return 返回单词对象数组 ID未查询到的对应位置对象为NULL
      */
     public static ArrayList<Words> getWordArrayByIdArray(short[] word_id) {
         SQLiteDatabase db = DbUtil.getDatabase();
