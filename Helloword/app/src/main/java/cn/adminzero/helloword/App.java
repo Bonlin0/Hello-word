@@ -16,9 +16,6 @@ import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.db.DbUtil;
 
 import cn.adminzero.helloword.util.MyStorage;
-import cn.adminzero.helloword.util.WordLevelUtil;
-import cn.adminzero.helloword.util.Words;
-import cn.adminzero.helloword.util.WordsLevel;
 
 public class App extends Application {
 
@@ -30,27 +27,24 @@ public class App extends Application {
      * 是否第一次运行APP  数据保存在同名字段"isFirstRunApp"
      */
     private static int isFirstRunApp = 0;
-    private static int Version = 1;
-    private static int userid = 1;
+    private static int dbversion = 1;
     private static Context context = null;
     private static boolean isDailyFirstLogin = false;
+    private int lastLoginAccount = -1;// 记录上次APP的登录ID
 
 
     public static String getTAG() {
         return TAG;
     }
 
-    public static int getVersion() {
-        return Version;
+    public static int getDbversion() {
+        return dbversion;
     }
 
     public static String getDbname() {
         return Dbname;
     }
 
-    public static int getuserid() {
-        return userid;
-    }
 
     public static Context getContext() {
         return context;
@@ -69,6 +63,7 @@ public class App extends Application {
          * 初始化判断 Assets文件是只读的！
          * */
         int isFirstRunApp = myStorage.getInt("isFirstRunApp");
+        lastLoginAccount = myStorage.getInt("lastLoginAccount");
 
         //TODO  提取上次登录时间，并且保存当前登陆时间，用以比对 是否是今日第一次登录
 

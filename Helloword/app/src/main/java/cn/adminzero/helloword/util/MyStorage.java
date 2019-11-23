@@ -23,7 +23,7 @@ public class MyStorage {
     }
 
     public MyStorage(String filename) {
-        preferences = App.getContext().getSharedPreferences("SettingActivity", Activity.MODE_PRIVATE);
+        preferences = App.getContext().getSharedPreferences(filename, Activity.MODE_PRIVATE);
     }
 
     //没有String 默认 ""

@@ -3,6 +3,8 @@ package cn.adminzero.helloword;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -12,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -27,7 +30,10 @@ import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
 import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
+import cn.adminzero.helloword.db.DbUtil;
+import cn.adminzero.helloword.db.MyDatabaseHelper;
 import cn.adminzero.helloword.ui.login.LoginActivity;
+import cn.adminzero.helloword.util.MyStorage;
 import cn.adminzero.helloword.util.WordLevelUtil;
 
 public class MainActivity extends BaseActivity {
@@ -43,6 +49,50 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /**
+         * TODO 创建单词表并且网络同步
+         * */
+        Log.d(TAG, "onCreate: " + App.userNoPassword_global.getUserID());
+        int userId = App.userNoPassword_global.getUserID();
+        assert (userId != -1);
+        try {
+            MyStorage myStorage = new MyStorage();
+            if (myStorage.getInt("lastLoginAccount") == userId) {
+                Log.d(TAG, "onCreate: 用户上次已经登录！无需创建数据库和同步数据库");
+                myStorage.storeInt("lastLoginAccount", userId);
+            } else {
+                SQLiteDatabase db = DbUtil.getDatabase();
+                // 判断用户的单词历史表是否存在  不存在则创建并且网络同步数据
+                Cursor cursor = db.rawQuery("select name from sqlite_master where type='table';", null);
+                String tablename;
+                boolean isThisAccountFirstLogin = false;
+                while (cursor.moveToNext()) {
+                    //遍历出表名
+                    tablename = cursor.getString(0);
+                    if (tablename.equals("HISTORY_" + userId)) {
+                        Log.d(TAG, "onCreate: 欢迎新用户登录到本机APP，开始同步网络数据");
+                        isThisAccountFirstLogin = true;
+                        break;
+                    }
+                }
+                cursor.close();
+                if (isThisAccountFirstLogin) {// 创建其对应的数据表
+                    final String CREATE_HISTORY =
+                            "create table if not exists " + "HISTORY_" + userId + "(" +
+                                    "word_id integer primary key," +
+                                    "level int default(0)," +
+                                    "yesterday integer default(0))";
+                    db.execSQL(CREATE_HISTORY);
+                    // TODO 网络同步数据  恢复数据库 待做
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "onCreate: exception" + e.getMessage());
+        } finally {
+            Log.d(TAG, "onCreate: 词库设置完毕");
+        }
 
         // 设置底部导航和页面滑动
         final BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
@@ -111,13 +161,12 @@ public class MainActivity extends BaseActivity {
 //         test.test();
         // TestActivityEntry();//进入测试活动
 
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        // 检查用户当前词书是否合法 正确范围是[1.8]
+        // 检查用户当前词书是否合法 正确范围是[1,8]
         if (App.userNoPassword_global.getGoal() <= 0) {
             // 弹出对话框选择词书
             showChooseWordsBookDialog();
@@ -156,7 +205,7 @@ public class MainActivity extends BaseActivity {
     public void showChooseWordsBookDialog() {
         AlertDialog.Builder builder;
         //默认选中第一个
-        final String[] items = {"中考", "高考", "CET4", "CET6", "考研", "GRE", "雅思", "托福"};
+        final String[] items = {"中考", "高考", "CET4", "CET6", "托福", "雅思", "GRE", "考研"};
         chooseWordsBookChoice = 0;
         builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("在您开始使用前，请选择词书")
                 .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
@@ -202,8 +251,6 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, CheckOutWordsActivity.class);
         startActivity(intent);
     }
-
-
 
 
 }

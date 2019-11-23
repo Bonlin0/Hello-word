@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import cn.adminzero.helloword.App;
 
-import static cn.adminzero.helloword.App.getuserid;
 
 /**
  * https://github.com/amitshekhariitbhu/Android-Debug-Database
@@ -64,11 +63,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                     "exchange text," +
                     "tag integer," +
                     "sentence text)";
-    public static final String CREATE_HISTORY =
-            "create table " + "HISTORY_" + getuserid() + "(" +
-                    "word_id integer primary key," +
-                    "level int default(0)," +
-                    "yesterday integer default(0))";
+
 
     private Context context;
     private String name;
@@ -91,7 +86,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         try {
             db.execSQL(CREATE_USER);
             db.execSQL(CREATE_WORDS);
-            db.execSQL(CREATE_HISTORY);
             db.execSQL(CREATE_USER_HISTORY);
             db.execSQL(CREATE_GROUP_USER);
             db.execSQL("create index wordindex on WORDS(word)");
@@ -121,7 +115,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("drop table if exists USER");
             db.execSQL("drop table if exists WORDS");
             db.execSQL("drop table if exists HISTORY");
-            db.execSQL("drop table if exists " + "HISTORY_" + getuserid());
+            db.execSQL("drop table if exists " + "HISTORY_" + App.userNoPassword_global.getUserID());
             db.execSQL("drop table if exists GROUP_USER");
             Log.d(TAG, "start create databases");
             Toast.makeText(App.getContext(), "Databases drop succeed!", Toast.LENGTH_LONG).show();
