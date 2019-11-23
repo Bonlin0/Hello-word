@@ -20,7 +20,15 @@ public class WordLevelUtil {
     private static final String TAG = "WordLevelUtil";
 
     // example initWorkBook(Words.tag_cet4) --> 0.13s ~ 0.37   most 1s per time
-    public static boolean initWorkBook(short tag) {
+    public static boolean initWorkBook(int _tag) {
+        // getGoal 获得 1-8的int
+        // tag 是 0x01,到0x0080
+        int tag_now = App.userNoPassword_global.getGoal();
+        if(tag_now == _tag)
+        {
+            return true;
+        }
+        short tag = (short)(1 << _tag);
         long startTime = System.nanoTime();
         SQLiteDatabase db = DbUtil.getDatabase();
         List<WordsLevel> result = new ArrayList<WordsLevel>();
@@ -59,6 +67,7 @@ public class WordLevelUtil {
                     }
                 }
                 db.setTransactionSuccessful();
+                App.userNoPassword_global.setGoal(_tag);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
@@ -72,7 +81,7 @@ public class WordLevelUtil {
                 db = null;
             }
         }
-        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime)+" ns");
+        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime)+" ns");;
         return true;
     }
 

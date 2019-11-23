@@ -178,7 +178,7 @@ public class ServerDbutil {
         int user_id=grp.getUser_id();
         int max_member=grp.getMax_member();
         PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from GROUP_USER");
-
+        return group;
     }
 
 

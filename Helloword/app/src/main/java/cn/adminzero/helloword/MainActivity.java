@@ -28,6 +28,7 @@ import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.ui.login.LoginActivity;
+import cn.adminzero.helloword.util.WordLevelUtil;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity {
 
     //选择词书对话框的选择结果
     private int chooseWordsBookChoice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +111,18 @@ public class MainActivity extends BaseActivity {
 //         test.test();
         // TestActivityEntry();//进入测试活动
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 检查用户当前词书是否合法 正确范围是[1.8]
+        if (App.userNoPassword_global.getGoal() <= 0) {
+            // 弹出对话框选择词书
+            showChooseWordsBookDialog();
+
+        }
     }
 
     /**
@@ -132,21 +146,19 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-		DestoryData destoryData = new DestoryData();
-        Message mes = SendMsgMethod.getObjectMessage(CMDDef.DESTORY_SELF_SEND_DATA,destoryData);
+        DestoryData destoryData = new DestoryData();
+        Message mes = SendMsgMethod.getObjectMessage(CMDDef.DESTORY_SELF_SEND_DATA, destoryData);
         SessionManager.getInstance().writeToServer(mes);
         //TODO 当主活动结束的时候备份部分信息并发送至服务器
         stopService(new Intent(this, MinaService.class));
     }
 
-    public void onClickChooseWordsBookButton(View view) {
-        /*Intent intent = new Intent(this, ChooseWordsBookActivity.class);
-        startActivity(intent);*/
+    public void showChooseWordsBookDialog() {
         AlertDialog.Builder builder;
         //默认选中第一个
         final String[] items = {"中考", "高考", "CET4", "CET6", "考研", "GRE", "雅思", "托福"};
-        chooseWordsBookChoice = -1;
-        builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("选择词书")
+        chooseWordsBookChoice = 0;
+        builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("在您开始使用前，请选择词书")
                 .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -157,11 +169,20 @@ public class MainActivity extends BaseActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (chooseWordsBookChoice != -1) {
                             //TODO 更换词书处理
+                            WordLevelUtil.initWorkBook(chooseWordsBookChoice + 1);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
+                            //TODO 网络同步
                         }
                     }
                 });
         builder.create().show();
+    }
+
+    // 当点击了选择词书
+    public void onClickChooseWordsBookButton(View view) {
+        /*Intent intent = new Intent(this, ChooseWordsBookActivity.class);
+        startActivity(intent);*/
+        showChooseWordsBookDialog();
     }
 
     public void onClickFreshButton(View view) {

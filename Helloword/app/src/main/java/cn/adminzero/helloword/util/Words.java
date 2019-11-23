@@ -6,14 +6,14 @@ package cn.adminzero.helloword.util;
  * desc   : 单词类
  */
 public class Words {
-    public static short tag_zk = 0x0001;//中考 0
-    public static short tag_gk = 0x0002;//高考 1
-    public static short tag_cet4 = 0x0004;//四级 2
-    public static short tag_cet6 = 0x0008;//六级 3
-    public static short tag_toefl = 0x0010;//托福 4
-    public static short tag_ielts = 0x0020;//雅思 5
-    public static short tag_gre = 0x0040;// gre 6
-    public static short tag_ky = 0x0080;//ky 7
+    public static short tag_zk = 0x0001;//中考 1
+    public static short tag_gk = 0x0002;//高考 2
+    public static short tag_cet4 = 0x0004;//四级 3
+    public static short tag_cet6 = 0x0008;//六级 4
+    public static short tag_toefl = 0x0010;//托福 5
+    public static short tag_ielts = 0x0020;//雅思 6
+    public static short tag_gre = 0x0040;// gre 7
+    public static short tag_ky = 0x0080;//ky 8
 
 
     private short word_id;

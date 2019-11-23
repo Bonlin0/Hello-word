@@ -91,7 +91,7 @@ public class ServerHandle extends IoHandlerAdapter {
                  break;
                 case CMDDef.UPDATE_USER_REQUESET:
                     UserNoPassword unp= (UserNoPassword)mes.getObj();
-                    userNoPassword=ServerDbutil.update_USER(unp);
+                    UserNoPassword userNoPassword=ServerDbutil.update_USER(unp);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                     break;
             }
