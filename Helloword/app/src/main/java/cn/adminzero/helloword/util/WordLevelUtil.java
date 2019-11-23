@@ -60,7 +60,7 @@ public class WordLevelUtil {
             try {
                 for (int i = 0; i < result.size(); i++) {
                     try {
-                        db.execSQL("insert into HISTORY_" + App.getuserid() + " (word_id,level,yesterday) " +
+                        db.execSQL("insert into HISTORY_" + App.userNoPassword_global.getUserID() + " (word_id,level,yesterday) " +
                                 "values(?,?,?)", new String[]{String.valueOf(result.get(i).getWord_id()), "0", "0"});
                     } catch (Exception e) {
                         continue;
@@ -91,7 +91,7 @@ public class WordLevelUtil {
         int result = 0;
         try {
             db.setTransactionSuccessful();
-            Cursor cursor = db.rawQuery("select from HISTORY_" + App.getuserid() + " where level = ?", new String[]{String.valueOf(7)});
+            Cursor cursor = db.rawQuery("select from HISTORY_" + App.userNoPassword_global.getUserID() + " where level = ?", new String[]{String.valueOf(7)});
             if (cursor != null) {
                 result = cursor.getCount();
             } else {

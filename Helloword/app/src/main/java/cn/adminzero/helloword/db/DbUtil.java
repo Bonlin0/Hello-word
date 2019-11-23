@@ -20,13 +20,12 @@ import java.io.ByteArrayOutputStream;
 import cn.adminzero.helloword.App;
 import cn.adminzero.helloword.R;
 
-import static cn.adminzero.helloword.App.getuserid;
 
 public class DbUtil {
     private static final String TAG = "DbUtil";
 
     public static SQLiteDatabase getDatabase() {
-        MyDatabaseHelper dbhelper = new MyDatabaseHelper(App.getContext(), App.getDbname(), null, App.getVersion());
+        MyDatabaseHelper dbhelper = new MyDatabaseHelper(App.getContext(), App.getDbname(), null, App.getDbversion());
         try {
             SQLiteDatabase db = dbhelper.getWritableDatabase();
             Log.d(TAG, "open databases successful!!!");
@@ -39,7 +38,7 @@ public class DbUtil {
     }
 
     public static SQLiteDatabase getDatabase(String dbname) {
-        MyDatabaseHelper dbhelper = new MyDatabaseHelper(App.getContext(), dbname, null, App.getVersion());
+        MyDatabaseHelper dbhelper = new MyDatabaseHelper(App.getContext(), dbname, null, App.getDbversion());
         try {
             SQLiteDatabase db = dbhelper.getWritableDatabase();
             Log.d(TAG, "open databases successful!!!");
@@ -91,19 +90,6 @@ public class DbUtil {
         return true;
     }
 
-    /**
-     * 添加单词到分表
-     **/
-    public static boolean AddHISTROY(int word_id, int level, int yesterday) {
-        SQLiteDatabase db = getDatabase();
-        try {
-            db.execSQL("insert into HISTORY_" + getuserid() + "(word_id,level,yesterday) values(?,?,?)", new String[]{word_id + "", level + "", yesterday + ""});
-        } catch (Exception e) {
-            Log.d(TAG, "AddHISTORY失败");
-            return false;
-        }
-        return true;
-    }
 
     /**
      * 添加用户和对应的记忆表
@@ -452,7 +438,6 @@ public class DbUtil {
         db.execSQL("insert into WORDS(word_id,word,translation,phonetic,definition,classfication,sentence) values(?,?,?,?,?,?,?)", new String[]{"1131", "apple", "苹果", "[ˈæpl]", "a kind of fruit", 0xA1000000 + "", "I love eating apple. 我爱吃苹果。"});
         AddUser(2017, "chenyuan2017", "password2017");
         AddGROUP_USER(2017, 6);
-        AddHISTROY(2017, 2, 1);
         AddUSER_HISTROY(2017, "HISTORY_2017");
         AddWORDS(30, "computer", "计算机", "[kəmˈpjuːtər]", "an electronic machine that can store, organize and find " +
                 "information, do calculations and control other machines ", 0xFF000000, "I think computer is the greatest invention. 我认为计算机是最伟大的发明。 ");
