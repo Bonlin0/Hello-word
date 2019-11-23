@@ -60,30 +60,32 @@ public class MainActivity extends BaseActivity {
             MyStorage myStorage = new MyStorage();
             if (myStorage.getInt("lastLoginAccount") == userId) {
                 Log.d(TAG, "onCreate: 用户上次已经登录！无需创建数据库和同步数据库");
-                myStorage.storeInt("lastLoginAccount", userId);
             } else {
                 SQLiteDatabase db = DbUtil.getDatabase();
                 // 判断用户的单词历史表是否存在  不存在则创建并且网络同步数据
                 Cursor cursor = db.rawQuery("select name from sqlite_master where type='table';", null);
                 String tablename;
-                boolean isThisAccountFirstLogin = false;
+                boolean isThisAccountFirstLogin = true;
                 while (cursor.moveToNext()) {
                     //遍历出表名
                     tablename = cursor.getString(0);
+                    Log.d(TAG, "onCreate: " + tablename);
                     if (tablename.equals("HISTORY_" + userId)) {
-                        Log.d(TAG, "onCreate: 欢迎新用户登录到本机APP，开始同步网络数据");
-                        isThisAccountFirstLogin = true;
+                        isThisAccountFirstLogin = false;
                         break;
                     }
                 }
                 cursor.close();
                 if (isThisAccountFirstLogin) {// 创建其对应的数据表
+                    Log.d(TAG, "onCreate: 欢迎新用户登录到本机APP，开始同步网络数据");
                     final String CREATE_HISTORY =
                             "create table if not exists " + "HISTORY_" + userId + "(" +
                                     "word_id integer primary key," +
                                     "level int default(0)," +
                                     "yesterday integer default(0))";
                     db.execSQL(CREATE_HISTORY);
+                    myStorage.storeInt("lastLoginAccount", userId);
+                    Log.d(TAG, "onCreate: 创建数据库");
                     // TODO 网络同步数据  恢复数据库 待做
                 }
             }

@@ -24,19 +24,17 @@ public class WordLevelUtil {
         // getGoal 获得 1-8的int
         // tag 是 0x01,到0x0080
         int tag_now = App.userNoPassword_global.getGoal();
-        if(tag_now == _tag)
-        {
+        if (tag_now == _tag) {
             return true;
         }
-        short tag = (short)(1 << _tag);
+        short tag = (short) (1 << _tag);
         long startTime = System.nanoTime();
         SQLiteDatabase db = DbUtil.getDatabase();
         List<WordsLevel> result = new ArrayList<WordsLevel>();
         try {
             // TODO 删除level = 0的单词！
             db.beginTransaction();
-//            App.userNoPassword_global.getUserID();
-//            db.execSQL("delete from HISTORY_" + App.getuserid() + " where level = ?", new String[]{"0"});
+            db.execSQL("delete from HISTORY_" + App.userNoPassword_global.getUserID() + " where level = ?", new String[]{"0"});
             Cursor cursor = db.rawQuery("select word_id,tag from WORDS ", null);
 
             if (cursor.moveToFirst()) {
@@ -81,7 +79,7 @@ public class WordLevelUtil {
                 db = null;
             }
         }
-        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime)+" ns");;
+        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime) + " ns");
         return true;
     }
 
