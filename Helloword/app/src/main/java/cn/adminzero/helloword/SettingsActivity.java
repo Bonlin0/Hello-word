@@ -118,22 +118,13 @@ public class SettingsActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     Log.d("test", "onPreferenceClick: Exit");
+                    ActivityCollector.finishAll();
+                    android.os.Process.killProcess(android.os.Process.myPid());
                     return true;
                 }
             });
 
 
         }
-        /*A.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Log.d("test", "onPreferenceClick: " + "yes");
-                    Intent intent = new Intent(getActivity(), third.class);
-                    startActivity(intent);
-                    return false;
-                }
-            });*/
-
-
     }
 }
