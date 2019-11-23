@@ -33,6 +33,8 @@ public class App extends Application {
     private static int Version = 1;
     private static int userid = 1;
     private static Context context = null;
+    private static boolean isDailyFirstLogin = false;
+
 
     public static String getTAG() {
         return TAG;
@@ -67,6 +69,9 @@ public class App extends Application {
          * 初始化判断 Assets文件是只读的！
          * */
         int isFirstRunApp = myStorage.getInt("isFirstRunApp");
+
+        //TODO  提取上次登录时间，并且保存当前登陆时间，用以比对 是否是今日第一次登录
+
         if (isFirstRunApp == 0) {
             /** 初始化 word数据库
              *  添加 csv单词数据
