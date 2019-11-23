@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.apache.log4j.chainsaw.Main;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -165,12 +167,19 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
         // 检查用户当前词书是否合法 正确范围是[1,8]
         if (App.userNoPassword_global.getGoal() <= 0) {
             // 弹出对话框选择词书
             showChooseWordsBookDialog();
 
+        }
+        // 如果用户从设置界面退出
+        if(App.isLoggingOut)
+        {
+            App.isLoggingOut = false;
+            finish();
         }
     }
 
@@ -204,6 +213,8 @@ public class MainActivity extends BaseActivity {
 
     public void showChooseWordsBookDialog() {
         AlertDialog.Builder builder;
+
+
         //默认选中第一个
         final String[] items = {"中考", "高考", "CET4", "CET6", "托福", "雅思", "GRE", "考研"};
         chooseWordsBookChoice = 0;
@@ -224,7 +235,9 @@ public class MainActivity extends BaseActivity {
                         }
                     }
                 });
-        builder.create().show();
+        // 设置不可取消
+        builder.create().setCancelable(false);
+        builder.create().show();;
     }
 
     // 当点击了选择词书

@@ -36,6 +36,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 
+import cn.adminzero.helloword.App;
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Utils.SerializeUtils;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginActivityBroadcastReceiver = new LoginActivityBroadcastReceiver();
         intentFilter = new IntentFilter(CMDDef.MINABroadCast);
-        sharedPreferences = super.getSharedPreferences("LoginSharedPreference", MODE_PRIVATE);
+        sharedPreferences = App.getContext().getSharedPreferences("LoginSharedPreference", MODE_PRIVATE);
 
         Intent intent = new Intent(LoginActivity.this, MinaService.class);
         //开启MINA服务
