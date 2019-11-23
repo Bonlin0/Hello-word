@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageButton
+        android:id="@+id/pronounceButton"
+        android:layout_width="24sp"
+        android:layout_height="64sp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_volume_up_black_24dp" />
+
+    <TextView
+        android:id="@+id/word_content_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="64sp"
+        android:paddingStart="24sp"
+        android:paddingTop="16sp"
+        android:paddingEnd="24sp"
+        android:paddingBottom="16sp"
+        android:text="Abandon"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/word_phonetic_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="64sp"
+        android:layout_weight="1"
+        android:paddingStart="24sp"
+        android:paddingTop="16sp"
+        android:paddingEnd="24sp"
+        android:paddingBottom="16sp"
+        android:text="[əˈbændən]"
+        android:textSize="24sp" />
+</LinearLayout>
