@@ -2,12 +2,14 @@ package cn.adminzero.helloword.ui.main;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,7 +26,9 @@ import androidx.lifecycle.ViewModelProviders;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.adminzero.helloword.CheckOutWordsActivity;
 import cn.adminzero.helloword.R;
+import cn.adminzero.helloword.ShowWordActivity;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsUtil;
 
@@ -33,11 +37,15 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MyWordsLearningFragment extends Fragment {
+public class MyWordsLearningFragment extends Fragment{
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
+
+
+    // TODO 由于要在外部类使用 要标志final
+    final List<Words> wordsList = new ArrayList<Words>();
 
     public static MyWordsLearningFragment newInstance(int index) {
         MyWordsLearningFragment fragment = new MyWordsLearningFragment();
@@ -59,6 +67,7 @@ public class MyWordsLearningFragment extends Fragment {
         }
         //pageViewModel.setIndex(index);
 
+
     }
 
     @Override
@@ -68,43 +77,39 @@ public class MyWordsLearningFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_check_out_words, container, false);
         // 将数据库里的单词导入到活动中显示
         ListView listView = root.findViewById(R.id.word_list_view);
-        List<Words> wordsList = new ArrayList<Words>();
-        Words words1 = new Words();
-        Words words2 = new Words();
-        words1.setWord("Abandon");
-        words1.setPhonetic("[əˈbændən]");
-        words2.setWord("freedom");
-        words2.setPhonetic("[ˈfriːdəm]");
-        /*wordsList.add(WordsUtil.getWordById((short)1));
-        wordsList.add(WordsUtil.getWordById((short)2));*/
-        wordsList.add(words1);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        wordsList.add(words2);
-        Log.e(TAG, "onCreateView: "+wordsList.toString() );
+        // TODO 由于要在外部类使用 要标志final
+        //final List<Words> wordsList = new ArrayList<Words>();
+        wordsList.add(WordsUtil.getWordById((short)1));
+        wordsList.add(WordsUtil.getWordById((short)2));
+        //TODO 从数据库里取出ArrayList
+
+
+
+
+        // Log.e(TAG, "onCreateView: "+wordsList.toString() );
         MyWordsLearningFragment.List_adapter list_adapter =
                 new MyWordsLearningFragment.List_adapter(this.getContext(),
                         R.layout.listview_word, wordsList);
         listView.setAdapter(list_adapter);
+        listView.setOnItemClickListener(wordClickedHandler);
+
+        /*root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "JJJJJJJJJJJJJJJJ", Toast.LENGTH_LONG).show();
+            }
+        });*/
         return root;
     }
+
+    public void startShowWordActivity(Words words)
+    {
+        Intent intent = new Intent(this.getContext(), ShowWordActivity.class);
+        intent.putExtra("word_to_show",words);
+        startActivity(intent);
+    }
+
+
 
     // 用于列表显示单词 TODO 修改布局以更美观更通用
     public class List_adapter extends ArrayAdapter<Words> {
@@ -124,16 +129,26 @@ public class MyWordsLearningFragment extends Fragment {
             // int permissionCheck = ContextCompat.checkSelfPermission(this,Manifest.WRITE_EXTERNAL_STORAGE);
 
             //  final View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
-            ImageButton pronounceButton = (ImageButton) view.findViewById(R.id.pronounceButton);
+            //ImageButton pronounceButton = (ImageButton) view.findViewById(R.id.pronounceButton);
             TextView word_content_textView = (TextView) view.findViewById(R.id.word_content_textView);
             TextView word_phonetic_textView = (TextView) view.findViewById(R.id.word_phonetic_textView);
 
             word_content_textView.setText(words.getWord());
-            word_phonetic_textView.setText(words.getPhonetic());
+            word_phonetic_textView.setText("/"+words.getPhonetic()+"/");
             //debug
             return  view;
         }
 
 
     }
+
+    private AdapterView.OnItemClickListener wordClickedHandler = new AdapterView.OnItemClickListener() {
+        public void onItemClick(AdapterView parent, View v, int position, long id)
+        {
+            Words words = wordsList.get(position);
+            // Toast.makeText(getActivity(), words.getWord(), Toast.LENGTH_LONG).show();
+            startShowWordActivity(words);
+        }
+    };
+
 }

@@ -125,8 +125,8 @@ public class SettingsActivity extends AppCompatActivity {
 
                     Log.d("test", "onPreferenceClick: Exit");
                     //TODO UI tanchuxiaoxi
-                    App.isLoggingOut = true;
-                    
+                    //App.isLoggingOut = true;
+
                     return true;
 
                 }

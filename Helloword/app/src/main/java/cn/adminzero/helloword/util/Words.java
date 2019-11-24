@@ -1,11 +1,13 @@
 package cn.adminzero.helloword.util;
 
+import java.io.Serializable;
+
 /**
  * author : zhaojunchen
  * date   : 2019/11/2014:58
  * desc   : 单词类
  */
-public class Words {
+public class Words implements Serializable {
     public static short tag_zk = 0x0001;//中考 1
     public static short tag_gk = 0x0002;//高考 2
     public static short tag_cet4 = 0x0004;//四级 3
