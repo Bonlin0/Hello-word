@@ -16,7 +16,7 @@ import cn.adminzero.helloword.db.DbUtil;
 
 /**
  * author : zhaojunchen
- * date   : 2019/11/2016:14
+ * date   : 2019/11/20 16:14
  * desc   : 单词历史记录表的一些操作
  */
 public class WordsLevelUtil {
@@ -148,7 +148,7 @@ public class WordsLevelUtil {
     /**
      * @param number 每日分配单词书数目 --->从配置文件获得
      */
-    public static ArrayList<WordsLevel> assignDailyWords(int number) {
+    public static ArrayList<WordsLevel> helpAssignDailyWords(int number) {
         ArrayList<WordsLevel> arrayList = getLevelEq7(0);
         if (arrayList.size() <= number) {
             // 今天的任务是最后的任务
@@ -222,8 +222,10 @@ public class WordsLevelUtil {
         return result;
     }
 
-    public static ArrayList<Words> getDailyWords(int number) {
-        wordsLevels = assignDailyWords(number);
+    public static ArrayList<Words> assignDailyWords(int number) {
+        // MyStorage myStorage = new MyStorage();
+        // TODO 当日词书的分配
+        wordsLevels = helpAssignDailyWords(number);
         short wordidlist[] = new short[wordsLevels.size()];
         for (int i = 0; i < wordsLevels.size(); i++) {
             wordidlist[i] = wordsLevels.get(i).getWord_id();
