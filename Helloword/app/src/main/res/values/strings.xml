@@ -61,4 +61,6 @@
     <string name="place_holder_sentence">Stay hungry,Stay foolish.\n求知若饥,虚心若愚。</string>
 
     <string name="help_and_issue_content">感谢您使用 Hello Word, 如果您有任何的建议和反馈或希望获得使用上的帮助可以通过下方的按钮进入项目的 Github 页面进行进一步操作。</string>
+
+    <string name="title_dialog_content">Tips : 称号功能是用户等级的一种表现。我们使用称号来衡量用户的资历并根据称号开放部分限制功能。  你需要完全背熟一定数目的单词来获得提升称号的资格，这个进度将在进入APP的主界面展示。而获得资格后还要进行测验，当你通过测验后才可以获得称号的升级！</string>
 </resources>

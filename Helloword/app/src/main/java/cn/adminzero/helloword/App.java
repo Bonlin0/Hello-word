@@ -33,6 +33,8 @@ public class App extends Application {
     private static int lastLoginAccount = -1;// 记录上次APP的登录ID
     // 记录是否用户退出登录，当为true时 MainActivity检测到自动退出
     //public static boolean isLoggingOut = false;
+    // 记录用户是否满足挑战下一级称号的条件
+    public static boolean isAbleToUpgradeTitle= false;
 
 
     public static String getTAG() {

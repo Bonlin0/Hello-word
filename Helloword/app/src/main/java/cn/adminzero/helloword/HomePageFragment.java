@@ -45,6 +45,8 @@ public class HomePageFragment extends Fragment {
         // 处理用户已完成单词和目标完成单词（与称号机制挂钩）
         Integer wordsFinished = WordsLevelUtil.getLevel7Count();
         Integer wordsRequiredForNextLevel;
+
+
         switch (App.userNoPassword_global.getLevel())
         {
             // 无名菜鸟
@@ -76,6 +78,17 @@ public class HomePageFragment extends Fragment {
                 wordsRequiredForNextLevel = 10000;
                 break;
         }
+
+        // 检查是否满足升级称号的条件
+        if(wordsFinished<wordsRequiredForNextLevel)
+        {
+            App.isAbleToUpgradeTitle=false;
+        }
+        else
+        {
+            App.isAbleToUpgradeTitle=true;
+        }
+
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
         progressBar.setMax(wordsRequiredForNextLevel);
         progressBar.setProgress(wordsFinished);

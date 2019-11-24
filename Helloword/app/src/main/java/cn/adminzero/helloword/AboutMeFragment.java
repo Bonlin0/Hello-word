@@ -102,6 +102,15 @@ public class AboutMeFragment extends Fragment {
             }
         });
 
+        // 展示称号功能的介绍dialog 提供提升称号等级的入口
+        Button userTitleButton = view.findViewById(R.id.userTitleButton);
+        userTitleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTitleDialog();
+            }
+        });
+
         return view;
     }
 
@@ -142,4 +151,35 @@ public class AboutMeFragment extends Fragment {
                 });
         builder.create().show();
     }
+
+    // 当用户点击称号时
+    private void showTitleDialog() {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(getContext()).setIcon(R.drawable.ic_star_border_black_24dp).setTitle("称号机制")
+                .setMessage(getString(R.string.title_dialog_content)).setPositiveButton("开始测验！", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //ToDo: 你想做的事情
+                        Toast.makeText(getContext(), "准备开始测验！", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getActivity(),WordTestActivity.class);
+                        startActivity(intent);
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        Button btn =  dialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        // 检查用户已经背完的单词是否满足条件
+        if(!App.isAbleToUpgradeTitle)
+        {
+            btn.setEnabled(false);
+        }
+
+    }
+
+
 }
