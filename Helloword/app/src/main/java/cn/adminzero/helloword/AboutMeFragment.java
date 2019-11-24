@@ -1,7 +1,10 @@
 package cn.adminzero.helloword;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -79,6 +83,25 @@ public class AboutMeFragment extends Fragment {
 
         //TODO 如果之后需要添加头像在这里添加
 
+        //点击词库按钮
+        Button words_about_me_button = view.findViewById(R.id.words_about_me_button);
+        words_about_me_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),CheckOutWordsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 点击帮助按钮
+        Button help_and_issue_about_me_button = view.findViewById(R.id.help_and_issue_about_me_button);
+        help_and_issue_about_me_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showHelpAndIssueDialog();
+            }
+        });
+
         return view;
     }
 
@@ -96,5 +119,27 @@ public class AboutMeFragment extends Fragment {
         });
 
 
+    }
+
+    // 当用户点击帮助与反馈时
+    private void showHelpAndIssueDialog() {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(getContext()).setIcon(R.drawable.ic_help_outline_black_24dp).setTitle("帮助与反馈")
+                .setMessage(getString(R.string.help_and_issue_content)).setPositiveButton("打开浏览器", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //ToDo: 你想做的事情
+                        Toast.makeText(getContext(), "正在打开网页", Toast.LENGTH_LONG).show();
+                        Uri uri = Uri.parse("https://github.com/Haulyn5/Hello-word");
+                        Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                        startActivity(intent);
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        builder.create().show();
     }
 }

@@ -59,4 +59,6 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
     <string name="place_holder_sentence">Stay hungry,Stay foolish.\n求知若饥,虚心若愚。</string>
+
+    <string name="help_and_issue_content">感谢您使用 Hello Word, 如果您有任何的建议和反馈或希望获得使用上的帮助可以通过下方的按钮进入项目的 Github 页面进行进一步操作。</string>
 </resources>
