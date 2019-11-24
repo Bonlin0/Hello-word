@@ -1,5 +1,6 @@
 package cn.adminzero.helloword;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -117,10 +118,16 @@ public class SettingsActivity extends AppCompatActivity {
             exit.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
+                    SharedPreferences sharedPreferences = App.getContext().getSharedPreferences("LoginSharedPreference", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("isLogin", false);
+                    editor.commit();
+
                     Log.d("test", "onPreferenceClick: Exit");
                     ActivityCollector.finishAll();
                     android.os.Process.killProcess(android.os.Process.myPid());
                     return true;
+
                 }
             });
 
