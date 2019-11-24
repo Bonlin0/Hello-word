@@ -29,7 +29,10 @@ import java.util.List;
 import cn.adminzero.helloword.CheckOutWordsActivity;
 import cn.adminzero.helloword.R;
 import cn.adminzero.helloword.ShowWordActivity;
+import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
+import cn.adminzero.helloword.util.WordsLevel;
+import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
@@ -41,10 +44,11 @@ public class MyWordsLearningFragment extends Fragment{
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    private PageViewModel pageViewModel;
 
 
-    List<Words> wordsList;
+    ArrayList<Words> wordsList;
+
+    MediaPlayUtil player;
 
     public static MyWordsLearningFragment newInstance(int index) {
         MyWordsLearningFragment fragment = new MyWordsLearningFragment();
@@ -57,28 +61,41 @@ public class MyWordsLearningFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // pageViewModel是自动生成的代码
-        //pageViewModel = ViewModelProviders.of(this).get(PageViewModel.class);
+
         int index = 1;
         // 提取自己是第几个Fragment
         if (getArguments() != null) {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
+        ArrayList<Words> testWordsList = new ArrayList<>();
+        testWordsList.add(WordsUtil.getWordById((short)123));
+        testWordsList.add(WordsUtil.getWordById((short)124));
+        testWordsList.add(WordsUtil.getWordById((short)126));
+        ArrayList<Words> test2WordList = (ArrayList<Words>) testWordsList.clone();
+        ArrayList<Words> test3WordList = (ArrayList<Words>) testWordsList.clone();
+        test2WordList.add(WordsUtil.getWordById((short)222));
+        test3WordList.add(WordsUtil.getWordById((short)226));
         //pageViewModel.setIndex(index);
         switch (index)
         {
+            //TODO 按需要获取arraylist
             case 0:
                 // now learn
-
+                wordsList = testWordsList;
                 break;
             case 1:
                 // will learn
+                wordsList =test2WordList;
+
                 break;
             case 2:
                 // have learned
+                wordsList =test3WordList;
+
                 break;
 
         }
+        player = new MediaPlayUtil();
 
     }
 
@@ -89,11 +106,9 @@ public class MyWordsLearningFragment extends Fragment{
         View root = inflater.inflate(R.layout.fragment_check_out_words, container, false);
         // 将数据库里的单词导入到活动中显示
         ListView listView = root.findViewById(R.id.word_list_view);
-        // TODO 由于要在外部类使用 要标志final
-        //final List<Words> wordsList = new ArrayList<Words>();
-        wordsList.add(WordsUtil.getWordById((short)1));
-        wordsList.add(WordsUtil.getWordById((short)2));
-        //TODO 从数据库里取出ArrayList
+
+        //wordsList.add(WordsUtil.getWordById((short)1));
+        //wordsList.add(WordsUtil.getWordById((short)2));
 
 
 
@@ -105,12 +120,6 @@ public class MyWordsLearningFragment extends Fragment{
         listView.setAdapter(list_adapter);
         listView.setOnItemClickListener(wordClickedHandler);
 
-        /*root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "JJJJJJJJJJJJJJJJ", Toast.LENGTH_LONG).show();
-            }
-        });*/
         return root;
     }
 
@@ -123,7 +132,7 @@ public class MyWordsLearningFragment extends Fragment{
 
 
 
-    // 用于列表显示单词 TODO 修改布局以更美观更通用
+    // 用于列表显示单词
     public class List_adapter extends ArrayAdapter<Words> {
         private int resourceId;
 
@@ -135,16 +144,24 @@ public class MyWordsLearningFragment extends Fragment{
         @SuppressLint("ResourceAsColor")
         @Override
         public View getView(final int position, View convertView, final ViewGroup parent) {
-            Words words = getItem(position);//获取当前项的Account实例
+            final Words words = getItem(position);//获取当前项的Account实例
 
             View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
             // int permissionCheck = ContextCompat.checkSelfPermission(this,Manifest.WRITE_EXTERNAL_STORAGE);
 
             //  final View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
-            //ImageButton pronounceButton = (ImageButton) view.findViewById(R.id.pronounceButton);
+            ImageButton pronounceButton = (ImageButton) view.findViewById(R.id.pronounceButton);
             TextView word_content_textView = (TextView) view.findViewById(R.id.word_content_textView);
             TextView word_phonetic_textView = (TextView) view.findViewById(R.id.word_phonetic_textView);
-
+            pronounceButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(player!=null){
+                        player.playword(words.getWord());
+                    }
+                    // Toast.makeText(getActivity(), words.getWord(), Toast.LENGTH_LONG).show();
+                }
+            });
             word_content_textView.setText(words.getWord());
             word_phonetic_textView.setText("/"+words.getPhonetic()+"/");
             //debug

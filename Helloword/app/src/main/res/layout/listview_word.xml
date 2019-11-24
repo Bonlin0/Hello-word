@@ -14,7 +14,7 @@
         android:layout_width="64sp"
         android:layout_height="64sp"
         android:layout_weight="1"
-        android:background="@android:color/transparent"
+        android:background="#FAFAFA"
         android:focusable="false"
         app:layout_constraintBottom_toBottomOf="@+id/word_phonetic_textView"
         app:layout_constraintStart_toStartOf="parent"
