@@ -111,6 +111,16 @@ public class AboutMeFragment extends Fragment {
             }
         });
 
+        //小组功能
+        Button group_about_me_button = view.findViewById(R.id.group_about_me_button);
+        group_about_me_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MyGroupActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
