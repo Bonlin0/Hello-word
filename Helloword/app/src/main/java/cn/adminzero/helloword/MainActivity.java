@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -33,10 +32,8 @@ import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
-import cn.adminzero.helloword.db.MyDatabaseHelper;
-import cn.adminzero.helloword.ui.login.LoginActivity;
 import cn.adminzero.helloword.util.MyStorage;
-import cn.adminzero.helloword.util.WordLevelUtil;
+import cn.adminzero.helloword.util.WordsLevelUtil;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -55,37 +52,42 @@ public class MainActivity extends BaseActivity {
         /**
          * TODO 创建单词表并且网络同步
          * */
-        Log.d(TAG, "onCreate: " + App.userNoPassword_global.getUserID());
         int userId = App.userNoPassword_global.getUserID();
-        assert (userId != -1);
+        Log.d(TAG, "onCreate: 当前用户ID" + userId);
+        if (userId != -1) {
+            Log.d(TAG, "onCreate: 登录失败！程序退出");
+            ActivityCollector.finishAll();
+        }
         try {
             MyStorage myStorage = new MyStorage();
             if (myStorage.getInt("lastLoginAccount") == userId) {
                 Log.d(TAG, "onCreate: 用户上次已经登录！无需创建数据库和同步数据库");
-                myStorage.storeInt("lastLoginAccount", userId);
             } else {
                 SQLiteDatabase db = DbUtil.getDatabase();
                 // 判断用户的单词历史表是否存在  不存在则创建并且网络同步数据
                 Cursor cursor = db.rawQuery("select name from sqlite_master where type='table';", null);
                 String tablename;
-                boolean isThisAccountFirstLogin = false;
+                boolean isThisAccountFirstLogin = true;
                 while (cursor.moveToNext()) {
                     //遍历出表名
                     tablename = cursor.getString(0);
+                    Log.d(TAG, "onCreate: " + tablename);
                     if (tablename.equals("HISTORY_" + userId)) {
-                        Log.d(TAG, "onCreate: 欢迎新用户登录到本机APP，开始同步网络数据");
-                        isThisAccountFirstLogin = true;
+                        isThisAccountFirstLogin = false;
                         break;
                     }
                 }
                 cursor.close();
                 if (isThisAccountFirstLogin) {// 创建其对应的数据表
+                    Log.d(TAG, "onCreate: 欢迎新用户登录到本机APP，开始同步网络数据");
                     final String CREATE_HISTORY =
                             "create table if not exists " + "HISTORY_" + userId + "(" +
                                     "word_id integer primary key," +
-                                    "level int default(0)," +
+                                    "level integer default(0)," +
                                     "yesterday integer default(0))";
                     db.execSQL(CREATE_HISTORY);
+                    myStorage.storeInt("lastLoginAccount", userId);
+                    Log.d(TAG, "onCreate: 创建数据库");
                     // TODO 网络同步数据  恢复数据库 待做
                 }
             }
@@ -229,7 +231,7 @@ public class MainActivity extends BaseActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (chooseWordsBookChoice != -1) {
                             //TODO 更换词书处理
-                            WordLevelUtil.initWorkBook(chooseWordsBookChoice + 1);
+                            WordsLevelUtil.initWorkBook(chooseWordsBookChoice + 1);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
                             //TODO 网络同步
                         }

@@ -81,7 +81,7 @@ public class App extends Application {
     }
 
     /**
-     * 初始化单词数据库
+     * 初始化本地单词数据库
      */
     private static void initword() {
         SQLiteDatabase db = DbUtil.getDatabase();

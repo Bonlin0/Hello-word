@@ -124,9 +124,8 @@ public class SettingsActivity extends AppCompatActivity {
                     editor.commit();
 
                     Log.d("test", "onPreferenceClick: Exit");
-                    //TODO UI tanchuxiaoxi
-                    //App.isLoggingOut = true;
-
+                    ActivityCollector.finishAll();
+                    android.os.Process.killProcess(android.os.Process.myPid());
                     return true;
 
                 }
@@ -134,16 +133,5 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         }
-        /*A.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    Log.d("test", "onPreferenceClick: " + "yes");
-                    Intent intent = new Intent(getActivity(), third.class);
-                    startActivity(intent);
-                    return false;
-                }
-            });*/
-
-
     }
 }
