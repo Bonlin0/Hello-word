@@ -59,6 +59,7 @@
         android:id="@+id/remember_pronounce_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="onClickPronounceButton"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"

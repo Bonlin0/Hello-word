@@ -32,7 +32,7 @@ public class App extends Application {
     private static boolean isDailyFirstLogin = false;
     private static int lastLoginAccount = -1;// 记录上次APP的登录ID
     // 记录是否用户退出登录，当为true时 MainActivity检测到自动退出
-    public static boolean isLoggingOut = false;
+    //public static boolean isLoggingOut = false;
 
 
     public static String getTAG() {

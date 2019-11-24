@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity {
          * */
         int userId = App.userNoPassword_global.getUserID();
         Log.d(TAG, "onCreate: 当前用户ID" + userId);
-        if (userId != -1) {
+        if (userId == -1) {
             Log.d(TAG, "onCreate: 登录失败！程序退出");
             ActivityCollector.finishAll();
         }
@@ -177,12 +177,12 @@ public class MainActivity extends BaseActivity {
             showChooseWordsBookDialog();
 
         }
-        // 如果用户从设置界面退出
+/*        // 如果用户从设置界面退出
         if(App.isLoggingOut)
         {
             App.isLoggingOut = false;
             finish();
-        }
+        }*/
     }
 
     /**
