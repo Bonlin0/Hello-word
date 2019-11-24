@@ -12,7 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import cn.adminzero.helloword.util.WordsLevelUtil;
 
 
 /**
@@ -39,8 +42,47 @@ public class HomePageFragment extends Fragment {
         // 所以需要这里处理一下以转字符串
         String daysStr = new Integer(days).toString();
         number_of_punch_days_textView.setText(daysStr);
-        //TODO 处理用户已完成单词和目标完成单词（与称号机制挂钩）
-
+        // 处理用户已完成单词和目标完成单词（与称号机制挂钩）
+        Integer wordsFinished = WordsLevelUtil.getLevel7Count();
+        Integer wordsRequiredForNextLevel;
+        switch (App.userNoPassword_global.getLevel())
+        {
+            // 无名菜鸟
+            case 0:
+                wordsRequiredForNextLevel = 25;
+                break;
+            case 1:
+                // 初出茅庐
+                wordsRequiredForNextLevel = 75;
+                break;
+            case 2:
+                // 略有所得
+                wordsRequiredForNextLevel = 200;
+                break;
+            case 3:
+                // 渐入佳境
+                wordsRequiredForNextLevel = 500;
+                break;
+            case 4:
+                // 胸有成竹
+                wordsRequiredForNextLevel = 1500;
+                break;
+            case 5:
+                // 举世无双
+                wordsRequiredForNextLevel = 5000;
+                break;
+            default:
+                // 不可能进入
+                wordsRequiredForNextLevel = 10000;
+                break;
+        }
+        ProgressBar progressBar = view.findViewById(R.id.progressBar);
+        progressBar.setMax(wordsRequiredForNextLevel);
+        progressBar.setProgress(wordsFinished);
+        TextView words_remembered = view.findViewById(R.id.words_remembered);
+        words_remembered.setText(wordsFinished.toString());
+        TextView words_to_remember = view.findViewById(R.id.words_to_remember);
+        words_to_remember.setText(wordsRequiredForNextLevel.toString());
 
         Button startRememberWordsButton = view.findViewById(R.id.start_learning_button);
         startRememberWordsButton.setOnClickListener(new View.OnClickListener() {

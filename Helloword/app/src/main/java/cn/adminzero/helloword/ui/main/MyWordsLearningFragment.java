@@ -81,16 +81,16 @@ public class MyWordsLearningFragment extends Fragment{
             //TODO 按需要获取arraylist
             case 0:
                 // now learn
-                wordsList = testWordsList;
+                wordsList = WordsLevelUtil.getLevel1to6();
                 break;
             case 1:
                 // will learn
-                wordsList =test2WordList;
+                wordsList = WordsLevelUtil.getLevel0();
 
                 break;
             case 2:
                 // have learned
-                wordsList =test3WordList;
+                wordsList =WordsLevelUtil.getLevel7();
 
                 break;
 

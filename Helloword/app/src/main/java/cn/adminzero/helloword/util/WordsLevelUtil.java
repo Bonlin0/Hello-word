@@ -262,6 +262,35 @@ public class WordsLevelUtil {
         return words;
     }
 
+    /**
+     * 获取level= 7 的单词数量
+     */
+    public static int getLevel7Count() {
+        SQLiteDatabase db = DbUtil.getDatabase();
+        Cursor cursor = null;
+        int result = -1;
+        int userId = App.userNoPassword_global.getUserID();
+        int indexword_id, indexlevel, indexyesterday;
+        try {
+            db.beginTransaction();
+            cursor = db.rawQuery("select word_id from HISTORY_" + userId + " where level = ? ", new String[]{"7"});
+            db.setTransactionSuccessful();
+            result = cursor.getCount();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "assignDailyWords: " + e.getMessage());
+        } finally {
+            db.endTransaction();
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db = null;
+            }
+        }
+        return result;
+    }
+
 
     /**
      * @param number
