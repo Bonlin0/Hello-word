@@ -16,7 +16,7 @@ import cn.adminzero.helloword.db.DbUtil;
 
 /**
  * author : zhaojunchen
- * date   : 2019/11/2016:14
+ * date   : 2019/11/20 16:14
  * desc   : 单词历史记录表的一些操作
  */
 public class WordsLevelUtil {
@@ -112,13 +112,13 @@ public class WordsLevelUtil {
         try {
             db.beginTransaction();
             if (choose == 0) {
-                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id=?", new String[]{"0"});
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where level = ?", new String[]{"0"});
             } else if (choose == 1) {
-                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id < ? && id > ?", new String[]{"7", "0"});
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where level < ? and level > ?", new String[]{"7", "0"});
             } else if (choose == 2) {
-                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id = ? ", new String[]{"7"});
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where level = ? ", new String[]{"7"});
             } else if (choose == 3) {
-                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id < ? ", new String[]{"7"});
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where level < ? ", new String[]{"7"});
             } else {
                 cursor = db.rawQuery("select * from HISTORY_" + userId, null);
             }
@@ -152,7 +152,7 @@ public class WordsLevelUtil {
     /**
      * @param number 每日分配单词书数目 --->从配置文件获得
      */
-    public static ArrayList<WordsLevel> assignDailyWords(int number) {
+    public static ArrayList<WordsLevel> helpAssignDailyWords(int number) {
         ArrayList<WordsLevel> arrayList = getLevelEq7(3);//获取<7
         if (arrayList.size() <= number) {
             // 今天的任务是最后的任务
@@ -226,15 +226,42 @@ public class WordsLevelUtil {
         return result;
     }
 
-    public static ArrayList<Words> getDailyWords(int number) {
-        wordsLevels = assignDailyWords(number);
-        short wordidlist[] = new short[wordsLevels.size()];
-        for (int i = 0; i < wordsLevels.size(); i++) {
-            wordidlist[i] = wordsLevels.get(i).getWord_id();
-        }
-        words = WordsUtil.getWordArrayByIdArray(wordidlist);
+    public static ArrayList<Words> assignDailyWords(int number) {
+        // MyStorage myStorage = new MyStorage();
+        // TODO 当日词书的分配
+        wordsLevels = helpAssignDailyWords(number);
+        words = WordsUtil.getWordArrayByIdArray(wordsLevels);
         return words;
     }
+
+    /**
+     * 获取词书中level = 0的单词列表
+     */
+    public static ArrayList<Words> getLevel0() {
+        ArrayList<WordsLevel> wordsLevels = getLevelEq7(0);
+        ArrayList<Words> words = WordsUtil.getWordArrayByIdArray(wordsLevels);
+        return words;
+    }
+
+    /**
+     * 获取词书中level>0&&level<7 的单词列表
+     */
+    public static ArrayList<Words> getLevel1to6() {
+        ArrayList<WordsLevel> wordsLevels = getLevelEq7(1);
+        ArrayList<Words> words = WordsUtil.getWordArrayByIdArray(wordsLevels);
+        return words;
+    }
+
+
+    /**
+     * 获取词书中level=7 的单词列表
+     */
+    public static ArrayList<Words> getLevel7() {
+        ArrayList<WordsLevel> wordsLevels = getLevelEq7(2);
+        ArrayList<Words> words = WordsUtil.getWordArrayByIdArray(wordsLevels);
+        return words;
+    }
+
 
     /**
      * @param number

@@ -16,7 +16,7 @@ public class WordsLevel {
         this.yesterday = 0;
     }
 
-    public byte isIsyestarday() {
+    public byte getYestarday() {
         return yesterday;
     }
 

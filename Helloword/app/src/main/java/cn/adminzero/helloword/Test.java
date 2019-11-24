@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import cn.adminzero.helloword.util.TranslationUtil;
 import cn.adminzero.helloword.util.Words;
+import cn.adminzero.helloword.util.WordsLevel;
+import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 
 /**
@@ -18,11 +20,12 @@ public class Test {
 
     public void test() {
         Log.d(TAG, "test: start test moudle");
-        ArrayList<Words> words = new ArrayList<Words>();
-        Words word = new Words();
-        short[] you = {1, 2, 234, 34, 5, 45, 4, 56, 45, 765, 7, 567, 56, 88, 766, 7967};
-        word = WordsUtil.getWordById((short) 2);
-        words = WordsUtil.getWordArrayByIdArray(you);
+        ArrayList<Words> words0 = new ArrayList<Words>();
+        ArrayList<Words> words1to6 = new ArrayList<Words>();
+        ArrayList<Words> words7 = new ArrayList<Words>();
+        words0 = WordsLevelUtil.getLevel0();
+        words1to6 = WordsLevelUtil.getLevel1to6();
+        words7 = WordsLevelUtil.getLevel7();
 
 
         Log.d(TAG, "test: end test moudle");

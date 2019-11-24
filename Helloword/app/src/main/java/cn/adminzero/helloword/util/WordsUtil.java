@@ -71,10 +71,15 @@ public class WordsUtil {
     }
 
     /**
-     * @param word_id
+     * @param wordsLevels
      * @return 返回单词对象数组 ID未查询到的对应位置对象为NULL
      */
-    public static ArrayList<Words> getWordArrayByIdArray(short[] word_id) {
+    public static ArrayList<Words> getWordArrayByIdArray(ArrayList<WordsLevel> wordsLevels) {
+        long startTime = System.nanoTime();
+        short word_id[] = new short[wordsLevels.size()];
+        for (int i = 0; i < wordsLevels.size(); i++) {
+            word_id[i] = wordsLevels.get(i).getWord_id();
+        }
         SQLiteDatabase db = DbUtil.getDatabase();
         String word;
         String phonetic;
@@ -126,6 +131,9 @@ public class WordsUtil {
                     cursor = null;
                     result.add(words);
                 }
+                if (cursor != null) {
+                    cursor.close();
+                }
             }
             db.setTransactionSuccessful();
         } catch (Exception e) {
@@ -138,6 +146,7 @@ public class WordsUtil {
                 db.close();
             }
         }
+        Log.d(TAG, "getWordArrayByIdArray: spend time " + (System.nanoTime() - startTime) / 1000);
         return result;
     }
 

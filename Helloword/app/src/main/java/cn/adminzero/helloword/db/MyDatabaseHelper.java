@@ -88,7 +88,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(CREATE_WORDS);
             db.execSQL(CREATE_USER_HISTORY);
             db.execSQL(CREATE_GROUP_USER);
+            db.execSQL("create index word_idindex on WORDS(word_id)");
             db.execSQL("create index wordindex on WORDS(word)");
+
             Log.d(TAG, "start create databases");
             Toast.makeText(App.getContext(), "Databases Create succeed!", Toast.LENGTH_LONG).show();
             db.setTransactionSuccessful();
