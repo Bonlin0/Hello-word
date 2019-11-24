@@ -38,6 +38,14 @@ public class ShowWordActivity extends AppCompatActivity {
             sentenceToShow = getString(R.string.place_holder_sentence);
         }
         example_sentence_content_text.setText(sentenceToShow);
+
+        boolean isRemembered = intent.getBooleanExtra("is_remembered",false);
+        TextView cancal_remember_textView = findViewById(R.id.cancal_remember_textView);
+        if(!isRemembered)
+        {
+            cancal_remember_textView.setVisibility(View.GONE);
+        }
+
     }
 
     public void onClickPronounceButton(View view){
