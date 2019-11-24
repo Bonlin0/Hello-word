@@ -99,7 +99,7 @@ public class WordsLevelUtil {
     /**
      * @param choose
      * @return WordsLevel数组
-     * @desc 0小于7  1等于7 其他为所有
+     * @desc 0:0    1:1..6  2: 7    3: <7 4: all
      */
 
     public static ArrayList<WordsLevel> getLevelEq7(int choose) {
@@ -112,9 +112,13 @@ public class WordsLevelUtil {
         try {
             db.beginTransaction();
             if (choose == 0) {
-                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id<?", new String[]{"7"});
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id=?", new String[]{"0"});
             } else if (choose == 1) {
-                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id=?", new String[]{"7"});
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id < ? && id > ?", new String[]{"7", "0"});
+            } else if (choose == 2) {
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id = ? ", new String[]{"7"});
+            } else if (choose == 3) {
+                cursor = db.rawQuery("select * from HISTORY_" + userId + " where id < ? ", new String[]{"7"});
             } else {
                 cursor = db.rawQuery("select * from HISTORY_" + userId, null);
             }
@@ -149,7 +153,7 @@ public class WordsLevelUtil {
      * @param number 每日分配单词书数目 --->从配置文件获得
      */
     public static ArrayList<WordsLevel> assignDailyWords(int number) {
-        ArrayList<WordsLevel> arrayList = getLevelEq7(0);
+        ArrayList<WordsLevel> arrayList = getLevelEq7(3);//获取<7
         if (arrayList.size() <= number) {
             // 今天的任务是最后的任务
             return arrayList;

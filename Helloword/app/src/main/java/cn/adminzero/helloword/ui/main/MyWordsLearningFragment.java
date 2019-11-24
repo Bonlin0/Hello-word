@@ -44,8 +44,7 @@ public class MyWordsLearningFragment extends Fragment{
     private PageViewModel pageViewModel;
 
 
-    // TODO 由于要在外部类使用 要标志final
-    final List<Words> wordsList = new ArrayList<Words>();
+    List<Words> wordsList;
 
     public static MyWordsLearningFragment newInstance(int index) {
         MyWordsLearningFragment fragment = new MyWordsLearningFragment();
@@ -66,7 +65,20 @@ public class MyWordsLearningFragment extends Fragment{
             index = getArguments().getInt(ARG_SECTION_NUMBER);
         }
         //pageViewModel.setIndex(index);
+        switch (index)
+        {
+            case 0:
+                // now learn
 
+                break;
+            case 1:
+                // will learn
+                break;
+            case 2:
+                // have learned
+                break;
+
+        }
 
     }
 
