@@ -275,10 +275,10 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-                    break;
                 }
+                break;
                 case CMDDef.REPLY_SIGN_IN_REQUEST: {
-                    Log.e("tag", "" + cmd);
+                    //Log.e("tag", "" + cmd);
                     byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
                     try {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
@@ -297,16 +297,16 @@ public class LoginActivity extends AppCompatActivity {
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-                    break;
-                }
-                case CMDDef.ERROR_CONNECT_NETWORK: {
-                    Toast.makeText(LoginActivity.this,CMDDef.ErrorConnect,Toast.LENGTH_LONG).show();
                 }
                 break;
-                case CMDDef.SUCCESS_CONNECT_NETWORK:{
-                    if(sharedPreferences.getBoolean("isLogin",false)){
-                        usernameEditText.setText(sharedPreferences.getString("storedUserEmail",""));
-                        passwordEditText.setText(sharedPreferences.getString("storedPassword",""));
+                case CMDDef.ERROR_CONNECT_NETWORK: {
+                    Toast.makeText(LoginActivity.this, CMDDef.ErrorConnect, Toast.LENGTH_LONG).show();
+                }
+                break;
+                case CMDDef.SUCCESS_CONNECT_NETWORK: {
+                    if (sharedPreferences.getBoolean("isLogin", false)) {
+                        usernameEditText.setText(sharedPreferences.getString("storedUserEmail", ""));
+                        passwordEditText.setText(sharedPreferences.getString("storedPassword", ""));
                         signUpSwitch.setChecked(false);
                         loginViewModel.login(
                                 usernameEditText.getText().toString(),

@@ -1,5 +1,7 @@
 package cn.adminzero.helloword.data;
 
+import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.data.model.LoggedInUser;
 
 /**

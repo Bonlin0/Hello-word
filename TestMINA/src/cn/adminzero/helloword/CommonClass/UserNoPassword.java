@@ -1,6 +1,7 @@
 package cn.adminzero.helloword.CommonClass;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class UserNoPassword implements Serializable {
