@@ -13,6 +13,7 @@ import cn.adminzero.helloword.util.Words;
 public class ShowWordActivity extends AppCompatActivity {
 
     private Words wordsActivity;
+    private boolean cancelRemembered = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +41,21 @@ public class ShowWordActivity extends AppCompatActivity {
         example_sentence_content_text.setText(sentenceToShow);
 
         boolean isRemembered = intent.getBooleanExtra("is_remembered",false);
-        TextView cancal_remember_textView = findViewById(R.id.cancal_remember_textView);
+        final TextView cancel_remember_textView = findViewById(R.id.cancel_remember_textView);
+        cancelRemembered = false;
         if(!isRemembered)
         {
-            cancal_remember_textView.setVisibility(View.GONE);
+            cancel_remember_textView.setVisibility(View.GONE);
+        }
+        else
+        {
+            cancel_remember_textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cancel_remember_textView.setVisibility(View.GONE);
+                    cancelRemembered  = true;
+                }
+            });
         }
 
     }
@@ -56,4 +68,14 @@ public class ShowWordActivity extends AppCompatActivity {
     }
     /** MediaPlayUtil player = new MediaPlayUtil();
      * player.playword(String word); */
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 如果撤销已经记住
+        if(cancelRemembered)
+            setResult(1);
+        else
+            setResult(0);
+    }
 }

@@ -26,10 +26,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cancal_remember_textView" />
+        app:layout_constraintTop_toBottomOf="@+id/cancel_remember_textView" />
 
     <TextView
-        android:id="@+id/cancal_remember_textView"
+        android:id="@+id/cancel_remember_textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/light_gray"

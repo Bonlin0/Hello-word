@@ -23,6 +23,7 @@ import cn.adminzero.helloword.db.DbUtil;
 
 import cn.adminzero.helloword.util.MyStorage;
 import cn.adminzero.helloword.util.Words;
+import cn.adminzero.helloword.util.WordsLevel;
 
 public class App extends Application {
 
@@ -42,8 +43,9 @@ public class App extends Application {
     //public static boolean isLoggingOut = false;
     // 记录用户是否满足挑战下一级称号的条件
     public static boolean isAbleToUpgradeTitle= false;
-    // 记录今日单词队列
+    // 记录今日单词队列and Level
     public static ArrayList<Words> wordsArrayToday;
+    public static ArrayList<WordsLevel> wordsLevelArrayToday;
 
 
     public static String getTAG() {
