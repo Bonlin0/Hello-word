@@ -10,6 +10,66 @@ import java.sql.*;
 public class ServerDbutil {
 
     /**
+     * 服务器端输入用户User_id 得到用户除了密码之外的信息
+     */
+    public  static  UserNoPassword getUserNopassword(int user_id) throws SQLException {
+        UserNoPassword  user= new UserNoPassword("-1");
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("SELECT * FROM USER WHERE user_id=? ");
+        stmt.setObject(1,user_id);
+        ResultSet rs = null;
+        try {
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                user.UserNoPassword(
+                        user_id,
+                        rs.getString("user_name"),
+                        rs.getString("email"),
+                        rs.getInt("isPunch"),
+                        rs.getInt("goal"),
+                        rs.getInt("days"),
+                        rs.getInt("group_id"),
+                        rs.getInt("user_level"),
+                        rs.getInt("points")
+                );
+            }//需要注意 这里rs已经跑完了，rs.next=null
+        }catch (Exception e){
+            System.out.println("查询出错");
+        }
+        return user;
+    }
+
+    /**
+     * 服务器端输入用户User_id 得到用户所有信息
+     */
+    public  static  UserInformation getUser(int user_id) throws SQLException {
+      UserInformation  user= new UserInformation(-1);
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("SELECT * FROM USER WHERE user_id=? ");
+        stmt.setObject(1,user_id);
+        ResultSet rs = null;
+        try {
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                UserInformation userInformation=new UserInformation(
+                        user_id,
+                        rs.getString("password"),
+                        rs.getString("user_name"),
+                        rs.getString("email"),
+                        rs.getInt("isPunch"),
+                        rs.getInt("goal"),
+                        rs.getInt("days"),
+                        rs.getInt("group_id"),
+                        rs.getInt("user_level"),
+                        rs.getInt("points")
+                );
+                user=userInformation;
+            }//需要注意 这里rs已经跑完了，rs.next=null
+        }catch (Exception e){
+            System.out.println("查询出错");
+        }
+        return user;
+    }
+
+    /**
      * 注册
      */
     public static UserNoPassword signup(SignUpRequest sur){
@@ -171,7 +231,7 @@ public class ServerDbutil {
             stmt.setObject(8, unp.getGoal());
             stmt.setObject(9, unp.getUserID());
             stmt.execute();
-            System.out.println(stmt);
+         //   System.out.println(stmt);
         }catch (Exception e){
             System.out.println("数据库插入失败！");
         }
