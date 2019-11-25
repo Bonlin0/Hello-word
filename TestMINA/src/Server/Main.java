@@ -41,6 +41,16 @@ public class Main {
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
+
+//            // 获取除了密码外的所有信息
+//            UserNoPassword userNoPassword=getUserNopassword(10062);
+//            //修改用户信息
+//            userNoPassword.setUserNickName("test修改");
+//            update_USER(userNoPassword);
+//            //获取用户所有信息（包括密码）
+//            UserInformation userInformation=getUser(10062);
+//            System.out.println("user_name:"+userInformation.getUserNickName()+"\n"+"email:"+userInformation.getEmail());
+
          // initDataBase();
 
         } catch (Exception e) {
