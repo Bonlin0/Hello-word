@@ -34,9 +34,9 @@ public class CMDDef {
     public static final String DBPASSWD = "926b50985a";
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
-    public static final String IP = "10.0.2.2";
+   // public static final String IP = "10.0.2.2";
 
- //   public static final String IP = "123.207.173.192";
+    public static final String IP = "123.207.173.192";
 
     //常量定义
 
@@ -69,6 +69,8 @@ public class CMDDef {
     public static final short REPLY_SIGN_IN_REQUEST = 0x2001;
     public static final short REPLY_UPDATE_USER_REQUESET = (short) 0x2002;
 
+    //回应游戏玩家的对手信息
+    public static final short REPLY_GAMER_IFNO = (short) 0x1000;
 
     //客户端控制指令定义区
 
@@ -83,5 +85,9 @@ public class CMDDef {
 
     //被销毁时需要发送的信息
     public static final short DESTORY_SELF_SEND_DATA = (short) 0x7000;
+    //请求加入pk游戏
+    public static final short JOIN_PK_GAME_REQUEST = (short) 0x7001;
+    //放弃匹配
+    public static final short GIVE_UP_JOIN_GAME = (short) 0x7002;
 }
 
