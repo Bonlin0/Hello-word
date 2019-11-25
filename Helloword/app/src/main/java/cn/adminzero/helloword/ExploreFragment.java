@@ -47,6 +47,14 @@ public class ExploreFragment extends Fragment {
             }
         });
 
+        Button goToPkButton = view.findViewById(R.id.goToPkButton);
+        goToPkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GameQueueActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
