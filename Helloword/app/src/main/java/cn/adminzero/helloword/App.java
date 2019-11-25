@@ -5,12 +5,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
@@ -20,6 +22,7 @@ import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
 
 import cn.adminzero.helloword.util.MyStorage;
+import cn.adminzero.helloword.util.Words;
 
 public class App extends Application {
 
@@ -39,6 +42,8 @@ public class App extends Application {
     //public static boolean isLoggingOut = false;
     // 记录用户是否满足挑战下一级称号的条件
     public static boolean isAbleToUpgradeTitle= false;
+    // 记录今日单词队列
+    public static ArrayList<Words> wordsArrayToday;
 
 
     public static String getTAG() {
@@ -169,7 +174,8 @@ public class App extends Application {
         }
     }
     public static  void Upadte_UserNoPassword(){
-        System.out.println("更新用戶信息函数");
+        //System.out.println("更新用戶信息函数");
+        Log.e(TAG, "Upadte_UserNoPassword:更新用戶信息函数 ");
         SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.UPDATE_USER_REQUESET,
                 userNoPassword_global));
     }

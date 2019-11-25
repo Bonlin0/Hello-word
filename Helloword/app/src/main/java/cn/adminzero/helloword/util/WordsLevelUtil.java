@@ -22,8 +22,8 @@ import cn.adminzero.helloword.db.DbUtil;
 public class WordsLevelUtil {
     private static final String TAG = "WordsLevelUtil";
 
-    private static ArrayList<WordsLevel> wordsLevels;
-    private static ArrayList<Words> words;
+    private static ArrayList<WordsLevel> wordsLevels = null;
+    private static ArrayList<Words> words = null;
 
     /**
      * @param _tag [1,8] 代表词书的编号
@@ -305,9 +305,8 @@ public class WordsLevelUtil {
             i = (short) random.nextInt(max);
             r.add(i);
         }
-        int count = 0;
         for (Short it : r) {
-            result.set(count, it);
+            result.add(it);
         }
         return result;
     }

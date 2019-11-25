@@ -45,7 +45,7 @@
         <item>8</item>
     </string-array>
 
-    <string-array name="dailywordsnumber">
+    <string-array name="dailyWordsNumber">
         <item>15</item>
         <item>20</item>
         <item>25</item>

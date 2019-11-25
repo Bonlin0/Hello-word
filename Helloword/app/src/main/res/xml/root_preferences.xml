@@ -41,9 +41,9 @@
             app:useSimpleSummaryProvider="true" />
         <ListPreference
             app:dependency="wordbooks"
-            app:entries="@array/dailywordsnumber"
-            app:entryValues="@array/dailywordsnumber"
-            app:key="dailywordsnumber"
+            app:entries="@array/dailyWordsNumber"
+            app:entryValues="@array/dailyWordsNumber"
+            app:key="dailyWordsNumber"
             app:title="每日背词"
             app:useSimpleSummaryProvider="true" />
         <SwitchPreferenceCompat
