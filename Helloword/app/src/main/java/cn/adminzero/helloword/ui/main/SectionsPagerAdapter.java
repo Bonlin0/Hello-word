@@ -18,7 +18,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_title_name_1,
-            R.string.tab_title_name_2, R.string.tab_title_name_1};
+            R.string.tab_title_name_2, R.string.tab_title_name_3};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {

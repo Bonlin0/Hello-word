@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 
 import cn.adminzero.helloword.util.MediaPlayUtil;
@@ -82,8 +84,21 @@ public class RememberWordsActivity extends AppCompatActivity {
 
         wordsToShow = wordsArrayList.get(0);
 
-        // 使用wordsToShow 更新UI
+        // 防止词书已经背完产生bug
         TextView word_content_textView = findViewById(R.id.word_content_textview);
+        if(wordsToShow==null)
+        {
+            Snackbar.make(word_content_textView.getRootView(),"您似乎没有可以记忆的单词了，更换词书试一试？", Snackbar.LENGTH_LONG).setAction("离开", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            }).show();
+            return;
+        }
+
+        // 使用wordsToShow 更新UI
+        // TextView word_content_textView = findViewById(R.id.word_content_textview);
         word_content_textView.setText(wordsToShow.getWord());
         TextView phonemic_textView = findViewById(R.id.phonemic_textView);
         phonemic_textView.setText("/"+wordsToShow.getPhonetic()+"/");
