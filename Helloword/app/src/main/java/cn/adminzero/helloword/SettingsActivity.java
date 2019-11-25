@@ -1,14 +1,18 @@
 package cn.adminzero.helloword;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+
+import java.util.Set;
 
 import cn.adminzero.helloword.util.MyStorage;
 
@@ -25,6 +29,13 @@ public class SettingsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        // 如果是从背单词活动因为没有配置单词量转移过来，弹出Toast 提示用户
+        Intent intent = getIntent();
+        Boolean isFromRememberWords = intent.getBooleanExtra("isFromRememberWords",false);
+        if(isFromRememberWords){
+            Toast.makeText(SettingsActivity.this,"您还没有配置每日所需单词量，请配置后再开始学习。", android.widget.Toast.LENGTH_LONG).show();
         }
     }
 
@@ -44,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
         private Preference remindme;
         private Preference remindtime;
         private Preference wordbooks;
-        private Preference dailywordsnumber;
+        private Preference dailyWordsNumber;
         private Preference sync;
         private Preference exit;
 
@@ -55,7 +66,7 @@ public class SettingsActivity extends AppCompatActivity {
             remindme = findPreference("remindme");
             remindtime = findPreference("remindtime");
             wordbooks = findPreference("wordbooks");
-            dailywordsnumber = findPreference("dailywordsnumber");
+            dailyWordsNumber = findPreference("dailyWordsNumber");
             sync = findPreference("sync");
             exit = findPreference("exit");
 
@@ -93,13 +104,13 @@ public class SettingsActivity extends AppCompatActivity {
                     return true;
                 }
             });
-            dailywordsnumber.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            dailyWordsNumber.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     Log.d("test", "onPreferenceChange: " + "背词数");
                     Log.d("test", "onPreferenceChange: " + newValue.toString());
                     MyStorage myStorage = new MyStorage("SettingActivity");
-                    myStorage.storeInt("dailywordsnumber", Integer.valueOf(newValue.toString()));
+                    myStorage.storeInt("dailyWordsNumber", Integer.valueOf(newValue.toString()));
                     Log.d("test", "onPreferenceChange: " + "设置OK！");
                     return true;
                 }
