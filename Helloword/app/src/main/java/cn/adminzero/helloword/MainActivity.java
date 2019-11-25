@@ -233,7 +233,7 @@ public class MainActivity extends BaseActivity {
                             // 更换词书处理
                             WordsLevelUtil.initWorkBook(chooseWordsBookChoice + 1);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
-                            //TODO 网络同步
+                            // 网络同步
                             App.Upadte_UserNoPassword();
                         }
                     }
