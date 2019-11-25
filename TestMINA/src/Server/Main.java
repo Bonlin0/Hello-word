@@ -15,7 +15,6 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import java.net.InetSocketAddress;
 
-import static DB.ServerDbutil.*;
 
 
 public class Main {
@@ -49,7 +48,7 @@ public class Main {
 //            update_USER(userNoPassword);
 //            //获取用户所有信息（包括密码）
 //            UserInformation userInformation=getUser(10062);
-//            System.out.println("user_name:"+userInformation.getUserNickName()+"\n"+"email:"+userInformation.getEmail());
+//            logger.info("user_name:"+userInformation.getUserNickName()+"\n"+"email:"+userInformation.getEmail());
 
          // initDataBase();
 

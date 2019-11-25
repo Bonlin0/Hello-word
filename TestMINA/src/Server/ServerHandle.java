@@ -88,8 +88,8 @@ public class ServerHandle extends IoHandlerAdapter {
                 break;
                 case CMDDef.DESTORY_SELF_SEND_DATA: {
                     DestoryData destoryData = (DestoryData) mes.getObj();
-                    UserIDSession.removeSessionWithUserID(session.getId());
                     logger.info("ID为" + UserIDSession.getUserIDWithSessionID(session.getId()) + "的用户与服务器断开了连接!");
+                    UserIDSession.removeSessionWithUserID(session.getId());
                 }
                 break;
                 case CMDDef.UPDATE_USER_REQUESET: {
@@ -107,13 +107,13 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.JOIN_PK_GAME_REQUEST: {
                     if (Gamer.isEmpty()) {
                         Gamer.insertGamer(session.getId());
-                        logger.info("此时一位靓仔加入了游戏!");
-                        logger.info("还剩" + Gamer.getGamers() + "位靓仔");
+                     //   logger.info("此时一位靓仔加入了游戏!");
+                   //     logger.info("还剩" + Gamer.getGamers() + "位靓仔");
                     } else {
                         long anotherID = Gamer.getGamer();
                         Gamer.removerGamer(anotherID);
-                        logger.info("此时又一位靓仔加入了游戏!");
-                        logger.info("还剩" + Gamer.getGamers() + "位靓仔");
+                     //   logger.info("此时又一位靓仔加入了游戏!");
+                      //  logger.info("还剩" + Gamer.getGamers() + "位靓仔");
                         IoSession anotherSession = session.getService().getManagedSessions().get(anotherID);
 
                         OpponentInfo opponentInfo1 = new OpponentInfo(
@@ -126,15 +126,15 @@ public class ServerHandle extends IoHandlerAdapter {
                         anotherSession.write(
                                 SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, opponentInfo2)
                         );
-                        logger.info("两位靓仔开始了游戏!");
-                        logger.info("还剩" + Gamer.getGamers() + "位靓仔!");
+                    //    logger.info("两位靓仔开始了游戏!");
+                     //   logger.info("还剩" + Gamer.getGamers() + "位靓仔!");
                     }
                 }
                 break;
                 case CMDDef.GIVE_UP_JOIN_GAME: {
                     Gamer.removerGamer(session.getId());
-                    logger.info("此时一位靓仔不愿意玩游戏并悄悄的取消了匹配!");
-                    logger.info("还剩" + Gamer.getGamers() + "位靓仔！");
+                  //  logger.info("此时一位靓仔不愿意玩游戏并悄悄的取消了匹配!");
+                  //  logger.info("还剩" + Gamer.getGamers() + "位靓仔！");
                 }
                 break;
             }
