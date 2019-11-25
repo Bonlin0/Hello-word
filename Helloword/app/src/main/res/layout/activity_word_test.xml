@@ -11,20 +11,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="numerical"
-        android:textSize="36sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/choice_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382"/>
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_word_test" />
 
     <TextView
         android:id="@+id/phonemic_test_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="[njuːˈmerɪkl]"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/word_content_test_textView"
         app:layout_constraintStart_toStartOf="@+id/word_content_test_textView"
         app:layout_constraintTop_toBottomOf="@+id/word_content_test_textView" />
@@ -93,6 +92,63 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_word_test"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:max="50"
+        android:progress="17"
+        android:progressDrawable="@drawable/progressbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/words_finished_in_test_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/aclonica"
+        android:text="17"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_word_test" />
+
+    <TextView
+        android:id="@+id/words_finished_in_test_textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/aclonica"
+        android:text="60 S"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_word_test" />
+
+    <TextView
+        android:id="@+id/words_finished_in_test_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已完成单词"
+        app:layout_constraintEnd_toEndOf="@+id/words_finished_in_test_textView"
+        app:layout_constraintStart_toStartOf="@+id/words_finished_in_test_textView"
+        app:layout_constraintTop_toBottomOf="@+id/words_finished_in_test_textView" />
+
+    <TextView
+        android:id="@+id/time_left_word_test_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="剩余时间"
+        app:layout_constraintEnd_toEndOf="@+id/words_finished_in_test_textView2"
+        app:layout_constraintStart_toStartOf="@+id/words_finished_in_test_textView2"
+        app:layout_constraintTop_toBottomOf="@+id/words_finished_in_test_textView2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

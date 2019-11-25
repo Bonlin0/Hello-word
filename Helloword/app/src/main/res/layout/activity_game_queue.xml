@@ -11,22 +11,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="正在为您匹配对手，请稍作等待。"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/practice_game_queue_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65999997" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+
+    <TextView
+        android:id="@+id/tips_game_queue_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:paddingStart="48dp"
+        android:paddingEnd="48dp"
+        android:text="Tips: 总正确数目起绝对因素，所以请仔细面对每一个单词哦"
+        app:layout_constraintBottom_toTopOf="@+id/exit_game_queue_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/practice_game_queue_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:paddingStart="48dp"
+        android:paddingEnd="48dp"
+        android:text="临阵磨枪： drill n.钻头，训练"
+        app:layout_constraintBottom_toTopOf="@+id/tips_game_queue_textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyle"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
         android:indeterminate="true"
-        app:layout_constraintBottom_toTopOf="@+id/please_wait_game_queue_textView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.32999998" />
+
+    <Button
+        android:id="@+id/exit_game_queue_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/btn_light_round_background"
+        android:paddingStart="48dp"
+        android:paddingEnd="48dp"
+        android:text="取消"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
