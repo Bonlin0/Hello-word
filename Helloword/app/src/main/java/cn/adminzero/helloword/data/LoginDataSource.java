@@ -26,7 +26,6 @@ public class LoginDataSource {
             SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.SIGN_IN_REQUESET,
                     new SignInRequest(username,password)));
 
-
             return new Result.Success<>(fakeUser);
         } catch (Exception e) {
             return new Result.Error(new IOException("Error logging in", e));

@@ -12,7 +12,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import cn.adminzero.helloword.Common.CMDDef;
+import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
+import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
 
 import cn.adminzero.helloword.util.MyStorage;
@@ -163,5 +167,10 @@ public class App extends Application {
                 e.printStackTrace();
             }
         }
+    }
+    public static  void Upadte_UserNoPassword(){
+        System.out.println("更新用戶信息函数");
+        SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.UPDATE_USER_REQUESET,
+                userNoPassword_global));
     }
 }

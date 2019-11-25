@@ -149,27 +149,33 @@ public class ServerDbutil {
     /**
      *  传回UserNopassword更新所有的用户数据,适用于除修改密码外所有的用户更新操作
      */
-    public static UserNoPassword update_USER(UserNoPassword unp) throws SQLException {
-        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("" +
-                "update USER set user_name=? " +
-                "set email=? " +
-                "set days=? " +
-                "set group_id=? " +
-                "set user_level=? " +
-                "set points=? " +
-                "set isPunch=? " +
-                "set goal=? " +
-                "where user_id =?");
-        stmt.setObject(1,unp.getUserNickName());
-        stmt.setObject(2,unp.getEmail());
-        stmt.setObject(3,unp.getDays());
-        stmt.setObject(4,unp.getGroupID());
-        stmt.setObject(5,unp.getLevel());
-        stmt.setObject(6,unp.getpKPoint());
-        stmt.setObject(7,unp.getIsPunch());
-        stmt.setObject(8,unp.getGoal());
-        stmt.setObject(9,unp.getUserID());
-        UserNoPassword userNoPassword=unp;
+    public static UserNoPassword update_USER(UserNoPassword unp) {
+        try {
+            PreparedStatement stmt = GlobalConn.getConn().prepareStatement("" +
+                    "update USER set user_name=?, " +
+                    " email=?, " +
+                    " days=?, " +
+                    " group_id=?, " +
+                    " user_level=?, " +
+                    " points=?, " +
+                    " isPunch=?, " +
+                    " goal=? " +
+                    " where user_id =?");
+            stmt.setObject(1, unp.getUserNickName());
+            stmt.setObject(2, unp.getEmail());
+            stmt.setObject(3, unp.getDays());
+            stmt.setObject(4, unp.getGroupID());
+            stmt.setObject(5, unp.getLevel());
+            stmt.setObject(6, unp.getpKPoint());
+            stmt.setObject(7, unp.getIsPunch());
+            stmt.setObject(8, unp.getGoal());
+            stmt.setObject(9, unp.getUserID());
+            stmt.execute();
+            System.out.println(stmt);
+        }catch (Exception e){
+            System.out.println("数据库插入失败！");
+        }
+        UserNoPassword userNoPassword = unp;
         return userNoPassword;
     }
 

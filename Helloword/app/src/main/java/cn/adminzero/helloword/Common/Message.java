@@ -17,8 +17,10 @@ public class Message implements Serializable {
     private short s;
     private int i;
     private String str;
+
     private byte type;
     private short CMD;
+
     private byte[] data;
 
     public Message(short cmd, byte[] bytes) {

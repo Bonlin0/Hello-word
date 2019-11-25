@@ -13,6 +13,9 @@ import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsUtil;
 
+import static cn.adminzero.helloword.App.Upadte_UserNoPassword;
+import static cn.adminzero.helloword.App.userNoPassword_global;
+
 public class RememberWordsActivity extends AppCompatActivity {
 
     private Words wordsToShow;
