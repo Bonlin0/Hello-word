@@ -100,6 +100,11 @@ public class RememberWordsActivity extends AppCompatActivity {
         ProgressBar remember_progress_bar = findViewById(R.id.remember_progress_bar);
         remember_progress_bar.setMax(dailyWordsNumber_int);
         remember_progress_bar.setProgress(dailyWordsNumber_int - wordsArrayList.size());
+
+        // 播放声音
+        MediaPlayUtil player = new MediaPlayUtil();
+        player.playword(wordsToShow.getWord());
+
     }
 
 

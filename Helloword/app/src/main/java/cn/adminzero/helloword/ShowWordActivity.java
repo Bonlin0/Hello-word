@@ -21,6 +21,11 @@ public class ShowWordActivity extends AppCompatActivity {
         Intent intent =getIntent();
         Words words = (Words)intent.getSerializableExtra("word_to_show");
         wordsActivity = words;
+
+        // 播放声音
+        MediaPlayUtil player = new MediaPlayUtil();
+        player.playword(words.getWord());
+
         TextView word_content_textview = findViewById(R.id.word_content_textview);
         word_content_textview.setText(words.getWord());
         TextView show_word_phonetic = findViewById(R.id.show_word_phonetic);
