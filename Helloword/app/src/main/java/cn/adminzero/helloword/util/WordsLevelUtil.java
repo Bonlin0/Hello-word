@@ -22,8 +22,8 @@ import cn.adminzero.helloword.db.DbUtil;
 public class WordsLevelUtil {
     private static final String TAG = "WordsLevelUtil";
 
-    private static ArrayList<WordsLevel> wordsLevels = null;
-    private static ArrayList<Words> words = null;
+    public static ArrayList<WordsLevel> wordsLevels = null;
+    public static ArrayList<Words> words = null;
 
     /**
      * @param _tag [0,7] 代表词书的编号
@@ -153,6 +153,7 @@ public class WordsLevelUtil {
      * @param number 每日分配单词书数目 --->从配置文件获得
      */
     public static ArrayList<WordsLevel> helpAssignDailyWords(int number) {
+        // TODO 存储今天的任务
         ArrayList<WordsLevel> arrayList = getLevelEq7(3);//获取<7
         if (arrayList.size() <= number) {
             // 今天的任务是最后的任务
