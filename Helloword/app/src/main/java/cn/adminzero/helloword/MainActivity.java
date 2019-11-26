@@ -109,49 +109,7 @@ public class MainActivity extends BaseActivity {
                     // TODO 网络同步数据  恢复数据库待做
                 }
             }
-            /**
-             * 分配今天的单词任务
-             * */
-            String lastDate = myStorage.getString("lastDate");
-            Date now = new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");//可以方便地修改日期格式
-            String todayDate = dateFormat.format(now);
-            if (!todayDate.equals(lastDate)) {//分配今天的任务
-                /**
-                 *  新的日子使用分配函数分配今天的任务
-                 *  并且存在保存在数据库
-                 */
-                myStorage.storeString("lastDate", todayDate);
-                int assignDailyWordsNumbers = 50;
-                WordsLevelUtil.assignDailyWords(assignDailyWordsNumbers);
-                db.execSQL("delete from TODAY_" + userId);
-                ContentValues contentValues = new ContentValues();
-                for (WordsLevel wordsLevel : WordsLevelUtil.wordsLevels) {
-                    contentValues.put("word_id", wordsLevel.getWord_id());
-                    contentValues.put("level", wordsLevel.getLevel());
-                    contentValues.put("yesterday", wordsLevel.getYestarday());
-                    db.insert("TODAY_" + userId, null, contentValues);
-                    contentValues.clear();
-                }
-            } else {
-                // 从数据库读取今天的单词任务（任务存在就不读取任务）
-                if (WordsLevelUtil.wordsLevels == null) {
-                    // 数据库读取
-                    cursor = db.rawQuery("select * from TODAY_" + userId, null);
-                    int word_id = cursor.getColumnIndex("word_id");
-                    int level = cursor.getColumnIndex("level");
-                    int yesterday = cursor.getColumnIndex("yesterday");
-                    if (cursor.getCount() > 0 && cursor.moveToFirst()) {
-                        do {
-                            WordsLevel wordsLevel = new WordsLevel();
-                            wordsLevel.setWord_id(cursor.getShort(word_id));
-                            wordsLevel.setLevel((byte) cursor.getShort(level));
-                            wordsLevel.setYesterday((byte) cursor.getShort(yesterday));
-                            WordsLevelUtil.wordsLevels.add(wordsLevel);
-                        } while (cursor.moveToNext());
-                    }
-                }
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
             Log.d(TAG, "onCreate: exception" + e.getMessage());
@@ -301,9 +259,9 @@ public class MainActivity extends BaseActivity {
                 });
         // 设置不可取消
 
-        AlertDialog dialog =  builder.create();
+        AlertDialog dialog = builder.create();
         dialog.setCancelable(false);
-        dialog.show();;
+        dialog.show();
 
     }
 
