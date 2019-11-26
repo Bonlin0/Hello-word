@@ -8,24 +8,24 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+import cn.adminzero.helloword.CommonClass.Group;
 import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsLevel;
 import cn.adminzero.helloword.util.WordsLevelUtil;
-import cn.adminzero.helloword.util.WordsUtil;
 
-import static cn.adminzero.helloword.App.Upadte_UserNoPassword;
 import static cn.adminzero.helloword.App.userNoPassword_global;
+import static cn.adminzero.helloword.db.ServerDbUtil.CreateGroup;
+import static cn.adminzero.helloword.db.ServerDbUtil.getGroup;
+import static cn.adminzero.helloword.db.ServerDbUtil.updateGroup;
 import static cn.adminzero.helloword.util.WordsLevelUtil.assignDailyWords;
 
 public class RememberWordsActivity extends AppCompatActivity {

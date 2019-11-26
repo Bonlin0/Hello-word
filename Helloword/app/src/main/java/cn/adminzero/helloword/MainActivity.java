@@ -1,6 +1,7 @@
 package cn.adminzero.helloword;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,7 +23,9 @@ import android.widget.Toast;
 
 import org.apache.log4j.chainsaw.Main;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.adminzero.helloword.Common.CMDDef;
@@ -32,8 +35,11 @@ import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
+import cn.adminzero.helloword.db.ServerDbUtil;
 import cn.adminzero.helloword.util.MyStorage;
+import cn.adminzero.helloword.util.WordsLevel;
 import cn.adminzero.helloword.util.WordsLevelUtil;
+import cn.adminzero.helloword.util.WordsUtil;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -59,14 +65,19 @@ public class MainActivity extends BaseActivity {
             ActivityCollector.finishAll();
         }
         try {
+            SQLiteDatabase db = DbUtil.getDatabase();
             MyStorage myStorage = new MyStorage();
+            Cursor cursor = null;
+            /**
+             * 判断这个用户是否第一次登录
+             * 创建此用户的HISTORY、TODAY表！
+             * */
             if (myStorage.getInt("lastLoginAccount") == userId) {
                 Log.d(TAG, "onCreate: 用户上次已经登录！无需创建数据库和同步数据库");
             } else {
-                SQLiteDatabase db = DbUtil.getDatabase();
                 // 判断用户的单词历史表是否存在  不存在则创建并且网络同步数据
-                Cursor cursor = db.rawQuery("select name from sqlite_master where type='table';", null);
-                String tablename;
+                cursor = db.rawQuery("select name from sqlite_master where type='table';", null);
+                String tablename = null;
                 boolean isThisAccountFirstLogin = true;
                 while (cursor.moveToNext()) {
                     //遍历出表名
@@ -77,7 +88,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     }
                 }
-                cursor.close();
+                if (cursor != null) {
+                    cursor.close();
+                }
                 if (isThisAccountFirstLogin) {// 创建其对应的数据表
                     Log.d(TAG, "onCreate: 欢迎新用户登录到本机APP，开始同步网络数据");
                     final String CREATE_HISTORY =
@@ -85,10 +98,59 @@ public class MainActivity extends BaseActivity {
                                     "word_id integer primary key," +
                                     "level integer default(0)," +
                                     "yesterday integer default(0))";
+                    final String CREATE_TODAY =
+                            "create table if not exists " + "TODAY_" + userId + "(" +
+                                    "word_id integer," +
+                                    "level integer," +
+                                    "yesterday integer)";
                     db.execSQL(CREATE_HISTORY);
+                    db.execSQL(CREATE_TODAY);
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
-                    // TODO 网络同步数据  恢复数据库 待做
+                    // TODO 网络同步数据  恢复数据库待做
+                }
+            }
+            /**
+             * 分配今天的单词任务
+             * */
+            String lastDate = myStorage.getString("lastDate");
+            Date now = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");//可以方便地修改日期格式
+            String todayDate = dateFormat.format(now);
+            if (!todayDate.equals(lastDate)) {//分配今天的任务
+                /**
+                 *  新的日子使用分配函数分配今天的任务
+                 *  并且存在保存在数据库
+                 */
+                myStorage.storeString("lastDate", todayDate);
+                int assignDailyWordsNumbers = 50;
+                WordsLevelUtil.assignDailyWords(assignDailyWordsNumbers);
+                db.execSQL("delete from TODAY_" + userId);
+                ContentValues contentValues = new ContentValues();
+                for (WordsLevel wordsLevel : WordsLevelUtil.wordsLevels) {
+                    contentValues.put("word_id", wordsLevel.getWord_id());
+                    contentValues.put("level", wordsLevel.getLevel());
+                    contentValues.put("yesterday", wordsLevel.getYestarday());
+                    db.insert("TODAY_" + userId, null, contentValues);
+                    contentValues.clear();
+                }
+            } else {
+                // 从数据库读取今天的单词任务（任务存在就不读取任务）
+                if (WordsLevelUtil.wordsLevels == null) {
+                    // 数据库读取
+                    cursor = db.rawQuery("select * from TODAY_" + userId, null);
+                    int word_id = cursor.getColumnIndex("word_id");
+                    int level = cursor.getColumnIndex("level");
+                    int yesterday = cursor.getColumnIndex("yesterday");
+                    if (cursor.getCount() > 0 && cursor.moveToFirst()) {
+                        do {
+                            WordsLevel wordsLevel = new WordsLevel();
+                            wordsLevel.setWord_id(cursor.getShort(word_id));
+                            wordsLevel.setLevel((byte) cursor.getShort(level));
+                            wordsLevel.setYesterday((byte) cursor.getShort(yesterday));
+                            WordsLevelUtil.wordsLevels.add(wordsLevel);
+                        } while (cursor.moveToNext());
+                    }
                 }
             }
         } catch (Exception e) {
@@ -230,18 +292,20 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (chooseWordsBookChoice != -1) {
-                            // 更换词书处理
-                            WordsLevelUtil.initWorkBook(chooseWordsBookChoice + 1);
+                            // 更换词书处理  0-7
+                            WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
                             // 网络同步
-                            App.Upadte_UserNoPassword();
+                            ServerDbUtil.Upadte_UserNoPassword();
                         }
                     }
                 });
         // 设置不可取消
+
         AlertDialog dialog =  builder.create();
         dialog.setCancelable(false);
         dialog.show();;
+
     }
 
     // 当点击了选择词书
