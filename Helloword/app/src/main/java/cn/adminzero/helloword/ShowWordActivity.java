@@ -19,22 +19,33 @@ public class ShowWordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_word);
 
-        Button next_word_button  = findViewById(R.id.next_word_button);
-        next_word_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
 
         Intent intent =getIntent();
         Words words = (Words)intent.getSerializableExtra("word_to_show");
         wordsActivity = words;
 
+        Boolean from_my_words = intent.getBooleanExtra("from_my_words",false);
+        Button next_word_button  = findViewById(R.id.next_word_button);
+        if(from_my_words)
+        {
+            next_word_button.setVisibility(View.GONE);
+        }
+        else
+        {
+            next_word_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        }
+
         // 播放声音
         MediaPlayUtil player = new MediaPlayUtil();
         player.playword(words.getWord());
 
+        // 使用word 更新UI
         TextView word_content_textview = findViewById(R.id.word_content_textview);
         word_content_textview.setText(words.getWord());
         TextView show_word_phonetic = findViewById(R.id.show_word_phonetic);
