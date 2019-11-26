@@ -59,5 +59,6 @@ public class ServerDbUtil {
 //            WordsLevel wordsLevel2=new WordsLevel((short)4);
 //            wordsIdToUpdate.add(wordsLevel1);
 //            wordsIdToUpdate.add(wordsLevel2);
+    //调用 UpdateHistory方法 就可以更新这个列表
 //            UpdateHistory(wordsIdToUpdate);
 }
