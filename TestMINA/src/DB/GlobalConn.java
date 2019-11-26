@@ -35,9 +35,9 @@ public class GlobalConn {
          */
         //
         try {
-            // Class.forName("com.mysql.cj.jdbc.Driver");
-            new com.mysql.cj.jdbc.Driver();
-          //  Class.forName(CMDDef.DBDriver);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            //       new com.mysql.cj.jdbc.Driver();
+            //  Class.forName(CMDDef.DBDriver);
             conn = DriverManager.getConnection(CMDDef.DBURL, CMDDef.DBNAME, CMDDef.DBPASSWD);
         } catch (SQLException e) {
             logger.info("数据库连接失败!");

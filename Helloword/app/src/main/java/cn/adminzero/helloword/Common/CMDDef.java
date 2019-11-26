@@ -34,9 +34,9 @@ public class CMDDef {
     public static final String DBPASSWD = "926b50985a";
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
-   // public static final String IP = "10.0.2.2";
+    public static final String IP = "10.0.2.2";
 
-    public static final String IP = "123.207.173.192";
+ //   public static final String IP = "123.207.173.192";
 
     //常量定义
 

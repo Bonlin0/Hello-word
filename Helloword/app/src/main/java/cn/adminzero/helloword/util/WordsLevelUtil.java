@@ -22,7 +22,7 @@ import cn.adminzero.helloword.db.DbUtil;
 public class WordsLevelUtil {
     private static final String TAG = "WordsLevelUtil";
 
-    private static ArrayList<WordsLevel> wordsLevels = null;
+    public static ArrayList<WordsLevel> wordsLevels = null;
     private static ArrayList<Words> words = null;
 
     /**

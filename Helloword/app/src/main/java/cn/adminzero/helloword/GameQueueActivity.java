@@ -108,10 +108,7 @@ public class GameQueueActivity extends AppCompatActivity {
                     try {
                         OpponentInfo opponentInfo = (OpponentInfo) SerializeUtils.serializeToObject(
                                 intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA));
-                        Intent intent1 = new Intent(GameQueueActivity.this, WordTestActivity.class);
-                        startActivity(intent1);
-                        Toast.makeText(GameQueueActivity.this, "ID为" + opponentInfo.getUserID(), Toast.LENGTH_LONG);
-                        finish();
+                        readyAndUpdateUi();
                     } catch (IOException | ClassNotFoundException e) {
                         Log.e("tag", "反序列化失败!");
                         e.printStackTrace();

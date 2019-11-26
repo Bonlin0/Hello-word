@@ -367,7 +367,6 @@ public class DbUtil {
             drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             drawable.draw(canvas);
             return bitmap;
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

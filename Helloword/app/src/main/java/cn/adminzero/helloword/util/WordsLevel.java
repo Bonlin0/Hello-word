@@ -8,7 +8,7 @@ package cn.adminzero.helloword.util;
 public class WordsLevel {
 
     private short word_id;
-    private byte level;
+    private short level;
     private byte yesterday;
 
     public WordsLevel() {
@@ -36,7 +36,7 @@ public class WordsLevel {
         return level;
     }
 
-    public void setLevel(byte level) {
+    public void setLevel(short level) {
         this.level = level;
     }
 

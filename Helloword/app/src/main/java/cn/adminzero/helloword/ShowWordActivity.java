@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import cn.adminzero.helloword.util.MediaPlayUtil;
@@ -17,9 +18,34 @@ public class ShowWordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_word);
+
+
+
         Intent intent =getIntent();
         Words words = (Words)intent.getSerializableExtra("word_to_show");
         wordsActivity = words;
+
+        Boolean from_my_words = intent.getBooleanExtra("from_my_words",false);
+        Button next_word_button  = findViewById(R.id.next_word_button);
+        if(from_my_words)
+        {
+            next_word_button.setVisibility(View.GONE);
+        }
+        else
+        {
+            next_word_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        }
+
+        // 播放声音
+        MediaPlayUtil player = new MediaPlayUtil();
+        player.playword(words.getWord());
+
+        // 使用word 更新UI
         TextView word_content_textview = findViewById(R.id.word_content_textview);
         word_content_textview.setText(words.getWord());
         TextView show_word_phonetic = findViewById(R.id.show_word_phonetic);
@@ -40,10 +66,21 @@ public class ShowWordActivity extends AppCompatActivity {
         example_sentence_content_text.setText(sentenceToShow);
 
         boolean isRemembered = intent.getBooleanExtra("is_remembered",false);
-        TextView cancal_remember_textView = findViewById(R.id.cancal_remember_textView);
+        final TextView cancel_remember_textView = findViewById(R.id.cancel_remember_textView);
+        setResult(0);
         if(!isRemembered)
         {
-            cancal_remember_textView.setVisibility(View.GONE);
+            cancel_remember_textView.setVisibility(View.GONE);
+        }
+        else
+        {
+            cancel_remember_textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cancel_remember_textView.setVisibility(View.GONE);
+                    setResult(1);
+                }
+            });
         }
 
     }
@@ -56,4 +93,6 @@ public class ShowWordActivity extends AppCompatActivity {
     }
     /** MediaPlayUtil player = new MediaPlayUtil();
      * player.playword(String word); */
+
+
 }
