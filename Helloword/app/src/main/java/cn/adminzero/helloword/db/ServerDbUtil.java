@@ -36,5 +36,10 @@ public class ServerDbUtil {
                 user_id));
        return null;
     }
-
+ //   Group group=new Group(10005,16);
+//        int user_id=group.getUser_id();
+//        CreateGroup(group);
+//        group.setMax_member(18);
+//        updateGroup(group);
+//      //  Group group0=getGroup(userNoPassword_global.getUserID());
 }
