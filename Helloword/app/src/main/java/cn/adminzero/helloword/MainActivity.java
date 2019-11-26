@@ -239,8 +239,9 @@ public class MainActivity extends BaseActivity {
                     }
                 });
         // 设置不可取消
-        builder.create().setCancelable(false);
-        builder.create().show();;
+        AlertDialog dialog =  builder.create();
+        dialog.setCancelable(false);
+        dialog.show();;
     }
 
     // 当点击了选择词书
