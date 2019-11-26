@@ -26,14 +26,14 @@ public class WordsLevelUtil {
     private static ArrayList<Words> words = null;
 
     /**
-     * @param _tag [1,8] 代表词书的编号
+     * @param _tag [0,7] 代表词书的编号
      * @return 操作是否成功
      * @desc 初始化词书 在词书选择后调用
      * 关于时间：0.13s ~ 0.37(or large but can not exceed 1s!)
      */
 
     public static boolean initWorkBook(int _tag) {
-        if (_tag > 8 || _tag < 1) {
+        if (_tag > 7 || _tag < 0) {
             return false;
         }
         int tag_now = App.userNoPassword_global.getGoal();
