@@ -141,7 +141,7 @@ public class ServerHandle extends IoHandlerAdapter {
                 }
                 break;
                 case CMDDef.CREATE_GROUP_REQUEST:{
-                    Group group=(Group)mes.getObj();
+                    Group group= (Group)mes.getObj();
                     int user_id= group.getUser_id();
                     group=CreatGroup(group);
                 }

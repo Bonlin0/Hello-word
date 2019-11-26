@@ -25,9 +25,7 @@ public class ServerDbUtil {
     public static void CreateGroup(Group group){
         SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.CREATE_GROUP_REQUEST,
                 group));
-        int c=group.getUser_id();
-        logger.info(group.getUser_id());
-
+        Log.e("tag","组ID" + group.getGroup_id());
     }
     public static void updateGroup(Group group){
         SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.UPDATE_GROUP_REQUEST,

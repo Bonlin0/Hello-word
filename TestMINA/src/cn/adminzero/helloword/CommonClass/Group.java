@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Group implements Serializable {
     private final long serialVersionUID = 1L;
-    public  static  int user_id=-1;
-    public  static  int group_id=-1;
-    public  static  int contribution=0;
-    public  static  int master=-1;
-    public  static  int max_member=10;
+    public  int user_id=-1;
+    public  int group_id=-1;
+    public  int contribution=0;
+    public  int master=-1;
+    public  int max_member=10;
 
     public  Group(int user_id){
         this.user_id=user_id;
@@ -20,7 +20,7 @@ public class Group implements Serializable {
         return serialVersionUID;
     }
 
-    public  Group(int user_id, int max_member){
+    public Group(int user_id, int max_member){
         this.user_id=user_id;
         this.master=user_id;
         this.max_member=max_member;
@@ -34,43 +34,43 @@ public class Group implements Serializable {
         this.contribution=contribution;
     }
 
-    public static int getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public static void setUser_id(int user_id) {
-        Group.user_id = user_id;
+    public  void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public static int getGroup_id() {
+    public  int getGroup_id() {
         return group_id;
     }
 
-    public static void setGroup_id(int group_id) {
-        Group.group_id = group_id;
+    public  void setGroup_id(int group_id) {
+        this.group_id = group_id;
     }
 
-    public static int getContribution() {
+    public  int getContribution() {
         return contribution;
     }
 
-    public static void setContribution(int contribution) {
-        Group.contribution = contribution;
+    public  void setContribution(int contribution) {
+        this.contribution = contribution;
     }
 
-    public static int getMaster() {
+    public  int getMaster() {
         return master;
     }
 
-    public static void setMaster(int master) {
-        Group.master = master;
+    public  void setMaster(int master) {
+        this.master = master;
     }
 
-    public static int getMax_member() {
+    public  int getMax_member() {
         return max_member;
     }
 
-    public static void setMax_member(int max_member) {
-        Group.max_member = max_member;
+    public  void setMax_member(int max_member) {
+        this.max_member = max_member;
     }
 }
