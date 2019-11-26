@@ -31,7 +31,7 @@ import cn.adminzero.helloword.R;
 import cn.adminzero.helloword.ShowWordActivity;
 import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
-import cn.adminzero.helloword.util.WordsLevel;
+
 import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 

@@ -13,6 +13,8 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.FilterEvent;
 
+import java.util.ArrayList;
+
 import static DB.ServerDbutil.*;
 
 /**
@@ -70,6 +72,8 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.SIGN_UP_REQUESET: {
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     UserNoPassword userNoPassword = ServerDbutil.signup(sur);
+                    //创建用户的历史表
+                    CreateHistory(userNoPassword.getUserID());
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     if (userNoPassword.isValid()) {
                         UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
@@ -155,6 +159,12 @@ public class ServerHandle extends IoHandlerAdapter {
                     int user_id=(int)mes.getI();
                    Group group=getGroup(user_id);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_GROUP_REPLY, group));
+                }
+                break;
+                case  CMDDef.UPDATE_HISTORY_REQUEST:{
+                    ArrayList<WordsLevel> wordsToUpdate=(ArrayList<WordsLevel>) mes.getObj();
+                    int user_id=UserIDSession.getUserIDWithSessionID(session.getId());
+                    UpdateHistory(user_id,wordsToUpdate);
                 }
                 break;
             }

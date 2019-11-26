@@ -1,14 +1,17 @@
 package cn.adminzero.helloword.CommonClass;
-
 import java.io.Serializable;
-
-public class History implements Serializable {
+public class WordsLevel implements Serializable {
     private final long serialVersionUID = 1L;
     private short word_id;
     private short level;
     private byte yesterday;
 
-    public History() {
+    public WordsLevel() {
+        this.level = 0;
+        this.yesterday = 0;
+    }
+    public WordsLevel(short word_id) {
+        this.word_id=word_id;
         this.level = 0;
         this.yesterday = 0;
     }

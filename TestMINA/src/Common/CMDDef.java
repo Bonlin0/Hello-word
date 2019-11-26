@@ -96,6 +96,12 @@ public class CMDDef {
     public static final short UPDATE_GROUP_REQUEST = (short) 0xA002;
     //获取小组信息请求
     public static final short GET_GROUP_REQUEST = (short) 0xA003;
+    //创建用户History 表
+    public static final short CREATE_HISTORY_REQUEST = (short) 0xA004;
+    //更新用户History 表
+    public static final short UPDATE_HISTORY_REQUEST = (short) 0xA005;
+
+
 
     //回应创建小组请求
     public static final short CREATE_GROUP_REPLY = (short) 0x4001;
@@ -103,5 +109,9 @@ public class CMDDef {
     public static final short UPDATE_GROUP_REPLY = (short) 0x4002;
     //回应获取小组信息请求
     public static final short GET_GROUP_REPLY = (short) 0x4003;
+    //创建用户History 表
+    public static final short CREATE_HISTORY_REPLY= (short) 0x4004;
+    //更新用户History 表
+    public static final short UPDATE_HISTORY_REPLY = (short) 0x4005;
 }
 

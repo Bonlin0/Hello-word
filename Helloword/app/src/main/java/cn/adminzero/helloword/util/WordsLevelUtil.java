@@ -11,6 +11,7 @@ import java.util.Random;
 
 
 import cn.adminzero.helloword.App;
+import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.db.DbUtil;
 
 

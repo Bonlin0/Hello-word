@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.db.DbUtil;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;

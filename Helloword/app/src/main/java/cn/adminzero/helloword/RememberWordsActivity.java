@@ -18,14 +18,14 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
+import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
-import cn.adminzero.helloword.util.WordsLevel;
 import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 
-import static cn.adminzero.helloword.App.Upadte_UserNoPassword;
 import static cn.adminzero.helloword.App.userNoPassword_global;
+import static cn.adminzero.helloword.db.ServerDbUtil.UpdateHistory;
 import static cn.adminzero.helloword.util.WordsLevelUtil.assignDailyWords;
 
 public class RememberWordsActivity extends AppCompatActivity {

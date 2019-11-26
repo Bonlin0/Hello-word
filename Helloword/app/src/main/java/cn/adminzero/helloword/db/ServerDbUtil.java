@@ -4,10 +4,13 @@ import android.util.Log;
 
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Decoder;
 import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
 import cn.adminzero.helloword.CommonClass.Group;
+import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.NetWork.SessionManager;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
@@ -36,10 +39,25 @@ public class ServerDbUtil {
                 user_id));
        return null;
     }
+    public static void UpdateHistory(ArrayList<WordsLevel> wordsLevelArrayList){
+        SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.UPDATE_HISTORY_REQUEST,
+                wordsLevelArrayList));
+    }
+
+
  //   Group group=new Group(10005,16);
 //        int user_id=group.getUser_id();
 //        CreateGroup(group);
 //        group.setMax_member(18);
 //        updateGroup(group);
 //      //  Group group0=getGroup(userNoPassword_global.getUserID());
+
+
+//           ArrayList<WordsLevel> wordsIdToUpdate=new ArrayList<WordsLevel>();
+//           WordsLevel wordsLevel1=new WordsLevel((short)1);
+//           wordsLevel1.setLevel((short)3);
+//            WordsLevel wordsLevel2=new WordsLevel((short)4);
+//            wordsIdToUpdate.add(wordsLevel1);
+//            wordsIdToUpdate.add(wordsLevel2);
+//            UpdateHistory(wordsIdToUpdate);
 }

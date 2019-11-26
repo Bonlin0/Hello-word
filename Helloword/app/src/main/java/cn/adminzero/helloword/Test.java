@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import cn.adminzero.helloword.util.TranslationUtil;
 import cn.adminzero.helloword.util.Words;
-import cn.adminzero.helloword.util.WordsLevel;
+
 import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 

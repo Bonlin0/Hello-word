@@ -14,11 +14,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
+import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.db.DbUtil;
 
 import cn.adminzero.helloword.util.MyStorage;
 import cn.adminzero.helloword.util.Words;
-import cn.adminzero.helloword.util.WordsLevel;
+
 
 public class App extends Application {
 
