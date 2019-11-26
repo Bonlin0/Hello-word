@@ -44,7 +44,6 @@ import cn.adminzero.helloword.MainActivity;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.R;
 
-import static cn.adminzero.helloword.App.Upadte_UserNoPassword;
 import static cn.adminzero.helloword.App.userNoPassword_global;
 
 public class LoginActivity extends AppCompatActivity {

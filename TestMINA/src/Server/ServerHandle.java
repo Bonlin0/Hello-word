@@ -3,6 +3,7 @@ package Server;
 import Common.CMDDef;
 import Common.Message;
 import Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.CommonClass.Group;
 import DB.ServerDbutil;
 import Game.Gamer;
 import cn.adminzero.helloword.CommonClass.*;
@@ -11,6 +12,8 @@ import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.FilterEvent;
+
+import static DB.ServerDbutil.*;
 
 /**
  * @author: 王翔
@@ -135,6 +138,23 @@ public class ServerHandle extends IoHandlerAdapter {
                     Gamer.removerGamer(session.getId());
                   //  logger.info("此时一位靓仔不愿意玩游戏并悄悄的取消了匹配!");
                   //  logger.info("还剩" + Gamer.getGamers() + "位靓仔！");
+                }
+                break;
+                case CMDDef.CREATE_GROUP_REQUEST:{
+                    Group group= (Group)mes.getObj();
+                    int user_id= group.getUser_id();
+                    group=CreatGroup(group);
+                }
+                break;
+                case CMDDef.UPDATE_GROUP_REQUEST:{
+                    Group group=(Group) mes.getObj();
+                    group=updateGroup(group);
+                }
+                break;
+                case CMDDef.GET_GROUP_REQUEST:{
+                    int user_id=(int)mes.getI();
+                   Group group=getGroup(user_id);
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_GROUP_REPLY, group));
                 }
                 break;
             }

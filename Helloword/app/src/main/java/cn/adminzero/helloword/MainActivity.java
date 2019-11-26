@@ -35,6 +35,7 @@ import cn.adminzero.helloword.CommonClass.DestoryData;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
+import cn.adminzero.helloword.db.ServerDbUtil;
 import cn.adminzero.helloword.util.MyStorage;
 import cn.adminzero.helloword.util.WordsLevel;
 import cn.adminzero.helloword.util.WordsLevelUtil;
@@ -253,7 +254,7 @@ public class MainActivity extends BaseActivity {
                             WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
                             // 网络同步
-                            App.Upadte_UserNoPassword();
+                            ServerDbUtil.Upadte_UserNoPassword();
                         }
                     }
                 });

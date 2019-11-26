@@ -34,9 +34,9 @@ public class CMDDef {
     public static final String DBPASSWD = "926b50985a";
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
-//    public static final String IP = "10.0.2.2";
+    public static final String IP = "10.0.2.2";
 
-    public static final String IP = "123.207.173.192";
+ //   public static final String IP = "123.207.173.192";
 
     //常量定义
 
@@ -89,5 +89,19 @@ public class CMDDef {
     public static final short JOIN_PK_GAME_REQUEST = (short) 0x7001;
     //放弃匹配
     public static final short GIVE_UP_JOIN_GAME = (short) 0x7002;
+
+    //创建小组请求
+    public static final short CREATE_GROUP_REQUEST = (short) 0xA001;
+    //更新小组请求
+    public static final short UPDATE_GROUP_REQUEST = (short) 0xA002;
+    //获取小组信息请求
+    public static final short GET_GROUP_REQUEST = (short) 0xA003;
+
+    //回应创建小组请求
+    public static final short CREATE_GROUP_REPLY = (short) 0x4001;
+    //回应更新小组请求
+    public static final short UPDATE_GROUP_REPLY = (short) 0x4002;
+    //回应获取小组信息请求
+    public static final short GET_GROUP_REPLY = (short) 0x4003;
 }
 
