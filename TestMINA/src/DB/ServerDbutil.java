@@ -1,11 +1,9 @@
 package DB;
 
-import cn.adminzero.helloword.CommonClass.Group;
-import cn.adminzero.helloword.CommonClass.SignInRequest;
-import cn.adminzero.helloword.CommonClass.SignUpRequest;
-import cn.adminzero.helloword.CommonClass.UserNoPassword;
+import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ServerDbutil {
     private static Logger logger = Logger.getLogger(ServerDbutil.class);
@@ -336,6 +334,44 @@ public class ServerDbutil {
         return  group;
     }
 
+    public  static  void CreateHistory(int user_id) throws SQLException {
+        String tabelName="HISTORY_"+user_id;
+        PreparedStatement statement=GlobalConn.getConn().prepareStatement("create table "+tabelName+"(word_id smallint primary key,level smallint default 0,yesterday tinyint default 0)");
+       // statement.setString(1,tabelName);
+        logger.info(statement);
+        statement.execute();
+    }
+
+    public static void UpdateHistory(int user_id,ArrayList<WordsLevel> wordsIdToUpdate) throws SQLException {
+        int i=0;
+        String tabelName="HISTORY_"+user_id;
+        for(i=0;i<wordsIdToUpdate.size();i++){
+            WordsLevel wordsLevel=wordsIdToUpdate.get(i);
+            int word_id=wordsLevel.getWord_id();
+            //检查H表里有没有该单词，有的话更新，没有的话插入
+            PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from "+tabelName+" where word_id=?");
+            stmt.setObject(1,word_id);
+            ResultSet rs=stmt.executeQuery();
+            if(rs.next()){
+                if(word_id==rs.getInt(word_id)) {
+                    PreparedStatement statement = GlobalConn.getConn().prepareStatement("" +
+                            "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
+                    statement.setObject(1, wordsLevel.getLevel());
+                    statement.setObject(2, wordsLevel.getYestarday());
+                    statement.setObject(3, wordsLevel.getWord_id());
+                    statement.execute();
+                    continue;
+                }
+            }
+            PreparedStatement statement=GlobalConn.getConn().prepareStatement("" +
+                    "insert into "+tabelName+"(word_id,level,yesterday) values(?,?,?)");
+            statement.setObject(1,wordsLevel.getWord_id());
+            statement.setObject(2,wordsLevel.getLevel());
+            statement.setObject(3,wordsLevel.getYestarday());
+            statement.execute();
+        }
+    }
+
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
 //            //修改用户信息
@@ -355,6 +391,18 @@ public class ServerDbutil {
 //            //修改小组信息再更新
 //            group0.setContribution(1000);
 //            updateGroup(group0);
+
+//            //创建用户背单词历史数据库
+//            CreateHistory(10006);
+//            //测试更新单词历史数据库
+//             ArrayList<WordsLevel> wordsIdToUpdate=new ArrayList<WordsLevel>();
+//             WordsLevel wordsLevel1=new WordsLevel((short)1);
+//             wordsLevel1.setLevel((short)3);
+//            WordsLevel wordsLevel2=new WordsLevel((short)4);
+//            wordsIdToUpdate.add(wordsLevel1);
+//            wordsIdToUpdate.add(wordsLevel2);
+//            UpdateHistory(10006,wordsIdToUpdate);
+
 
 
 }

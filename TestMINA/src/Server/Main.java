@@ -3,6 +3,7 @@ package Server;
 import Common.*;
 
 import DB.GlobalConn;
+import cn.adminzero.helloword.CommonClass.WordsLevel;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
@@ -12,6 +13,10 @@ import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
+
+import static DB.ServerDbutil.CreateHistory;
+import static DB.ServerDbutil.UpdateHistory;
 
 
 public class Main {
@@ -37,7 +42,6 @@ public class Main {
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
-
          // initDataBase();
 
         } catch (Exception e) {
