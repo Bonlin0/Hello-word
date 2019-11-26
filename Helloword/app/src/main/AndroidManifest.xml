@@ -17,10 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ManageGroupActivity"></activity>
+        <activity android:name=".ShowOthersGroup" />
+        <activity android:name=".ShowGroupMemberActivity" />
         <activity
             android:name=".ShowAllGroupActivity"
             android:label="@string/title_activity_show_all_group"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".GameQueueActivity" />
         <activity android:name=".MyGroupActivity" />
         <activity android:name=".WordTestActivity" />

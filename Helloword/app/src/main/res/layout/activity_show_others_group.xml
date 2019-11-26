@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ShowOthersGroup">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/enroll_group_button"
+        style="@android:style/Widget.Material.Button"
+        android:layout_width="392dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_light_background"
+        android:text="加入小组"
+        android:textAlignment="center"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider10" />
+
+    <TextView
+        android:id="@+id/daka_ratio_others_group_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:fontFamily="@font/aldrich_regular"
+        android:text="95%"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75
+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider9" />
+
+    <TextView
+        android:id="@+id/group_rank_others_group_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16sp"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/aldrich_regular"
+        android:text="233"
+        android:textSize="36sp"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider9" />
+
+    <ImageView
+        android:id="@+id/group_avatar_others_group_imageView"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/group_avatar" />
+
+    <TextView
+        android:id="@+id/group_name_others_group_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="别人的小组名字"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/group_avatar_others_group_imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/group_avatar_others_group_imageView"
+        app:layout_constraintTop_toTopOf="@+id/group_avatar_others_group_imageView" />
+
+    <View
+        android:id="@+id/divider9"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/group_avatar_others_group_imageView" />
+
+    <View
+        android:id="@+id/divider10"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/group_setup_date_tttle" />
+
+    <TextView
+        android:id="@+id/group_rank_others_group_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="小组排名"
+        app:layout_constraintEnd_toEndOf="@+id/group_rank_others_group_textView"
+        app:layout_constraintStart_toStartOf="@+id/group_rank_others_group_textView"
+        app:layout_constraintTop_toBottomOf="@+id/group_rank_others_group_textView" />
+
+    <TextView
+        android:id="@+id/daka_ratio_others_group_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="小组打卡率"
+        app:layout_constraintEnd_toEndOf="@+id/daka_ratio_others_group_textView"
+        app:layout_constraintStart_toStartOf="@+id/daka_ratio_others_group_textView"
+        app:layout_constraintTop_toBottomOf="@+id/daka_ratio_others_group_textView" />
+
+    <TextView
+        android:id="@+id/group_id_others_group_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="小组ID"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="271dp" />
+
+    <TextView
+        android:id="@+id/headMan_others_group_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="组长"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/group_id_others_group_title" />
+
+    <TextView
+        android:id="@+id/group_setup_date_tttle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="成立时间"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headMan_others_group_title" />
+
+    <TextView
+        android:id="@+id/group_setup_date_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="2019/11/11"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/group_setup_date_tttle"
+        app:layout_constraintStart_toEndOf="@+id/group_setup_date_tttle"
+        app:layout_constraintTop_toTopOf="@+id/group_setup_date_tttle" />
+
+    <TextView
+        android:id="@+id/group_id_others_group_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/aldrich"
+        android:text="10000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/group_id_others_group_title"
+        app:layout_constraintStart_toEndOf="@+id/group_id_others_group_title"
+        app:layout_constraintTop_toTopOf="@+id/group_id_others_group_title" />
+
+    <TextView
+        android:id="@+id/headMan_others_group_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="张三爱喝咖啡不吃肉"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/headMan_others_group_title"
+        app:layout_constraintStart_toEndOf="@+id/headMan_others_group_title"
+        app:layout_constraintTop_toTopOf="@+id/headMan_others_group_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
