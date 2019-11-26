@@ -1,6 +1,5 @@
 package DB;
 
-import cn.adminzero.helloword.CommonClass.Group;
 import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;

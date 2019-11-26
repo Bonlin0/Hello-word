@@ -1,4 +1,4 @@
-package cn.adminzero.helloword.CommonClass;
+package DB;
 
 public class Group {
     public  static  int user_id=-1;
