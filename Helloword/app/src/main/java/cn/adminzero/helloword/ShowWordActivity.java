@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import cn.adminzero.helloword.util.MediaPlayUtil;
@@ -13,11 +14,19 @@ import cn.adminzero.helloword.util.Words;
 public class ShowWordActivity extends AppCompatActivity {
 
     private Words wordsActivity;
-    private boolean cancelRemembered = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_word);
+
+        Button next_word_button  = findViewById(R.id.next_word_button);
+        next_word_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         Intent intent =getIntent();
         Words words = (Words)intent.getSerializableExtra("word_to_show");
         wordsActivity = words;
@@ -47,7 +56,7 @@ public class ShowWordActivity extends AppCompatActivity {
 
         boolean isRemembered = intent.getBooleanExtra("is_remembered",false);
         final TextView cancel_remember_textView = findViewById(R.id.cancel_remember_textView);
-        cancelRemembered = false;
+        setResult(0);
         if(!isRemembered)
         {
             cancel_remember_textView.setVisibility(View.GONE);
@@ -58,7 +67,7 @@ public class ShowWordActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     cancel_remember_textView.setVisibility(View.GONE);
-                    cancelRemembered  = true;
+                    setResult(1);
                 }
             });
         }
@@ -74,13 +83,5 @@ public class ShowWordActivity extends AppCompatActivity {
     /** MediaPlayUtil player = new MediaPlayUtil();
      * player.playword(String word); */
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // 如果撤销已经记住
-        if(cancelRemembered)
-            setResult(1);
-        else
-            setResult(0);
-    }
+
 }

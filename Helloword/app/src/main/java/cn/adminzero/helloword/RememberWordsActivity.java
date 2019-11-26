@@ -76,6 +76,10 @@ public class RememberWordsActivity extends AppCompatActivity {
         // else , create a new one.
         else{
             wordsArrayList = assignDailyWords(dailyWordsNumber_int);
+
+            // 返回单词的数目可能不是dailyWordsNumber_int
+            dailyWordsNumber_int = wordsArrayList.size();
+
             wordsLevelArrayList = WordsLevelUtil.wordsLevels;
             App.wordsArrayToday = wordsArrayList;
             App.wordsLevelArrayToday = wordsLevelArrayList;
