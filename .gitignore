@@ -9,3 +9,5 @@ TestMINA/out/artifacts/TestMINA_jar/TestMINA.jar
 .idea/Hello-word.iml
 .idea/modules.xml
 .idea/workspace.xml
+*.class
+*.class

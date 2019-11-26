@@ -294,15 +294,17 @@ public class MainActivity extends BaseActivity {
                             // 更换词书处理  0-7
                             WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
-                            //TODO 网络同步
+                            // 网络同步
                             App.Upadte_UserNoPassword();
                         }
                     }
                 });
         // 设置不可取消
-        builder.create().setCancelable(false);
-        builder.create().show();
-        ;
+
+        AlertDialog dialog =  builder.create();
+        dialog.setCancelable(false);
+        dialog.show();;
+
     }
 
     // 当点击了选择词书

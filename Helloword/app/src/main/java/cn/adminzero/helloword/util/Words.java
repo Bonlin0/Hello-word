@@ -1,5 +1,7 @@
 package cn.adminzero.helloword.util;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 
 /**
@@ -26,6 +28,8 @@ public class Words implements Serializable {
     private String exchange;// 时态变换
     private short tag;//
     private String sentence;
+    @Nullable
+    public Integer leftTime; // 在背单词算法中使用到的变量
 
     public Words() {
         sentence = "";

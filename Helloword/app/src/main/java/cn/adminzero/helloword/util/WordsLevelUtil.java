@@ -23,7 +23,9 @@ public class WordsLevelUtil {
     private static final String TAG = "WordsLevelUtil";
 
     public static ArrayList<WordsLevel> wordsLevels = null;
+
     public static ArrayList<Words> words = null;
+
 
     /**
      * @param _tag [0,7] 代表词书的编号

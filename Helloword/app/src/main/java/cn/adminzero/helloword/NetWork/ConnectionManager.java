@@ -73,7 +73,7 @@ public class ConnectionManager {
             future.awaitUninterruptibly();
             mSession = future.getSession();
             SessionManager.getInstance().setmSessionsion(mSession);
-            Log.e("tag", "连接成功!");
+      //      Log.e("tag", "连接成功!");
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -186,6 +186,7 @@ public class ConnectionManager {
             super.messageReceived(session, message);
             Message mes = (Message) message;
             switch (mes.getCMD()) {
+                case CMDDef.REPLY_GAMER_IFNO:
                 case CMDDef.REPLY_SIGN_UP_REQUEST:
                 case CMDDef.REPLY_SIGN_IN_REQUEST: {
                     DataArriveBroadcast(mes.getCMD(), mes.getData());

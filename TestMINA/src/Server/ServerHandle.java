@@ -4,10 +4,8 @@ import Common.CMDDef;
 import Common.Message;
 import Common.Utils.SendMsgMethod;
 import DB.ServerDbutil;
-import cn.adminzero.helloword.CommonClass.DestoryData;
-import cn.adminzero.helloword.CommonClass.SignInRequest;
-import cn.adminzero.helloword.CommonClass.SignUpRequest;
-import cn.adminzero.helloword.CommonClass.UserNoPassword;
+import Game.Gamer;
+import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -31,13 +29,13 @@ public class ServerHandle extends IoHandlerAdapter {
     @Override
     public void sessionCreated(IoSession session) throws Exception {
         super.sessionCreated(session);
-        logger.info("用户连接至服务器");
+        //     logger.info("用户连接至服务器");
     }
 
     @Override
     public void sessionOpened(IoSession session) throws Exception {
         super.sessionOpened(session);
-        logger.info("连接被打开");
+        //    logger.info("连接被打开");
 
 
     }
@@ -45,13 +43,13 @@ public class ServerHandle extends IoHandlerAdapter {
     @Override
     public void sessionClosed(IoSession session) throws Exception {
         super.sessionClosed(session);
-        logger.info("连接被关闭");
+        //    logger.info("连接被关闭");
     }
 
     @Override
     public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
         super.sessionIdle(session, status);
-        logger.info("连接被闲置");
+        //    logger.info("连接被闲置");
     }
 
     @Override
@@ -62,7 +60,7 @@ public class ServerHandle extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
         super.messageReceived(session, message);
-        logger.info("收到了数据");
+        //    logger.info("收到了数据");
         if (message instanceof Message) {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
@@ -72,6 +70,8 @@ public class ServerHandle extends IoHandlerAdapter {
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
                     if (userNoPassword.isValid()) {
                         UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
+                        logger.info("用户" + userNoPassword.getUserNickName() + "成功注册并与服务器建立了连接!");
+                        logger.info("ID为" + userNoPassword.getUserID());
                     }
                 }
                 break;
@@ -81,29 +81,65 @@ public class ServerHandle extends IoHandlerAdapter {
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                     if (userNoPassword.isValid()) {
                         UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
+                        logger.info("用户" + userNoPassword.getUserNickName() + "与服务器建立了连接!");
+                        logger.info("ID为" + userNoPassword.getUserID());
                     }
                 }
                 break;
                 case CMDDef.DESTORY_SELF_SEND_DATA: {
                     DestoryData destoryData = (DestoryData) mes.getObj();
+                    logger.info("ID为" + UserIDSession.getUserIDWithSessionID(session.getId()) + "的用户与服务器断开了连接!");
                     UserIDSession.removeSessionWithUserID(session.getId());
                 }
-                 break;
-                case CMDDef.UPDATE_USER_REQUESET:
-                    UserNoPassword unp= (UserNoPassword)mes.getObj();
+                break;
+                case CMDDef.UPDATE_USER_REQUESET: {
+                    UserNoPassword unp = (UserNoPassword) mes.getObj();
                     UserNoPassword userNoPassword;
                     try {
                         userNoPassword = ServerDbutil.update_USER(unp);
                         session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_UPDATE_USER_REQUESET, userNoPassword));
 
+                    } catch (Exception e) {
+                        logger.info("用户表更新插入失败!");
                     }
-                    catch (Exception e){
-                        System.out.println("更新插入失败！");
+                }
+                break;
+                case CMDDef.JOIN_PK_GAME_REQUEST: {
+                    if (Gamer.isEmpty()) {
+                        Gamer.insertGamer(session.getId());
+                     //   logger.info("此时一位靓仔加入了游戏!");
+                   //     logger.info("还剩" + Gamer.getGamers() + "位靓仔");
+                    } else {
+                        long anotherID = Gamer.getGamer();
+                        Gamer.removerGamer(anotherID);
+                     //   logger.info("此时又一位靓仔加入了游戏!");
+                      //  logger.info("还剩" + Gamer.getGamers() + "位靓仔");
+                        IoSession anotherSession = session.getService().getManagedSessions().get(anotherID);
+
+                        OpponentInfo opponentInfo1 = new OpponentInfo(
+                                UserIDSession.getUserIDWithSessionID(anotherID));
+                        session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, opponentInfo1));
+
+                        OpponentInfo opponentInfo2 = new OpponentInfo(
+                                UserIDSession.getUserIDWithSessionID(session.getId()));
+
+                        anotherSession.write(
+                                SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, opponentInfo2)
+                        );
+                    //    logger.info("两位靓仔开始了游戏!");
+                     //   logger.info("还剩" + Gamer.getGamers() + "位靓仔!");
                     }
-                    break;
+                }
+                break;
+                case CMDDef.GIVE_UP_JOIN_GAME: {
+                    Gamer.removerGamer(session.getId());
+                  //  logger.info("此时一位靓仔不愿意玩游戏并悄悄的取消了匹配!");
+                  //  logger.info("还剩" + Gamer.getGamers() + "位靓仔！");
+                }
+                break;
             }
         } else {
-            logger.info("未知请求！");
+            logger.info("收到了未知请求！");
         }
     }
 

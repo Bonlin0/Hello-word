@@ -127,6 +127,7 @@ public class MyWordsLearningFragment extends Fragment{
     {
         Intent intent = new Intent(this.getContext(), ShowWordActivity.class);
         intent.putExtra("word_to_show",words);
+        intent.putExtra("from_my_words", true);
         startActivity(intent);
     }
 
