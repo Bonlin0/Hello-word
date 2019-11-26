@@ -1,5 +1,6 @@
 package DB;
 
+import cn.adminzero.helloword.CommonClass.Group;
 import cn.adminzero.helloword.CommonClass.SignInRequest;
 import cn.adminzero.helloword.CommonClass.SignUpRequest;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
@@ -236,13 +237,124 @@ public class ServerDbutil {
         return userNoPassword;
     }
 
+    /**
+     *
+     * @param grp 传入的创建组的信息（只用有user_id和最大人数就好了）
+     * @return
+     * @throws SQLException
+     */
     public static Group CreatGroup(Group grp) throws SQLException {
         Group group = grp;
         int user_id = grp.getUser_id();
         int max_member = grp.getMax_member();
+        int group_id=0;
+        int isExist=0;
         PreparedStatement stmt = GlobalConn.getConn().prepareStatement("select * from GROUP_USER");
+        ResultSet rs=null;
+        try{
+            rs=stmt.executeQuery();
+            while (rs.next()){
+                group_id=rs.getInt("group_id");
+                if(user_id==rs.getInt("user_id")){
+                    //该用户已经属于某一组了，不能再创建组
+                    isExist=1;
+                    break;
+                }
+            }
+        }catch (Exception e){
+
+        }
+        //当前用户不属于任何一组
+        if(isExist==0){
+            group_id++;
+            stmt = GlobalConn.getConn().prepareStatement("insert into GROUP_USER(user_id,group_id,contribution,master,max_member) values(?,?,?,?,?)");
+            stmt.setObject(1,user_id);
+            stmt.setObject(2,group_id);
+            stmt.setObject(3,0);
+            stmt.setObject(4,user_id);
+            stmt.setObject(5,max_member);
+            stmt.execute();
+            group.setGroup_id(group_id);
+            group.setMaster(user_id);
+
+        }
+        else {
+            return null;
+        }
         return group;
     }
+
+    /**
+     * 获取用户的组信息
+     * @param user_id
+     * @return
+     * @throws SQLException
+     */
+    public static Group getGroup(int user_id) throws SQLException {
+        Group group=new Group(user_id);
+        group.setGroup_id(-1);
+        PreparedStatement statement=GlobalConn.getConn().prepareStatement("select * from GROUP_USER where user_id=?");
+        statement.setObject(1,user_id);
+        ResultSet resultSet=null;
+        try {
+            resultSet=statement.executeQuery();
+           while (resultSet.next()){
+               if(user_id==resultSet.getInt("user_id")){
+                   group.setUser_id(resultSet.getInt("user_id"));
+                   group.setGroup_id(resultSet.getInt("group_id"));
+                   group.setContribution(resultSet.getInt("contribution"));
+                   group.setMaster(resultSet.getInt("master"));
+                   group.setMax_member(resultSet.getInt("max_member"));
+
+               }
+           }
+        }catch (Exception e){
+            //出错
+        }
+        int a=group.getUser_id();
+        int b=group.getGroup_id();
+        return group;
+    }
+
+    /**
+     * 更新用户的组信息
+     * @param grp
+     * @return
+     */
+    public static  Group updateGroup(Group grp) throws SQLException {
+        Group group=grp;
+        int user_id=group.getUser_id();
+
+        PreparedStatement statement=GlobalConn.getConn().prepareStatement("update GROUP_USER set group_id=?, contribution=?,master=?,max_member=? where user_id=?");
+        statement.setObject(1,group.getGroup_id());
+        statement.setObject(2,group.getContribution());
+        statement.setObject(3,group.getMaster());
+        statement.setObject(4,group.getMax_member());
+        statement.setObject(5,user_id);
+        statement.execute();
+       // System.out.println(statement);
+        return  group;
+    }
+
+//            // 获取除了密码外的所有信息
+//            UserNoPassword userNoPassword=getUserNopassword(10062);
+//            //修改用户信息
+//            userNoPassword.setUserNickName("test修改");
+//            update_USER(userNoPassword);
+//            //获取用户所有信息（包括密码）
+//            UserInformation userInformation=getUser(10062);
+//            logger.info("user_name:"+userInformation.getUserNickName()+"\n"+"email:"+userInformation.getEmail());
+
+//            //小组功能的实现
+//            //构建一个小组，包括创建的用户 和最大成员数量
+//            Group group=new Group(10001,20);
+//            //创建小组
+//            CreatGroup(group);
+//            //获取用户小组信息
+//            Group group0=getGroup(10001);
+//            //修改小组信息再更新
+//            group0.setContribution(1000);
+//            updateGroup(group0);
 
 
 }

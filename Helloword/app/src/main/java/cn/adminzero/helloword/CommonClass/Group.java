@@ -1,25 +1,31 @@
-package DB;
+package cn.adminzero.helloword.CommonClass;
+import java.io.Serializable;
 
-public class Group {
+public class Group implements Serializable {
+    private final long serialVersionUID = 1L;
     public  static  int user_id=-1;
     public  static  int group_id=-1;
     public  static  int contribution=0;
     public  static  int master=-1;
-    public  static  int max_member=0;
+    public  static  int max_member=10;
 
-    public  void Group(int user_id){
+    public  Group(int user_id){
         this.user_id=user_id;
         this.master=user_id;
         this.max_member=10;
     }
 
-    public  void Group(int user_id,int max_member){
+    public long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Group(int user_id, int max_member){
         this.user_id=user_id;
         this.master=user_id;
         this.max_member=max_member;
     }
 
-    public  void Group(int user_id,int group_id, int contribution,int master, int max_member){
+    public  Group(int user_id,int group_id, int contribution,int master, int max_member){
         this.user_id=user_id;
         this.master=master;
         this.max_member=max_member;

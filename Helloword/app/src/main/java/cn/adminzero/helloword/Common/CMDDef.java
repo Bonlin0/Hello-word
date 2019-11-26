@@ -89,5 +89,19 @@ public class CMDDef {
     public static final short JOIN_PK_GAME_REQUEST = (short) 0x7001;
     //放弃匹配
     public static final short GIVE_UP_JOIN_GAME = (short) 0x7002;
+
+    //创建小组请求
+    public static final short CREATE_GROUP_REQUEST = (short) 0xA001;
+    //更新小组请求
+    public static final short UPDATE_GROUP_REQUEST = (short) 0xA002;
+    //获取小组信息请求
+    public static final short GET_GROUP_REQUEST = (short) 0xA003;
+
+    //回应创建小组请求
+    public static final short CREATE_GROUP_REPLY = (short) 0x4001;
+    //回应更新小组请求
+    public static final short UPDATE_GROUP_REPLY = (short) 0x4002;
+    //回应获取小组信息请求
+    public static final short GET_GROUP_REPLY = (short) 0x4003;
 }
 
