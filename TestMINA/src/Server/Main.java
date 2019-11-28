@@ -3,6 +3,8 @@ package Server;
 import Common.*;
 
 import DB.GlobalConn;
+import DB.ServerDbutil;
+import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.CommonClass.WordsLevel;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoAcceptor;
@@ -43,6 +45,8 @@ public class Main {
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
          // initDataBase();
+          //  int user_id=UserIDSession.getUserIDWithSessionID(10062);
+
 
         } catch (Exception e) {
             e.printStackTrace();

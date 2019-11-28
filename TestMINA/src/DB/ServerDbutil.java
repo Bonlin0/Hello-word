@@ -372,6 +372,30 @@ public class ServerDbutil {
         }
     }
 
+    /**
+     * 获取用户表
+     *
+     */
+    public static ArrayList<WordsLevel> getHistory(int user_id) throws SQLException {
+        String tabelName="HISTORY_"+user_id;
+        ArrayList<WordsLevel> wordlist=new ArrayList<WordsLevel>();
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from "+tabelName+" ");
+        ResultSet rs=stmt.executeQuery();
+        try{
+            while (rs.next()){
+                WordsLevel word=new WordsLevel();
+                word.setWord_id(rs.getShort("word_id"));
+                word.setLevel(rs.getShort("level"));
+                word.setYesterday(rs.getByte("yesterday"));
+                wordlist.add(word);
+            }
+        }catch (Exception e){
+         //
+        }
+        return wordlist;
+
+    }
+
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
 //            //修改用户信息
@@ -403,6 +427,9 @@ public class ServerDbutil {
 //            wordsIdToUpdate.add(wordsLevel2);
 //            UpdateHistory(10006,wordsIdToUpdate);
 
+
+    //           ArrayList<WordsLevel> wordlist= ServerDbutil.getHistory(10067);
+//           WordsLevel wordsLevel =wordlist.get(1);
 
 
 }
