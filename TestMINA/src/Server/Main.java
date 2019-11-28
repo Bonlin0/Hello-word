@@ -17,8 +17,7 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 
-import static DB.ServerDbutil.CreateHistory;
-import static DB.ServerDbutil.UpdateHistory;
+import static DB.ServerDbutil.*;
 
 
 public class Main {
@@ -46,6 +45,7 @@ public class Main {
             GlobalConn.initDBConnection();
          // initDataBase();
           //  int user_id=UserIDSession.getUserIDWithSessionID(10062);
+           // test_History();
 
 
         } catch (Exception e) {

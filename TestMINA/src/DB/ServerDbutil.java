@@ -394,8 +394,32 @@ public class ServerDbutil {
         }
         return wordlist;
 
+
     }
 
+    public static  void  test_History() throws SQLException {
+        int user_id1=10074;//1-100
+        int user_id2=10075;//50-150
+        ArrayList<WordsLevel> wordlist1=new ArrayList<WordsLevel>();
+        ArrayList<WordsLevel> wordlist2=new ArrayList<WordsLevel>();
+        for(int i=1;i<100;i++){
+            WordsLevel word= new WordsLevel((short)i);
+            word.setLevel((short)((i+3)%7));
+            word.setYesterday((byte)(i%2));
+            wordlist1.add(word);
+        }
+        for(int i=50;i<150;i++){
+            WordsLevel word= new WordsLevel((short)i);
+            word.setLevel((short)((i+3)%7));
+            word.setYesterday((byte)(i%2));
+            wordlist2.add(word);
+        }
+
+        UpdateHistory(10074,wordlist1);
+        UpdateHistory(10075,wordlist2);
+
+
+    }
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
 //            //修改用户信息
