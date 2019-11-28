@@ -100,6 +100,8 @@ public class CMDDef {
     public static final short CREATE_HISTORY_REQUEST = (short) 0xA004;
     //更新用户History 表
     public static final short UPDATE_HISTORY_REQUEST = (short) 0xA005;
+    //获取用户History 表
+    public static final short GET_HISTORY_REQUSEST = (short) 0xA006;
 
 
 
@@ -113,5 +115,7 @@ public class CMDDef {
     public static final short CREATE_HISTORY_REPLY= (short) 0x4004;
     //更新用户History 表
     public static final short UPDATE_HISTORY_REPLY = (short) 0x4005;
+    //获取用户History 表
+    public static final short GET_HISTORY_REPLY = (short) 0x4006;
 }
 

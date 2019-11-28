@@ -43,6 +43,9 @@ public class ServerDbUtil {
         SessionManager.getInstance().writeToServer(SendMsgMethod.getObjectMessage(CMDDef.UPDATE_HISTORY_REQUEST,
                 wordsLevelArrayList));
     }
+    public static void GetHistory( ){
+        SessionManager.getInstance().writeToServer(SendMsgMethod.getNullMessage(CMDDef.GET_HISTORY_REQUSEST));
+    }
 
 
  //   Group group=new Group(10005,16);

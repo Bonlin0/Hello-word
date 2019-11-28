@@ -21,8 +21,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static DB.ServerDbutil.CreateHistory;
-import static DB.ServerDbutil.UpdateHistory;
+import static DB.ServerDbutil.*;
 
 
 public class Main {
@@ -49,9 +48,6 @@ public class Main {
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
             Gamer.initGamer();
-         // initDataBase();
-          //  int user_id=UserIDSession.getUserIDWithSessionID(10062);
-
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors
                     .newSingleThreadScheduledExecutor();

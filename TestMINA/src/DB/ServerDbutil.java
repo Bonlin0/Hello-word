@@ -394,8 +394,8 @@ public class ServerDbutil {
         }
         return wordlist;
 
-    }
 
+    }
     public static ArrayList<Short> getHistoryWord(int user_id) throws SQLException {
         String tabelName= "HISTORY_" +user_id;
         ArrayList<Short> wordlist=new ArrayList<>();
@@ -414,7 +414,6 @@ public class ServerDbutil {
         }
         return wordlist;
     }
-
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
 //            //修改用户信息

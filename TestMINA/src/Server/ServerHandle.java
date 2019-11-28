@@ -181,6 +181,12 @@ public class ServerHandle extends IoHandlerAdapter {
                     UpdateHistory(user_id, wordsToUpdate);
                 }
                 break;
+                case CMDDef.GET_HISTORY_REQUSEST:{
+                    int user_id=UserIDSession.getUserIDWithSessionID(session.getId());
+                    ArrayList<WordsLevel> wordlist=getHistory(user_id);
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_HISTORY_REPLY, wordlist));
+                }
+                break;
             }
         } else {
             logger.info("收到了未知请求！");
