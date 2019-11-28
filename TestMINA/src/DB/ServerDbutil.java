@@ -396,6 +396,25 @@ public class ServerDbutil {
 
     }
 
+    public static ArrayList<Short> getHistoryWord(int user_id) throws SQLException {
+        String tabelName= "HISTORY_" +user_id;
+        ArrayList<Short> wordlist=new ArrayList<>();
+        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from "+tabelName+" ");
+        ResultSet rs=stmt.executeQuery();
+        try{
+            while (rs.next()){
+                WordsLevel word=new WordsLevel();
+                word.setWord_id(rs.getShort("word_id"));
+                word.setLevel(rs.getShort("level"));
+                word.setYesterday(rs.getByte("yesterday"));
+                wordlist.add(word.getWord_id());
+            }
+        }catch (Exception e){
+            logger.info("查询单词异常!");
+        }
+        return wordlist;
+    }
+
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
 //            //修改用户信息

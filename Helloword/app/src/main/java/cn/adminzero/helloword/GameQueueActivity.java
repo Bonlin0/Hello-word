@@ -53,7 +53,6 @@ public class GameQueueActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         // 展示倒计时的TextView
         time_to_start_game_textView = findViewById(R.id.time_to_start_game_textView);
 
@@ -108,6 +107,7 @@ public class GameQueueActivity extends AppCompatActivity {
                     try {
                         OpponentInfo opponentInfo = (OpponentInfo) SerializeUtils.serializeToObject(
                                 intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA));
+                        opponentInfo.getPkWords();
                         readyAndUpdateUi();
                     } catch (IOException | ClassNotFoundException e) {
                         Log.e("tag", "反序列化失败!");

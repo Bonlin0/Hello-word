@@ -3,6 +3,7 @@ package Server;
 import Common.CMDDef;
 import Common.Message;
 import Common.Utils.SendMsgMethod;
+import DB.UserInformation;
 import cn.adminzero.helloword.CommonClass.Group;
 import DB.ServerDbutil;
 import Game.Gamer;
@@ -13,7 +14,9 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.FilterEvent;
 
+import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static DB.ServerDbutil.*;
 
@@ -72,9 +75,9 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.SIGN_UP_REQUESET: {
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     UserNoPassword userNoPassword = ServerDbutil.signup(sur);
-                    //创建用户的历史表
-                    CreateHistory(userNoPassword.getUserID());
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_UP_REQUEST, userNoPassword));
+                    if (userNoPassword.isValid())
+                        CreateHistory(userNoPassword.getUserID());
                     if (userNoPassword.isValid()) {
                         UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
                         logger.info("用户" + userNoPassword.getUserNickName() + "成功注册并与服务器建立了连接!");
@@ -114,57 +117,68 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.JOIN_PK_GAME_REQUEST: {
                     if (Gamer.isEmpty()) {
                         Gamer.insertGamer(session.getId());
-                     //   logger.info("此时一位靓仔加入了游戏!");
-                   //     logger.info("还剩" + Gamer.getGamers() + "位靓仔");
+                        //   logger.info("此时一位靓仔加入了游戏!");
+                        //     logger.info("还剩" + Gamer.getGamers() + "位靓仔");
                     } else {
                         long anotherID = Gamer.getGamer();
                         Gamer.removerGamer(anotherID);
-                     //   logger.info("此时又一位靓仔加入了游戏!");
-                      //  logger.info("还剩" + Gamer.getGamers() + "位靓仔");
+                        //   logger.info("此时又一位靓仔加入了游戏!");
+                        //  logger.info("还剩" + Gamer.getGamers() + "位靓仔");
                         IoSession anotherSession = session.getService().getManagedSessions().get(anotherID);
 
-                        OpponentInfo opponentInfo1 = new OpponentInfo(
-                                UserIDSession.getUserIDWithSessionID(anotherID));
-                        session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, opponentInfo1));
+                        int userID2 = UserIDSession.getUserIDWithSessionID(anotherID);
+                        int userID1 = UserIDSession.getUserIDWithSessionID(session.getId());
+                        UserInformation userInformation1 = getUser(userID1);
+                        UserInformation userInformation2 = getUser(userID2);
 
-                        OpponentInfo opponentInfo2 = new OpponentInfo(
-                                UserIDSession.getUserIDWithSessionID(session.getId()));
+                        ArrayList<Short> wordsLevelArrayList1 = getHistoryWord(userID1);
+                        ArrayList<Short> wordsLevelArrayList2 = getHistoryWord(userID2);
+                        //求出并集
+                        wordsLevelArrayList1.removeAll(wordsLevelArrayList2);
+                        wordsLevelArrayList1.addAll(wordsLevelArrayList2);
+                        int collectionSize = wordsLevelArrayList1.size() - CMDDef.PK_MAX_WORD_NUM;
+                        short[] result = new short[CMDDef.PK_MAX_WORD_NUM];
 
-                        anotherSession.write(
-                                SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, opponentInfo2)
-                        );
-                    //    logger.info("两位靓仔开始了游戏!");
-                     //   logger.info("还剩" + Gamer.getGamers() + "位靓仔!");
+                        for (int i = 0; i < CMDDef.PK_MAX_WORD_NUM; i++) {
+                            result[i] = (short) (Gamer.getrandom()[i] + collectionSize);
+                        }
+
+                        OpponentInfo info1 = new OpponentInfo(userID1,userInformation1.getUserNickName(),result);
+                        OpponentInfo info2 = new OpponentInfo(userID2,userInformation2.getUserNickName(),result);
+                        anotherSession.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO,info1));
+                        session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO,info2));
+                        //    logger.info("两位靓仔开始了游戏!");
+                        //   logger.info("还剩" + Gamer.getGamers() + "位靓仔!");
                     }
                 }
                 break;
                 case CMDDef.GIVE_UP_JOIN_GAME: {
                     Gamer.removerGamer(session.getId());
-                  //  logger.info("此时一位靓仔不愿意玩游戏并悄悄的取消了匹配!");
-                  //  logger.info("还剩" + Gamer.getGamers() + "位靓仔！");
+                    //  logger.info("此时一位靓仔不愿意玩游戏并悄悄的取消了匹配!");
+                    //  logger.info("还剩" + Gamer.getGamers() + "位靓仔！");
                 }
                 break;
-                case CMDDef.CREATE_GROUP_REQUEST:{
-                    Group group= (Group)mes.getObj();
-                    int user_id= group.getUser_id();
-                    group=CreatGroup(group);
+                case CMDDef.CREATE_GROUP_REQUEST: {
+                    Group group = (Group) mes.getObj();
+                    int user_id = group.getUser_id();
+                    group = CreatGroup(group);
                 }
                 break;
-                case CMDDef.UPDATE_GROUP_REQUEST:{
-                    Group group=(Group) mes.getObj();
-                    group=updateGroup(group);
+                case CMDDef.UPDATE_GROUP_REQUEST: {
+                    Group group = (Group) mes.getObj();
+                    group = updateGroup(group);
                 }
                 break;
-                case CMDDef.GET_GROUP_REQUEST:{
-                    int user_id=(int)mes.getI();
-                   Group group=getGroup(user_id);
+                case CMDDef.GET_GROUP_REQUEST: {
+                    int user_id = (int) mes.getI();
+                    Group group = getGroup(user_id);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_GROUP_REPLY, group));
                 }
                 break;
-                case  CMDDef.UPDATE_HISTORY_REQUEST:{
-                    ArrayList<WordsLevel> wordsToUpdate=(ArrayList<WordsLevel>) mes.getObj();
-                    int user_id=UserIDSession.getUserIDWithSessionID(session.getId());
-                    UpdateHistory(user_id,wordsToUpdate);
+                case CMDDef.UPDATE_HISTORY_REQUEST: {
+                    ArrayList<WordsLevel> wordsToUpdate = (ArrayList<WordsLevel>) mes.getObj();
+                    int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
+                    UpdateHistory(user_id, wordsToUpdate);
                 }
                 break;
             }

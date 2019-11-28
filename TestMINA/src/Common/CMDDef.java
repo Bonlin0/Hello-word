@@ -22,6 +22,7 @@ package Common;
 public class CMDDef {
     //其他全局常量定义
     public static final int PORT = 3005;
+    public static final int PK_MAX_WORD_NUM = 80;
     public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
     public static final String INTENT_PUT_EXTRA_CMD = "CMD";
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";

@@ -4,6 +4,7 @@ import Common.*;
 
 import DB.GlobalConn;
 import DB.ServerDbutil;
+import Game.Gamer;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.CommonClass.WordsLevel;
 import org.apache.log4j.Logger;
@@ -16,6 +17,9 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static DB.ServerDbutil.CreateHistory;
 import static DB.ServerDbutil.UpdateHistory;
@@ -44,10 +48,15 @@ public class Main {
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
+            Gamer.initGamer();
          // initDataBase();
           //  int user_id=UserIDSession.getUserIDWithSessionID(10062);
 
-
+            //开启随机数产生器的线程
+            ScheduledExecutorService service = Executors
+                    .newSingleThreadScheduledExecutor();
+            //执行10s，每隔30s更新一次随机数表
+            service.scheduleAtFixedRate(Gamer.runnable,10,30, TimeUnit.SECONDS);
         } catch (Exception e) {
             e.printStackTrace();
         }

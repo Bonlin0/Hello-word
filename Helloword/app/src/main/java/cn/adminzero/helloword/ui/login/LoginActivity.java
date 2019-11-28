@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
     private IntentFilter intentFilter;
     private SharedPreferences sharedPreferences;
-
+    private boolean isLogin = false;
     // UI view
     EditText usernameEditText;
     EditText passwordEditText;
@@ -220,6 +220,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (!isLogin)
+            stopService(new Intent(this, MinaService.class));
+
         LocalBroadcastManager.getInstance(this).unregisterReceiver(loginActivityBroadcastReceiver);
     }
 
@@ -260,9 +263,11 @@ public class LoginActivity extends AppCompatActivity {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
                         //如果收到的UserNoPassword不合法，检查并以error报出
                         if (!userNoPassword.isValid()) {
+                            isLogin = false;
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             loginResult.setValue(new LoginResult(R.string.invalid_sign_up));
                         } else {
+                            isLogin = true;
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
                             loginResult.setValue(new LoginResult(userNoPassword));
@@ -283,9 +288,11 @@ public class LoginActivity extends AppCompatActivity {
                         UserNoPassword userNoPassword = (UserNoPassword) SerializeUtils.serializeToObject(data);
                         //如果收到的UserNoPassword不合法，检查并以error报出
                         if (!userNoPassword.isValid()) {
+                            isLogin = false;
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             loginResult.setValue(new LoginResult(R.string.invalid_sign_in));
                         } else {
+                            isLogin = true;
                             MutableLiveData<LoginResult> loginResult = (MutableLiveData<LoginResult>) loginViewModel.getLoginResult();
                             userNoPassword_global = userNoPassword; // 这一行必须放在下一行前面，因为更改以后会尝试请求该变量
                             loginResult.setValue(new LoginResult(userNoPassword));
