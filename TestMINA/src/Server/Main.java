@@ -45,8 +45,7 @@ public class Main {
             GlobalConn.initDBConnection();
          // initDataBase();
           //  int user_id=UserIDSession.getUserIDWithSessionID(10062);
-           // test_History();
-
+           // test_History()
 
         } catch (Exception e) {
             e.printStackTrace();

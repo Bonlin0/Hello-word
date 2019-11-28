@@ -188,7 +188,9 @@ public class ConnectionManager {
             switch (mes.getCMD()) {
                 case CMDDef.REPLY_GAMER_IFNO:
                 case CMDDef.REPLY_SIGN_UP_REQUEST:
-                case CMDDef.REPLY_SIGN_IN_REQUEST: {
+                case CMDDef.REPLY_SIGN_IN_REQUEST:
+                case CMDDef.GET_HISTORY_REPLY:
+                {
                     DataArriveBroadcast(mes.getCMD(), mes.getData());
                 }
                 break;

@@ -170,7 +170,7 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.GET_HISTORY_REQUSEST:{
                     int user_id=UserIDSession.getUserIDWithSessionID(session.getId());
                     ArrayList<WordsLevel> wordlist=getHistory(user_id);
-                    session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_GROUP_REPLY, wordlist));
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_HISTORY_REPLY, wordlist));
                 }
                 break;
             }

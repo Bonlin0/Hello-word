@@ -1,9 +1,12 @@
 package cn.adminzero.helloword;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
@@ -31,7 +35,10 @@ import java.util.List;
 import cn.adminzero.helloword.Common.CMDDef;
 import cn.adminzero.helloword.Common.Message;
 import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.Common.Utils.SerializeUtils;
 import cn.adminzero.helloword.CommonClass.DestoryData;
+import cn.adminzero.helloword.CommonClass.UserNoPassword;
+import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
@@ -43,6 +50,8 @@ import cn.adminzero.helloword.util.WordsUtil;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
+    private  MainActivitBroadcastReceiver Receiver;
+    private IntentFilter intentFilter;
     private MenuItem menuItem;
     private List<Fragment> list;
     private TabFragmentPagerAdapter adapter;
@@ -54,6 +63,12 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //注册监听广播
+        Receiver=new MainActivitBroadcastReceiver();
+        intentFilter=new IntentFilter(CMDDef.MINABroadCast);
+        LocalBroadcastManager.getInstance(this).registerReceiver(Receiver,intentFilter);
+        //获取用户历史表
+        ServerDbUtil.GetHistory();
 
         /**
          * TODO 创建单词表并且网络同步
@@ -226,6 +241,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //注销广播
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(Receiver);
         DestoryData destoryData = new DestoryData();
         Message mes = SendMsgMethod.getObjectMessage(CMDDef.DESTORY_SELF_SEND_DATA, destoryData);
         SessionManager.getInstance().writeToServer(mes);
@@ -290,6 +307,28 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, CheckOutWordsActivity.class);
         startActivity(intent);
     }
+//接受History表的广播监听器
+    class MainActivitBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
+            switch (cmd) {
+                case CMDDef.GET_HISTORY_REPLY: {
 
+                    byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
+                    try {
+                        //在MainActivity的OncCreat 方法请求了History
+                        //在这里面接收
+                        ArrayList<WordsLevel> wordlist = (ArrayList<WordsLevel>) SerializeUtils.serializeToObject(data);
+
+                    } catch (Exception e) {
+                        //获取失败
+                        System.out.println("从服务器获取History表失败");
+                    }
+                }
+            }
+        }
+
+    }
 
 }
