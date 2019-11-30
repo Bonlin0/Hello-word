@@ -143,14 +143,6 @@ public class MainActivity extends BaseActivity {
                     syncHistoryProgressDialog.setIndeterminate(true);// 是否形成一个加载动画  true表示不明确加载进度形成转圈动画  false 表示明确加载进度
                     syncHistoryProgressDialog.setCancelable(false);//点击返回键或者dialog四周是否关闭dialog  true表示可以关闭 false表示不可关闭
                     syncHistoryProgressDialog.show();
-//                    App.stop = true;
-//                    while (true) {
-//                        sleep(1000);
-//                        if (!App.stop) {
-//                            Log.d(TAG, "onCreate: 收到来自服务器的H表数据");
-//                            break;
-//                        }
-//                    }
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
                     // TODO 网络同步数据  恢复数据库待做

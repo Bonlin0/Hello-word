@@ -3,12 +3,120 @@ package DB;
 import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
 
 public class ServerDbutil {
     private static Logger logger = Logger.getLogger(ServerDbutil.class);
+
+
+    /*
+     *   public static final String CREATE_WORDS =
+     *             "create table WORDS if not exists (" +
+     *                     "word_id integer primary key," +
+     *                     "word text NOT NULL," +
+     *                     "phonetic text ," +
+     *                     "definition text ," +
+     *                     "translation text," +
+     *                     "exchange text," +
+     *                     "tag integer," +
+     *                     "sentence text)";*/
+
+    public static void initWordBook(String filename) throws Exception {
+        File file = new File(filename);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line = null;
+        String[] buffer;
+
+        short word_id = 0;
+        String word = null;
+        String phonetic = null;
+        String definition = null;
+        String translation = null;
+        String exchange = null;
+        Short tag = 0;
+        String sentence = "";
+
+        while ((line = br.readLine()) != null) {
+            buffer = line.split("#", -1);
+            word_id = Short.valueOf(buffer[0]);
+            word = buffer[1];
+            phonetic = buffer[2];
+            definition = buffer[3];
+            translation = buffer[4];
+            exchange = buffer[5];
+            tag = Short.valueOf(buffer[6]);
+            // TODO 插入数据库
+
+        }
+    }
+
+    // _tag range is [0,7]
+    public static boolean initWorkBook(int _tag) {
+        if (_tag > 7 || _tag < 0) {
+            return false;
+        }
+        short tag = (short) (1 << _tag);
+        List<WordsLevel> result = new ArrayList<WordsLevel>();
+        try {
+
+            db.beginTransaction();
+            // TODO 删除level = 0的单词！
+            db.execSQL("delete from HISTORY_" + App.userNoPassword_global.getUserID() + " where level = ?", new String[]{"0"});
+            // 选出sum所有的项目
+            Cursor cursor = db.rawQuery("select word_id,tag from WORDS ", null);
+            if (cursor.moveToFirst()) {
+                short id = -1;
+                short classify = -1;
+                do {
+                    classify = cursor.getShort(cursor.getColumnIndex("tag"));
+                    if ((classify & tag) == tag) {
+                        WordsLevel wordsLevel = new WordsLevel();
+                        id = cursor.getShort(cursor.getColumnIndex("word_id"));
+                        wordsLevel.setWord_id(id);
+                        result.add(wordsLevel);
+                    }
+                } while (cursor.moveToNext());
+            }
+
+            db.setTransactionSuccessful();
+            db.endTransaction();
+            cursor.close();
+
+            db.beginTransaction();
+            // TODO 服务器发送tag数据 -->
+            try {
+                for (int i = 0; i < result.size(); i++) {
+                    try {
+                        db.execSQL("insert into HISTORY_" + App.userNoPassword_global.getUserID() + " (word_id,level,yesterday) " +
+                                "values(?,?,?)", new String[]{String.valueOf(result.get(i).getWord_id()), "0", "0"});
+                    } catch (Exception e) {
+                        continue;
+                    }
+                }
+                db.setTransactionSuccessful();
+                App.userNoPassword_global.setGoal(_tag);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                db.endTransaction();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (db != null) {
+                db = null;
+            }
+        }
+        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime) + " ns");
+        return true;
+    }
+
 
     /**
      * 服务器端输入用户User_id 得到用户除了密码之外的信息
