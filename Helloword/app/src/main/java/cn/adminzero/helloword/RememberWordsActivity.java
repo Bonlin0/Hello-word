@@ -131,7 +131,7 @@ public class RememberWordsActivity extends AppCompatActivity {
 
     public void rememberButtonOnClicked(View view)
     {
-        // TODO 做相关处理
+        //  做相关处理
         Intent intent = new Intent(RememberWordsActivity.this, ShowWordActivity.class);
         intent.putExtra("word_to_show",wordsToShow);
         intent.putExtra("is_remembered",true);
@@ -143,18 +143,18 @@ public class RememberWordsActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode,int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == 1){
-            //TODO 表示撤销，将该单词执行没记住的操作
+            // 表示撤销，将该单词执行没记住的操作
             notRemembered();
         }
         else{
-            // TODO 表示不撤销，执行记住的操作
+            // 表示不撤销，执行记住的操作
             reallyRemembered();
         }
     }
 
     public void notRememberButtonOnClicked(View view)
     {
-        // TODO 做相关处理
+        //  做相关处理
         notRemembered();
 
         Intent intent = new Intent(RememberWordsActivity.this, ShowWordActivity.class);
@@ -267,7 +267,7 @@ public class RememberWordsActivity extends AppCompatActivity {
 
     public void tooEasyButtonOnClicked(View view)
     {
-        // TODO 做相关处理
+        //  做相关处理
 
         WordsLevel temp = wordsLevelArrayList.get(0);
         temp.setLevel((byte)7);

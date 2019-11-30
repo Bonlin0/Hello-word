@@ -147,7 +147,7 @@ public class AboutMeFragment extends Fragment {
                 .setMessage(getString(R.string.help_and_issue_content)).setPositiveButton("打开浏览器", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //ToDo: 你想做的事情
+                        // 打开网页
                         Toast.makeText(getContext(), "正在打开网页", Toast.LENGTH_LONG).show();
                         Uri uri = Uri.parse("https://github.com/Haulyn5/Hello-word");
                         Intent intent = new Intent(Intent.ACTION_VIEW,uri);
@@ -169,7 +169,7 @@ public class AboutMeFragment extends Fragment {
                 .setMessage(getString(R.string.title_dialog_content)).setPositiveButton("开始测验！", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //ToDo: 你想做的事情
+                        // 称号功能
                         Toast.makeText(getContext(), "准备开始测验！", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getActivity(),WordTestActivity.class);
                         startActivity(intent);

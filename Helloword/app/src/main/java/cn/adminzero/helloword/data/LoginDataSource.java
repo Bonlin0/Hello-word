@@ -34,7 +34,7 @@ public class LoginDataSource {
 
     public Result<LoggedInUser> signUp(String username, String password, String userNickName){
         try {
-            // TODO: handle Sign Up process
+            //  handle Sign Up process
             LoggedInUser fakeUser =
                     new LoggedInUser(
                             java.util.UUID.randomUUID().toString(),
@@ -48,6 +48,6 @@ public class LoginDataSource {
     }
 
     public void logout() {
-        // TODO: revoke authentication
+        //  revoke authentication
     }
 }

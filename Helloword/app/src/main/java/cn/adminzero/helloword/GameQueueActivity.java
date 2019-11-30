@@ -41,7 +41,7 @@ public class GameQueueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_queue);
         SessionManager.getInstance().writeToServer(SendMsgMethod.getNullMessage(CMDDef.JOIN_PK_GAME_REQUEST));
 
-        // TODO 打开单词考察活动应该在收到网络反馈后开始而不是点击进度条
+        // 打开单词考察活动应该在收到网络反馈后开始而不是点击进度条
         progressBar2 = findViewById(R.id.progressBar2);
 
         Button exit_game_queue_button = findViewById(R.id.exit_game_queue_button);

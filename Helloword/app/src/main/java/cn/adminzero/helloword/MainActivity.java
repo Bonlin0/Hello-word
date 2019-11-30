@@ -241,12 +241,17 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        // 当主活动结束的时候备份部分信息并发送至服务器
+        // 网络同步
+        ServerDbUtil.Upadte_UserNoPassword();
+
         //注销广播
         LocalBroadcastManager.getInstance(this).unregisterReceiver(Receiver);
         DestoryData destoryData = new DestoryData();
         Message mes = SendMsgMethod.getObjectMessage(CMDDef.DESTORY_SELF_SEND_DATA, destoryData);
         SessionManager.getInstance().writeToServer(mes);
-        //TODO 当主活动结束的时候备份部分信息并发送至服务器
+
         stopService(new Intent(this, MinaService.class));
     }
 
@@ -297,9 +302,13 @@ public class MainActivity extends BaseActivity {
         progressDialog.setTitle("刷新");
         progressDialog.setMessage("刷新中...请稍作等待");
         progressDialog.setIndeterminate(true);// 是否形成一个加载动画  true表示不明确加载进度形成转圈动画  false 表示明确加载进度
-        progressDialog.setCancelable(true);//点击返回键或者dialog四周是否关闭dialog  true表示可以关闭 false表示不可关闭
+        progressDialog.setCancelable(false);//点击返回键或者dialog四周是否关闭dialog  true表示可以关闭 false表示不可关闭
         progressDialog.show();
-        //TODO 增加刷新的动作 目前可以取消之后要progressDialog.setCancelable(false);
+        // 网络同步
+        ServerDbUtil.Upadte_UserNoPassword();
+
+        progressDialog.dismiss();
+
     }
 
     // 打开我的词库的按钮 by whl

@@ -228,7 +228,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void updateUiWithUser(UserNoPassword userNoPassword) {
         String welcome = getString(R.string.welcome) + userNoPassword_global.getUserNickName();
-        // TODO : initiate successful logged in experience
+        // initiate successful logged in experience
         View view = getWindow().getDecorView().findViewById(R.id.container);
         Snackbar.make(view, welcome, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();

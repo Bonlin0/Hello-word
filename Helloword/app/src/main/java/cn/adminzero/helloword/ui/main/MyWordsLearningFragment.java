@@ -78,7 +78,7 @@ public class MyWordsLearningFragment extends Fragment{
         //pageViewModel.setIndex(index);
         switch (index)
         {
-            //TODO 按需要获取arraylist
+            // 按需要获取ArrayList
             case 0:
                 // now learn
                 wordsList = WordsLevelUtil.getLevel1to6();

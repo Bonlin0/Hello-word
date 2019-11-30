@@ -28,11 +28,12 @@ public class ExploreFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
+
         TextView groupNameTextView = view.findViewById(R.id.groupNameTextView);
-        //TODO 为小组组名和各种状态赋值
+
         TextView groupMemberNumberTextView = view.findViewById(R.id.groupMemberNumberTextView);
         TextView groupRankingNumberTextView = view.findViewById(R.id.groupRankingNumberTextView);
-
+        //TODO 为小组组名和各种状态赋值
 
         TextView pkLevelTextView = view.findViewById(R.id.pkLevelTextView);
         TextView pKRankingNumberTextView = view.findViewById(R.id.pKRankingNumberTextView);
