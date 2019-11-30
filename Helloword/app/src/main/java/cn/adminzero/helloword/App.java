@@ -38,10 +38,11 @@ public class App extends Application {
     // 记录是否用户退出登录，当为true时 MainActivity检测到自动退出
     //public static boolean isLoggingOut = false;
     // 记录用户是否满足挑战下一级称号的条件
-    public static boolean isAbleToUpgradeTitle= false;
+    public static boolean isAbleToUpgradeTitle = false;
     // 记录今日单词队列and Level
     public static ArrayList<Words> wordsArrayToday;
     public static ArrayList<WordsLevel> wordsLevelArrayToday;
+    public static boolean stop;
 
 
     public static String getTAG() {
