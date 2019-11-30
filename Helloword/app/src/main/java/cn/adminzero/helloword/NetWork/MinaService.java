@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.HandlerThread;
 import android.os.IBinder;
+
 import androidx.annotation.Nullable;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -17,6 +18,8 @@ public class MinaService extends Service {
     private ConnectionThread thread;
     private final String Ip = CMDDef.IP;
     private final int port = CMDDef.PORT;
+    boolean isfirstSend = true;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -33,7 +36,7 @@ public class MinaService extends Service {
     public void onDestroy() {
         super.onDestroy();
         thread.disConnect();
-        thread=null;
+        thread = null;
     }
 
     @Nullable
@@ -46,33 +49,37 @@ public class MinaService extends Service {
         private Context context;
         boolean isConnection;
         ConnectionManager mManager;
-        public ConnectionThread(String name, Context context){
+
+        public ConnectionThread(String name, Context context) {
             super(name);
             this.context = context;
             ConnectionConfig config = new ConnectionConfig.Builder(context)
                     .setIp(Ip)
                     .setPort(port)
-                    .setConnectionTimeout(10000).setReadBufferSize(2048*5000).builder();
+                    .setConnectionTimeout(10000).setReadBufferSize(2048 * 5000).builder();
             mManager = new ConnectionManager(config);
         }
 
         @Override
         protected void onLooperPrepared() {
-            while(true){
+            while (true) {
                 isConnection = mManager.connnect();
-                if(isConnection){
+                if (isConnection) {
                     Log.e("tag", "连接成功");
                     Intent intent = new Intent(CMDDef.MINABroadCast);
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD,CMDDef.SUCCESS_CONNECT_NETWORK);
+                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, CMDDef.SUCCESS_CONNECT_NETWORK);
                     LocalBroadcastManager.getInstance(mManager.getmContext().get()).sendBroadcast(intent);
                     break;
                 }
                 try {
                     Log.e("tag", "尝试重新连接");
-                    Intent intent = new Intent(CMDDef.MINABroadCast);
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD,CMDDef.ERROR_CONNECT_NETWORK);
-                    intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA,CMDDef.ErrorConnect);
-                    LocalBroadcastManager.getInstance(MinaService.this).sendBroadcast(intent);
+                    if (isfirstSend) {
+                        Intent intent = new Intent(CMDDef.MINABroadCast);
+                        intent.putExtra(CMDDef.INTENT_PUT_EXTRA_CMD, CMDDef.ERROR_CONNECT_NETWORK);
+                        intent.putExtra(CMDDef.INTENT_PUT_EXTRA_DATA, CMDDef.ErrorConnect);
+                        LocalBroadcastManager.getInstance(MinaService.this).sendBroadcast(intent);
+                        isfirstSend = false;
+                    }
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -80,7 +87,7 @@ public class MinaService extends Service {
             }
         }
 
-        public void disConnect(){
+        public void disConnect() {
             mManager.disContect();
         }
     }

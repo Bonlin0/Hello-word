@@ -8,13 +8,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -29,7 +28,7 @@ import android.widget.TextView;
 
 
 public class GameQueueActivity extends AppCompatActivity {
-
+    private OpponentInfo opponentInfo;
     private GameQueueActivityBroadCastReceiver gameQueueActivityBroadCastReceiver = new GameQueueActivityBroadCastReceiver();
     private final IntentFilter intentFilter = new IntentFilter(CMDDef.MINABroadCast);
     TextView time_to_start_game_textView;
@@ -58,7 +57,7 @@ public class GameQueueActivity extends AppCompatActivity {
 
     }
 
-    private void readyAndUpdateUi(final OpponentInfo opponentInfo) {
+    private void readyAndUpdateUi() {
         progressBar2.setVisibility(View.INVISIBLE);
         time_to_start_game_textView.setVisibility(View.VISIBLE);
         TextView please_wait_game_queue_textView = findViewById(R.id.please_wait_game_queue_textView);
@@ -107,9 +106,9 @@ public class GameQueueActivity extends AppCompatActivity {
             switch (cmd) {
                 case CMDDef.REPLY_GAMER_IFNO: {
                     try {
-                        OpponentInfo opponentInfo = (OpponentInfo) SerializeUtils.serializeToObject(
+                        opponentInfo = (OpponentInfo) SerializeUtils.serializeToObject(
                                 intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA));
-                        readyAndUpdateUi(opponentInfo);
+                        readyAndUpdateUi();
                     } catch (IOException | ClassNotFoundException e) {
                         Log.e("tag", "反序列化失败!");
                         e.printStackTrace();

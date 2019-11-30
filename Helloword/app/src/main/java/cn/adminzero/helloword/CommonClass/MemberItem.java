@@ -1,5 +1,6 @@
 package cn.adminzero.helloword.CommonClass;
 
+
 import java.io.Serializable;
 
 public   class MemberItem implements Serializable {
