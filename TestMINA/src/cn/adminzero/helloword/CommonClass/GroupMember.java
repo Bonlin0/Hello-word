@@ -1,8 +1,9 @@
 package cn.adminzero.helloword.CommonClass;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GroupMember {
+public class GroupMember implements Serializable {
     private final long serialVersionUID = 1L;
     public ArrayList<MemberItem> memberlist=new ArrayList<MemberItem>();
     public Group master=new Group(-1);

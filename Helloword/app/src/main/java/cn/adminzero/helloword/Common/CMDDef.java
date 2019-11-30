@@ -22,6 +22,7 @@ package cn.adminzero.helloword.Common;
 public class CMDDef {
     //其他全局常量定义
     public static final int PORT = 3005;
+    public static final int PK_MAX_WORD_NUM = 80;
     public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
     public static final String INTENT_PUT_EXTRA_CMD = "CMD";
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";
@@ -35,7 +36,7 @@ public class CMDDef {
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
     public static final String IP = "10.0.2.2";
- //   public static final String IP = "123.207.173.192";
+    //   public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -102,6 +103,8 @@ public class CMDDef {
     public static final short UPDATE_HISTORY_REQUEST = (short) 0xA005;
     //获取用户History 表
     public static final short GET_HISTORY_REQUSEST = (short) 0xA006;
+    //获取小组成员信息请求
+    public static final short GET_GROUPMEMBER_REQUEST = (short) 0xA007;
 
 
 
@@ -117,5 +120,7 @@ public class CMDDef {
     public static final short UPDATE_HISTORY_REPLY = (short) 0x4005;
     //获取用户History 表
     public static final short GET_HISTORY_REPLY = (short) 0x4006;
+    //获取小组成员信息回应
+    public static final short GET_GROUPMEMBER_REPLY = (short) 0x4007;
 }
 

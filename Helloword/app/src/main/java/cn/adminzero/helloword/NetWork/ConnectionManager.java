@@ -190,6 +190,7 @@ public class ConnectionManager {
                 case CMDDef.REPLY_SIGN_UP_REQUEST:
                 case CMDDef.REPLY_SIGN_IN_REQUEST:
                 case CMDDef.GET_HISTORY_REPLY:
+                case CMDDef.GET_GROUPMEMBER_REPLY:
                 {
                     DataArriveBroadcast(mes.getCMD(), mes.getData());
                 }

@@ -103,6 +103,8 @@ public class CMDDef {
     public static final short UPDATE_HISTORY_REQUEST = (short) 0xA005;
     //获取用户History 表
     public static final short GET_HISTORY_REQUSEST = (short) 0xA006;
+    //获取小组成员信息请求
+    public static final short GET_GROUPMEMBER_REQUEST = (short) 0xA007;
 
 
 
@@ -118,5 +120,7 @@ public class CMDDef {
     public static final short UPDATE_HISTORY_REPLY = (short) 0x4005;
     //获取用户History 表
     public static final short GET_HISTORY_REPLY = (short) 0x4006;
+    //获取小组成员信息回应
+    public static final short GET_GROUPMEMBER_REPLY = (short) 0x4007;
 }
 

@@ -46,6 +46,9 @@ public class ServerDbUtil {
     public static void GetHistory( ){
         SessionManager.getInstance().writeToServer(SendMsgMethod.getNullMessage(CMDDef.GET_HISTORY_REQUSEST));
     }
+    public static void GetGroupMember( ){
+        SessionManager.getInstance().writeToServer(SendMsgMethod.getNullMessage(CMDDef.GET_GROUPMEMBER_REQUEST));
+    }
 
 
  //   Group group=new Group(10005,16);

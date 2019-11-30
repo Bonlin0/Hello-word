@@ -1,6 +1,8 @@
 package cn.adminzero.helloword.CommonClass;
 
-public   class MemberItem{
+import java.io.Serializable;
+
+public   class MemberItem implements Serializable {
     private final long serialVersionUID = 1L;
     int user_id;
     String user_name;
