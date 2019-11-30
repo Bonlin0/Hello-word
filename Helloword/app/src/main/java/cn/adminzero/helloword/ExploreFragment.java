@@ -43,6 +43,7 @@ public class ExploreFragment extends Fragment {
             pkLevelTextView.setText("称号等级为2时方可使用");
             pKRankingNumberTextView.setText("-");
             pkPointNumberTextView.setText("-");
+            // TODO 按钮设成 enabled false 目前debug需要
         }
         else{
             // TODO 段位分级

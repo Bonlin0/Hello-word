@@ -58,7 +58,7 @@ public class GameQueueActivity extends AppCompatActivity {
 
     }
 
-    private void readyAndUpdateUi() {
+    private void readyAndUpdateUi(final OpponentInfo opponentInfo) {
         progressBar2.setVisibility(View.INVISIBLE);
         time_to_start_game_textView.setVisibility(View.VISIBLE);
         TextView please_wait_game_queue_textView = findViewById(R.id.please_wait_game_queue_textView);
@@ -76,6 +76,8 @@ public class GameQueueActivity extends AppCompatActivity {
             public void onFinish() {
                 //  启动 单词测试活动
                 Intent intent = new Intent(GameQueueActivity.this, WordTestActivity.class);
+                intent.putExtra("is_from_game",true);
+                intent.putExtra("test_words_id",opponentInfo); // 传入单词信息
                 startActivity(intent);
                 finish();
             }
@@ -107,8 +109,7 @@ public class GameQueueActivity extends AppCompatActivity {
                     try {
                         OpponentInfo opponentInfo = (OpponentInfo) SerializeUtils.serializeToObject(
                                 intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA));
-                        opponentInfo.getPkWords();
-                        readyAndUpdateUi();
+                        readyAndUpdateUi(opponentInfo);
                     } catch (IOException | ClassNotFoundException e) {
                         Log.e("tag", "反序列化失败!");
                         e.printStackTrace();

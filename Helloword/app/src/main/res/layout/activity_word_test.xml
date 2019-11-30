@@ -109,7 +109,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/words_finished_in_test_textView"
+        android:id="@+id/words_correct_in_test_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -121,7 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar_word_test" />
 
     <TextView
-        android:id="@+id/words_finished_in_test_textView2"
+        android:id="@+id/time_left_in_test_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -136,19 +136,19 @@
         android:id="@+id/words_finished_in_test_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="已完成单词"
-        app:layout_constraintEnd_toEndOf="@+id/words_finished_in_test_textView"
-        app:layout_constraintStart_toStartOf="@+id/words_finished_in_test_textView"
-        app:layout_constraintTop_toBottomOf="@+id/words_finished_in_test_textView" />
+        android:text="正确完成单词"
+        app:layout_constraintEnd_toEndOf="@+id/words_correct_in_test_textView"
+        app:layout_constraintStart_toStartOf="@+id/words_correct_in_test_textView"
+        app:layout_constraintTop_toBottomOf="@+id/words_correct_in_test_textView" />
 
     <TextView
         android:id="@+id/time_left_word_test_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="剩余时间"
-        app:layout_constraintEnd_toEndOf="@+id/words_finished_in_test_textView2"
-        app:layout_constraintStart_toStartOf="@+id/words_finished_in_test_textView2"
-        app:layout_constraintTop_toBottomOf="@+id/words_finished_in_test_textView2" />
+        app:layout_constraintEnd_toEndOf="@+id/time_left_in_test_textView"
+        app:layout_constraintStart_toStartOf="@+id/time_left_in_test_textView"
+        app:layout_constraintTop_toBottomOf="@+id/time_left_in_test_textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
