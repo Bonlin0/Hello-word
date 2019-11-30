@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import cn.adminzero.helloword.util.WordsLevelUtil;
 
 
@@ -105,6 +107,22 @@ public class HomePageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        TextView have_punched_hint_textView = view.findViewById(R.id.have_punched_hint_textView);
+
+
+        // 处理打卡事件
+        if(App.userNoPassword_global.getIsPunch()==1){
+            have_punched_hint_textView.setVisibility(View.VISIBLE);
+            startRememberWordsButton.setEnabled(false);
+            startRememberWordsButton.setVisibility(View.INVISIBLE);
+        }
+        else{
+            startRememberWordsButton.setVisibility(View.VISIBLE);
+            startRememberWordsButton.setEnabled(true);
+            have_punched_hint_textView.setVisibility(View.INVISIBLE);
+        }
+
 
 
         return view;

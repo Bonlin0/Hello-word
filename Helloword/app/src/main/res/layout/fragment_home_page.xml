@@ -210,6 +210,18 @@ android:layout_height="match_parent">
             app:layout_constraintStart_toStartOf="@+id/words_image_button"
             app:layout_constraintTop_toBottomOf="@+id/words_image_button" />
 
+        <TextView
+            android:id="@+id/have_punched_hint_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="今天已经打卡了！Great！"
+            android:textSize="18sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/start_learning_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/start_learning_button" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

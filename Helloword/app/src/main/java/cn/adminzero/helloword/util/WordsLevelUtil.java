@@ -27,6 +27,32 @@ public class WordsLevelUtil {
 
     public static ArrayList<Words> words = null;
 
+    public static void updateWordLevelByArraylist(ArrayList<WordsLevel> wordsLevels) {
+        SQLiteDatabase db = DbUtil.getDatabase();
+        int userId = App.userNoPassword_global.getUserID();
+        db.beginTransaction();
+        try {
+            db.execSQL("delete from HISTORY_" + userId, null);
+            for (WordsLevel wordsLevel : wordsLevels) {
+                db.execSQL("insert into HISTORY_" + userId + " (word_id,level,yesterday) " +
+                        "values(?,?,?)", new String[]{
+                        String.valueOf(wordsLevel.getWord_id()),
+                        String.valueOf(wordsLevel.getLevel()),
+                        String.valueOf(wordsLevel.getYestarday())
+                });
+            }
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "uodateWordLevelByArraylist: " + e.getMessage());
+        } finally {
+            db.endTransaction();
+            if (db != null) {
+                db = null;
+            }
+        }
+
+    }
 
     /**
      * @param _tag [0,7] 代表词书的编号

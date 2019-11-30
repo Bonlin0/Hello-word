@@ -45,6 +45,7 @@ import cn.adminzero.helloword.db.DbUtil;
 import cn.adminzero.helloword.db.ServerDbUtil;
 import cn.adminzero.helloword.util.MyStorage;
 
+import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 
@@ -67,14 +68,13 @@ public class MainActivity extends BaseActivity {
         Receiver=new MainActivitBroadcastReceiver();
         intentFilter=new IntentFilter(CMDDef.MINABroadCast);
         LocalBroadcastManager.getInstance(this).registerReceiver(Receiver,intentFilter);
-        //获取用户历史表
-        ServerDbUtil.GetHistory();
 
         /**
          * TODO 创建单词表并且网络同步
          * */
         int userId = App.userNoPassword_global.getUserID();
         Log.d(TAG, "onCreate: 当前用户ID" + userId);
+
         if (userId == -1) {
             Log.d(TAG, "onCreate: 登录失败！程序退出");
             ActivityCollector.finishAll();
@@ -87,6 +87,7 @@ public class MainActivity extends BaseActivity {
              * 判断这个用户是否第一次登录
              * 创建此用户的HISTORY、TODAY表！
              * */
+            //上次已經登陸 H表不做修改
             if (myStorage.getInt("lastLoginAccount") == userId) {
                 Log.d(TAG, "onCreate: 用户上次已经登录！无需创建数据库和同步数据库");
             } else {
@@ -120,6 +121,7 @@ public class MainActivity extends BaseActivity {
                                     "yesterday integer)";
                     db.execSQL(CREATE_HISTORY);
                     db.execSQL(CREATE_TODAY);
+                    ServerDbUtil.GetHistory();
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
                     // TODO 网络同步数据  恢复数据库待做
@@ -212,6 +214,7 @@ public class MainActivity extends BaseActivity {
             showChooseWordsBookDialog();
 
         }
+
 /*        // 如果用户从设置界面退出
         if(App.isLoggingOut)
         {
@@ -329,7 +332,7 @@ public class MainActivity extends BaseActivity {
                         //在MainActivity的OncCreat 方法请求了History
                         //在这里面接收
                         ArrayList<WordsLevel> wordlist = (ArrayList<WordsLevel>) SerializeUtils.serializeToObject(data);
-
+                        WordsLevelUtil.updateWordLevelByArraylist(wordlist);
                     } catch (Exception e) {
                         //获取失败
                         System.out.println("从服务器获取History表失败");

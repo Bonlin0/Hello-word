@@ -36,10 +36,22 @@ public class ExploreFragment extends Fragment {
         //TODO 为小组组名和各种状态赋值
 
         // TODO 称号需要达到略有所得（Level=2）才可以解锁PKgame
-
         TextView pkLevelTextView = view.findViewById(R.id.pkLevelTextView);
         TextView pKRankingNumberTextView = view.findViewById(R.id.pKRankingNumberTextView);
         TextView pkPointNumberTextView = view.findViewById(R.id.pkPointNumberTextView);
+        if(App.userNoPassword_global.getLevel()<=2) {
+            pkLevelTextView.setText("称号等级为2时方可使用");
+            pKRankingNumberTextView.setText("-");
+            pkPointNumberTextView.setText("-");
+        }
+        else{
+            // TODO 段位分级
+            pkLevelTextView.setText("尚未分级");
+            pKRankingNumberTextView.setText("233");
+            Integer pkPointsInteger = new Integer(App.userNoPassword_global.getpKPoint());
+            pkPointNumberTextView.setText(pkPointsInteger.toString());
+        }
+
 
         Button goToGroupButton = view.findViewById(R.id.goToGroupButton);
         goToGroupButton.setOnClickListener(new View.OnClickListener() {
