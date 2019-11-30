@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.NonNull;
 
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +58,8 @@ public class MainActivity extends BaseActivity {
     private List<Fragment> list;
     private TabFragmentPagerAdapter adapter;
     private ViewPager viewPager;
-    // 本地H表为空，像服务器请求H表时
+    // 本地H表为空，像服务器请求H表时加载进度条
+    ProgressDialog syncHistoryProgressDialog;
 
 
     //选择词书对话框的选择结果
@@ -126,6 +128,15 @@ public class MainActivity extends BaseActivity {
                     db.execSQL(CREATE_TODAY);
                     ServerDbUtil.GetHistory();
                     // TODO 弹出加载进度框
+                    syncHistoryProgressDialog = new ProgressDialog(this);
+                    syncHistoryProgressDialog.setIcon(R.drawable.ic_autorenew_black_64dp);
+                    syncHistoryProgressDialog.setTitle("同步");
+                    syncHistoryProgressDialog.setMessage("同步您的记忆历史中...请稍作等待");
+                    syncHistoryProgressDialog.setIndeterminate(true);// 是否形成一个加载动画  true表示不明确加载进度形成转圈动画  false 表示明确加载进度
+                    syncHistoryProgressDialog.setCancelable(false);//点击返回键或者dialog四周是否关闭dialog  true表示可以关闭 false表示不可关闭
+                    syncHistoryProgressDialog.show();
+
+
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
                     // TODO 网络同步数据  恢复数据库待做
@@ -293,7 +304,7 @@ public class MainActivity extends BaseActivity {
 
     public void onClickFreshButton(View view) {
         // 圆圈加载进度的 dialog
-        ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setIcon(R.drawable.ic_autorenew_black_64dp);
         progressDialog.setTitle("刷新");
         progressDialog.setMessage("刷新中...请稍作等待");
@@ -303,7 +314,18 @@ public class MainActivity extends BaseActivity {
         // 网络同步
         ServerDbUtil.Upadte_UserNoPassword();
 
-        progressDialog.dismiss();
+        // 因为速度太快让人误认为功能失效 使用倒计时空转几圈
+        CountDownTimer timer = new CountDownTimer(1500, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+            @Override
+            public void onFinish() {
+                progressDialog.dismiss();
+            }
+        }.start();
+
 
     }
 
@@ -326,6 +348,8 @@ public class MainActivity extends BaseActivity {
                         //在MainActivity的OncCreat 方法请求了History
                         //在这里面接收
                         // TODO 将加载对话框取消
+                        syncHistoryProgressDialog.dismiss();
+
                         ArrayList<WordsLevel> wordlist = (ArrayList<WordsLevel>) SerializeUtils.serializeToObject(data);
                         WordsLevelUtil.updateWordLevelByArraylist(wordlist);
                     } catch (Exception e) {
