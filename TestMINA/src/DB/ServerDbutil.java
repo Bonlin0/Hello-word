@@ -2,12 +2,14 @@ package DB;
 
 import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
+
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
 
 public class ServerDbutil {
     private static Logger logger = Logger.getLogger(ServerDbutil.class);
+
     /**
      * 服务器端输入用户User_id 得到用户除了密码之外的信息
      */
@@ -237,7 +239,6 @@ public class ServerDbutil {
     }
 
     /**
-     *
      * @param grp 传入的创建组的信息（只用有user_id和最大人数就好了）
      * @return
      * @throws SQLException
@@ -246,38 +247,37 @@ public class ServerDbutil {
         Group group = grp;
         int user_id = grp.getUser_id();
         int max_member = grp.getMax_member();
-        int group_id=0;
-        int isExist=0;
+        int group_id = 0;
+        int isExist = 0;
         PreparedStatement stmt = GlobalConn.getConn().prepareStatement("select * from GROUP_USER");
-        ResultSet rs=null;
-        try{
-            rs=stmt.executeQuery();
-            while (rs.next()){
-                group_id=rs.getInt("group_id");
-                if(user_id==rs.getInt("user_id")){
+        ResultSet rs = null;
+        try {
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                group_id = rs.getInt("group_id");
+                if (user_id == rs.getInt("user_id")) {
                     //该用户已经属于某一组了，不能再创建组
-                    isExist=1;
+                    isExist = 1;
                     break;
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         //当前用户不属于任何一组
-        if(isExist==0){
+        if (isExist == 0) {
             group_id++;
             stmt = GlobalConn.getConn().prepareStatement("insert into GROUP_USER(user_id,group_id,contribution,master,max_member) values(?,?,?,?,?)");
-            stmt.setObject(1,user_id);
-            stmt.setObject(2,group_id);
-            stmt.setObject(3,0);
-            stmt.setObject(4,user_id);
-            stmt.setObject(5,max_member);
+            stmt.setObject(1, user_id);
+            stmt.setObject(2, group_id);
+            stmt.setObject(3, 0);
+            stmt.setObject(4, user_id);
+            stmt.setObject(5, max_member);
             stmt.execute();
             group.setGroup_id(group_id);
             group.setMaster(user_id);
 
-        }
-        else {
+        } else {
             return null;
         }
         return group;
@@ -285,118 +285,121 @@ public class ServerDbutil {
 
     /**
      * 获取用户的组信息
+     *
      * @param user_id
      * @return
      * @throws SQLException
      */
     public static Group getGroup(int user_id) throws SQLException {
-        Group group=new Group(user_id);
+        Group group = new Group(user_id);
         group.setGroup_id(-1);
-        PreparedStatement statement=GlobalConn.getConn().prepareStatement("select * from GROUP_USER where user_id=?");
-        statement.setObject(1,user_id);
-        ResultSet resultSet=null;
+        PreparedStatement statement = GlobalConn.getConn().prepareStatement("select * from GROUP_USER where user_id=?");
+        statement.setObject(1, user_id);
+        ResultSet resultSet = null;
         try {
-            resultSet=statement.executeQuery();
-           while (resultSet.next()){
-               if(user_id==resultSet.getInt("user_id")){
-                   group.setUser_id(resultSet.getInt("user_id"));
-                   group.setGroup_id(resultSet.getInt("group_id"));
-                   group.setContribution(resultSet.getInt("contribution"));
-                   group.setMaster(resultSet.getInt("master"));
-                   group.setMax_member(resultSet.getInt("max_member"));
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                if (user_id == resultSet.getInt("user_id")) {
+                    group.setUser_id(resultSet.getInt("user_id"));
+                    group.setGroup_id(resultSet.getInt("group_id"));
+                    group.setContribution(resultSet.getInt("contribution"));
+                    group.setMaster(resultSet.getInt("master"));
+                    group.setMax_member(resultSet.getInt("max_member"));
 
-               }
-           }
-        }catch (Exception e){
+                }
+            }
+        } catch (Exception e) {
             //出错
         }
-        int a=group.getUser_id();
-        int b=group.getGroup_id();
+        int a = group.getUser_id();
+        int b = group.getGroup_id();
         return group;
     }
+
     /**
      * 获取小组成员信息
      */
-    public  static GroupMember getGroupMember(int user_id) throws SQLException {
-        GroupMember groupMember=new GroupMember();
+    public static GroupMember getGroupMember(int user_id) throws SQLException {
+        GroupMember groupMember = new GroupMember();
 
         //获取该用户的小组信息
-        Group group=getGroup(user_id);
-        int group_id=group.getGroup_id();
+        Group group = getGroup(user_id);
+        int group_id = group.getGroup_id();
         //如果没有加入小组  就直接返回
-        if(group_id==-1){
-            return  null;
+        if (group_id == -1) {
+            return null;
         }
         //查询出同一组的成员id
-        PreparedStatement statement=GlobalConn.getConn().prepareStatement("select * from GROUP_USER where group_id=?");
-        statement.setObject(1,group_id);
-        ResultSet rs=statement.executeQuery();
-        while (rs.next()){
-           // 获取组长信息
-            groupMember.master=getGroup(rs.getInt("master"));
-            int memberId=rs.getInt("user_id");
-            int memberContribution=rs.getInt("contribution");
+        PreparedStatement statement = GlobalConn.getConn().prepareStatement("select * from GROUP_USER where group_id=?");
+        statement.setObject(1, group_id);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            // 获取组长信息
+            groupMember.master = getGroup(rs.getInt("master"));
+            int memberId = rs.getInt("user_id");
+            int memberContribution = rs.getInt("contribution");
             //查出用户名
-            UserInformation memberinfo=getUser(memberId);
-            String memberName=memberinfo.getUserNickName();
+            UserInformation memberinfo = getUser(memberId);
+            String memberName = memberinfo.getUserNickName();
             //添加用户到列表
-            groupMember.addMember(memberId,memberName,memberContribution);
+            groupMember.addMember(memberId, memberName, memberContribution);
         }
 
-        return  groupMember;
+        return groupMember;
     }
 
     /**
      * 更新用户的组信息
+     *
      * @param grp
      * @return
      */
-    public static  Group updateGroup(Group grp) throws SQLException {
-        Group group=grp;
-        int user_id=group.getUser_id();
+    public static Group updateGroup(Group grp) throws SQLException {
+        Group group = grp;
+        int user_id = group.getUser_id();
         //如果未加入小组 就加组
-        if(getGroup(user_id).getGroup_id()==-1){
-            PreparedStatement statement =GlobalConn.getConn().prepareStatement("insert into GROUP_USER(user_id,group_id,contribution,master,max_member) values(?,?,?,?,?)");
-            statement.setObject(1,user_id);
-            statement.setObject(2,group.getGroup_id());
-            statement.setObject(3,group.getContribution());
-            statement.setObject(4,group.getMaster());
-            statement.setObject(5,group.getMax_member());
+        if (getGroup(user_id).getGroup_id() == -1) {
+            PreparedStatement statement = GlobalConn.getConn().prepareStatement("insert into GROUP_USER(user_id,group_id,contribution,master,max_member) values(?,?,?,?,?)");
+            statement.setObject(1, user_id);
+            statement.setObject(2, group.getGroup_id());
+            statement.setObject(3, group.getContribution());
+            statement.setObject(4, group.getMaster());
+            statement.setObject(5, group.getMax_member());
             statement.execute();
-            return  group;
+            return group;
 
         }
-        PreparedStatement statement=GlobalConn.getConn().prepareStatement("update GROUP_USER set group_id=?, contribution=?,master=?,max_member=? where user_id=?");
-        statement.setObject(1,group.getGroup_id());
-        statement.setObject(2,group.getContribution());
-        statement.setObject(3,group.getMaster());
-        statement.setObject(4,group.getMax_member());
-        statement.setObject(5,user_id);
+        PreparedStatement statement = GlobalConn.getConn().prepareStatement("update GROUP_USER set group_id=?, contribution=?,master=?,max_member=? where user_id=?");
+        statement.setObject(1, group.getGroup_id());
+        statement.setObject(2, group.getContribution());
+        statement.setObject(3, group.getMaster());
+        statement.setObject(4, group.getMax_member());
+        statement.setObject(5, user_id);
         statement.execute();
-       // System.out.println(statement);
-        return  group;
+        // System.out.println(statement);
+        return group;
     }
 
-    public  static  void CreateHistory(int user_id) throws SQLException {
-        String tabelName="HISTORY_"+user_id;
-        PreparedStatement statement=GlobalConn.getConn().prepareStatement("create table "+tabelName+"(word_id smallint primary key,level smallint default 0,yesterday tinyint default 0)");
-       // statement.setString(1,tabelName);
+    public static void CreateHistory(int user_id) throws SQLException {
+        String tabelName = "HISTORY_" + user_id;
+        PreparedStatement statement = GlobalConn.getConn().prepareStatement("create table " + tabelName + "(word_id smallint primary key,level smallint default 0,yesterday tinyint default 0)");
+        // statement.setString(1,tabelName);
         logger.info(statement);
         statement.execute();
     }
 
-    public static void UpdateHistory(int user_id,ArrayList<WordsLevel> wordsIdToUpdate) throws SQLException {
-        int i=0;
-        String tabelName="HISTORY_"+user_id;
-        for(i=0;i<wordsIdToUpdate.size();i++){
-            WordsLevel wordsLevel=wordsIdToUpdate.get(i);
-            int word_id=wordsLevel.getWord_id();
+    public static void UpdateHistory(int user_id, ArrayList<WordsLevel> wordsIdToUpdate) throws SQLException {
+        int i = 0;
+        String tabelName = "HISTORY_" + user_id;
+        for (i = 0; i < wordsIdToUpdate.size(); i++) {
+            WordsLevel wordsLevel = wordsIdToUpdate.get(i);
+            int word_id = wordsLevel.getWord_id();
             //检查H表里有没有该单词，有的话更新，没有的话插入
-            PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from "+tabelName+" where word_id=?");
-            stmt.setObject(1,word_id);
-            ResultSet rs=stmt.executeQuery();
-            if(rs.next()){
-                if(word_id==rs.getInt(word_id)) {
+            PreparedStatement stmt = GlobalConn.getConn().prepareStatement("select * from " + tabelName + " where word_id=?");
+            stmt.setObject(1, word_id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                if (word_id == rs.getInt(word_id)) {
                     PreparedStatement statement = GlobalConn.getConn().prepareStatement("" +
                             "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
                     statement.setObject(1, wordsLevel.getLevel());
@@ -406,53 +409,53 @@ public class ServerDbutil {
                     continue;
                 }
             }
-            PreparedStatement statement=GlobalConn.getConn().prepareStatement("" +
-                    "insert into "+tabelName+"(word_id,level,yesterday) values(?,?,?)");
-            statement.setObject(1,wordsLevel.getWord_id());
-            statement.setObject(2,wordsLevel.getLevel());
-            statement.setObject(3,wordsLevel.getYestarday());
+            PreparedStatement statement = GlobalConn.getConn().prepareStatement("" +
+                    "insert into " + tabelName + "(word_id,level,yesterday) values(?,?,?)");
+            statement.setObject(1, wordsLevel.getWord_id());
+            statement.setObject(2, wordsLevel.getLevel());
+            statement.setObject(3, wordsLevel.getYestarday());
             statement.execute();
         }
     }
 
     /**
      * 获取用户表
-     *
      */
     public static ArrayList<WordsLevel> getHistory(int user_id) throws SQLException {
-        String tabelName="HISTORY_"+user_id;
-        ArrayList<WordsLevel> wordlist=new ArrayList<WordsLevel>();
-        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from "+tabelName+" ");
-        ResultSet rs=stmt.executeQuery();
-        try{
-            while (rs.next()){
-                WordsLevel word=new WordsLevel();
+        String tabelName = "HISTORY_" + user_id;
+        ArrayList<WordsLevel> wordlist = new ArrayList<WordsLevel>();
+        PreparedStatement stmt = GlobalConn.getConn().prepareStatement("select * from " + tabelName + " ");
+        ResultSet rs = stmt.executeQuery();
+        try {
+            while (rs.next()) {
+                WordsLevel word = new WordsLevel();
                 word.setWord_id(rs.getShort("word_id"));
                 word.setLevel(rs.getShort("level"));
                 word.setYesterday(rs.getByte("yesterday"));
                 wordlist.add(word);
             }
-        }catch (Exception e){
-         //
+        } catch (Exception e) {
+            //
         }
         return wordlist;
 
 
     }
+
     public static ArrayList<Short> getHistoryWord(int user_id) throws SQLException {
-        String tabelName= "HISTORY_" +user_id;
-        ArrayList<Short> wordlist=new ArrayList<>();
-        PreparedStatement stmt=GlobalConn.getConn().prepareStatement("select * from "+tabelName+" ");
-        ResultSet rs=stmt.executeQuery();
-        try{
-            while (rs.next()){
-                WordsLevel word=new WordsLevel();
+        String tabelName = "HISTORY_" + user_id;
+        ArrayList<Short> wordlist = new ArrayList<>();
+        PreparedStatement stmt = GlobalConn.getConn().prepareStatement("select * from " + tabelName + " ");
+        ResultSet rs = stmt.executeQuery();
+        try {
+            while (rs.next()) {
+                WordsLevel word = new WordsLevel();
                 word.setWord_id(rs.getShort("word_id"));
                 word.setLevel(rs.getShort("level"));
                 word.setYesterday(rs.getByte("yesterday"));
                 wordlist.add(word.getWord_id());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.info("查询单词异常!");
         }
         return wordlist;
@@ -460,82 +463,94 @@ public class ServerDbutil {
 
     //产生一些有关组的测试数据
     public static void test_group() throws SQLException {
-        int i =10000;
-        for(i=10048;i<=10067;i++){
+        int i = 10000;
+        for (i = 10048; i <= 10067; i++) {
             //更改用戶表的group_id
-            UserInformation user=getUser(i);
-            UserNoPassword userNoPassword= new UserNoPassword(user);
+            UserInformation user = getUser(i);
+            UserNoPassword userNoPassword = new UserNoPassword(user);
             userNoPassword.setGroupID(5);
             update_USER(userNoPassword);
             //更改group表的信息
-            Group group=new Group(i,5,1000+i*10,10048,20);
+            Group group = new Group(i, 5, 1000 + i * 10, 10048, 20);
             updateGroup(group);
         }
     }
+
     //产生一些History的测试数据
-    public static  void  test_History() throws SQLException {
-        int user_id1=10074;//1-100
-        int user_id2=10075;//50-150
-        ArrayList<WordsLevel> wordlist1=new ArrayList<WordsLevel>();
-        ArrayList<WordsLevel> wordlist2=new ArrayList<WordsLevel>();
-        for(int i=1;i<100;i++){
-            WordsLevel word= new WordsLevel((short)i);
-            word.setLevel((short)((i+3)%8));
-            word.setYesterday((byte)(i%2));
+    public static void test_History() throws SQLException {
+        int user_id1 = 10074;//1-100
+        int user_id2 = 10075;//50-150
+        ArrayList<WordsLevel> wordlist1 = new ArrayList<WordsLevel>();
+        ArrayList<WordsLevel> wordlist2 = new ArrayList<WordsLevel>();
+        for (int i = 1; i < 100; i++) {
+            WordsLevel word = new WordsLevel((short) i);
+            word.setLevel((short) ((i + 3) % 8));
+            word.setYesterday((byte) (i % 2));
             wordlist1.add(word);
         }
-        for(int i=50;i<150;i++){
-            WordsLevel word= new WordsLevel((short)i);
-            word.setLevel((short)((i+3)%8));
-            word.setYesterday((byte)(i%2));
+        for (int i = 50; i < 150; i++) {
+            WordsLevel word = new WordsLevel((short) i);
+            word.setLevel((short) ((i + 3) % 8));
+            word.setYesterday((byte) (i % 2));
             wordlist2.add(word);
         }
 
-        UpdateHistory(10074,wordlist1);
-        UpdateHistory(10075,wordlist2);
+        UpdateHistory(10074, wordlist1);
+        UpdateHistory(10075, wordlist2);
 
 
     }
-    public  static void ClearPunch() throws SQLException {
-        java.util.Date date =new Date();
 
-        long time=date.getTime();
-     //   logger.info("time:"+time);
+    public static void ClearPunch() throws SQLException {
+        java.util.Date date = new Date();
 
-        Calendar calendar=Calendar.getInstance();
-        int year=calendar.get(calendar.YEAR);
-        int month=calendar.get(calendar.MONTH);
-        int days=calendar.get(calendar.DATE);
-        int hours=calendar.get(calendar.HOUR_OF_DAY);
-        int minute=calendar.get(calendar.MINUTE);
-        int second=calendar.get(calendar.SECOND);
+        long time = date.getTime();
+        //   logger.info("time:"+time);
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(calendar.YEAR);
+        int month = calendar.get(calendar.MONTH);
+        int days = calendar.get(calendar.DATE);
+        int hours = calendar.get(calendar.HOUR_OF_DAY);
+        int minute = calendar.get(calendar.MINUTE);
+        int second = calendar.get(calendar.SECOND);
         //测试
 //        int hours=0;
 //        int minute=0;
 //        int second=3;
-     //   logger.info("year:"+year+"month:"+month+"date:"+days+"hour:"+hours+"minute:"+minute+"second:"+second);
+        //   logger.info("year:"+year+"month:"+month+"date:"+days+"hour:"+hours+"minute:"+minute+"second:"+second);
 
-        if(hours==0&&minute==0&&second<=5){
-            PreparedStatement statement=GlobalConn.getConn().prepareStatement("update USER set isPunch=0");
+        if (hours == 0 && minute == 0 && second <= 5) {
+            PreparedStatement statement = GlobalConn.getConn().prepareStatement("update USER set isPunch=0");
             statement.execute();
-            logger.info("date:"+date);
+            logger.info("date:" + date);
             logger.info("打卡状态清空");
         }
     }
-    public static  void Timer(){
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            // 在run方法中的语句就是定时任务执行时运行的语句。
-            public void run() {
-                try {
-                    ClearPunch();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+
+    public static Runnable clearPunchTask = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                ClearPunch();
+                logger.info("清空打卡表!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                logger.info("打卡表清空失败！");
             }
-            // 表示在0秒之后开始执行，并且每3秒执行一次
-        }, 0, 3000);
-    }
+        }
+    };
+
+//    public static  void Timer(){
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            // 在run方法中的语句就是定时任务执行时运行的语句。
+//            public void run() {
+//
+//            }
+//            // 表示在0秒之后开始执行，并且每3秒执行一次
+//        }, 0, 3000);
+//    }
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
 //            //修改用户信息
