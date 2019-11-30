@@ -5,6 +5,8 @@ import Common.*;
 import DB.GlobalConn;
 import DB.ServerDbutil;
 import Game.Gamer;
+import cn.adminzero.helloword.CommonClass.GroupMember;
+import cn.adminzero.helloword.CommonClass.MemberItem;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.CommonClass.WordsLevel;
 import org.apache.log4j.Logger;
@@ -47,6 +49,7 @@ public class Main {
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
+
             Gamer.initGamer();
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors

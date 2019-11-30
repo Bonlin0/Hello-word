@@ -313,6 +313,34 @@ public class ServerDbutil {
         int b=group.getGroup_id();
         return group;
     }
+    /**
+     * 获取小组成员信息
+     */
+    public  static GroupMember getGroupMember(int user_id) throws SQLException {
+        GroupMember groupMember=new GroupMember();
+        //获取该用户的小组信息
+        Group group=getGroup(user_id);
+        int group_id=group.getGroup_id();
+        //如果没有加入小组  就直接返回
+        if(group_id==-1){
+            return  null;
+        }
+        //查询出同一组的成员id
+        PreparedStatement statement=GlobalConn.getConn().prepareStatement("select * from GROUP_USER where group_id=?");
+        statement.setObject(1,group_id);
+        ResultSet rs=statement.executeQuery();
+        while (rs.next()){
+            int memberId=rs.getInt("user_id");
+            int memberContribution=rs.getInt("contribution");
+            //查出用户名
+            UserInformation memberinfo=getUser(memberId);
+            String memberName=memberinfo.getUserNickName();
+            //添加用户到列表
+            groupMember.addMember(memberId,memberName,memberContribution);
+        }
+
+        return  groupMember;
+    }
 
     /**
      * 更新用户的组信息
@@ -322,7 +350,18 @@ public class ServerDbutil {
     public static  Group updateGroup(Group grp) throws SQLException {
         Group group=grp;
         int user_id=group.getUser_id();
+        //如果未加入小组 就加组
+        if(getGroup(user_id).getGroup_id()==-1){
+            PreparedStatement statement =GlobalConn.getConn().prepareStatement("insert into GROUP_USER(user_id,group_id,contribution,master,max_member) values(?,?,?,?,?)");
+            statement.setObject(1,user_id);
+            statement.setObject(2,group.getGroup_id());
+            statement.setObject(3,group.getContribution());
+            statement.setObject(4,group.getMaster());
+            statement.setObject(5,group.getMax_member());
+            statement.execute();
+            return  group;
 
+        }
         PreparedStatement statement=GlobalConn.getConn().prepareStatement("update GROUP_USER set group_id=?, contribution=?,master=?,max_member=? where user_id=?");
         statement.setObject(1,group.getGroup_id());
         statement.setObject(2,group.getContribution());
@@ -413,6 +452,45 @@ public class ServerDbutil {
             logger.info("查询单词异常!");
         }
         return wordlist;
+    }
+
+    //产生一些有关组的测试数据
+    public static void test_group() throws SQLException {
+        int i =10000;
+        for(i=10001;i<=10019;i++){
+            //更改用戶表的group_id
+            UserInformation user=getUser(i);
+            UserNoPassword userNoPassword= new UserNoPassword(user);
+            userNoPassword.setGroupID(1);
+            update_USER(userNoPassword);
+            //更改group表的信息
+            Group group=new Group(i,1,1000+i*10,10001,20);
+            updateGroup(group);
+        }
+    }
+    //产生一些History的测试数据
+    public static  void  test_History() throws SQLException {
+        int user_id1=10074;//1-100
+        int user_id2=10075;//50-150
+        ArrayList<WordsLevel> wordlist1=new ArrayList<WordsLevel>();
+        ArrayList<WordsLevel> wordlist2=new ArrayList<WordsLevel>();
+        for(int i=1;i<100;i++){
+            WordsLevel word= new WordsLevel((short)i);
+            word.setLevel((short)((i+3)%8));
+            word.setYesterday((byte)(i%2));
+            wordlist1.add(word);
+        }
+        for(int i=50;i<150;i++){
+            WordsLevel word= new WordsLevel((short)i);
+            word.setLevel((short)((i+3)%8));
+            word.setYesterday((byte)(i%2));
+            wordlist2.add(word);
+        }
+
+        UpdateHistory(10074,wordlist1);
+        UpdateHistory(10075,wordlist2);
+
+
     }
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
