@@ -460,14 +460,14 @@ public class ServerDbutil {
     //产生一些有关组的测试数据
     public static void test_group() throws SQLException {
         int i =10000;
-        for(i=10001;i<=10019;i++){
+        for(i=10048;i<=10067;i++){
             //更改用戶表的group_id
             UserInformation user=getUser(i);
             UserNoPassword userNoPassword= new UserNoPassword(user);
-            userNoPassword.setGroupID(1);
+            userNoPassword.setGroupID(5);
             update_USER(userNoPassword);
             //更改group表的信息
-            Group group=new Group(i,1,1000+i*10,10001,20);
+            Group group=new Group(i,5,1000+i*10,10048,20);
             updateGroup(group);
         }
     }
