@@ -51,6 +51,7 @@ public class Main {
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
+            Timer();
             Gamer.initGamer(acceptor.getManagedSessions());
 
             //开启随机数产生器的线程
