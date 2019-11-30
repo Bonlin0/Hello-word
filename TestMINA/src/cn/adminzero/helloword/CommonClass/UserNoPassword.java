@@ -1,5 +1,7 @@
 package cn.adminzero.helloword.CommonClass;
 
+import DB.UserInformation;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -54,6 +56,18 @@ public class UserNoPassword implements Serializable {
         this.level=level;
         this.pKPoint=pKPoint;
         this.isPunch=isPunch;
+    }
+
+    public  UserNoPassword (UserInformation userInformation){
+        this.userID=userInformation.getUserID();
+        this.userNickName=userInformation.getUserNickName();
+        this.email=userInformation.getEmail();
+        this.goal= userInformation.getGoal();
+        this.days= userInformation.getDays();
+        this.groupID= userInformation.getGroupID();
+        this.level=userInformation.getLevel();
+        this.pKPoint=userInformation.getpKPoint();
+        this.isPunch=userInformation.getIsPunch();
     }
 
     public boolean isValid() {

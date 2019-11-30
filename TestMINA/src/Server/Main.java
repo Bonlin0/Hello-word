@@ -5,6 +5,8 @@ import Common.*;
 import DB.GlobalConn;
 import DB.ServerDbutil;
 import Game.Gamer;
+import cn.adminzero.helloword.CommonClass.GroupMember;
+import cn.adminzero.helloword.CommonClass.MemberItem;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.CommonClass.WordsLevel;
 import org.apache.log4j.Logger;
@@ -16,7 +18,8 @@ import org.apache.mina.filter.logging.LoggingFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -28,6 +31,7 @@ public class Main {
     private static Logger logger = Logger.getLogger(Main.class);
     private static int PORT = CMDDef.PORT;
     public static void main(String[] args) {
+        //定时器
         IoAcceptor acceptor = null;
         try {
             acceptor = new NioSocketAcceptor();
@@ -48,6 +52,7 @@ public class Main {
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
             Gamer.initGamer(acceptor.getManagedSessions());
+
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors
                     .newSingleThreadScheduledExecutor();

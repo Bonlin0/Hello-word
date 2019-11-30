@@ -186,6 +186,12 @@ public class ServerHandle extends IoHandlerAdapter {
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_GROUP_REPLY, group));
                 }
                 break;
+                case CMDDef.GET_GROUPMEMBER_REQUEST: {
+                    int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
+                    GroupMember groupMember = getGroupMember(user_id);
+                    session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_GROUPMEMBER_REPLY, groupMember));
+                }
+                break;
                 case CMDDef.UPDATE_HISTORY_REQUEST: {
                     ArrayList<WordsLevel> wordsToUpdate = (ArrayList<WordsLevel>) mes.getObj();
                     int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
@@ -198,6 +204,7 @@ public class ServerHandle extends IoHandlerAdapter {
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_HISTORY_REPLY, wordlist));
                 }
                 break;
+
             }
         } else {
             logger.info("收到了未知请求！");

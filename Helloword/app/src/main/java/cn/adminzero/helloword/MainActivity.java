@@ -38,6 +38,9 @@ import cn.adminzero.helloword.Common.Message;
 import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
 import cn.adminzero.helloword.Common.Utils.SerializeUtils;
 import cn.adminzero.helloword.CommonClass.DestoryData;
+import cn.adminzero.helloword.CommonClass.Group;
+import cn.adminzero.helloword.CommonClass.GroupMember;
+import cn.adminzero.helloword.CommonClass.MemberItem;
 import cn.adminzero.helloword.CommonClass.UserNoPassword;
 import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.NetWork.MinaService;
@@ -49,6 +52,8 @@ import cn.adminzero.helloword.util.MyStorage;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
+
+import static cn.adminzero.helloword.db.ServerDbUtil.GetGroupMember;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
@@ -73,6 +78,8 @@ public class MainActivity extends BaseActivity {
         Receiver = new MainActivitBroadcastReceiver();
         intentFilter = new IntentFilter(CMDDef.MINABroadCast);
         LocalBroadcastManager.getInstance(this).registerReceiver(Receiver, intentFilter);
+        //这里请求获取小组成员列表
+        GetGroupMember();
 
         /**
          * TODO 创建单词表并且网络同步
@@ -357,6 +364,24 @@ public class MainActivity extends BaseActivity {
                         System.out.println("从服务器获取History表失败");
                     }
                 }
+                break;
+                case CMDDef.GET_GROUPMEMBER_REPLY:{
+                    byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
+                    try {
+                        //获取小组成员类
+                        GroupMember groupMember=(GroupMember)SerializeUtils.serializeToObject(data);
+                        //获取成员列表
+                         ArrayList<MemberItem> memberlist=groupMember.getMemberlist();
+                         MemberItem member1=memberlist.get(0);//这里随便看一个成员
+                         //获取小组组长
+                         Group master =groupMember.getMaster();
+
+
+                    }catch (Exception e){
+
+                    }
+                }
+                break;
             }
         }
 
