@@ -3,7 +3,8 @@ package DB;
 import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.Date;
 
 public class ServerDbutil {
     private static Logger logger = Logger.getLogger(ServerDbutil.class);
@@ -494,6 +495,46 @@ public class ServerDbutil {
         UpdateHistory(10075,wordlist2);
 
 
+    }
+    public  static void ClearPunch() throws SQLException {
+        java.util.Date date =new Date();
+
+        long time=date.getTime();
+     //   logger.info("time:"+time);
+
+        Calendar calendar=Calendar.getInstance();
+        int year=calendar.get(calendar.YEAR);
+        int month=calendar.get(calendar.MONTH);
+        int days=calendar.get(calendar.DATE);
+        int hours=calendar.get(calendar.HOUR_OF_DAY);
+        int minute=calendar.get(calendar.MINUTE);
+        int second=calendar.get(calendar.SECOND);
+        //测试
+//        int hours=0;
+//        int minute=0;
+//        int second=3;
+     //   logger.info("year:"+year+"month:"+month+"date:"+days+"hour:"+hours+"minute:"+minute+"second:"+second);
+
+        if(hours==0&&minute==0&&second<=5){
+            PreparedStatement statement=GlobalConn.getConn().prepareStatement("update USER set isPunch=0");
+            statement.execute();
+            logger.info("date:"+date);
+            logger.info("打卡状态清空");
+        }
+    }
+    public static  void Timer(){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            // 在run方法中的语句就是定时任务执行时运行的语句。
+            public void run() {
+                try {
+                    ClearPunch();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            // 表示在0秒之后开始执行，并且每2秒执行一次
+        }, 0, 3000);
     }
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
