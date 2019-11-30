@@ -93,7 +93,14 @@ public class HomePageFragment extends Fragment {
 
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
         progressBar.setMax(wordsRequiredForNextLevel);
-        progressBar.setProgress(wordsFinished);
+        if(wordsFinished<wordsRequiredForNextLevel){
+            progressBar.setProgress(wordsFinished);
+        }
+        else {
+            // 避免溢出
+            progressBar.setProgress(wordsRequiredForNextLevel);
+        }
+
         TextView words_remembered = view.findViewById(R.id.words_remembered);
         words_remembered.setText(wordsFinished.toString());
         TextView words_to_remember = view.findViewById(R.id.words_to_remember);

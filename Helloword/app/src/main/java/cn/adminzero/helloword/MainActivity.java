@@ -51,11 +51,14 @@ import cn.adminzero.helloword.util.WordsUtil;
 
 public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
-    private  MainActivitBroadcastReceiver Receiver;
+    private MainActivitBroadcastReceiver Receiver;
     private IntentFilter intentFilter;
     private MenuItem menuItem;
     private List<Fragment> list;
     private TabFragmentPagerAdapter adapter;
+    private ViewPager viewPager;
+    // 本地H表为空，像服务器请求H表时
+
 
     //选择词书对话框的选择结果
     private int chooseWordsBookChoice;
@@ -65,9 +68,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //注册监听广播
-        Receiver=new MainActivitBroadcastReceiver();
-        intentFilter=new IntentFilter(CMDDef.MINABroadCast);
-        LocalBroadcastManager.getInstance(this).registerReceiver(Receiver,intentFilter);
+        Receiver = new MainActivitBroadcastReceiver();
+        intentFilter = new IntentFilter(CMDDef.MINABroadCast);
+        LocalBroadcastManager.getInstance(this).registerReceiver(Receiver, intentFilter);
 
         /**
          * TODO 创建单词表并且网络同步
@@ -122,6 +125,7 @@ public class MainActivity extends BaseActivity {
                     db.execSQL(CREATE_HISTORY);
                     db.execSQL(CREATE_TODAY);
                     ServerDbUtil.GetHistory();
+                    // TODO 弹出加载进度框
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
                     // TODO 网络同步数据  恢复数据库待做
@@ -137,7 +141,7 @@ public class MainActivity extends BaseActivity {
 
         // 设置底部导航和页面滑动
         final BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
-        final ViewPager viewPager = findViewById(R.id.main_view_pager);
+        viewPager = findViewById(R.id.main_view_pager);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -161,24 +165,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                menuItem = item;
-                int i = item.getItemId();
-                if (i == R.id.navigation_home) {
-                    viewPager.setCurrentItem(0);
-                    return true;
-                } else if (i == R.id.navigation_explore) {
-                    viewPager.setCurrentItem(1);
-                    return true;
-                } else if (i == R.id.navigation_about_me) {
-                    viewPager.setCurrentItem(2);
-                    return true;
-                }
-                return false;
-            }
-        });
+        bottomNavigationView.setOnNavigationItemSelectedListener(new MyOnNavigationItemSelectedListener());
         list = new ArrayList<>();
         HomePageFragment homePageFragment = new HomePageFragment();
         ExploreFragment exploreFragment = new ExploreFragment();
@@ -214,7 +201,13 @@ public class MainActivity extends BaseActivity {
             showChooseWordsBookDialog();
 
         }
-
+        // 更新主活动UI 更新打卡界面
+        HomePageFragment homePageFragment = new HomePageFragment();
+        list.remove(0);
+        list.add(0, homePageFragment);
+        adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), list);
+        viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(0);
 /*        // 如果用户从设置界面退出
         if(App.isLoggingOut)
         {
@@ -319,7 +312,8 @@ public class MainActivity extends BaseActivity {
         Intent intent = new Intent(this, CheckOutWordsActivity.class);
         startActivity(intent);
     }
-//接受History表的广播监听器
+
+    //接受History表的广播监听器
     class MainActivitBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -331,6 +325,7 @@ public class MainActivity extends BaseActivity {
                     try {
                         //在MainActivity的OncCreat 方法请求了History
                         //在这里面接收
+                        // TODO 将加载对话框取消
                         ArrayList<WordsLevel> wordlist = (ArrayList<WordsLevel>) SerializeUtils.serializeToObject(data);
                         WordsLevelUtil.updateWordLevelByArraylist(wordlist);
                     } catch (Exception e) {
@@ -343,4 +338,26 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    class MyOnNavigationItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            menuItem = item;
+            int i = item.getItemId();
+            if (i == R.id.navigation_home) {
+                viewPager.setCurrentItem(0);
+                return true;
+            } else if (i == R.id.navigation_explore) {
+                viewPager.setCurrentItem(1);
+                return true;
+            } else if (i == R.id.navigation_about_me) {
+                viewPager.setCurrentItem(2);
+                return true;
+            }
+            return false;
+
+
+        }
+
+    }
 }
