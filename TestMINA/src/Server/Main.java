@@ -47,12 +47,13 @@ public class Main {
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
-            Gamer.initGamer();
+            Gamer.initGamer(acceptor.getManagedSessions());
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors
                     .newSingleThreadScheduledExecutor();
             //执行10s，每隔30s更新一次随机数表
             service.scheduleAtFixedRate(Gamer.runnable,10,30, TimeUnit.SECONDS);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

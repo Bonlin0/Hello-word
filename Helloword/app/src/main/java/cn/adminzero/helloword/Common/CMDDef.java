@@ -22,6 +22,7 @@ package cn.adminzero.helloword.Common;
 public class CMDDef {
     //其他全局常量定义
     public static final int PORT = 3005;
+    public static final int PK_MAX_WORD_NUM = 80;
     public static final String MINABroadCast = "cn.adminzero.helloword.MINABROADCAST";
     public static final String INTENT_PUT_EXTRA_CMD = "CMD";
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";
@@ -72,6 +73,9 @@ public class CMDDef {
     //回应游戏玩家的对手信息
     public static final short REPLY_GAMER_IFNO = (short) 0x1000;
 
+    //回应游戏结果
+    public static final short REPLY_GAME_RESULT = (short) 0x1001;
+
     //客户端控制指令定义区
 
 
@@ -89,6 +93,10 @@ public class CMDDef {
     public static final short JOIN_PK_GAME_REQUEST = (short) 0x7001;
     //放弃匹配
     public static final short GIVE_UP_JOIN_GAME = (short) 0x7002;
+
+    //游戏结果
+    public static final short GAME_RESULT = (short) 0x7003;
+
 
     //创建小组请求
     public static final short CREATE_GROUP_REQUEST = (short) 0xA001;

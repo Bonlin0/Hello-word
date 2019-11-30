@@ -1,10 +1,15 @@
 package cn.adminzero.helloword;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -12,15 +17,42 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import cn.adminzero.helloword.Common.CMDDef;
+import cn.adminzero.helloword.Common.Utils.SendMsgMethod;
+import cn.adminzero.helloword.Common.Utils.SerializeUtils;
+import cn.adminzero.helloword.CommonClass.GameResult;
 import cn.adminzero.helloword.CommonClass.OpponentInfo;
+import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsUtil;
 
 public class WordTestActivity extends AppCompatActivity {
+    class WordTestActivityBoradCastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
+            switch (cmd) {
+                case CMDDef.REPLY_GAME_RESULT: {
+                    byte[] data = intent.getByteArrayExtra(CMDDef.INTENT_PUT_EXTRA_DATA);
+                    try {
+                        GameResult gameResult = (GameResult) SerializeUtils.serializeToObject(data);
+                        Log.e("tag", "PK结果:" + gameResult.isResult());
+                        Log.e("tag", "加/减分数:" + gameResult.getAddScore());
+                        Log.e("tag", "现在分数:" + gameResult.getNowScore());
+                    } catch (IOException | ClassNotFoundException e) {
+                        Log.e("tag","未知错误!");
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            }
+        }
+    }
 
     Boolean is_from_game;
     OpponentInfo opponentInfo;
@@ -38,20 +70,26 @@ public class WordTestActivity extends AppCompatActivity {
     Button choice_2;
     Button choice_3;
     Button choice_4;
+
+    private WordTestActivityBoradCastReceiver Receiver;
+    private IntentFilter intentFilter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_test);
+        intentFilter = new IntentFilter(CMDDef.MINABroadCast);
+        Receiver = new WordTestActivityBoradCastReceiver();
 
         maxWordsNumber = 20;
 
         Intent intent = getIntent();
-        is_from_game = intent.getBooleanExtra("is_from_game",false);
-        if(is_from_game){
+        is_from_game = intent.getBooleanExtra("is_from_game", false);
+        if (is_from_game) {
             opponentInfo = (OpponentInfo) intent.getSerializableExtra("test_words_id");
             testWordsArrayList = shortArrayToArrayList(opponentInfo.getPkWords());
-            maxWordsNumber = 80; // 如果Game的单词数有更改在这里更改
-            Toast.makeText(this, "你的对手是 "+opponentInfo.getNickName(), Toast.LENGTH_SHORT).show();
+            maxWordsNumber = CMDDef.PK_MAX_WORD_NUM;
+            Toast.makeText(this, "你的对手是 " + opponentInfo.getNickName(), Toast.LENGTH_SHORT).show();
         }
         // 左上角正确单词数
         words_correct_in_test_textView = findViewById(R.id.words_correct_in_test_textView);
@@ -59,15 +97,17 @@ public class WordTestActivity extends AppCompatActivity {
         progressBar_word_test = findViewById(R.id.progressBar_word_test);
         // 右上角倒计时功能
         final TextView time_left_in_test_textView = findViewById(R.id.time_left_in_test_textView);
-        CountDownTimer timer = new CountDownTimer(60000, 1000) {
+        CountDownTimer timer = new CountDownTimer(45000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                Integer timeLeft = (int)millisUntilFinished/1000;
+                Integer timeLeft = (int) millisUntilFinished / 1000;
                 time_left_in_test_textView.setText(timeLeft.toString());
             }
+
             @Override
             public void onFinish() {
-                //TODO 计时结束发送结果
+                SessionManager.getInstance().writeToServer(
+                        SendMsgMethod.getIntMessage(CMDDef.GAME_RESULT, rightWordsNumber));
             }
         }.start();
         // 为单词UI view赋值
@@ -111,13 +151,25 @@ public class WordTestActivity extends AppCompatActivity {
 
     }
 
-    private void onClickAnAnswer(int choice){
-        if(choice == theRightIndex){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(Receiver,intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(Receiver);
+    }
+
+    private void onClickAnAnswer(int choice) {
+        if (choice == theRightIndex) {
             // 用户选择了正确答案
             rightWordsNumber++;
         }
         testWordsArrayList.remove(0);
-        if(testWordsArrayList.size()==0){
+        if (testWordsArrayList.size() == 0) {
             //TODO 当用户提前完成了所有单词
             finish();
         }
@@ -125,7 +177,7 @@ public class WordTestActivity extends AppCompatActivity {
         simpleUpdateUI();
     }
 
-    private void simpleUpdateUI(){
+    private void simpleUpdateUI() {
         progressBar_word_test.setProgress(rightWordsNumber);
         words_correct_in_test_textView.setText(rightWordsNumber.toString());
         // 更新四个选项
@@ -139,7 +191,7 @@ public class WordTestActivity extends AppCompatActivity {
         choice_3.setText(wrongWord3.getTranslation());
         choice_4.setText(wrongWord4.getTranslation());
         theRightIndex = r.nextInt(4);
-        switch (theRightIndex){
+        switch (theRightIndex) {
             case 0:
                 choice_1.setText(wordToTest.getTranslation());
                 break;
@@ -154,7 +206,7 @@ public class WordTestActivity extends AppCompatActivity {
                 break;
         }
         word_content_test_textView.setText(wordToTest.getWord());
-        phonemic_test_textView.setText("/"+wordToTest.getPhonetic()+"/");
+        phonemic_test_textView.setText("/" + wordToTest.getPhonetic() + "/");
         remember_pronounce_test_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,11 +219,10 @@ public class WordTestActivity extends AppCompatActivity {
 
     }
 
-    ArrayList<Words> shortArrayToArrayList(short pkWords[])
-    {
+    ArrayList<Words> shortArrayToArrayList(short pkWords[]) {
         ArrayList<Words> result = new ArrayList<>();
-        for (short pkWordsId:pkWords
-             ) {
+        for (short pkWordsId : pkWords
+        ) {
             result.add(WordsUtil.getWordById(pkWordsId));
         }
         return result;
