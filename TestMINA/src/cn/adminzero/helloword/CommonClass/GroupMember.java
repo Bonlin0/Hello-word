@@ -3,7 +3,17 @@ package cn.adminzero.helloword.CommonClass;
 import java.util.ArrayList;
 
 public class GroupMember {
+    private final long serialVersionUID = 1L;
     public ArrayList<MemberItem> memberlist=new ArrayList<MemberItem>();
+    public Group master=new Group(-1);
+
+    public Group getMaster() {
+        return master;
+    }
+
+    public void setMaster(Group master) {
+        this.master = master;
+    }
 
     public ArrayList<MemberItem> getMemberlist() {
         return memberlist;
@@ -16,6 +26,8 @@ public class GroupMember {
         MemberItem memberItem=new MemberItem(user_id,user_name,contribution);
         memberlist.add(memberItem);
     }
-
+    public long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
 }

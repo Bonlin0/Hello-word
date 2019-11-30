@@ -1,6 +1,7 @@
 package cn.adminzero.helloword.CommonClass;
 
 public   class MemberItem{
+    private final long serialVersionUID = 1L;
     int user_id;
     String user_name;
     int contribution;
@@ -35,5 +36,8 @@ public   class MemberItem{
 
     public void setContribution(int contribution) {
         this.contribution = contribution;
+    }
+    public long getSerialVersionUID() {
+        return serialVersionUID;
     }
 }

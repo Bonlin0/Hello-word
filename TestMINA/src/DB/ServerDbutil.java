@@ -318,6 +318,7 @@ public class ServerDbutil {
      */
     public  static GroupMember getGroupMember(int user_id) throws SQLException {
         GroupMember groupMember=new GroupMember();
+
         //获取该用户的小组信息
         Group group=getGroup(user_id);
         int group_id=group.getGroup_id();
@@ -330,6 +331,8 @@ public class ServerDbutil {
         statement.setObject(1,group_id);
         ResultSet rs=statement.executeQuery();
         while (rs.next()){
+           // 获取组长信息
+            groupMember.master=getGroup(rs.getInt("master"));
             int memberId=rs.getInt("user_id");
             int memberContribution=rs.getInt("contribution");
             //查出用户名
