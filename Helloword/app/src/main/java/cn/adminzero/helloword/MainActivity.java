@@ -206,8 +206,8 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
 
         super.onResume();
-        // 检查用户当前词书是否合法 正确范围是[1,8]
-        if (App.userNoPassword_global.getGoal() <= 0) {
+        // 检查用户当前词书是否合法 正确范围是[0,7]
+        if (App.userNoPassword_global.getGoal() < 0) {
             // 弹出对话框选择词书
             showChooseWordsBookDialog();
 
@@ -260,7 +260,7 @@ public class MainActivity extends BaseActivity {
 
 
         //默认选中第一个
-        final String[] items = {"中考", "高考", "CET4", "CET6", "托福", "雅思", "GRE", "考研"};
+        final String[] items = {"中考", "高考", "CET4", "CET6", "托福", "雅思", "GRE", "考研", "不做改动"};
         chooseWordsBookChoice = 0;
         builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("在您开始使用前，请选择词书")
                 .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
@@ -271,7 +271,7 @@ public class MainActivity extends BaseActivity {
                 }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (chooseWordsBookChoice != -1) {
+                        if (chooseWordsBookChoice != 8) {
                             // 更换词书处理  0-7
                             WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
                             Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();

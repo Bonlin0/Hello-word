@@ -19,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 
 import cn.adminzero.helloword.CommonClass.WordsLevel;
+import cn.adminzero.helloword.db.ServerDbUtil;
 import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsLevelUtil;
@@ -287,5 +288,6 @@ public class RememberWordsActivity extends AppCompatActivity {
         super.onDestroy();
         // TODO 将这次背单词对WordLevel的修改同步到服务器 使用wordsIdToUpdate
         Log.e(TAG, "onDestroy: "+wordsIdToUpdate.toString());
+        ServerDbUtil.UpdateHistory(wordsIdToUpdate);
     }
 }

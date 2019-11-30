@@ -35,6 +35,8 @@ public class ExploreFragment extends Fragment {
         TextView groupRankingNumberTextView = view.findViewById(R.id.groupRankingNumberTextView);
         //TODO 为小组组名和各种状态赋值
 
+        // TODO 称号需要达到略有所得（Level=2）才可以解锁PKgame
+
         TextView pkLevelTextView = view.findViewById(R.id.pkLevelTextView);
         TextView pKRankingNumberTextView = view.findViewById(R.id.pKRankingNumberTextView);
         TextView pkPointNumberTextView = view.findViewById(R.id.pkPointNumberTextView);
