@@ -80,19 +80,35 @@ public class WordTestActivity extends AppCompatActivity {
         choice_4 = findViewById(R.id.choice_4);
         // 初始化正确单词数 并更新UI
         rightWordsNumber = 0;
-        words_correct_in_test_textView.setText(rightWordsNumber.toString());
-        progressBar_word_test.setProgress(rightWordsNumber);
         progressBar_word_test.setMax(maxWordsNumber);
+        wordToTest = testWordsArrayList.get(0);
+        simpleUpdateUI();
+        // 设置选项按钮点击监听
+        choice_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickAnAnswer(0);
+            }
+        });
+        choice_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickAnAnswer(1);
+            }
+        });
+        choice_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickAnAnswer(2);
+            }
+        });
+        choice_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickAnAnswer(3);
+            }
+        });
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if(testWordsArrayList.size()==0){
-            //TODO 当用户提前完成了所有单词
-            finish();
-        }
     }
 
     private void onClickAnAnswer(int choice){
