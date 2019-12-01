@@ -13,6 +13,7 @@ import java.util.Random;
 import cn.adminzero.helloword.App;
 import cn.adminzero.helloword.CommonClass.WordsLevel;
 import cn.adminzero.helloword.db.DbUtil;
+import cn.adminzero.helloword.db.ServerDbUtil;
 
 
 /**
@@ -97,7 +98,6 @@ public class WordsLevelUtil {
             cursor.close();
 
             db.beginTransaction();
-            // TODO 服务器发送tag数据 -->
             try {
                 for (int i = 0; i < result.size(); i++) {
                     try {
@@ -108,6 +108,8 @@ public class WordsLevelUtil {
                     }
                 }
                 db.setTransactionSuccessful();
+                // 通知服务器切换词书
+                ServerDbUtil.ChangeBook(_tag);
                 App.userNoPassword_global.setGoal(_tag);
             } catch (Exception e) {
                 e.printStackTrace();

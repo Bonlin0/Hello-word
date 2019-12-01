@@ -45,6 +45,7 @@ public class ServerDbutil {
       try{
           //开启事务
             GlobalConn.getConn().setAutoCommit(false);
+
             int i=0;
         while ((line = br.readLine()) != null) {
             buffer = line.split("#", -1);
@@ -148,6 +149,7 @@ public class ServerDbutil {
                 }
             }
             //插入新的单词
+
             UpdateHistory(user_id, newHistoryList);
             //提交事务
             GlobalConn.getConn().commit();
@@ -545,16 +547,17 @@ public class ServerDbutil {
     public static void UpdateHistory(int user_id, ArrayList<WordsLevel> wordsIdToUpdate) throws SQLException {
         int i = 0;
         String tabelName = "HISTORY_" + user_id;
+        Connection connection=GlobalConn.getConn();
         for (i = 0; i < wordsIdToUpdate.size(); i++) {
             WordsLevel wordsLevel = wordsIdToUpdate.get(i);
             int word_id = wordsLevel.getWord_id();
             //检查H表里有没有该单词，有的话更新，没有的话插入
-            PreparedStatement stmt = GlobalConn.getConn().prepareStatement("select * from " + tabelName + " where word_id=?");
+            PreparedStatement stmt =connection .prepareStatement("select * from " + tabelName + " where word_id=?");
             stmt.setObject(1, word_id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 if (word_id == rs.getInt(word_id)) {
-                    PreparedStatement statement = GlobalConn.getConn().prepareStatement("" +
+                    PreparedStatement statement = connection.prepareStatement("" +
                             "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
                     statement.setObject(1, wordsLevel.getLevel());
                     statement.setObject(2, wordsLevel.getYestarday());
@@ -563,12 +566,14 @@ public class ServerDbutil {
                     continue;
                 }
             }
-            PreparedStatement statement = GlobalConn.getConn().prepareStatement("" +
+            PreparedStatement statement = connection.prepareStatement("" +
                     "insert into " + tabelName + "(word_id,level,yesterday) values(?,?,?)");
             statement.setObject(1, wordsLevel.getWord_id());
             statement.setObject(2, wordsLevel.getLevel());
             statement.setObject(3, wordsLevel.getYestarday());
             statement.execute();
+//            if(i%29==0)
+//                logger.info("插入"+i);
 
         }
     }
