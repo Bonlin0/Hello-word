@@ -53,6 +53,7 @@ import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 
+import static cn.adminzero.helloword.db.ServerDbUtil.ChangeBook;
 import static java.lang.Thread.sleep;
 import static cn.adminzero.helloword.db.ServerDbUtil.GetGroupMember;
 

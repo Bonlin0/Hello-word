@@ -109,6 +109,8 @@ public class CMDDef {
     public static final short GET_HISTORY_REQUSEST = (short) 0xA006;
     //获取小组成员信息请求
     public static final short GET_GROUPMEMBER_REQUEST = (short) 0xA007;
+   //更新词书 对History表的更改
+   public static final short CHANGE_WORDBOOK_REQUEST = (short) 0xA008;
 
     //回应创建小组请求
     public static final short CREATE_GROUP_REPLY = (short) 0x4001;

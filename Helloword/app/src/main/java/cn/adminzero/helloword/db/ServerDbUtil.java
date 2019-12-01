@@ -49,6 +49,10 @@ public class ServerDbUtil {
     public static void GetGroupMember( ){
         SessionManager.getInstance().writeToServer(SendMsgMethod.getNullMessage(CMDDef.GET_GROUPMEMBER_REQUEST));
     }
+    public static  void ChangeBook(int tag){
+        SessionManager.getInstance().writeToServer(SendMsgMethod.getIntMessage(CMDDef.CHANGE_WORDBOOK_REQUEST,
+                tag));
+    }
 
 
  //   Group group=new Group(10005,16);

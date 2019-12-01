@@ -58,9 +58,6 @@ public class Main {
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
             Gamer.initGamer(acceptor.getManagedSessions());
-
-           // initWordBook("C:\\Users\\Sairen\\Documents\\GitHub\\Hello-word\\TestMINA\\src\\target.csv");
-            changeHistory(6,10074);
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors
                     .newSingleThreadScheduledExecutor();

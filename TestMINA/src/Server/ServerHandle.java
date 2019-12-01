@@ -208,6 +208,15 @@ public class ServerHandle extends IoHandlerAdapter {
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_HISTORY_REPLY, wordlist));
                 }
                 break;
+                case CMDDef.CHANGE_WORDBOOK_REQUEST:{
+                    int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
+                    int tag= mes.getI();
+                    if(changeHistory(tag,user_id))
+                        logger.info("词书更新成功！");
+                    else
+                        logger.info("词书更新失败!");
+                }
+                break;
 
             }
         } else {

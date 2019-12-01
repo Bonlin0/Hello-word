@@ -35,8 +35,8 @@ public class CMDDef {
     public static final String DBPASSWD = "926b50985a";
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
-//    public static final String IP = "10.0.2.2";
-    public static final String IP = "123.207.173.192";
+   public static final String IP = "10.0.2.2";
+//    public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -112,6 +112,8 @@ public class CMDDef {
     public static final short GET_HISTORY_REQUSEST = (short) 0xA006;
     //获取小组成员信息请求
     public static final short GET_GROUPMEMBER_REQUEST = (short) 0xA007;
+    //更新词书 对History表的更改
+    public static final short CHANGE_WORDBOOK_REQUEST = (short) 0xA008;
 
 
 

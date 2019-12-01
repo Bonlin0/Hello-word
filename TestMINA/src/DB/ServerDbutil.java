@@ -106,6 +106,7 @@ public class ServerDbutil {
         ArrayList<WordsLevel> newHistoryList = new ArrayList<WordsLevel>();
             // db.beginTransaction()
             //开启事务
+        try {
             GlobalConn.getConn().setAutoCommit(false);
             String table_name = "HISTORY_" + user_id;
 
@@ -114,13 +115,13 @@ public class ServerDbutil {
             preparedStatement.execute();
             logger.info("删除原来Hitory表的level=0的单词");
             //记录剩下H表的所有word_id
-             PreparedStatement statement1=GlobalConn.getConn().prepareStatement("select word_id from "+table_name);
-             ResultSet resultSet0=statement1.executeQuery();
-             int i=0;
-             while(resultSet0.next()){
-                 word[i]=resultSet0.getInt("word_id");
-                 i++;
-             }
+            PreparedStatement statement1 = GlobalConn.getConn().prepareStatement("select word_id from " + table_name);
+            ResultSet resultSet0 = statement1.executeQuery();
+            int i = 0;
+            while (resultSet0.next()) {
+                word[i] = resultSet0.getInt("word_id");
+                i++;
+            }
 
             // 选出WORDS所有的符合的tag行
             PreparedStatement statement = GlobalConn.getConn().prepareStatement("select word_id,tag from WORDS");
@@ -129,28 +130,34 @@ public class ServerDbutil {
                 short word_id = -1;
                 WordsLevel wordsLevel = new WordsLevel();
                 word_id = (short) resultSet.getInt("word_id");
-                int tag=resultSet.getInt("tag");
+                int tag = resultSet.getInt("tag");
                 //  &
-                if((tag&_tag)==_tag){
+                if ((tag & _tag) == _tag) {
                     //遍历剩余的H表，不覆盖原来的记录
-                    int isExist=0;
-                    for(int j=0;j<word.length;j++){
-                        if(word_id==word[j])
-                           isExist=1;
+                    int isExist = 0;
+                    for (int j = 0; j < word.length; j++) {
+                        if (word_id == word[j])
+                            isExist = 1;
                     }
-                    if(isExist==1){
+                    if (isExist == 1) {
                         continue;
                     }
                     wordsLevel.setWord_id(word_id);
                     newHistoryList.add(wordsLevel);
-                   // logger.info(word_id);
+                    // logger.info(word_id);
                 }
             }
-         //插入新的单词
-         UpdateHistory(user_id,newHistoryList);
-         //提交事务
-        GlobalConn.getConn().commit();
-        logger.info("提交改变History表的事务");
+            //插入新的单词
+            UpdateHistory(user_id, newHistoryList);
+            //提交事务
+            GlobalConn.getConn().commit();
+            logger.info("提交改变History表的事务");
+        }catch (Exception e){
+            GlobalConn.getConn().rollback();
+            logger.info("更新词书History表失败，回滚！");
+            return  false;
+        }
+
 
         return  true;
     }
@@ -529,7 +536,7 @@ public class ServerDbutil {
 
     public static void CreateHistory(int user_id) throws SQLException {
         String tabelName = "HISTORY_" + user_id;
-        PreparedStatement statement = GlobalConn.getConn().prepareStatement("create table " + tabelName + "(word_id smallint primary key,level smallint default 0,yesterday tinyint default 0)");
+        PreparedStatement statement = GlobalConn.getConn().prepareStatement("create  table if not exists  " + tabelName + "(word_id smallint primary key,level smallint default 0,yesterday tinyint default 0)");
         // statement.setString(1,tabelName);
         logger.info(statement);
         statement.execute();
@@ -625,8 +632,10 @@ public class ServerDbutil {
 
     //产生一些History的测试数据
     public static void test_History() throws SQLException {
-        int user_id1 = 10074;//1-100
-        int user_id2 = 10075;//50-150
+        int user_id1 = 10001;//1-100
+        int user_id2 = 10002;//50-150
+        CreateHistory(user_id1);
+        CreateHistory(user_id2);
         ArrayList<WordsLevel> wordlist1 = new ArrayList<WordsLevel>();
         ArrayList<WordsLevel> wordlist2 = new ArrayList<WordsLevel>();
         for (int i = 1; i < 100; i++) {
@@ -641,8 +650,8 @@ public class ServerDbutil {
             word.setYesterday((byte) (i % 2));
             wordlist2.add(word);
         }
-        UpdateHistory(10074,wordlist1);
-        UpdateHistory(10075,wordlist2);
+        UpdateHistory(user_id1,wordlist1);
+        UpdateHistory(user_id2,wordlist2);
 
     }
 
@@ -735,5 +744,7 @@ public class ServerDbutil {
     //           ArrayList<WordsLevel> wordlist= ServerDbutil.getHistory(10067);
 //           WordsLevel wordsLevel =wordlist.get(1);
 
+    // initWordBook("C:\\Users\\Sairen\\Documents\\GitHub\\Hello-word\\TestMINA\\src\\target.csv");
+    // changeHistory(6,10074);
 
 }
