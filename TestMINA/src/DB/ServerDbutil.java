@@ -364,7 +364,6 @@ public class ServerDbutil {
             statement.setObject(5,group.getMax_member());
             statement.execute();
             return  group;
-
         }
         PreparedStatement statement=GlobalConn.getConn().prepareStatement("update GROUP_USER set group_id=?, contribution=?,master=?,max_member=? where user_id=?");
         statement.setObject(1,group.getGroup_id());
@@ -437,7 +436,6 @@ public class ServerDbutil {
         }
         return wordlist;
 
-
     }
     public static ArrayList<Short> getHistoryWord(int user_id) throws SQLException {
         String tabelName= "HISTORY_" +user_id;
@@ -490,12 +488,15 @@ public class ServerDbutil {
             word.setYesterday((byte)(i%2));
             wordlist2.add(word);
         }
-
         UpdateHistory(10074,wordlist1);
         UpdateHistory(10075,wordlist2);
 
-
     }
+
+    /**
+     * 清空打卡
+     * @throws SQLException
+     */
     public  static void ClearPunch() throws SQLException {
         java.util.Date date =new Date();
 
@@ -522,6 +523,10 @@ public class ServerDbutil {
             logger.info("打卡状态清空");
         }
     }
+
+    /**
+     * 定时任务
+     */
     public static  void Timer(){
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -536,6 +541,7 @@ public class ServerDbutil {
             // 表示在0秒之后开始执行，并且每3秒执行一次
         }, 0, 3000);
     }
+
 //            // 获取除了密码外的所有信息
 //            UserNoPassword userNoPassword=getUserNopassword(10062);
 //            //修改用户信息

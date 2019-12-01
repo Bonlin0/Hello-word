@@ -88,6 +88,7 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.SIGN_IN_REQUESET: {
                     SignInRequest sir = (SignInRequest) mes.getObj();
                     UserNoPassword userNoPassword = ServerDbutil.signin(sir);
+                    userNoPassword.setCharacterEncoding("utf-8");
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                     if (userNoPassword.isValid()) {
                         UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
@@ -162,6 +163,9 @@ public class ServerHandle extends IoHandlerAdapter {
                     Group group = (Group) mes.getObj();
                     int user_id = group.getUser_id();
                     group = CreatGroup(group);
+                    if(group==null){
+                        logger.info("创建小组失败");
+                    }
                 }
                 break;
                 case CMDDef.UPDATE_GROUP_REQUEST: {

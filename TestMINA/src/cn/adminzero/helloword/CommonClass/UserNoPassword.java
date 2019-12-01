@@ -152,4 +152,7 @@ public class UserNoPassword implements Serializable {
     public void setpKPoint(int pKPoint) {
         this.pKPoint = pKPoint;
     }
+
+    public void setCharacterEncoding(String s) {
+    }
 }
