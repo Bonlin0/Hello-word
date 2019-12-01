@@ -1,5 +1,6 @@
 package DB;
 
+import Server.UserIDSession;
 import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
 
@@ -10,19 +11,6 @@ import java.util.Date;
 
 public class ServerDbutil {
     private static Logger logger = Logger.getLogger(ServerDbutil.class);
-
-/**
-     *   public static final String CREATE_WORDS =
-     *             "create table WORDS if not exists (" +
-     *                     "word_id integer primary key," +
-     *                     "word text NOT NULL," +
-     *                     "phonetic text ," +
-     *                     "definition text ," +
-     *                     "translation text," +
-     *                     "exchange text," +
-     *                     "tag integer," +
-     *                     "sentence text)";
-     * */
 
     public static void initWordBook(String filename) throws IOException, SQLException {
         File file = new File(filename);//C:\Users\Sairen\Documents\GitHub\Hello-word\TestMINA\src\target.csv
@@ -53,6 +41,11 @@ public class ServerDbutil {
 //        }catch ( Exception e){
 //           // logger.info("创建WORDS失败");
 //        }
+//
+      try{
+          //开启事务
+            GlobalConn.getConn().setAutoCommit(false);
+            int i=0;
         while ((line = br.readLine()) != null) {
             buffer = line.split("#", -1);
             word_id = Short.valueOf(buffer[0]);
@@ -62,6 +55,10 @@ public class ServerDbutil {
             translation = buffer[4];
             exchange = buffer[5];
             tag = Short.valueOf(buffer[6]);
+            i++;
+            if(i%100==0){
+                logger.info(i);
+            }
             // 提取CSV 文件插入数据库
           try {
               PreparedStatement statement1 = GlobalConn.getConn().prepareStatement("" +
@@ -80,69 +77,85 @@ public class ServerDbutil {
               continue;
           }
         }
+          //提交事务
+          GlobalConn.getConn().commit();
+        logger.info("初始化WORDS表 事务提交成功");
+        }catch (Exception e){
+            //开启的事务有异常就回滚
+            GlobalConn.getConn().rollback();
+          logger.info("初始化WORDS表异常 事务回滚");
+        }
     }
 
+    /**
+     * 更新用户的History表
+     * @param _tag
+     * @param user_id
+     * @return
+     * @throws SQLException
+     */
     // _tag range is [0,7]
-//    public static boolean initWorkBook(int _tag) {
-//        if (_tag > 7 || _tag < 0) {
-//            return false;
-//        }
-//        short tag = (short) (1 << _tag);
-//        List<WordsLevel> result = new ArrayList<WordsLevel>();
-//        try {
-//
-//            db.beginTransaction();
-//            // TODO 删除level = 0的单词！
-//            db.execSQL("delete from HISTORY_" + App.userNoPassword_global.getUserID() + " where level = ?", new String[]{"0"});
-//            // 选出sum所有的项目
-//            Cursor cursor = db.rawQuery("select word_id,tag from WORDS ", null);
-//            if (cursor.moveToFirst()) {
-//                short id = -1;
-//                short classify = -1;
-//                do {
-//                    classify = cursor.getShort(cursor.getColumnIndex("tag"));
-//                    if ((classify & tag) == tag) {
-//                        WordsLevel wordsLevel = new WordsLevel();
-//                        id = cursor.getShort(cursor.getColumnIndex("word_id"));
-//                        wordsLevel.setWord_id(id);
-//                        result.add(wordsLevel);
-//                    }
-//                } while (cursor.moveToNext());
-//            }
-//
-//            db.setTransactionSuccessful();
-//            db.endTransaction();
-//            cursor.close();
-//
-//            db.beginTransaction();
-//            // TODO 服务器发送tag数据 -->
-//            try {
-//                for (int i = 0; i < result.size(); i++) {
-//                    try {
-//                        db.execSQL("insert into HISTORY_" + App.userNoPassword_global.getUserID() + " (word_id,level,yesterday) " +
-//                                "values(?,?,?)", new String[]{String.valueOf(result.get(i).getWord_id()), "0", "0"});
-//                    } catch (Exception e) {
-//                        continue;
-//                    }
-//                }
-//                db.setTransactionSuccessful();
-//                App.userNoPassword_global.setGoal(_tag);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            } finally {
-//                db.endTransaction();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        } finally {
-//            if (db != null) {
-//                db = null;
-//            }
-//        }
-//        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime) + " ns");
-//        return true;
-//    }
+    public static boolean changeHistory(int _tag,int user_id) throws SQLException {
+        if (_tag > 7 || _tag < 0) {
+            logger.info("tag 大小不符合规范");
+            return false;
+        }
+        //传进来3 就是00001000
+        //记录剩余word_id
+        int[] word=new  int[5000];
+        ArrayList<WordsLevel> newHistoryList = new ArrayList<WordsLevel>();
+            // db.beginTransaction()
+            //开启事务
+            GlobalConn.getConn().setAutoCommit(false);
+            String table_name = "HISTORY_" + user_id;
+
+            //删除原来表中 level=0的单词
+            PreparedStatement preparedStatement = GlobalConn.getConn().prepareStatement("delete from " + table_name + " where level=0");
+            preparedStatement.execute();
+            logger.info("删除原来Hitory表的level=0的单词");
+            //记录剩下H表的所有word_id
+             PreparedStatement statement1=GlobalConn.getConn().prepareStatement("select word_id from "+table_name);
+             ResultSet resultSet0=statement1.executeQuery();
+             int i=0;
+             while(resultSet0.next()){
+                 word[i]=resultSet0.getInt("word_id");
+                 i++;
+             }
+
+            // 选出WORDS所有的符合的tag行
+            PreparedStatement statement = GlobalConn.getConn().prepareStatement("select word_id,tag from WORDS");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                short word_id = -1;
+                WordsLevel wordsLevel = new WordsLevel();
+                word_id = (short) resultSet.getInt("word_id");
+                int tag=resultSet.getInt("tag");
+                //  &
+                if((tag&_tag)==_tag){
+                    //遍历剩余的H表，不覆盖原来的记录
+                    int isExist=0;
+                    for(int j=0;j<word.length;j++){
+                        if(word_id==word[j])
+                           isExist=1;
+                    }
+                    if(isExist==1){
+                        continue;
+                    }
+                    wordsLevel.setWord_id(word_id);
+                    newHistoryList.add(wordsLevel);
+                   // logger.info(word_id);
+                }
+            }
+         //插入新的单词
+         UpdateHistory(user_id,newHistoryList);
+         //提交事务
+        GlobalConn.getConn().commit();
+        logger.info("提交改变History表的事务");
+
+        return  true;
+    }
+
+
 
 
     /**
@@ -549,6 +562,7 @@ public class ServerDbutil {
             statement.setObject(2, wordsLevel.getLevel());
             statement.setObject(3, wordsLevel.getYestarday());
             statement.execute();
+
         }
     }
 

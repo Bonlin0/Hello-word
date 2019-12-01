@@ -59,8 +59,8 @@ public class Main {
             GlobalConn.initDBConnection();
             Gamer.initGamer(acceptor.getManagedSessions());
 
-            initWordBook("C:\\Users\\Sairen\\Documents\\GitHub\\Hello-word\\TestMINA\\src\\target.csv");
-
+           // initWordBook("C:\\Users\\Sairen\\Documents\\GitHub\\Hello-word\\TestMINA\\src\\target.csv");
+            changeHistory(6,10074);
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors
                     .newSingleThreadScheduledExecutor();
