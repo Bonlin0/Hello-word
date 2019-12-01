@@ -3,9 +3,7 @@ package DB;
 import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
@@ -13,8 +11,7 @@ import java.util.Date;
 public class ServerDbutil {
     private static Logger logger = Logger.getLogger(ServerDbutil.class);
 
-
-    /*
+/**
      *   public static final String CREATE_WORDS =
      *             "create table WORDS if not exists (" +
      *                     "word_id integer primary key," +
@@ -24,10 +21,11 @@ public class ServerDbutil {
      *                     "translation text," +
      *                     "exchange text," +
      *                     "tag integer," +
-     *                     "sentence text)";*/
+     *                     "sentence text)";
+     * */
 
-    public static void initWordBook(String filename) throws Exception {
-        File file = new File(filename);
+    public static void initWordBook(String filename) throws IOException, SQLException {
+        File file = new File(filename);//C:\Users\Sairen\Documents\GitHub\Hello-word\TestMINA\src\target.csv
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = null;
         String[] buffer;
@@ -40,7 +38,21 @@ public class ServerDbutil {
         String exchange = null;
         Short tag = 0;
         String sentence = "";
+        //创建数据总表
 
+        PreparedStatement statement=GlobalConn.getConn().prepareStatement(" create table  if not exists WORDS(" +
+                "word_id int primary key, " +
+                "word TEXT," +
+                "phonetic TEXT ," +
+                "definition TEXT ," +
+                "translation TEXT," +
+                "exchange TEXT," +
+                "tag int," +
+                "sentence TEXT)");
+        statement.execute();
+//        }catch ( Exception e){
+//           // logger.info("创建WORDS失败");
+//        }
         while ((line = br.readLine()) != null) {
             buffer = line.split("#", -1);
             word_id = Short.valueOf(buffer[0]);
@@ -50,72 +62,87 @@ public class ServerDbutil {
             translation = buffer[4];
             exchange = buffer[5];
             tag = Short.valueOf(buffer[6]);
-            // TODO 插入数据库
-
+            // 提取CSV 文件插入数据库
+          try {
+              PreparedStatement statement1 = GlobalConn.getConn().prepareStatement("" +
+                      "insert into WORDS (word_id,word,phonetic,definition,translation,exchange,tag,sentence) values(?,?,?,?,?,?,?,?)");
+              statement1.setObject(1, word_id);
+              statement1.setObject(2, word);
+              statement1.setObject(3, phonetic);
+              statement1.setObject(4, definition);
+              statement1.setObject(5, translation);
+              statement1.setObject(6, exchange);
+              statement1.setObject(7, tag);
+              statement1.setObject(8, sentence);
+              statement1.execute();
+          }catch (Exception e){
+              //logger.info("插入失败");
+              continue;
+          }
         }
     }
 
     // _tag range is [0,7]
-    public static boolean initWorkBook(int _tag) {
-        if (_tag > 7 || _tag < 0) {
-            return false;
-        }
-        short tag = (short) (1 << _tag);
-        List<WordsLevel> result = new ArrayList<WordsLevel>();
-        try {
-
-            db.beginTransaction();
-            // TODO 删除level = 0的单词！
-            db.execSQL("delete from HISTORY_" + App.userNoPassword_global.getUserID() + " where level = ?", new String[]{"0"});
-            // 选出sum所有的项目
-            Cursor cursor = db.rawQuery("select word_id,tag from WORDS ", null);
-            if (cursor.moveToFirst()) {
-                short id = -1;
-                short classify = -1;
-                do {
-                    classify = cursor.getShort(cursor.getColumnIndex("tag"));
-                    if ((classify & tag) == tag) {
-                        WordsLevel wordsLevel = new WordsLevel();
-                        id = cursor.getShort(cursor.getColumnIndex("word_id"));
-                        wordsLevel.setWord_id(id);
-                        result.add(wordsLevel);
-                    }
-                } while (cursor.moveToNext());
-            }
-
-            db.setTransactionSuccessful();
-            db.endTransaction();
-            cursor.close();
-
-            db.beginTransaction();
-            // TODO 服务器发送tag数据 -->
-            try {
-                for (int i = 0; i < result.size(); i++) {
-                    try {
-                        db.execSQL("insert into HISTORY_" + App.userNoPassword_global.getUserID() + " (word_id,level,yesterday) " +
-                                "values(?,?,?)", new String[]{String.valueOf(result.get(i).getWord_id()), "0", "0"});
-                    } catch (Exception e) {
-                        continue;
-                    }
-                }
-                db.setTransactionSuccessful();
-                App.userNoPassword_global.setGoal(_tag);
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                db.endTransaction();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        } finally {
-            if (db != null) {
-                db = null;
-            }
-        }
-        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime) + " ns");
-        return true;
-    }
+//    public static boolean initWorkBook(int _tag) {
+//        if (_tag > 7 || _tag < 0) {
+//            return false;
+//        }
+//        short tag = (short) (1 << _tag);
+//        List<WordsLevel> result = new ArrayList<WordsLevel>();
+//        try {
+//
+//            db.beginTransaction();
+//            // TODO 删除level = 0的单词！
+//            db.execSQL("delete from HISTORY_" + App.userNoPassword_global.getUserID() + " where level = ?", new String[]{"0"});
+//            // 选出sum所有的项目
+//            Cursor cursor = db.rawQuery("select word_id,tag from WORDS ", null);
+//            if (cursor.moveToFirst()) {
+//                short id = -1;
+//                short classify = -1;
+//                do {
+//                    classify = cursor.getShort(cursor.getColumnIndex("tag"));
+//                    if ((classify & tag) == tag) {
+//                        WordsLevel wordsLevel = new WordsLevel();
+//                        id = cursor.getShort(cursor.getColumnIndex("word_id"));
+//                        wordsLevel.setWord_id(id);
+//                        result.add(wordsLevel);
+//                    }
+//                } while (cursor.moveToNext());
+//            }
+//
+//            db.setTransactionSuccessful();
+//            db.endTransaction();
+//            cursor.close();
+//
+//            db.beginTransaction();
+//            // TODO 服务器发送tag数据 -->
+//            try {
+//                for (int i = 0; i < result.size(); i++) {
+//                    try {
+//                        db.execSQL("insert into HISTORY_" + App.userNoPassword_global.getUserID() + " (word_id,level,yesterday) " +
+//                                "values(?,?,?)", new String[]{String.valueOf(result.get(i).getWord_id()), "0", "0"});
+//                    } catch (Exception e) {
+//                        continue;
+//                    }
+//                }
+//                db.setTransactionSuccessful();
+//                App.userNoPassword_global.setGoal(_tag);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            } finally {
+//                db.endTransaction();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        } finally {
+//            if (db != null) {
+//                db = null;
+//            }
+//        }
+//        Log.d(TAG, "initWorkBook: spend " + (System.nanoTime() - startTime) + " ns");
+//        return true;
+//    }
 
 
     /**
