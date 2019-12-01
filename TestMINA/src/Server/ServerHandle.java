@@ -17,6 +17,7 @@ import org.apache.mina.filter.FilterEvent;
 import java.lang.management.OperatingSystemMXBean;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 import static DB.ServerDbutil.*;
 
@@ -72,6 +73,11 @@ public class ServerHandle extends IoHandlerAdapter {
         if (message instanceof Message) {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
+                case CMDDef.GAME_RESULT:{
+                    Gamer.setConfrontatInfo(UserIDSession.getUserIDWithSessionID(session.getId()),
+                            mes.getI());
+                    break;
+                }
                 case CMDDef.SIGN_UP_REQUESET: {
                     SignUpRequest sur = (SignUpRequest) mes.getObj();
                     UserNoPassword userNoPassword = ServerDbutil.signup(sur);
@@ -131,7 +137,6 @@ public class ServerHandle extends IoHandlerAdapter {
                         int userID1 = UserIDSession.getUserIDWithSessionID(session.getId());
                         UserInformation userInformation1 = getUser(userID1);
                         UserInformation userInformation2 = getUser(userID2);
-
                         ArrayList<Short> wordsLevelArrayList1 = getHistoryWord(userID1);
                         ArrayList<Short> wordsLevelArrayList2 = getHistoryWord(userID2);
                         //求出并集
@@ -140,14 +145,20 @@ public class ServerHandle extends IoHandlerAdapter {
                         int collectionSize = wordsLevelArrayList1.size() - CMDDef.PK_MAX_WORD_NUM;
                         short[] result = new short[CMDDef.PK_MAX_WORD_NUM];
 
-                        for (int i = 0; i < CMDDef.PK_MAX_WORD_NUM; i++) {
-                            result[i] = (short) (Gamer.getrandom()[i] + collectionSize);
+                        //加锁
+                        synchronized (Gamer.randomNumMute) {
+                            for (int i = 0; i < CMDDef.PK_MAX_WORD_NUM; i++) {
+                                result[i] = (short) (Gamer.getrandom()[i] + collectionSize);
+                            }
                         }
 
-                        OpponentInfo info1 = new OpponentInfo(userID1,userInformation1.getUserNickName(),result);
-                        OpponentInfo info2 = new OpponentInfo(userID2,userInformation2.getUserNickName(),result);
-                        anotherSession.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO,info1));
-                        session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO,info2));
+                        OpponentInfo info1 = new OpponentInfo(userID1, userInformation1.getUserNickName(), result);
+                        OpponentInfo info2 = new OpponentInfo(userID2, userInformation2.getUserNickName(), result);
+                        anotherSession.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, info1));
+                        session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, info2));
+
+                        Gamer.insertConfrontation(userID1,userID2);
+
                         //    logger.info("两位靓仔开始了游戏!");
                         //   logger.info("还剩" + Gamer.getGamers() + "位靓仔!");
                     }
@@ -191,9 +202,9 @@ public class ServerHandle extends IoHandlerAdapter {
                     UpdateHistory(user_id, wordsToUpdate);
                 }
                 break;
-                case CMDDef.GET_HISTORY_REQUSEST:{
-                    int user_id=UserIDSession.getUserIDWithSessionID(session.getId());
-                    ArrayList<WordsLevel> wordlist=getHistory(user_id);
+                case CMDDef.GET_HISTORY_REQUSEST: {
+                    int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
+                    ArrayList<WordsLevel> wordlist = getHistory(user_id);
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_HISTORY_REPLY, wordlist));
                 }
                 break;

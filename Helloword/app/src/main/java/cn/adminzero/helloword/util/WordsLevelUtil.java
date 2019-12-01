@@ -97,6 +97,7 @@ public class WordsLevelUtil {
             cursor.close();
 
             db.beginTransaction();
+            // TODO 服务器发送tag数据 -->
             try {
                 for (int i = 0; i < result.size(); i++) {
                     try {

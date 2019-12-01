@@ -53,6 +53,7 @@ import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsLevelUtil;
 import cn.adminzero.helloword.util.WordsUtil;
 
+import static java.lang.Thread.sleep;
 import static cn.adminzero.helloword.db.ServerDbUtil.GetGroupMember;
 
 public class MainActivity extends BaseActivity {
@@ -142,8 +143,6 @@ public class MainActivity extends BaseActivity {
                     syncHistoryProgressDialog.setIndeterminate(true);// 是否形成一个加载动画  true表示不明确加载进度形成转圈动画  false 表示明确加载进度
                     syncHistoryProgressDialog.setCancelable(false);//点击返回键或者dialog四周是否关闭dialog  true表示可以关闭 false表示不可关闭
                     syncHistoryProgressDialog.show();
-
-
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
                     // TODO 网络同步数据  恢复数据库待做
@@ -327,6 +326,7 @@ public class MainActivity extends BaseActivity {
             public void onTick(long millisUntilFinished) {
 
             }
+
             @Override
             public void onFinish() {
                 progressDialog.dismiss();
@@ -354,11 +354,11 @@ public class MainActivity extends BaseActivity {
                     try {
                         //在MainActivity的OncCreat 方法请求了History
                         //在这里面接收
-                        // TODO 将加载对话框取消
-                        syncHistoryProgressDialog.dismiss();
-
                         ArrayList<WordsLevel> wordlist = (ArrayList<WordsLevel>) SerializeUtils.serializeToObject(data);
                         WordsLevelUtil.updateWordLevelByArraylist(wordlist);
+                        // TODO 将加载对话框取消
+                        App.stop = false;
+                        syncHistoryProgressDialog.dismiss();
                     } catch (Exception e) {
                         //获取失败
                         System.out.println("从服务器获取History表失败");

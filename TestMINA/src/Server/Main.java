@@ -19,6 +19,9 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 import java.net.InetSocketAddress;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -30,6 +33,9 @@ import static DB.ServerDbutil.*;
 public class Main {
     private static Logger logger = Logger.getLogger(Main.class);
     private static int PORT = CMDDef.PORT;
+    private static DateFormat dayFormat = new SimpleDateFormat("yy-MM-dd");
+    private static DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+
     public static void main(String[] args) {
         //定时器
         IoAcceptor acceptor = null;
@@ -51,16 +57,35 @@ public class Main {
             acceptor.bind(new InetSocketAddress(PORT));
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
-            //定时器，打卡清空
-            Timer();
-            Gamer.initGamer();
+            Gamer.initGamer(acceptor.getManagedSessions());
+
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors
                     .newSingleThreadScheduledExecutor();
-            //执行10s，每隔30s更新一次随机数表
-            service.scheduleAtFixedRate(Gamer.runnable,10,30, TimeUnit.SECONDS);
+
+            //执行10s，每隔50s更新一次随机数表
+            service.scheduleAtFixedRate(Gamer.runnable,10,50, TimeUnit.SECONDS);
+
+            long oneDay = 24 * 60 * 60 * 1000;
+            long initDelay  = getTimeMillis("23:59:59") - System.currentTimeMillis();
+            initDelay = initDelay > 0 ? initDelay : oneDay + initDelay;
+            service.scheduleAtFixedRate(ServerDbutil.clearPunchTask,initDelay, oneDay, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static long getTimeMillis(String time) {
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+            DateFormat dayFormat = new SimpleDateFormat("yy-MM-dd");
+            Date curDate = dateFormat.parse(dayFormat.format(new Date()) + " " + time);
+            return curDate.getTime();
+        } catch (ParseException e) {
+            logger.info("时间解析失败!");
+            e.printStackTrace();
+        }
+
+        return 0;
     }
 }

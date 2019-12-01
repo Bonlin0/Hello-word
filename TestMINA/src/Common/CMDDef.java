@@ -35,8 +35,8 @@ public class CMDDef {
     public static final String DBPASSWD = "926b50985a";
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
-    public static final String IP = "10.0.2.2";
-   //   public static final String IP = "123.207.173.192";
+   // public static final String IP = "10.0.2.2";
+      public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -72,6 +72,8 @@ public class CMDDef {
 
     //回应游戏玩家的对手信息
     public static final short REPLY_GAMER_IFNO = (short) 0x1000;
+    //游戏结果的回复
+    public static final short REPLY_GAME_RESULT = (short) 0x1001;
 
     //客户端控制指令定义区
 
@@ -90,6 +92,8 @@ public class CMDDef {
     public static final short JOIN_PK_GAME_REQUEST = (short) 0x7001;
     //放弃匹配
     public static final short GIVE_UP_JOIN_GAME = (short) 0x7002;
+    //游戏结果
+    public static final short GAME_RESULT = (short) 0x7003;
 
     //创建小组请求
     public static final short CREATE_GROUP_REQUEST = (short) 0xA001;
@@ -106,8 +110,6 @@ public class CMDDef {
     //获取小组成员信息请求
     public static final short GET_GROUPMEMBER_REQUEST = (short) 0xA007;
 
-
-
     //回应创建小组请求
     public static final short CREATE_GROUP_REPLY = (short) 0x4001;
     //回应更新小组请求
@@ -123,4 +125,3 @@ public class CMDDef {
     //获取小组成员信息回应
     public static final short GET_GROUPMEMBER_REPLY = (short) 0x4007;
 }
-
