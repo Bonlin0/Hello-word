@@ -31,7 +31,12 @@ import cn.adminzero.helloword.util.MediaPlayUtil;
 import cn.adminzero.helloword.util.Words;
 import cn.adminzero.helloword.util.WordsUtil;
 
-public class WordTestActivity extends AppCompatActivity {
+/*
+    Author : Whl, wx
+    Content : 用于测试用户单词的活动，目前
+ */
+
+public class WordTestActivity extends BaseActivity {
     class WordTestActivityBoradCastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -230,6 +235,7 @@ public class WordTestActivity extends AppCompatActivity {
 
     }
 
+    // 将一个 short数组 通过 查询数据库转为 Words 的 ArrayList的函数
     ArrayList<Words> shortArrayToArrayList(short pkWords[]) {
         ArrayList<Words> result = new ArrayList<>();
         for (short pkWordsId : pkWords

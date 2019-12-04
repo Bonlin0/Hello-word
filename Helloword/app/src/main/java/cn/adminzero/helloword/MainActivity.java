@@ -388,6 +388,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    // 用于MainActivity底部导航栏的监听器
     class MyOnNavigationItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
 
         @Override
