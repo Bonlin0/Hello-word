@@ -35,6 +35,7 @@ public class WordTestActivity extends AppCompatActivity {
     class WordTestActivityBoradCastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
+            // PK game 结束后接受到服务器反馈
             short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
             switch (cmd) {
                 case CMDDef.REPLY_GAME_RESULT: {
@@ -44,6 +45,15 @@ public class WordTestActivity extends AppCompatActivity {
                         Log.e("tag", "PK结果:" + gameResult.isResult());
                         Log.e("tag", "加/减分数:" + gameResult.getAddScore());
                         Log.e("tag", "现在分数:" + gameResult.getNowScore());
+                        // update userNoPassword
+                        App.userNoPassword_global.setpKPoint(gameResult.getNowScore());
+                        // 进入结果展示活动并杀死本活动
+                        Intent intentToGameResultActivity = new Intent(WordTestActivity.this, GameResultActivity.class);
+                        intentToGameResultActivity.putExtra("opponentInfo", opponentInfo);
+                        intentToGameResultActivity.putExtra("gameResult", gameResult);
+                        startActivity(intentToGameResultActivity);
+                        finish();
+
                     } catch (IOException | ClassNotFoundException e) {
                         Log.e("tag","未知错误!");
                         e.printStackTrace();
@@ -81,7 +91,8 @@ public class WordTestActivity extends AppCompatActivity {
         intentFilter = new IntentFilter(CMDDef.MINABroadCast);
         Receiver = new WordTestActivityBoradCastReceiver();
 
-        maxWordsNumber = 20;
+        maxWordsNumber = 20; // 设成20避免没有设置出bug
+
 
         Intent intent = getIntent();
         is_from_game = intent.getBooleanExtra("is_from_game", false);
