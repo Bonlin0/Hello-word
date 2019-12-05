@@ -191,9 +191,13 @@ public class ConnectionManager {
                 case CMDDef.REPLY_SIGN_IN_REQUEST:
                 case CMDDef.GET_HISTORY_REPLY:
                 case CMDDef.REPLY_GAME_RESULT:
-                case CMDDef.GET_GROUPMEMBER_REPLY:
-                {
+                case CMDDef.GET_GROUPMEMBER_REPLY: {
                     DataArriveBroadcast(mes.getCMD(), mes.getData());
+                }
+                break;
+                case CMDDef.FORCE_OFFLINE: {
+             //       Log.e("tag","我收到了强制下线的信息");
+                    DataArriveBroadcast(mes.getCMD());
                 }
                 break;
                 default:

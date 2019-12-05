@@ -35,8 +35,8 @@ public class CMDDef {
     public static final String DBPASSWD = "926b50985a";
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
-   public static final String IP = "10.0.2.2";
-//    public static final String IP = "123.207.173.192";
+    public static final String IP = "10.0.2.2";
+   // public static final String IP = "123.207.173.192";
     //常量定义
 
     //通信协议消息传递的数据类型
@@ -75,7 +75,8 @@ public class CMDDef {
 
     //回应游戏结果
     public static final short REPLY_GAME_RESULT = (short) 0x1001;
-
+    //强制下线
+    public static final short FORCE_OFFLINE = (short) 0x1002;
     //客户端控制指令定义区
 
 
@@ -116,7 +117,6 @@ public class CMDDef {
     public static final short CHANGE_WORDBOOK_REQUEST = (short) 0xA008;
 
 
-
     //回应创建小组请求
     public static final short CREATE_GROUP_REPLY = (short) 0x4001;
     //回应更新小组请求
@@ -124,7 +124,7 @@ public class CMDDef {
     //回应获取小组信息请求
     public static final short GET_GROUP_REPLY = (short) 0x4003;
     //创建用户History 表
-    public static final short CREATE_HISTORY_REPLY= (short) 0x4004;
+    public static final short CREATE_HISTORY_REPLY = (short) 0x4004;
     //更新用户History 表
     public static final short UPDATE_HISTORY_REPLY = (short) 0x4005;
     //获取用户History 表

@@ -30,11 +30,14 @@ public class TestMain {
     }
 
     public static void main(String[] args) {
-        Map<Integer, task> a = new HashMap<>();
+        Map<Integer, Integer> a = new HashMap<>();
         Map<Integer, task> b = new HashMap<>();
         task tt = new task(20);
-        a.put(10,tt);
-        t.schedule(tt,3000);
-        a.get(10).i = 200;
+        a.put(10,20);
+        System.out.println(get(a));
+    }
+    static int get(Map<Integer, Integer> map)
+    {
+        return map.get(20);
     }
 }

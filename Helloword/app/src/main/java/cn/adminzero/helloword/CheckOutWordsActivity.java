@@ -26,7 +26,5 @@ public class CheckOutWordsActivity extends BaseActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
-
     }
 }
