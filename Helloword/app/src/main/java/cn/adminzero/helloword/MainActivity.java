@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity {
                     db.execSQL(CREATE_HISTORY);
                     db.execSQL(CREATE_TODAY);
                     ServerDbUtil.GetHistory();
-                    // TODO 弹出加载进度框
+                    // 弹出加载进度框
                     syncHistoryProgressDialog = new ProgressDialog(this);
                     syncHistoryProgressDialog.setIcon(R.drawable.ic_autorenew_black_64dp);
                     syncHistoryProgressDialog.setTitle("同步");
@@ -146,7 +146,7 @@ public class MainActivity extends BaseActivity {
                     syncHistoryProgressDialog.show();
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
-                    // TODO 网络同步数据  恢复数据库待做
+                    //  网络同步数据  恢复数据库待做
                 }
             }
 
@@ -211,12 +211,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-
         super.onResume();
+        // 返回至HomePage 避免一些UI问题
+        viewPager.setCurrentItem(0);
         // 检查用户当前词书是否合法 正确范围是[0,7]
         if (App.userNoPassword_global.getGoal() < 0) {
             // 弹出对话框选择词书
-            showChooseWordsBookDialog();
+            showChooseWordsBookDialog(1);
 
         }
         // 更新主活动UI 更新打卡界面
@@ -269,31 +270,59 @@ public class MainActivity extends BaseActivity {
         stopService(new Intent(this, MinaService.class));
     }
 
-    public void showChooseWordsBookDialog() {
-        AlertDialog.Builder builder;
-
+    // 显示选择词书对话框
+    // 参数 表示是否是第一次选择词书（即是否之前有词书）
+    //  1 表示 第一次选择出词书
+    //  0 表示 已经有词书
+    public void showChooseWordsBookDialog(int parameter) {
+        AlertDialog.Builder builder = null;
+        final String[] items0 = {"中考", "高考", "CET4", "CET6", "托福", "雅思", "GRE", "考研", "不做改动"};
+        final String[] items1 = {"中考", "高考", "CET4", "CET6", "托福", "雅思", "GRE", "考研"};
+        if(parameter == 1){
+            builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("在您开始使用前，请选择词书")
+                    .setSingleChoiceItems(items1, 0, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            chooseWordsBookChoice = i;
+                        }
+                    }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (chooseWordsBookChoice != 8) {
+                                // 更换词书处理  0-7
+                                WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
+                                Toast.makeText(MainActivity.this, "你选择了" + items1[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
+                                // 网络同步
+                                ServerDbUtil.Upadte_UserNoPassword();
+                            }
+                        }
+                    });
+        }
+        // 丑陋的写法
+        if(parameter == 0){
+            builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("在您开始使用前，请选择词书")
+                    .setSingleChoiceItems(items0, 0, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            chooseWordsBookChoice = i;
+                        }
+                    }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (chooseWordsBookChoice != 8) {
+                                // 更换词书处理  0-7
+                                WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
+                                Toast.makeText(MainActivity.this, "你选择了" + items0[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
+                                // 网络同步
+                                ServerDbUtil.Upadte_UserNoPassword();
+                            }
+                        }
+                    });
+        }
 
         //默认选中第一个
-        final String[] items = {"中考", "高考", "CET4", "CET6", "托福", "雅思", "GRE", "考研", "不做改动"};
         chooseWordsBookChoice = 0;
-        builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("在您开始使用前，请选择词书")
-                .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        chooseWordsBookChoice = i;
-                    }
-                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (chooseWordsBookChoice != 8) {
-                            // 更换词书处理  0-7
-                            WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
-                            Toast.makeText(MainActivity.this, "你选择了" + items[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
-                            // 网络同步
-                            ServerDbUtil.Upadte_UserNoPassword();
-                        }
-                    }
-                });
+
         // 设置不可取消
 
         AlertDialog dialog = builder.create();
@@ -306,7 +335,7 @@ public class MainActivity extends BaseActivity {
     public void onClickChooseWordsBookButton(View view) {
         /*Intent intent = new Intent(this, ChooseWordsBookActivity.class);
         startActivity(intent);*/
-        showChooseWordsBookDialog();
+        showChooseWordsBookDialog(0);
     }
 
     public void onClickFreshButton(View view) {
@@ -322,7 +351,7 @@ public class MainActivity extends BaseActivity {
         ServerDbUtil.Upadte_UserNoPassword();
 
         // 因为速度太快让人误认为功能失效 使用倒计时空转几圈
-        CountDownTimer timer = new CountDownTimer(1500, 1000) {
+        CountDownTimer timer = new CountDownTimer(1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -357,7 +386,7 @@ public class MainActivity extends BaseActivity {
                         //在这里面接收
                         ArrayList<WordsLevel> wordlist = (ArrayList<WordsLevel>) SerializeUtils.serializeToObject(data);
                         WordsLevelUtil.updateWordLevelByArraylist(wordlist);
-                        // TODO 将加载对话框取消
+                        // 将加载对话框取消
                         App.stop = false;
                         syncHistoryProgressDialog.dismiss();
                     } catch (Exception e) {
@@ -388,6 +417,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    // 用于MainActivity底部导航栏的监听器
     class MyOnNavigationItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
 
         @Override

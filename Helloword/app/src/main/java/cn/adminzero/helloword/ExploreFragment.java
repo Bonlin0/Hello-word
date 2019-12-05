@@ -39,7 +39,7 @@ public class ExploreFragment extends Fragment {
         TextView pkLevelTextView = view.findViewById(R.id.pkLevelTextView);
         TextView pKRankingNumberTextView = view.findViewById(R.id.pKRankingNumberTextView);
         TextView pkPointNumberTextView = view.findViewById(R.id.pkPointNumberTextView);
-        if(App.userNoPassword_global.getLevel()<=2) {
+        if(App.userNoPassword_global.getLevel()<=1) {
             pkLevelTextView.setText("称号等级为2时方可使用");
             pKRankingNumberTextView.setText("-");
             pkPointNumberTextView.setText("-");

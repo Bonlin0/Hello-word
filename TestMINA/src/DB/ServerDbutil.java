@@ -330,7 +330,7 @@ public class ServerDbutil {
                     days_q = rs.getInt("days");
 //                    int isPunch=rs.getInt("isPunch");
 //                    if(isPunch==0)
-//                    //TODO 查询上次登录时间距离这次的时间差，看是否需要登陆天数+1
+//                    //TODO 查询上次登录时间距离这次的时间差，看是否需要登陆天数+1 -- 没有需要登录天数+1的操作
 //                    {
 //                        PreparedStatement statement = GlobalConn.getConn().prepareStatement("update USER set days=? where user_id=?");
 //                        statement.setObject(1, days_q + 1);
