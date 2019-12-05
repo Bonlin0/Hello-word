@@ -33,7 +33,7 @@ public class WordsLevelUtil {
         int userId = App.userNoPassword_global.getUserID();
         db.beginTransaction();
         try {
-            db.execSQL("delete from HISTORY_" + userId, null);
+            db.execSQL("delete from HISTORY_" + userId);
             for (WordsLevel wordsLevel : wordsLevels) {
                 db.execSQL("insert into HISTORY_" + userId + " (word_id,level,yesterday) " +
                         "values(?,?,?)", new String[]{

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import cn.adminzero.helloword.CommonClass.GameResult;
@@ -43,10 +45,18 @@ public class GameResultActivity extends AppCompatActivity {
             string_pk_point_info_game_result_textView= "PK 评分： "+gameResult.getNowScore()+" ( + "+gameResult.getAddScore()+" )";
         }
         else{
-            win_or_lose_big_game_result_textView.setText("YOU LOSE...");
+            win_or_lose_big_game_result_textView.setText("YOU LOSE.");
             info_about_opponent_game_result_textView.setText("你惜败于 "+opponentInfo.getNickName()+" 。");
             string_pk_point_info_game_result_textView = "PK 评分： "+gameResult.getNowScore()+" ( - "+gameResult.getAddScore()+" )";
         }
         pk_point_info_game_result_textView.setText(string_pk_point_info_game_result_textView);
+
+        Button back_game_result_button = findViewById(R.id.back_game_result_button);
+        back_game_result_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
