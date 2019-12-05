@@ -172,6 +172,7 @@ public class AboutMeFragment extends Fragment {
                         // 称号功能
                         Toast.makeText(getContext(), "准备开始测验！", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getActivity(),WordTestActivity.class);
+                        intent.putExtra("is_from_title_upgrade",true);
                         startActivity(intent);
                     }
                 }).setNegativeButton("取消", new DialogInterface.OnClickListener() {

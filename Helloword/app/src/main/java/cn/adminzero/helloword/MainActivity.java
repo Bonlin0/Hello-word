@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity {
                     db.execSQL(CREATE_HISTORY);
                     db.execSQL(CREATE_TODAY);
                     ServerDbUtil.GetHistory();
-                    // TODO 弹出加载进度框
+                    // 弹出加载进度框
                     syncHistoryProgressDialog = new ProgressDialog(this);
                     syncHistoryProgressDialog.setIcon(R.drawable.ic_autorenew_black_64dp);
                     syncHistoryProgressDialog.setTitle("同步");
@@ -146,7 +146,7 @@ public class MainActivity extends BaseActivity {
                     syncHistoryProgressDialog.show();
                     myStorage.storeInt("lastLoginAccount", userId);
                     Log.d(TAG, "onCreate: 创建数据库");
-                    // TODO 网络同步数据  恢复数据库待做
+                    //  网络同步数据  恢复数据库待做
                 }
             }
 
@@ -211,8 +211,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-
         super.onResume();
+        // 返回至HomePage 避免一些UI问题
+        viewPager.setCurrentItem(0);
         // 检查用户当前词书是否合法 正确范围是[0,7]
         if (App.userNoPassword_global.getGoal() < 0) {
             // 弹出对话框选择词书
@@ -322,7 +323,7 @@ public class MainActivity extends BaseActivity {
         ServerDbUtil.Upadte_UserNoPassword();
 
         // 因为速度太快让人误认为功能失效 使用倒计时空转几圈
-        CountDownTimer timer = new CountDownTimer(1500, 1000) {
+        CountDownTimer timer = new CountDownTimer(1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
