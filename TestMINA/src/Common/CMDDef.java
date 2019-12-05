@@ -74,6 +74,8 @@ public class CMDDef {
     public static final short REPLY_GAMER_IFNO = (short) 0x1000;
     //游戏结果的回复
     public static final short REPLY_GAME_RESULT = (short) 0x1001;
+    //强制下线
+    public static final short FORCE_OFFLINE = (short) 0x1002;
 
     //客户端控制指令定义区
 

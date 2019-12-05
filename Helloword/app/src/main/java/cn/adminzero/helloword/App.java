@@ -23,6 +23,8 @@ import cn.adminzero.helloword.util.Words;
 
 public class App extends Application {
 
+    public static boolean isForceOffline = false;
+
     private static final String TAG = "Helloword";
     private static String Dbname = "HelloWord";
     //全局用户信息

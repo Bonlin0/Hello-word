@@ -73,7 +73,7 @@ public class ServerHandle extends IoHandlerAdapter {
         if (message instanceof Message) {
             Message mes = (Message) message;
             switch (mes.getCMD()) {
-                case CMDDef.GAME_RESULT:{
+                case CMDDef.GAME_RESULT: {
                     Gamer.setConfrontatInfo(UserIDSession.getUserIDWithSessionID(session.getId()),
                             mes.getI());
                     break;
@@ -95,11 +95,27 @@ public class ServerHandle extends IoHandlerAdapter {
                     SignInRequest sir = (SignInRequest) mes.getObj();
                     UserNoPassword userNoPassword = ServerDbutil.signin(sir);
                     userNoPassword.setCharacterEncoding("utf-8");
-                    session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
+                    long anotherSession;
+                    //如果用户检查通过
                     if (userNoPassword.isValid()) {
-                        UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
-                        logger.info("用户" + userNoPassword.getUserNickName() + "与服务器建立了连接!");
-                        logger.info("ID为" + userNoPassword.getUserID());
+                        try {
+                            //尝试在已有映射获取用户
+                            anotherSession = UserIDSession.getSessionIDWithUserID(userNoPassword.getUserID());
+                            IoSession session1 = session.getService().
+                                    getManagedSessions().get(anotherSession);
+                            //先发着吧，没啥卵用
+                            session1.write(SendMsgMethod.getNullMessage(CMDDef.FORCE_OFFLINE));
+                            UserIDSession.removeSessionWithUserID(userNoPassword.getUserID());
+                            UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
+                            userNoPassword.setValid(false);
+                            session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
+                        } catch (NullPointerException e) {
+                            //说明未获取成功
+                            logger.info("未获取成功!");
+                            session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
+                            UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
+                            break;
+                        }
                     }
                 }
                 break;
@@ -157,7 +173,7 @@ public class ServerHandle extends IoHandlerAdapter {
                         anotherSession.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, info1));
                         session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_GAMER_IFNO, info2));
 
-                        Gamer.insertConfrontation(userID1,userID2);
+                        Gamer.insertConfrontation(userID1, userID2);
 
                         //    logger.info("两位靓仔开始了游戏!");
                         //   logger.info("还剩" + Gamer.getGamers() + "位靓仔!");
@@ -174,7 +190,7 @@ public class ServerHandle extends IoHandlerAdapter {
                     Group group = (Group) mes.getObj();
                     int user_id = group.getUser_id();
                     group = CreatGroup(group);
-                    if(group==null){
+                    if (group == null) {
                         logger.info("创建小组失败");
                     }
                 }
@@ -208,10 +224,10 @@ public class ServerHandle extends IoHandlerAdapter {
                     session.write(SendMsgMethod.getObjectMessage(CMDDef.GET_HISTORY_REPLY, wordlist));
                 }
                 break;
-                case CMDDef.CHANGE_WORDBOOK_REQUEST:{
+                case CMDDef.CHANGE_WORDBOOK_REQUEST: {
                     int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
-                    int tag= mes.getI();
-                    if(changeHistory(tag,user_id))
+                    int tag = mes.getI();
+                    if (changeHistory(tag, user_id))
                         logger.info("词书更新成功！");
                     else
                         logger.info("词书更新失败!");

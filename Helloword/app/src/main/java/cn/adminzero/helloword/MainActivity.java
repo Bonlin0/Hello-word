@@ -47,6 +47,7 @@ import cn.adminzero.helloword.NetWork.MinaService;
 import cn.adminzero.helloword.NetWork.SessionManager;
 import cn.adminzero.helloword.db.DbUtil;
 import cn.adminzero.helloword.db.ServerDbUtil;
+import cn.adminzero.helloword.ui.login.LoginActivity;
 import cn.adminzero.helloword.util.MyStorage;
 
 import cn.adminzero.helloword.util.Words;
@@ -67,8 +68,6 @@ public class MainActivity extends BaseActivity {
     private ViewPager viewPager;
     // 本地H表为空，像服务器请求H表时加载进度条
     ProgressDialog syncHistoryProgressDialog;
-
-
     //选择词书对话框的选择结果
     private int chooseWordsBookChoice;
 
@@ -219,7 +218,6 @@ public class MainActivity extends BaseActivity {
         if (App.userNoPassword_global.getGoal() < 0) {
             // 弹出对话框选择词书
             showChooseWordsBookDialog(1);
-
         }
         // 更新主活动UI 更新打卡界面
         HomePageFragment homePageFragment = new HomePageFragment();
@@ -234,6 +232,11 @@ public class MainActivity extends BaseActivity {
             App.isLoggingOut = false;
             finish();
         }*/
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     /**
@@ -261,13 +264,11 @@ public class MainActivity extends BaseActivity {
         // 当主活动结束的时候备份部分信息并发送至服务器
         // 网络同步
         ServerDbUtil.Upadte_UserNoPassword();
-
         //注销广播
         LocalBroadcastManager.getInstance(this).unregisterReceiver(Receiver);
         DestoryData destoryData = new DestoryData();
         Message mes = SendMsgMethod.getObjectMessage(CMDDef.DESTORY_SELF_SEND_DATA, destoryData);
         SessionManager.getInstance().writeToServer(mes);
-
         stopService(new Intent(this, MinaService.class));
     }
 
@@ -376,7 +377,7 @@ public class MainActivity extends BaseActivity {
     //接受History表的广播监听器
     class MainActivitBroadcastReceiver extends BroadcastReceiver {
         @Override
-        public void onReceive(Context context, Intent intent) {
+        public void onReceive(final Context context, Intent intent) {
             short cmd = intent.getShortExtra(CMDDef.INTENT_PUT_EXTRA_CMD, (short) -1);
             switch (cmd) {
                 case CMDDef.GET_HISTORY_REPLY: {
@@ -411,6 +412,24 @@ public class MainActivity extends BaseActivity {
                     }catch (Exception e){
 
                     }
+                }
+                break;
+                case CMDDef.FORCE_OFFLINE:{
+//                    Log.e("tag","广播转发的我收到了!");
+//                    android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+//                    builder.setTitle("强制下线");
+//                    builder.setMessage("您的账户在异地登录，如果非本人所为，经更改您的账户信息!");
+//                    builder.setCancelable(false);
+//                    builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            ActivityCollector.finishAll();
+//                            Intent intent1 = new Intent(context, LoginActivity.class);
+//                            App.isForceOffline = true;
+//                            context.startActivity(intent1);
+//                        }
+//                    });
+//                    builder.show();
                 }
                 break;
             }
