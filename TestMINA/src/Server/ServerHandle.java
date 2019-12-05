@@ -199,7 +199,7 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.UPDATE_HISTORY_REQUEST: {
                     ArrayList<WordsLevel> wordsToUpdate = (ArrayList<WordsLevel>) mes.getObj();
                     int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
-                    UpdateHistory(user_id, wordsToUpdate);
+                    UpdateHistory_zjc(user_id, wordsToUpdate);
                 }
                 break;
                 case CMDDef.GET_HISTORY_REQUSEST: {
@@ -211,7 +211,7 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.CHANGE_WORDBOOK_REQUEST:{
                     int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
                     int tag= mes.getI();
-                    if(changeHistory(tag,user_id))
+                    if(changeHistory_zjc((short)tag,user_id))
                         logger.info("词书更新成功！");
                     else
                         logger.info("词书更新失败!");

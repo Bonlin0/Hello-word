@@ -12,6 +12,116 @@ import java.util.Date;
 public class ServerDbutil {
     private static Logger logger = Logger.getLogger(ServerDbutil.class);
 
+    public static void UpdateHistory_zjc(int user_id, ArrayList<WordsLevel> wordsIdToUpdate) throws SQLException {
+        int i = 0;
+        String tabelName = "HISTORY_" + user_id;
+        Connection connection = GlobalConn.getConn();
+        connection.setAutoCommit(false);
+        PreparedStatement stmt = connection.prepareStatement("" +
+                "insert into " + tabelName + "(word_id,level,yesterday) values(?,?,?)");
+        stmt.clearBatch();
+        stmt.setShort(2, (short) 0);
+        stmt.setByte(3, (byte) 0);
+
+        WordsLevel wordsLevel;
+        short word_id;
+        long start = System.nanoTime();
+        long old;
+        try {
+            for (i = 0; i < wordsIdToUpdate.size(); i++) {
+                wordsLevel = wordsIdToUpdate.get(i);
+                word_id = wordsLevel.getWord_id();
+                stmt.setShort(1, word_id);
+                stmt.addBatch();
+                if (i > 0 && i % 1000 == 0) {
+                    stmt.executeBatch();
+                    old = System.nanoTime();
+                    logger.info(i+ " time spend " + (double) (old - start) / 1000000000);
+                    start = old;
+                }
+            }
+            stmt.executeBatch();
+            connection.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            connection.rollback();
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        connection.setAutoCommit(true);
+    }
+    /**
+     * 更新用户的History表
+     *
+     * @param _tag
+     * @param user_id
+     * @return
+     * @throws SQLException
+     */
+    // _tag range is [0,7]
+    public static boolean changeHistory_zjc(short _tag, int user_id) throws SQLException {
+        if (_tag > 7 || _tag < 0) {
+            logger.info("tag 大小不符合规范");
+            return false;
+        }
+        _tag = (short) (1 << (_tag));
+        //传进来4 就是00010000
+        Connection connection = GlobalConn.getConn();
+        ArrayList<WordsLevel> newHistoryList = new ArrayList<WordsLevel>();
+        try {
+            connection.setAutoCommit(false);
+            String table_name = "HISTORY_" + user_id;
+            //删除原来表中 level=0的单词
+            PreparedStatement preparedStatement = GlobalConn.getConn().prepareStatement("delete from " + table_name + " where level=0");
+            preparedStatement.executeUpdate();
+            connection.commit();
+            preparedStatement.close();
+
+            //记录剩下H表的所有word_id
+            preparedStatement = connection.prepareStatement("select word_id from " + table_name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            HashSet<Integer> hashSet = new HashSet<Integer>();
+
+            while (resultSet.next()) {
+                hashSet.add(resultSet.getInt("word_id"));
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+            // 选出WORDS所有的符合的tag行
+            preparedStatement = connection.prepareStatement("select word_id,tag from WORDS");
+            resultSet = preparedStatement.executeQuery();
+            short tag = -1;
+            while (resultSet.next()) {
+                tag = resultSet.getShort("tag");
+                if ((tag & _tag) == _tag) {
+                    if (!hashSet.contains(resultSet.getShort("word_id"))) {
+                        newHistoryList.add(new WordsLevel(resultSet.getShort("word_id")));
+                    }
+                }
+            }
+            resultSet.close();
+            preparedStatement.close();
+            connection.commit();
+            connection.setAutoCommit(true);
+            //插入新的单词
+            UpdateHistory_zjc(user_id, newHistoryList);
+            //提交事务
+            logger.info("提交改变History表的事务");
+        } catch (Exception e) {
+            connection.rollback();
+            logger.info("更新词书History表失败，回滚！");
+            return false;
+        }
+        return true;
+    }
+
+
+
+
     public static void initWordBook(String filename) throws IOException, SQLException {
         File file = new File(filename);//C:\Users\Sairen\Documents\GitHub\Hello-word\TestMINA\src\target.csv
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -28,7 +138,7 @@ public class ServerDbutil {
         String sentence = "";
         //创建数据总表
 
-        PreparedStatement statement=GlobalConn.getConn().prepareStatement(" create table  if not exists WORDS(" +
+        PreparedStatement statement = GlobalConn.getConn().prepareStatement(" create table  if not exists WORDS(" +
                 "word_id int primary key, " +
                 "word TEXT," +
                 "phonetic TEXT ," +
@@ -42,73 +152,76 @@ public class ServerDbutil {
 //           // logger.info("创建WORDS失败");
 //        }
 //
-      try{
-          //开启事务
+        try {
+            //开启事务
             GlobalConn.getConn().setAutoCommit(false);
 
-            int i=0;
-        while ((line = br.readLine()) != null) {
-            buffer = line.split("#", -1);
-            word_id = Short.valueOf(buffer[0]);
-            word = buffer[1];
-            phonetic = buffer[2];
-            definition = buffer[3];
-            translation = buffer[4];
-            exchange = buffer[5];
-            tag = Short.valueOf(buffer[6]);
-            i++;
-            if(i%100==0){
-                logger.info(i);
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+                buffer = line.split("#", -1);
+                word_id = Short.valueOf(buffer[0]);
+                word = buffer[1];
+                phonetic = buffer[2];
+                definition = buffer[3];
+                translation = buffer[4];
+                exchange = buffer[5];
+                tag = Short.valueOf(buffer[6]);
+                i++;
+                if (i % 100 == 0) {
+                    logger.info(i);
+                }
+                // 提取CSV 文件插入数据库
+                try {
+                    PreparedStatement statement1 = GlobalConn.getConn().prepareStatement("" +
+                            "insert into WORDS (word_id,word,phonetic,definition,translation,exchange,tag,sentence) values(?,?,?,?,?,?,?,?)");
+                    statement1.setObject(1, word_id);
+                    statement1.setObject(2, word);
+                    statement1.setObject(3, phonetic);
+                    statement1.setObject(4, definition);
+                    statement1.setObject(5, translation);
+                    statement1.setObject(6, exchange);
+                    statement1.setObject(7, tag);
+                    statement1.setObject(8, sentence);
+                    statement1.execute();
+                } catch (Exception e) {
+                    //logger.info("插入失败");
+                    continue;
+                }
             }
-            // 提取CSV 文件插入数据库
-          try {
-              PreparedStatement statement1 = GlobalConn.getConn().prepareStatement("" +
-                      "insert into WORDS (word_id,word,phonetic,definition,translation,exchange,tag,sentence) values(?,?,?,?,?,?,?,?)");
-              statement1.setObject(1, word_id);
-              statement1.setObject(2, word);
-              statement1.setObject(3, phonetic);
-              statement1.setObject(4, definition);
-              statement1.setObject(5, translation);
-              statement1.setObject(6, exchange);
-              statement1.setObject(7, tag);
-              statement1.setObject(8, sentence);
-              statement1.execute();
-          }catch (Exception e){
-              //logger.info("插入失败");
-              continue;
-          }
-        }
-          //提交事务
-          GlobalConn.getConn().commit();
-        logger.info("初始化WORDS表 事务提交成功");
-        }catch (Exception e){
+            //提交事务
+            GlobalConn.getConn().commit();
+            logger.info("初始化WORDS表 事务提交成功");
+        } catch (Exception e) {
             //开启的事务有异常就回滚
             GlobalConn.getConn().rollback();
-          logger.info("初始化WORDS表异常 事务回滚");
+            logger.info("初始化WORDS表异常 事务回滚");
         }
     }
 
+
+
     /**
      * 更新用户的History表
+     *
      * @param _tag
      * @param user_id
      * @return
      * @throws SQLException
      */
     // _tag range is [0,7]
-    public static boolean changeHistory(int _tag,int user_id) throws SQLException {
+    public static boolean changeHistory_chen(int _tag, int user_id) throws SQLException {
         if (_tag > 7 || _tag < 0) {
             logger.info("tag 大小不符合规范");
             return false;
         }
         //传进来3 就是00001000
         //记录剩余word_id
-        int[] word=new  int[5000];
+        int[] word = new int[5000];
         ArrayList<WordsLevel> newHistoryList = new ArrayList<WordsLevel>();
-            // db.beginTransaction()
-            //开启事务
+        // db.beginTransaction()
+        //开启事务
         try {
-            GlobalConn.getConn().setAutoCommit(false);
+
             String table_name = "HISTORY_" + user_id;
 
             //删除原来表中 level=0的单词
@@ -146,25 +259,20 @@ public class ServerDbutil {
                     wordsLevel.setWord_id(word_id);
                     newHistoryList.add(wordsLevel);
                     // logger.info(word_id);
+
                 }
             }
             //插入新的单词
+            UpdateHistory_chen(user_id, newHistoryList);
 
-            UpdateHistory(user_id, newHistoryList);
-            //提交事务
-            GlobalConn.getConn().commit();
-            logger.info("提交改变History表的事务");
-        }catch (Exception e){
+        } catch (Exception e) {
             GlobalConn.getConn().rollback();
             logger.info("更新词书History表失败，回滚！");
-            return  false;
+            return false;
         }
 
-
-        return  true;
+        return true;
     }
-
-
 
 
     /**
@@ -523,7 +631,7 @@ public class ServerDbutil {
             statement.setObject(4, group.getMaster());
             statement.setObject(5, group.getMax_member());
             statement.execute();
-            return  group;
+            return group;
         }
         PreparedStatement statement = GlobalConn.getConn().prepareStatement("update GROUP_USER set group_id=?, contribution=?,master=?,max_member=? where user_id=?");
         statement.setObject(1, group.getGroup_id());
@@ -542,40 +650,66 @@ public class ServerDbutil {
         // statement.setString(1,tabelName);
         logger.info(statement);
         statement.execute();
+
     }
 
-    public static void UpdateHistory(int user_id, ArrayList<WordsLevel> wordsIdToUpdate) throws SQLException {
+    public static void UpdateHistory_chen(int user_id, ArrayList<WordsLevel> wordsIdToUpdate) throws SQLException {
         int i = 0;
         String tabelName = "HISTORY_" + user_id;
-        Connection connection=GlobalConn.getConn();
-        for (i = 0; i < wordsIdToUpdate.size(); i++) {
-            WordsLevel wordsLevel = wordsIdToUpdate.get(i);
-            int word_id = wordsLevel.getWord_id();
-            //检查H表里有没有该单词，有的话更新，没有的话插入
-            PreparedStatement stmt =connection .prepareStatement("select * from " + tabelName + " where word_id=?");
-            stmt.setObject(1, word_id);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                if (word_id == rs.getInt(word_id)) {
-                    PreparedStatement statement = connection.prepareStatement("" +
-                            "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
-                    statement.setObject(1, wordsLevel.getLevel());
-                    statement.setObject(2, wordsLevel.getYestarday());
-                    statement.setObject(3, wordsLevel.getWord_id());
-                    statement.execute();
-                    continue;
-                }
-            }
+        Connection connection = GlobalConn.getConn();
+        GlobalConn.getConn().setAutoCommit(false);
+        try {
+            int size=wordsIdToUpdate.size();
             PreparedStatement statement = connection.prepareStatement("" +
                     "insert into " + tabelName + "(word_id,level,yesterday) values(?,?,?)");
-            statement.setObject(1, wordsLevel.getWord_id());
-            statement.setObject(2, wordsLevel.getLevel());
-            statement.setObject(3, wordsLevel.getYestarday());
-            statement.execute();
-//            if(i%29==0)
-//                logger.info("插入"+i);
+            for (i = 0; i <size ; i++) {
+                long startTime = System.nanoTime();
+                WordsLevel wordsLevel = wordsIdToUpdate.get(i);
+                int word_id = wordsLevel.getWord_id();
+//            //检查H表里有没有该单词，有的话更新，没有的话插入
+//            PreparedStatement stmt =connection .prepareStatement("select * from " + tabelName + " where word_id=?");
+//            stmt.setObject(1, word_id);
+//            ResultSet rs = stmt.executeQuery();
+//            if (rs.next()) {
+//                if (word_id == rs.getInt(word_id)) {
+//                    PreparedStatement statement = connection.prepareStatement("" +
+//                            "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
+//                    statement.setObject(1, wordsLevel.getLevel());
+//                    statement.setObject(2, wordsLevel.getYestarday());
+//                    statement.setObject(3, wordsLevel.getWord_id());
+//                    statement.execute();
+//                    continue;
+//                }
+//            }
+                try {
+                    statement.setObject(1, wordsLevel.getWord_id());
+                    statement.setObject(2, wordsLevel.getLevel());
+                    statement.setObject(3, wordsLevel.getYestarday());
+                    statement.execute();
+                    logger.info(i + " " + (double) (System.nanoTime() - startTime) / 1000000000);
+                    if (i % 29 == 0)
+                        logger.info("插入" + i);
+                } catch (Exception e) {
+                PreparedStatement statement1 = connection.prepareStatement("" +
+                        "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
+                statement1.setObject(1, wordsLevel.getLevel());
+                statement1.setObject(2, wordsLevel.getYestarday());
+                statement1.setObject(3, wordsLevel.getWord_id());
+                statement1.execute();
+                continue;
+                }
 
+            }
+            //提交事务
+            GlobalConn.getConn().commit();
+            logger.info("提交改变History表的事务");
+
+        } catch (Exception e) {
+            logger.info(e.getMessage());
+            GlobalConn.getConn().rollback();
         }
+
+
     }
 
     /**
@@ -655,28 +789,29 @@ public class ServerDbutil {
             word.setYesterday((byte) (i % 2));
             wordlist2.add(word);
         }
-        UpdateHistory(user_id1,wordlist1);
-        UpdateHistory(user_id2,wordlist2);
+        UpdateHistory_zjc(user_id1, wordlist1);
+        UpdateHistory_zjc(user_id2, wordlist2);
 
     }
 
     /**
      * 清空打卡
+     *
      * @throws SQLException
      */
-    public  static void ClearPunch() throws SQLException {
-        java.util.Date date =new Date();
+    public static void ClearPunch() throws SQLException {
+        java.util.Date date = new Date();
 
-        long time=date.getTime();
-     //   logger.info("time:"+time);
+        long time = date.getTime();
+        //   logger.info("time:"+time);
 
-        Calendar calendar=Calendar.getInstance();
-        int year=calendar.get(calendar.YEAR);
-        int month=calendar.get(calendar.MONTH);
-        int days=calendar.get(calendar.DATE);
-        int hours=calendar.get(calendar.HOUR_OF_DAY);
-        int minute=calendar.get(calendar.MINUTE);
-        int second=calendar.get(calendar.SECOND);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(calendar.YEAR);
+        int month = calendar.get(calendar.MONTH);
+        int days = calendar.get(calendar.DATE);
+        int hours = calendar.get(calendar.HOUR_OF_DAY);
+        int minute = calendar.get(calendar.MINUTE);
+        int second = calendar.get(calendar.SECOND);
         //测试
 //        int hours=0;
 //        int minute=0;

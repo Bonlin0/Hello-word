@@ -28,11 +28,13 @@ public class CMDDef {
     public static final String INTENT_PUT_EXTRA_DATA = "DATA";
     //  public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word";
     public static final String DBURL = "jdbc:mysql://123.207.173.192:3306/hello_word?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
-    //  private static String URL = "jdbc:mysql://localhost:3306/helloword?useUnicode=true&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
+     // public static final String DBURL = "jdbc:mysql://localhost:3306/helloword?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&autoReconnect=true&failOverReadOnly=false";
     // private static String URL = "jdbc:mysql://localhost:3306/helloword?useSSL=false&serverTimezone=UTC";
     public static final String DBDriver = "com.mysql.cj.jdbc.Driver";
     public static final String DBNAME = "root";
     public static final String DBPASSWD = "926b50985a";
+   // public static final String DBPASSWD = "123456";//本地数据库
+
     public static final String SuccessConnect = "SuccessConnect";
     public static final String ErrorConnect = "连接网络失败，请检查您的数据连接!";
    // public static final String IP = "10.0.2.2";
