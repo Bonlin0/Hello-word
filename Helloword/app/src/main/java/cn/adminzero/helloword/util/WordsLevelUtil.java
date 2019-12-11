@@ -108,8 +108,9 @@ public class WordsLevelUtil {
                     }
                 }
                 db.setTransactionSuccessful();
-                // 通知服务器切换词书
-                ServerDbUtil.ChangeBook(_tag);
+                // 通知服务器切换词书  服务器不切换词书
+                // 服务器端H表只是在单词背完之后完成单词的上传（删除和更新）
+                // ServerDbUtil.ChangeBook(_tag);
                 App.userNoPassword_global.setGoal(_tag);
             } catch (Exception e) {
                 e.printStackTrace();
