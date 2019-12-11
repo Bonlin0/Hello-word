@@ -662,25 +662,13 @@ public class ServerDbutil {
             int size=wordsIdToUpdate.size();
             PreparedStatement statement = connection.prepareStatement("" +
                     "insert into " + tabelName + "(word_id,level,yesterday) values(?,?,?)");
+            PreparedStatement statement1 = connection.prepareStatement("" +
+                    "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
             for (i = 0; i <size ; i++) {
                 long startTime = System.nanoTime();
                 WordsLevel wordsLevel = wordsIdToUpdate.get(i);
                 int word_id = wordsLevel.getWord_id();
 //            //检查H表里有没有该单词，有的话更新，没有的话插入
-//            PreparedStatement stmt =connection .prepareStatement("select * from " + tabelName + " where word_id=?");
-//            stmt.setObject(1, word_id);
-//            ResultSet rs = stmt.executeQuery();
-//            if (rs.next()) {
-//                if (word_id == rs.getInt(word_id)) {
-//                    PreparedStatement statement = connection.prepareStatement("" +
-//                            "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
-//                    statement.setObject(1, wordsLevel.getLevel());
-//                    statement.setObject(2, wordsLevel.getYestarday());
-//                    statement.setObject(3, wordsLevel.getWord_id());
-//                    statement.execute();
-//                    continue;
-//                }
-//            }
                 try {
                     statement.setObject(1, wordsLevel.getWord_id());
                     statement.setObject(2, wordsLevel.getLevel());
@@ -690,8 +678,6 @@ public class ServerDbutil {
                     if (i % 29 == 0)
                         logger.info("插入" + i);
                 } catch (Exception e) {
-                PreparedStatement statement1 = connection.prepareStatement("" +
-                        "update  " + tabelName + " set level=?,yesterday=?  where word_id=?");
                 statement1.setObject(1, wordsLevel.getLevel());
                 statement1.setObject(2, wordsLevel.getYestarday());
                 statement1.setObject(3, wordsLevel.getWord_id());
