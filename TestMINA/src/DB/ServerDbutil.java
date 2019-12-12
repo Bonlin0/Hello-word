@@ -804,7 +804,7 @@ public class ServerDbutil {
 //        int second=3;
         //   logger.info("year:"+year+"month:"+month+"date:"+days+"hour:"+hours+"minute:"+minute+"second:"+second);
 
-        if (hours == 0 && minute == 0 && second <= 5) {
+        {
             PreparedStatement statement = GlobalConn.getConn().prepareStatement("update USER set isPunch=0");
             statement.execute();
             logger.info("date:" + date);

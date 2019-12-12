@@ -68,6 +68,7 @@ public class Main {
             long oneDay = 24 * 60 * 60 * 1000;
             long initDelay  = getTimeMillis("23:59:59") - System.currentTimeMillis();
             initDelay = initDelay > 0 ? initDelay : oneDay + initDelay;
+            logger.info(initDelay);
             service.scheduleAtFixedRate(ServerDbutil.clearPunchTask,initDelay, oneDay, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
             e.printStackTrace();
