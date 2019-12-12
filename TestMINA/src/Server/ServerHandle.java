@@ -215,7 +215,7 @@ public class ServerHandle extends IoHandlerAdapter {
                 case CMDDef.UPDATE_HISTORY_REQUEST: {
                     ArrayList<WordsLevel> wordsToUpdate = (ArrayList<WordsLevel>) mes.getObj();
                     int user_id = UserIDSession.getUserIDWithSessionID(session.getId());
-                    UpdateHistory_zjc(user_id, wordsToUpdate);
+                    UpdateHistory_chen(user_id, wordsToUpdate);
                 }
                 break;
                 case CMDDef.GET_HISTORY_REQUSEST: {
