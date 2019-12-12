@@ -111,7 +111,7 @@ public class ServerHandle extends IoHandlerAdapter {
                             session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                         } catch (NullPointerException e) {
                             //说明未获取成功
-                            logger.info("未获取成功!");
+                            //logger.info("未获取成功!");
                             session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                             UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
                             break;
