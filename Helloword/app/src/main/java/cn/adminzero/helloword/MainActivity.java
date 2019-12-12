@@ -388,6 +388,7 @@ public class MainActivity extends BaseActivity {
                         //在这里面接收
                         ArrayList<WordsLevel> wordlist = (ArrayList<WordsLevel>) SerializeUtils.serializeToObject(data);
                         WordsLevelUtil.updateWordLevelByArraylist(wordlist);
+                        WordsLevelUtil.initWorkBook(App.userNoPassword_global.getGoal());
                         // 将加载对话框取消
                         App.stop = false;
                         syncHistoryProgressDialog.dismiss();
