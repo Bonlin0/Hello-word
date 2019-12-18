@@ -95,7 +95,7 @@ public class RememberWordsActivity extends AppCompatActivity {
             App.wordsLevelArrayToday = wordsLevelArrayList;
         }
 
-        // TODO 背完词书的特殊情况有待考虑
+        // 背完词书的特殊情况有待考虑
         // 背完今日单词
         if (wordsArrayList.size() <= 0) {
             // 更新用户今日打卡
@@ -148,9 +148,15 @@ public class RememberWordsActivity extends AppCompatActivity {
         remember_progress_bar.setMax(dailyWordsNumber_int);
         remember_progress_bar.setProgress(dailyWordsNumber_int - wordsArrayList.size());
 
-        // 播放声音
-        MediaPlayUtil player = new MediaPlayUtil();
-        player.playword(wordsToShow.getWord());
+        // 根据设置决定是否自动播放声音
+        Boolean ifAutoPlay = defaultSharedPreferences.getBoolean("auto_play_sound", true);
+        // 自动播放声音
+        if(ifAutoPlay)
+        {
+            MediaPlayUtil player = new MediaPlayUtil();
+            player.playword(wordsToShow.getWord());
+        }
+
 
     }
 

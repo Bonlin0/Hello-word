@@ -54,7 +54,6 @@ public class SettingsActivity extends AppCompatActivity {
     public static class SettingsFragment extends PreferenceFragmentCompat {
         private Preference remindme;
         private Preference remindtime;
-        private Preference wordbooks;
         private Preference dailyWordsNumber;
         private Preference sync;
         private Preference exit;
@@ -65,7 +64,6 @@ public class SettingsActivity extends AppCompatActivity {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
             remindme = findPreference("remindme");
             remindtime = findPreference("remindtime");
-            wordbooks = findPreference("wordbooks");
             dailyWordsNumber = findPreference("dailyWordsNumber");
             sync = findPreference("sync");
             exit = findPreference("exit");
@@ -89,17 +87,6 @@ public class SettingsActivity extends AppCompatActivity {
                     Log.d("test", "onPreferenceChange: " + newValue.toString());
                     MyStorage myStorage = new MyStorage("SettingActivity");
                     myStorage.storeString("remindtime", newValue.toString());
-                    Log.d("test", "onPreferenceChange: " + "设置OK！");
-                    return true;
-                }
-            });
-            wordbooks.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    Log.d("test", "onPreferenceChange: " + "词书选择");
-                    Log.d("test", "onPreferenceChange: " + newValue.toString());
-                    MyStorage myStorage = new MyStorage("SettingActivity");
-                    myStorage.storeInt("wordbooks", Integer.valueOf(newValue.toString()));
                     Log.d("test", "onPreferenceChange: " + "设置OK！");
                     return true;
                 }

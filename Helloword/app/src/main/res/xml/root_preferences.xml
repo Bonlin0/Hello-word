@@ -34,12 +34,6 @@
 
     <PreferenceCategory app:title="词书设置">
         <ListPreference
-            app:entries="@array/wordbooks_title"
-            app:entryValues="@array/wordbooks"
-            app:key="wordbooks"
-            app:title="词书列表"
-            app:useSimpleSummaryProvider="true" />
-        <ListPreference
             app:dependency="wordbooks"
             app:entries="@array/dailyWordsNumber"
             app:entryValues="@array/dailyWordsNumber"
@@ -53,6 +47,12 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="背词设置">
+        <CheckBoxPreference
+            app:key="auto_play_sound"
+            app:title="自动播放单词发音"
+            app:defaultValue="true"/>
+    </PreferenceCategory>
 
     <PreferenceCategory app:title="系统设置">
         <Preference

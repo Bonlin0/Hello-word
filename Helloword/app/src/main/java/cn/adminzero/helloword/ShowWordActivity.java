@@ -1,8 +1,10 @@
 package cn.adminzero.helloword;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +15,15 @@ import cn.adminzero.helloword.util.Words;
 
 public class ShowWordActivity extends AppCompatActivity {
 
+    private SharedPreferences defaultSharedPreferences;
+
     private Words wordsActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_word);
 
+        defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 
         Intent intent =getIntent();
@@ -41,9 +46,15 @@ public class ShowWordActivity extends AppCompatActivity {
             });
         }
 
-        // 播放声音
-        MediaPlayUtil player = new MediaPlayUtil();
-        player.playword(words.getWord());
+        // 根据设置决定是否自动播放声音
+        Boolean ifAutoPlay = defaultSharedPreferences.getBoolean("auto_play_sound", true);
+        // 自动播放声音
+        if(ifAutoPlay)
+        {
+            MediaPlayUtil player = new MediaPlayUtil();
+            player.playword(words.getWord());
+        }
+
 
         // 使用word 更新UI
         TextView word_content_textview = findViewById(R.id.word_content_textview);
