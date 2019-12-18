@@ -3,12 +3,10 @@ package Server;
 import Common.*;
 
 import DB.GlobalConn;
+import DB.SHA;
 import DB.ServerDbutil;
 import Game.Gamer;
-import cn.adminzero.helloword.CommonClass.GroupMember;
-import cn.adminzero.helloword.CommonClass.MemberItem;
-import cn.adminzero.helloword.CommonClass.UserNoPassword;
-import cn.adminzero.helloword.CommonClass.WordsLevel;
+import cn.adminzero.helloword.CommonClass.*;
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
@@ -28,6 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static DB.ServerDbutil.*;
+import static javax.xml.crypto.dsig.DigestMethod.SHA256;
 
 
 public class Main {
@@ -58,6 +57,7 @@ public class Main {
             logger.info("服务端启动成功...     端口号为：" + PORT);
             GlobalConn.initDBConnection();
             Gamer.initGamer(acceptor.getManagedSessions());
+
             //开启随机数产生器的线程
             ScheduledExecutorService service = Executors
                     .newSingleThreadScheduledExecutor();

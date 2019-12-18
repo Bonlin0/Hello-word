@@ -377,7 +377,7 @@ public class ServerDbutil {
                 PreparedStatement statement = GlobalConn.getConn().prepareStatement("insert into USER(user_id,user_name,password,email) values(?,?,?,?)");
                 statement.setObject(1, user_id);
                 statement.setObject(2, user_name);
-                statement.setObject(3, password);
+                statement.setObject(3, SHA.SHA256(password));
                 statement.setObject(4, email);
                 statement.execute();
             }
@@ -419,7 +419,8 @@ public class ServerDbutil {
             // 展开结果集数据库
             while (rs.next()) {
                 // 通过字段检索,搜索到最后一个字段
-                if (password.equals(rs.getString("password"))) {
+                password_q = rs.getString("password");
+                if (SHA.SHA256(password).equals(rs.getString("password"))) {
                     //密码正确
                     // password=rs.getString("password");
                     user_id = rs.getInt("user_id");
@@ -453,7 +454,8 @@ public class ServerDbutil {
                 //没有此邮箱地址
                 logger.info("邮箱错误！");
                 userNoPassword.setValid(false);
-            } else if (!password.equals(password_q)) {
+            }
+            if (!SHA.SHA256(password).equals(password_q)) {
                 //密码错误
                 logger.info("密码错误！");
                 userNoPassword.setValid(false);
@@ -684,7 +686,6 @@ public class ServerDbutil {
                 statement1.execute();
                 continue;
                 }
-
             }
             //提交事务
             GlobalConn.getConn().commit();
@@ -694,8 +695,6 @@ public class ServerDbutil {
             logger.info(e.getMessage());
             GlobalConn.getConn().rollback();
         }
-
-
     }
 
     /**
