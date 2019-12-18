@@ -290,9 +290,15 @@ public class MainActivity extends BaseActivity {
                     }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
+
                             if (chooseWordsBookChoice != 8) {
                                 // 更换词书处理  0-7
-                                WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
+                                // 判断是否没有更改
+                                int tag_now = App.userNoPassword_global.getGoal();
+                                if (tag_now != chooseWordsBookChoice) {
+                                    WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
+                                }
+
                                 Toast.makeText(MainActivity.this, "你选择了" + items1[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
                                 // 网络同步
                                 ServerDbUtil.Upadte_UserNoPassword();
@@ -313,7 +319,11 @@ public class MainActivity extends BaseActivity {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if (chooseWordsBookChoice != 8) {
                                 // 更换词书处理  0-7
-                                WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
+                                // 判断是否没有更改
+                                int tag_now = App.userNoPassword_global.getGoal();
+                                if (tag_now != chooseWordsBookChoice) {
+                                    WordsLevelUtil.initWorkBook(chooseWordsBookChoice);
+                                }
                                 Toast.makeText(MainActivity.this, "你选择了" + items0[chooseWordsBookChoice], Toast.LENGTH_LONG).show();
                                 // 网络同步
                                 ServerDbUtil.Upadte_UserNoPassword();

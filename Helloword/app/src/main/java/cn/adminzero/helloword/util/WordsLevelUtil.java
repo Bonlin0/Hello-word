@@ -66,10 +66,7 @@ public class WordsLevelUtil {
         if (_tag > 7 || _tag < 0) {
             return false;
         }
-        int tag_now = App.userNoPassword_global.getGoal();
-        if (tag_now == _tag) {
-            return true;
-        }
+
         short tag = (short) (1 << _tag);
         long startTime = System.nanoTime();
         SQLiteDatabase db = DbUtil.getDatabase();

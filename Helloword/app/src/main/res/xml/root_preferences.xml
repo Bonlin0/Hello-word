@@ -34,7 +34,6 @@
 
     <PreferenceCategory app:title="词书设置">
         <ListPreference
-            app:dependency="wordbooks"
             app:entries="@array/dailyWordsNumber"
             app:entryValues="@array/dailyWordsNumber"
             app:key="dailyWordsNumber"
