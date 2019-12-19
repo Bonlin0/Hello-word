@@ -119,6 +119,8 @@ public class SettingsActivity extends AppCompatActivity {
                     SharedPreferences sharedPreferences = App.getContext().getSharedPreferences("LoginSharedPreference", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("isLogin", false);
+                    editor.putString("dailyWordsNumber", null);
+
                     editor.commit();
 
                     Log.d("test", "onPreferenceClick: Exit");

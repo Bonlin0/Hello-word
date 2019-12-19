@@ -308,7 +308,7 @@ public class MainActivity extends BaseActivity {
         }
         // 丑陋的写法
         if(parameter == 0){
-            builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("在您开始使用前，请选择词书")
+            builder = new AlertDialog.Builder(this).setIcon(R.drawable.ic_book_64px).setTitle("请选择要切换的词书")
                     .setSingleChoiceItems(items0, 0, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
