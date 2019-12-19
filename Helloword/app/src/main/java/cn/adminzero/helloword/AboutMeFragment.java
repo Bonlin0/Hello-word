@@ -121,6 +121,16 @@ public class AboutMeFragment extends Fragment {
             }
         });
 
+        // 称号功能
+        Button achievement_about_me_button = view.findViewById(R.id.achievement_about_me_button);
+        achievement_about_me_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AchievementActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 

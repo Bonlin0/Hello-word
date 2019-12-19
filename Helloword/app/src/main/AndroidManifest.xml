@@ -17,7 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GameResultActivity"></activity>
+        <activity
+            android:name=".AchievementActivity"
+            android:label="@string/title_activity_achievement"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".GameResultActivity" />
         <activity android:name=".ManageGroupActivity" />
         <activity android:name=".ShowOthersGroup" />
         <activity android:name=".ShowGroupMemberActivity" />

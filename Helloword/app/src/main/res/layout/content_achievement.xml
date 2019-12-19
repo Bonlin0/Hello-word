@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".AchievementActivity"
+    tools:showIn="@layout/activity_achievement">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/achivement_text_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Baby Steps"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_0"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_0" />
+
+        <TextView
+            android:id="@+id/achivement_text_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="有始有终"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_1" />
+
+        <TextView
+            android:id="@+id/achivement_text_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Hey, Nice to meet you!."
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_2" />
+
+        <TextView
+            android:id="@+id/achivement_text_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Sorry about that."
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_3" />
+
+        <TextView
+            android:id="@+id/achivement_text_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="不屈黑铁！"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_4" />
+
+        <TextView
+            android:id="@+id/achivement_text_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="早起的鸟儿有虫吃"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_5" />
+
+        <TextView
+            android:id="@+id/achivement_text_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="背完这个我就睡觉"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_6" />
+
+        <TextView
+            android:id="@+id/achivement_text_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="养成习惯"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_7" />
+
+        <TextView
+            android:id="@+id/achivement_text_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="王者！！！"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_8" />
+
+        <TextView
+            android:id="@+id/achivement_text_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="初出茅庐"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_9" />
+
+        <TextView
+            android:id="@+id/achivement_text_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="命悬一线"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/achivement_img_1"
+            app:layout_constraintTop_toTopOf="@+id/achivement_img_10" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="完成第一天的打卡。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_0"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_0" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="完成一本词书。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_1" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="第一次使用PK Game。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_2" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="第一次在PK Game中胜利。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_3" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="在一次PK Game中输掉并且段位为黑铁。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_4" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="在北京时间6时至7时打卡。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_5" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="在北京时间23时至0时打卡。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_6" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="打卡14天。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_7" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="段位分大于1800."
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_8" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="称号等级达到1."
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_9" />
+
+        <TextView
+            android:id="@+id/achivement_subtitle_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="以一个单词的优势赢得PKGame。"
+            app:layout_constraintStart_toStartOf="@+id/achivement_text_1"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_text_10" />
+
+        <ImageView
+            android:id="@+id/achivement_img_0"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_0"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_1"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_3"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_2"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_4"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_3"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_5"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_4"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_6"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_5"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_7"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_6"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_8"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_7"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_9"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_8"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
+        <ImageView
+            android:id="@+id/achivement_img_10"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/achivement_subtitle_9"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

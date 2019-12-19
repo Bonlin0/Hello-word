@@ -56,7 +56,7 @@
     <PreferenceCategory app:title="系统设置">
         <Preference
             app:key="exit"
-            app:title="退出APP" />
+            app:title="登出APP" />
     </PreferenceCategory>
 
 </PreferenceScreen>
