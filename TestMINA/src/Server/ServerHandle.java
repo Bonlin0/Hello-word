@@ -93,7 +93,6 @@ public class ServerHandle extends IoHandlerAdapter {
                 break;
                 case CMDDef.SIGN_IN_REQUESET: {
                     SignInRequest sir = (SignInRequest) mes.getObj();
-                    sir.setPassword("123456");
                     UserNoPassword userNoPassword = ServerDbutil.signin(sir);
                     userNoPassword.setCharacterEncoding("utf-8");
                     long anotherSession;
