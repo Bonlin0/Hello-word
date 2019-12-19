@@ -89,7 +89,7 @@
             android:layout_height="1dp"
             android:layout_margin="16sp"
             android:background="?android:attr/listDivider"
-            app:layout_constraintTop_toBottomOf="@+id/message_about_me_button"
+            app:layout_constraintTop_toBottomOf="@+id/achievement_about_me_button"
             tools:layout_editor_absoluteX="24dp" />
 
         <Button
@@ -141,7 +141,7 @@
             app:layout_constraintTop_toBottomOf="@+id/words_about_me_button" />
 
         <Button
-            android:id="@+id/message_about_me_button"
+            android:id="@+id/achievement_about_me_button"
             style="@android:style/Widget.Material.Button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
             android:layout_marginRight="10sp"
             android:background="@drawable/btn_light_background"
             android:textColor="@android:color/secondary_text_light"
-            android:text="      短信"
+            android:text="      成就"
             android:textAlignment="viewStart"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
