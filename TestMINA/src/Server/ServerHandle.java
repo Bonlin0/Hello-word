@@ -116,7 +116,10 @@ public class ServerHandle extends IoHandlerAdapter {
                             UserIDSession.insertSessionUser(session.getId(), userNoPassword.getUserID());
                             break;
                         }
+                    }else{
+                        session.write(SendMsgMethod.getObjectMessage(CMDDef.REPLY_SIGN_IN_REQUEST, userNoPassword));
                     }
+
                 }
                 break;
                 case CMDDef.DESTORY_SELF_SEND_DATA: {

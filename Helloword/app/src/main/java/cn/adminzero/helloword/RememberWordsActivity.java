@@ -111,11 +111,12 @@ public class RememberWordsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        if (wordsArrayList.size() > 0) {
 
-        wordsToShow = wordsArrayList.get(0);
+            wordsToShow = wordsArrayList.get(0);
 
 
-        TextView word_content_textView = findViewById(R.id.word_content_textview);
+            TextView word_content_textView = findViewById(R.id.word_content_textview);
 /*        // 防止词书已经背完产生bug
 
         if(wordsToShow==null)
@@ -129,34 +130,35 @@ public class RememberWordsActivity extends AppCompatActivity {
             return;
         }*/
 
-        // 使用wordsToShow 更新UI
-        // TextView word_content_textView = findViewById(R.id.word_content_textview);
-        word_content_textView.setText(wordsToShow.getWord());
-        TextView phonemic_textView = findViewById(R.id.phonemic_textView);
-        phonemic_textView.setText("/" + wordsToShow.getPhonetic() + "/");
+            // 使用wordsToShow 更新UI
+            // TextView word_content_textView = findViewById(R.id.word_content_textview);
+            word_content_textView.setText(wordsToShow.getWord());
+            TextView phonemic_textView = findViewById(R.id.phonemic_textView);
+            phonemic_textView.setText("/" + wordsToShow.getPhonetic() + "/");
 
-        ImageButton remember_pronounce_button = findViewById(R.id.remember_pronounce_button);
-        remember_pronounce_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            ImageButton remember_pronounce_button = findViewById(R.id.remember_pronounce_button);
+            remember_pronounce_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MediaPlayUtil player = new MediaPlayUtil();
+                    player.playword(wordsToShow.getWord());
+                }
+            });
+            // 更新进度条UI
+            ProgressBar remember_progress_bar = findViewById(R.id.remember_progress_bar);
+            remember_progress_bar.setMax(dailyWordsNumber_int);
+            remember_progress_bar.setProgress(dailyWordsNumber_int - wordsArrayList.size());
+
+            // 根据设置决定是否自动播放声音
+            Boolean ifAutoPlay = defaultSharedPreferences.getBoolean("auto_play_sound", true);
+            // 自动播放声音
+            if (ifAutoPlay) {
                 MediaPlayUtil player = new MediaPlayUtil();
                 player.playword(wordsToShow.getWord());
             }
-        });
-        // 更新进度条UI
-        ProgressBar remember_progress_bar = findViewById(R.id.remember_progress_bar);
-        remember_progress_bar.setMax(dailyWordsNumber_int);
-        remember_progress_bar.setProgress(dailyWordsNumber_int - wordsArrayList.size());
-
-        // 根据设置决定是否自动播放声音
-        Boolean ifAutoPlay = defaultSharedPreferences.getBoolean("auto_play_sound", true);
-        // 自动播放声音
-        if(ifAutoPlay)
-        {
-            MediaPlayUtil player = new MediaPlayUtil();
-            player.playword(wordsToShow.getWord());
+        } else {
+            // end remember!
         }
-
 
     }
 
